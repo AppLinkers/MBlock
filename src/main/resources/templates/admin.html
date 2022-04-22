@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+
+        table{
+            margin: 70px auto;
+        }
+
+        hr{
+            width:50%;
+            height: 3px;
+            background-color: #0ea618ff;
+        }
+
+        .button{
+            width: 250px;
+            height: 220px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<a th:href="@{main}">
+    <img src="/images/mblockLogo.png"  style="margin-top: 50px;" />
+</a>
+
+<hr>
+
+<table>
+    <tr>
+        <td><input type="button" name="" value="멤버 설정" class="button" th:onClick="|location.href='@{/admin/memberManage}'|" style="background-color: #ecf1eaff; border-color:#ecf1eaff" /></td>
+        <td><input type="button" name="" value="투자설명게시판 작성" th:onClick="|location.href='@{/admin/analyzeManage}'|" class="button" style="background-color: #d9ead3ff; border-color:#d9ead3ff"/></td>
+        <td><input type="button" name="" value="종목 투자게시판 설정" class="button" style="background-color: #b9f6a1ff; border-color:#b9f6a1ff"/></td>
+    </tr>
+
+    <tr>
+        <td><input type="button" name="" value="공지사항 작성" th:onClick="|location.href='@{/admin/announceManager}'|"  class="button"style="background-color: #fce5cdff; border-color:#fce5cdff"/></td>
+        <td><input type="button" name="" value="문의 톡방" th:onClick="|location.href='@{/admin/qnaChat}'|" class="button" style="background-color: #f1c9a4ff; border-color:#f1c9a4ff"/></td>
+        <td><input type="button" name="" value="멤버 단톡" class="button" style="background-color: #d5ae92ff; border-color:#d5ae92ff"/></td>
+    </tr>
+</table>
+</body>
+</html>

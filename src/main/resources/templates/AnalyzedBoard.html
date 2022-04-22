@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title></title>
+
+	<script>
+
+
+  function createDIV(){
+
+
+      var myArray = [ {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명'},
+                      {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명세부설명세부설명'},
+                      {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명세부설명세부설명세부설명세부설명'},
+                      {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명'}, ]
+
+
+      var obj = document.getElementById("parent");
+      var crewBody = document.createElement("div");
+
+      for(var i =0; i<myArray.length;i++){
+        var cardDiv = document.createElement("div");
+        var newDiv = document.createElement("div");
+        var img = document.createElement("img");
+        var containerDiv = document.createElement("div");
+        var name = document.createElement("p");
+        var intro = document.createElement("p");
+        var more = document.createElement('a');
+
+
+        img.src = myArray[i].이미지;
+        name.innerHTML = myArray[i].이름;
+        intro.innerHTML = myArray[i].세부설명;
+        more.innerHTML = "Learn More.."
+
+        name.setAttribute("class", 'title');
+        more.setAttribute("class", 'more');
+        more.setAttribute("href", '#');
+
+        cardDiv.setAttribute("class", "item");
+        img.setAttribute("class", "image")
+        containerDiv.setAttribute("class", "crewContainer");
+        newDiv.setAttribute("class", "CrewCard")
+        crewBody.setAttribute("class", "crewBody");
+
+    
+        containerDiv.appendChild(name);
+        containerDiv.appendChild(intro);
+
+        newDiv.appendChild(img);
+        newDiv.appendChild(containerDiv);
+        newDiv.appendChild(more);
+
+        cardDiv.appendChild(newDiv);
+        crewBody.appendChild(cardDiv);
+
+      }
+
+      obj.appendChild(crewBody);
+        
+
+
+      // 익명 함수 : 바로 그 이벤트를 실행하기위해 이름을 정하지 않고 바로실행
+      newDiv.onclick = function(){
+          p = this.parentElement; //부모 HTML 태그요소
+
+          p.removeChild(this); // 자신을 부모 태그로 부터 제거   
+      }
+
+  } 
+
+</script>
+
+
+	<style type="text/css">
+
+		a {
+			text-decoration: none;
+		}
+
+		#head{
+			position: fixed;
+		}
+		.head_item_logo{
+			float: left;
+			padding-left: 60px;
+			color: black;
+		}
+
+				.head_item{
+			float: left;
+			margin-right: 50px;
+			font-size: 20px;
+			font-weight: bold;
+
+		}
+		#nav{
+			list-style: none;
+			height: 40px;
+			padding:5px 1px;
+			margin:0;
+		}
+
+		#nav li{
+			float: right;
+			margin:15px 20px;
+			width: 140px;
+			padding:0;
+		}
+
+		#nav li a{
+			display: block;
+			font-weight: bold;
+			font-size: 18px;
+			padding: 7px 8px;
+			margin:0;
+			text-decoration: none;
+			color: black;
+			text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+		}
+
+		#nav li:hover > a {
+			color:black;
+			margin:0;
+			padding:; 5px;
+		}
+
+		#nav li:hover ul{
+			opacity: 1;
+			height:120px;
+		}
+
+		#nav li:hover ul li{
+			height: 35px;
+			overflow: visible;
+			padding=0;
+		}
+
+		#nav ul{
+			list-style: none;
+			padding:0;
+			position: relative;
+			left:0px;
+			width: 225px;
+			opacity: 0;
+			height:0;
+		}
+
+		#nav ul li {
+			float: none;
+			margin:0;
+			margin-top: 15px;
+			padding: 0;
+			font-size: 10px;
+
+		}
+
+		#nav ul a{
+			font-weight: normal;
+			color: black;
+		}
+
+		#nav ul li:hover a{
+			font-weight: bold;
+			width: 225px;
+		}
+
+
+
+		/*main board*/
+		#titleDiv{
+			clear: both;
+			text-align: center;
+			margin-top: 30px;
+			background-color: #ecf1eaff;
+			padding-bottom: 100px;
+		}
+
+
+
+
+		/*analyed list*/
+		.item{
+		  float: left;
+		  margin-right: 20px;
+		}
+
+		.CrewCard {
+		  border-radius: 20px;
+		  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		  transition: 0.3s;
+		  width: 280px;
+		  height: 400px;
+		  text-align: center;
+		  padding-bottom: 30px;
+		  margin-bottom: 50px;
+		}
+
+		.CrewCard:hover {
+		  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		}
+
+		.crewContainer {
+		  padding: 2px 16px;
+		  margin-bottom: 50px;
+		}
+
+		.image{
+		  margin-top: 10px;
+		  width: 80%; 
+		  height: 150px;
+		}
+
+		.crewBody{
+			margin: 100px;
+		}
+
+		.title{
+			font-size: 25px;
+			font-weight: bold;
+		}
+
+		.more{
+			font-size: 15px;
+			font-weight: bold;
+			color: black;
+		}
+
+	</style>
+</head>
+<body id = "parent">
+
+
+<div class="head">
+	<a th:href = "@{../main}" style=""><h1 class="head_item_logo">M BLOCK</h1></a>
+
+	<ul id="nav">
+		<li><a href=#>Business</a>
+			<ul>
+				<li><a href="#">사업 소개</a></li>
+				<li><a th:href="@{../business/crew}">Member</a></li>
+				<li><a href="#">Member</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Portfolio</a>
+			<ul>
+				<li><a th:href="@{../portfolio/analyzedBoard}">Analyzed Board</a></li>
+				<li><a th:href="@{../portfolio/investedBoard}">Invested Board</a></li>
+			</ul>
+		</li>
+		<li><a th:href="@{../customer/qna}">Customer</a></li>
+		<li><a th:href="@{../admin}">Admin</a></li>
+	</ul>
+</div>
+
+
+	<div id="titleDiv">
+		<p style="padding-bottom: 100px;"></p>
+		<span style="font-size: 40px; clear: both; padding-top: 100px; font-weight: bold;">INVESTMENT ANALYZE BOARD</span><br>
+		<img src="../images/titleDiv.png" style="width: 40%; margin-top: 30px">
+	</div>
+
+	<script type="text/javascript">
+		  createDIV();
+	</script>
+
+</body>
+</html>

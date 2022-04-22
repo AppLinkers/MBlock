@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+        function createDIV(){
+
+            var myArray = [ {'이미지' : 'images/photo.png', '이름' : '20', '세부설명' : '남'},
+                {'이미지' : 'images/photo.png', '이름' : '25', '세부설명' : '여'},
+                {'이미지' : 'images/photo.png', '이름' : '30', '세부설명' : '여'},
+                {'이미지' : 'images/photo.png', '이름' : '20', '세부설명' : '남'},
+                {'이미지' : 'images/photo.png', '이름' : '25', '세부설명' : '여'},
+                {'이미지' : 'images/photo.png', '이름' : '30', '세부설명' : '여'}, ]
+
+
+            var obj = document.getElementById("invBoard");
+            var crewBody = document.createElement("div");
+
+            for(var i =0; i<myArray.length;i++){
+                var cardDiv = document.createElement("div");
+                var newDiv = document.createElement("div");
+                var img = document.createElement("img");
+                var containerDiv = document.createElement("div");
+                var name = document.createElement("h4");
+                var intro = document.createElement("p");
+
+
+                img.src = myArray[i].이미지;
+                name.innerHTML = myArray[i].이름;
+                intro.innerHTML = myArray[i].세부설명;
+
+                cardDiv.setAttribute("class", "item");
+                img.setAttribute("class", "image")
+                containerDiv.setAttribute("class", "crewContainer");
+                newDiv.setAttribute("class", "CrewCard")
+                crewBody.setAttribute("class", "crewBody");
+
+                containerDiv.appendChild(name);
+                containerDiv.appendChild(intro);
+
+                newDiv.appendChild(img);
+                newDiv.appendChild(containerDiv);
+
+                cardDiv.appendChild(newDiv);
+                crewBody.appendChild(cardDiv);
+
+            }
+
+            obj.appendChild(crewBody);
+
+
+
+            // 익명 함수 : 바로 그 이벤트를 실행하기위해 이름을 정하지 않고 바로실행
+            newDiv.onclick = function(){
+                //해당 게시판 이동
+            }
+
+        }
+
+    </script>
+
+    <style type="text/css">
+
+        body{
+            position: relative;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #head{
+            position: fixed;
+        }
+        .head_item_logo{
+            float: left;
+            padding-left: 60px;
+            color: black;
+        }
+
+        .head_item{
+            float: left;
+            margin-right: 50px;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+        #nav{
+            list-style: none;
+            height: 40px;
+            padding:5px 1px;
+            margin:0;
+        }
+
+        #nav li{
+            float: right;
+            margin:15px 20px;
+            width: 140px;
+            padding:0;
+        }
+
+        #nav li a{
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 7px 8px;
+            margin:0;
+            text-decoration: none;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+
+        #nav li:hover > a {
+            color:black;
+            margin:0;
+            padding: 5px;
+        }
+
+        #nav li:hover ul{
+            opacity: 1;
+            height:120px;
+        }
+
+        #nav li:hover ul li{
+            height: 35px;
+            overflow: visible;
+            padding:0;
+        }
+
+        #nav ul{
+            list-style: none;
+            padding:0;
+            position: relative;
+            left:0px;
+            width: 225px;
+            opacity: 0;
+            height:0;
+        }
+
+        #nav ul li {
+            float: none;
+            margin:0;
+            margin-top: 15px;
+            padding: 0;
+            font-size: 10px;
+
+        }
+
+        #nav ul a{
+            font-weight: normal;
+            color: black;
+        }
+
+        #nav ul li:hover a{
+            font-weight: bold;
+            width: 225px;
+        }
+
+
+
+        #main_body{
+            height: 600px;
+            clear: both;
+        }
+
+        #titleMent{
+            font-size: 60px;
+            font-weight: bold;
+            padding-top: 120px;
+            margin-left: 70px;
+            color: #38761d;
+            font-family: "Comic Sans MS", "Comic Sans";
+        }
+        button{
+            float: left;
+            width: 150px;
+            height: 45px;
+            margin-left: 70px;
+        }
+        #learnBtn{
+            background-color: #ecf1eaff;
+        }
+
+        #chatBtn{
+            background-color: #f7ebc7ff;
+            border-color: #f1db96;
+        }
+
+        #coinView{
+            background-color: black;
+            height: 60px;
+        }
+
+
+        .numFirst{
+
+            font-size: 50px;
+            font-weight: bold;
+            text-align: left;
+
+        }
+
+
+        .numSecond{
+            font-size: 35px;
+            font-weight: bold;
+            margin-left: 40px;
+        }
+
+        #invBoard{
+            clear: both;
+            margin-left: 100px;
+            margin-top: 80px;
+        }
+
+
+        /*invBoard css*/
+        .item{
+            float: left;
+            margin-top: 50px;
+            margin-right: 70px;
+            margin-bottom: 100px;
+        }
+
+        .CrewCard {
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 330px;
+            text-align: center;
+        }
+
+        .CrewCard:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .crewContainer {
+            padding: 2px 16px;
+        }
+
+        .image{
+            margin-top: 10px;
+            width: 80%;
+            height: 200px;
+        }
+
+
+        #firmsDiv{
+            margin-bottom: 200px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="head">
+    <a th:href = "@{main}" style=""><h1 class="head_item_logo">M BLOCK</h1></a>
+
+    <ul id="nav">
+        <li><a href=#>Business</a>
+            <ul>
+                <li><a href="#">사업 소개</a></li>
+                <li><a th:href="@{business/crew}">Member</a></li>
+                <li><a href="#">Member</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Portfolio</a>
+            <ul>
+                <li><a th:href="@{portfolio/analyzedBoard}">Analyzed Board</a></li>
+                <li><a th:href="@{portfolio/investedBoard}">Invested Board</a></li>
+            </ul>
+        </li>
+        <li><a th:href="@{customer/qna}">Customer</a></li>
+        <li><a th:href="@{admin}">Admin</a></li>
+    </ul>
+
+</div>
+</div>
+
+<div id ="main_body">
+    <p id="titleMent">
+        Grow Your Stack.
+    </p>
+
+    <p style="font-size: 23px; margin-left: 70px;">Ride on highly trained team and huge amount of stack. Within the best strategy
+        <br/> and huge amount of stack, it will bring you huge amount of profits. </p>
+    <p style="font-size: 23px; font-weight: bold; margin-left: 70px;">Start Now!</p>
+
+    <button id="learnBtn">LEARN MORE..</button>
+
+    <button id="chatBtn">1:1CONTACT</button>
+
+</div>
+
+<div id="coinView">
+    비트코인
+</div>
+
+
+
+
+<table style="padding-top: 70px; padding-bottom: 80px; background-color: #ecf1eaff">
+    <th class="numFirst"><span style="color: #38761d; margin-left: 40px;">No.1</span></th>
+    <th class="numFirst"><span style="color: #1155cc; margin-left: 40px;">100 +</span></th>
+    <th class="numFirst"><span style="color: #bf9000; margin-left: 40px;">1.0Billion +</span></th>
+
+    <tr>
+        <td><span class="numSecond">Trading Team</span></td>
+        <td><span class="numSecond">Analysis</span></td>
+        <td><span class="numSecond">Assets</span></td>
+    </tr>
+
+    <tr>
+        <td><p style="font-size: 25px; margin-left: 40px; padding-right: 40px;">
+            Our team had highly trained from huge capital company. Constantly make the  profits from well trained strategy.
+        </p></td>
+
+        <td><p style="font-size: 25px; margin-left: 40px; padding-right: 40px;">
+            Great teams comes with consist analysis. Our team constantly analyze the data of Blockchain market.
+        </p></td>
+
+        <td><p style="font-size: 25px; margin-left: 40px; padding-right: 40px;">
+            Take the advantage of our assets. Huge property comes with huge assets. Ride our assets to get higher profits.
+        </p></td>
+    </tr>
+</table>
+
+<div id="invBoard">
+    <span style="font-size: 35px; font-family: Comic Sans MS; ">Investment Board</span>
+        <script type="text/javascript">
+            createDIV();
+        </script>
+
+
+</div>
+
+<div id="firmsDiv" >
+    <span style="font-family: Comic Sans MS; font-size: 35px; "> Affiliate  &  Associate </span>
+    <hr style="width: 60%; margin-top: 30px; border: solid, double 10px">
+
+    <img src="/images/firms.png" style="width: 100%; height: 350px; padding-top: 50px">
+
+</div>
+
+
+
+
+</body>
+</html>

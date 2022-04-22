@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style type="text/css">
+    	#addBtn{
+    		float: right;
+    		margin-right: 100px; 
+    		margin-top: 25px; 
+    		margin-bottom: 10px; 
+    		width: 120px; height: 40px; 
+    		border-radius: 15px;
+    	}
+    </style>
+</head>
+<body>
+	<a th:href = "@{/admin}"> <<<<< </a>
+
+	<h1 style="text-align: center; margin-top: 50px;"><b>Announce Board Manager</b></h1>
+
+	<input type="button" name="" value="Add New" id="addBtn" th:onclick="|location.href='@{/admin/addAnnounce}'|">
+	<table border="1" class ="table table-striped table-responsive-md" style="background-color: whitesmoke; text-align: center;">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Writer</th>
+        <th>Date</th> <!-- 가입확인 -->
+        <th>Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <tr each="">
+        <td text="mblock"></td>
+        <td text="mblock"></td>
+        <td text="status"></td>
+        <td text="company"></td>
+        <td>
+            <a href = "#" class="btn btn-primary">Update</a>
+        </td>
+    </tr>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

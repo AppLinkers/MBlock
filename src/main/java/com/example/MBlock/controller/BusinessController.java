@@ -14,4 +14,7 @@ public class BusinessController {
     public String getCrewPage() {
         return "Crew";
     }
+
+    @GetMapping("business")
+    public String getBusinessPage(){return "business";}
 }

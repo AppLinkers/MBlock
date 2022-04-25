@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+
+        function affiliatesUI(){
+            const affiliates = ["/images/rokcapital.png", "/images/despread.png", "/images/appLinkers.png", "/images/traderjoe.png"];
+
+            const affDiv = document.getElementById('affiliate');
+            const table = document.createElement('table');
+            table.setAttribute("class", "affTable");
+            const row = document.createElement('tr');
+
+            for(var i=0; i<affiliates.length; i++){
+                var td = document.createElement('td');
+                var firmImg = document.createElement('img')
+                firmImg.src = affiliates[i];
+                firmImg.setAttribute("class", "firmImg");
+                td.appendChild(firmImg);
+                row.appendChild(td);
+            }
+
+            table.appendChild(row);
+            affDiv.appendChild(table);
+        }
+
+    </script>
+
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+
+        #head{
+            position: fixed;
+            background-color: white;
+        }
+        .head_item_logo{
+            float: left;
+            padding-left: 60px;
+            color: black;
+        }
+
+        .head_item{
+            float: left;
+            margin-right: 50px;
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+        #nav{
+            list-style: none;
+            height: 50px;
+            padding:20px 1px;
+            margin:0px;
+            background-color: white;
+
+        }
+
+        #nav li{
+            float: right;
+            margin:0px 20px;
+            width: 140px;
+            padding:0px;
+        }
+
+        #nav li a{
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 7px 8px;
+            margin:0;
+            text-decoration: none;
+            color: black;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+
+        #nav li:hover > a {
+            color:black;
+            margin:0;
+            padding: 5px;
+        }
+
+        #nav li:hover ul{
+            opacity: 1;
+            height:0px;
+        }
+
+        #nav li:hover ul li{
+            height: 35px;
+            overflow: visible;
+            padding=0;
+        }
+
+        #nav ul{
+            list-style: none;
+            padding:0;
+            position: relative;
+            left:0px;
+            width: 225px;
+            opacity: 0;
+            height:0;
+        }
+
+        #nav ul li {
+            float: none;
+            margin:0;
+            margin-top: 15px;
+            padding: 0;
+            font-size: 10px;
+
+        }
+
+        #nav ul a{
+            font-weight: normal;
+            color: black;
+        }
+
+        #nav ul li:hover a{
+            font-weight: bold;
+            width: 225px;
+        }
+
+        #businessTop {
+            background-image: url("/images/MBlockWork.png");
+            background-size: 100% 440px;
+            height: 400px;
+
+        }
+
+        .firmImg{
+            width: 180px;
+            height: 120px;
+            margin-right: 80px;
+        }
+        .affTable{
+            margin:0 auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="head">
+    <a th:href = "@{/main}" style=""><h1 class="head_item_logo">M BLOCK</h1></a>
+
+    <ul id="nav">
+        <li><a href=#>Business</a>
+            <ul>
+                <li><a th:href="@{business/business}">사업 소개</a></li>
+                <li><a th:href="@{business/crew}">Member</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Portfolio</a>
+            <ul>
+                <li><a th:href="@{portfolio/analyzedBoard}">Analyzed Board</a></li>
+                <li><a th:href="@{portfolio/investedBoard}">Invested Board</a></li>
+            </ul>
+        </li>
+        <li><a th:href="@{customer/qna}">Customer</a></li>
+        <li><a th:href="@{admin}">Admin</a></li>
+    </ul>
+</div>
+
+<div id="businessTop">
+    <p style="color: white; font-size: 60px; font-weight: bold; margin: 0 70px; padding-top: 120px;">Our Business.</p>
+</div>
+
+
+<div style="text-align: center; padding-top: 100px; padding-bottom: 100px;">
+    <p style="font-size: 40px; font-weight: bold">Specialty of Eco Trading System.</p>
+    <p style="font-size: 23px; color: grey "> We Analyze, We Trade, We Invest, We Earn. We know the systems and we bet to win.</p>
+    <p style="font-size: 23px; color: grey"> With the best trustful traders, ride on the reliable Tokens/Coins.</p>
+</div>
+
+<div style="margin-left: 10%">
+    <table>
+        <tr>
+            <td rowspan="2"><img src="/images/analyzeImg.png" style="width: 500px; height: 330px;"></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 80px;">
+                <p style="font-weight: bold; font-size: 40px;">Analyze</p>
+                <p style="font-size: 20px; color: grey; margin-bottom: 50px;">Each Traders analyze their own cripto. From their born to their heydays.<br>
+                    Without knowing the products, there will be <b>no success.</b></p>
+                <input type="button" value="Learn More" style="background-color: white; border-color: green; width: 160px; height: 40px; border-radius: 12px; " name="">
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div style="margin-left: 6%; margin-top: 140px;">
+    <table>
+        <tr>
+            <td rowspan="2" style="padding-left: 80px;">
+                <p style="font-weight: bold; font-size: 40px;">TRADE.</p>
+                <p style="font-size: 20px; color: grey; margin-bottom: 50px;">Each Traders analyze their own cripto. From their born to their heydays.<br>
+                    Without knowing the products, there will be <b>no success.</b></p>
+                <input type="button" value="Learn More" style="background-color: white; border-color: green; width: 160px; height: 40px; border-radius: 12px; " name="">
+            </td>
+        </tr>
+
+        <tr>
+            <td ><img src="/images/chartImg.png" style="width: 500px; height: 330px; margin-left: 50px"></td>
+        </tr>
+    </table>
+</div>
+
+<div id="busHistory">
+    <img src="/images/mblockHistory.png" style="width: 80%; height: 400px; margin: 130px;">
+
+</div>
+
+<div id="affiliate">
+    <h1 style="text-align: center; margin-bottom: 30px;">PARTNERSHIP.</h1>
+    <hr style="margin-bottom: 20px;">
+    <script type="text/javascript">
+        affiliatesUI();
+    </script>
+
+</div>
+</body>
+</html>

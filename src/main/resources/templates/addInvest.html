@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style type="text/css">
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .invInput{
+            width: 400px;
+            height: 45px;
+            border-radius: 15px;
+            font-size: 17px;
+            padding-left: 10px;
+        }
+    </style>
+
+</head>
+<body style="margin-left: 70px;">
+<a th:href="@{/admin/InvestManage}"><<<<<</a>
+<p style="font-size: 30px;margin-top: 80px;"><b>Add Investment Data</b></p>
+<form>
+    <input type="text" placeholder="cripto name" name="" class="invInput"><br><br>
+    <input type="button" name="" value="현재가 측정"> 000,000원<br><br>
+    <input type="text" placeholder="보유량" name="" class="invInput"><br><br>
+    <input type="text" placeholder="매수가격" name="" class="invInput"><br><br>
+    <input type="button" value="수익률 계산" name="">
+    <p id="rev"> 수익</p>
+    <p id="revPerc">수익률%</p>
+
+    <button type="submit" class="btn btn-primary">종목 추가</button>
+</form>
+
+</body>
+</html>

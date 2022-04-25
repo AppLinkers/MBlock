@@ -25,6 +25,9 @@ public class AdminController {
         return "announceManager";
     }
 
+    @GetMapping("/InvestManage")
+    public String getInvestManager(){return "InvestManage";}
+
     @GetMapping("/qnaChat")
     public String getQnaChatPage() {
         return "qnaChat";
@@ -34,4 +37,7 @@ public class AdminController {
     public String getAddAnnouncePage() {
         return "addAnalyzed";
     }
+
+    @GetMapping("/addInvest")
+    public String getAddInvestPage(){ return "addInvest";}
 }

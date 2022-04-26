@@ -38,19 +38,20 @@
 	<h1 style="margin-left: 40px;"><b>Analyzed Board Manager</b></h1>
 
     <div id="write_area">
-        <form enctype="multipart/form-data" action="write_ok.php?board_id=<?echo $board_id;?>" method="post" style="margin-left: 40px;">
+        <form enctype="multipart/form-data" action="/admin/addAnalyzed" method="post" style="margin-left: 40px;">
             <div id="in_title">
                 <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>
             </div>
 
             <span style="font-size: 18px;">작성자 :  Mblock</span>
 
+
             <div class="wi_line"></div>
             <div id="in_content">
                 <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
             </div>
 
-              <input type="file" name="SelectFile" style=" margin-bottom: 20px;" />
+              <input type="file" name="file" style=" margin-bottom: 20px;" />
 
 
             <div class="bt_se">

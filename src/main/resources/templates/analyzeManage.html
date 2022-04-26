@@ -31,22 +31,20 @@
         <th>id</th>
         <th>Title</th>
         <th>Writer</th>
-        <th>Date</th> <!-- 가입확인 -->
+        <th>Date</th>
         <th>Update</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <tr each="">
-        <td text="mblock"></td>
-        <td text="mblock"></td>
-        <td text="status"></td>
-        <td text="company"></td>
-        <td>
-            <a href = "#" class="btn btn-primary">Update</a>
-        </td>
-    </tr>
-    </tr>
+        <tr th:each="analysis : ${analyses.content}">
+            <th th:text="(${analyses.pageable.pageNumber} * ${analyses.pageable.pageSize})+${analysisStat.count}"></th>
+            <td id="title" th:text="${analysis.title}"></td>
+            <td id="writer" th:text="${analysis.user_name}"></td>
+            <td id="date" th:text="${analysis.dateTime}"></td>
+            <td>
+                <a href = "#" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
     </tbody>
 </table>
 

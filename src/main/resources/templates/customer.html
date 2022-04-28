@@ -3,29 +3,57 @@
 <head>
 	<title></title>
 
-	<script type="text/javascript">
+	<script th:inline="javascript">
 
 
 		function qnaUI(){
 
-			for(var i=0; i<3; i++){
-				document.write('<div class="qnaItemDiv">')
-					document.write('<table class="qnaItem">');
-					  document.write('<tr>');
-					    document.write('<td rowspan="2">');
-					    document.write("<p class='qnaCount'>1</p>");
-					    document.write('</td>');
-					    document.write("<td><p class='qnaTitle'>title</p></td>");
-					  document.write('</tr>');
+			var announceList = [[${announce.content}]];
 
-					  document.write('<tr>');
-					  	document.write('<td><p class="qnaContext">context</p></td>');
-					  document.write('</tr>');
-					
-					document.write('</table>');
-					document.write('<hr class="itemDiv">')
-				document.write('</div>')
+
+			for(var i=0; i<announceList.length;i++){
+				var div = document.createElement('div');
+				div.setAttribute('class', "qnaItemDiv");
+
+				var qnaItem = document.createElement('table');
+				qnaItem.setAttribute("class", "qnaItem");
+
+				var tr1 = document.createElement("tr");
+
+				var count = document.createElement('td');
+				count.setAttribute('rowspan','2');
+				var qnaCount = document.createElement('p');
+				qnaCount.setAttribute('class','qnaCount');
+				qnaCount.innerHTML=announceList[i].id;
+				count.appendChild(qnaCount);
+
+				var title = document.createElement('td');
+				var qnaTitle= document.createElement('span');
+				qnaTitle.innerHTML=announceList[i].title;
+				qnaTitle.setAttribute('class','qnaTitle');
+				title.appendChild(qnaTitle);
+
+				tr1.appendChild(count);
+				tr1.appendChild(title);
+
+				var contTd = document.createElement('td');
+				var qnaContext = document.createElement('span');
+				qnaContext.innerHTML=announceList[i].context;
+				qnaContext.setAttribute('class','qnaContext');
+				contTd.appendChild(qnaContext);
+
+				qnaItem.appendChild(tr1);
+				qnaItem.appendChild(contTd);
+
+				var seg = document.createElement('hr');
+				seg.setAttribute("class","itemDiv");
+				div.appendChild(qnaItem);
+				div.appendChild(seg);
+
+				var qnADiv = document.getElementById("QnA");
+				qnADiv.appendChild(div);
 			}
+
 			
 		}
 	</script>
@@ -139,6 +167,7 @@
 			padding-top: 30px;
 			margin: 0 auto;
 		}
+
 
 		.qnaItem{
 			margin-left:24%;

@@ -22,7 +22,7 @@ public class UserAuthService {
     public UserSignUpRes signUp(UserSignUpReq request){
         validateDuplicated(request.getUsername());
 
-        User user = User.sign_up()
+        User user = User.builder()
                 .user_id(request.getUsername())
                 .user_pw(passwordEncoder.encode(request.getPassword()))
                 .role(Role.valueOf(request.getRole()))

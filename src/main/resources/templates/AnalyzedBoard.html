@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 
-	<script>
+	<script th:inline="javascript">
 
 
   function createDIV(){
@@ -13,24 +13,26 @@
                       {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명세부설명세부설명'},
                       {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명세부설명세부설명세부설명세부설명'},
                       {'이미지' : '../images/photo.png', '이름' : 'ANALYZE Board Title', '세부설명' : '세부설명세부설명세부설명세부설명'}, ]
-
-
-      var obj = document.getElementById("parent");
+      var array = [[${analyses.content}]];
+	  console.log(array.length);
+	  var obj = document.getElementById("parent");
       var crewBody = document.createElement("div");
 
-      for(var i =0; i<myArray.length;i++){
+      for(var i =0; i<array.length;i++){
         var cardDiv = document.createElement("div");
         var newDiv = document.createElement("div");
         var img = document.createElement("img");
         var containerDiv = document.createElement("div");
         var name = document.createElement("p");
         var intro = document.createElement("p");
+		var date = document.createElement("p");
         var more = document.createElement('a');
 
 
         img.src = myArray[i].이미지;
-        name.innerHTML = myArray[i].이름;
-        intro.innerHTML = myArray[i].세부설명;
+        name.innerHTML = array[i].title;
+        intro.innerHTML = array[i].context.substr(0,5);
+		date.innerHTML = array[i].dateTime;
         more.innerHTML = "Learn More.."
 
         name.setAttribute("class", 'title');
@@ -43,9 +45,10 @@
         newDiv.setAttribute("class", "CrewCard")
         crewBody.setAttribute("class", "crewBody");
 
-    
+
         containerDiv.appendChild(name);
         containerDiv.appendChild(intro);
+		containerDiv.appendChild(date);
 
         newDiv.appendChild(img);
         newDiv.appendChild(containerDiv);
@@ -57,17 +60,17 @@
       }
 
       obj.appendChild(crewBody);
-        
+
 
 
       // 익명 함수 : 바로 그 이벤트를 실행하기위해 이름을 정하지 않고 바로실행
       newDiv.onclick = function(){
           p = this.parentElement; //부모 HTML 태그요소
 
-          p.removeChild(this); // 자신을 부모 태그로 부터 제거   
+          p.removeChild(this); // 자신을 부모 태그로 부터 제거
       }
 
-  } 
+  }
 
 </script>
 
@@ -239,6 +242,7 @@
 			<ul>
 				<li><a th:href="@{../business/business}">사업 소개</a></li>
 				<li><a th:href="@{../business/crew}">Member</a></li>
+				<li><a href="#">Member</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Portfolio</a>

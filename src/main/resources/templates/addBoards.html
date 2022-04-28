@@ -34,27 +34,40 @@
 </head>
 
 <body>
+	<h1 style="margin-left: 40px;" th:text="${boardType}"><b> Board Manager</b></h1>
 
-	<h1 style="margin-left: 40px;"><b>Analyzed Board Manager</b></h1>
+    <script th:inline="javascript">
+        function a(){
+            var boardType = [[${boardType}]];
+            if(boardType==="Announce"){
+                document.form.action="/admin/addAnnounce/";
+            }else if(boardType==="Analyzed"){
+                document.form.action="/admin/addAnalyzed/";
+            }
+            document.form.submit();
+        }
+    </script>
 
-    <div id="write_area">
-        <form enctype="multipart/form-data" action="write_ok.php?board_id=<?echo $board_id;?>" method="post" style="margin-left: 40px;">
+
+    <div name="write_area">
+        <form enctype="multipart/form-data" name="form"  method="post" style="margin-left: 40px;">
             <div id="in_title">
                 <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>
             </div>
 
             <span style="font-size: 18px;">작성자 :  Mblock</span>
 
+
             <div class="wi_line"></div>
             <div id="in_content">
                 <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
             </div>
 
-              <input type="file" name="SelectFile" style=" margin-bottom: 20px;" />
+              <input type="file" name="file" style=" margin-bottom: 20px;" />
 
 
             <div class="bt_se">
-                <button type="submit" class="btn btn-primary">글 작성</button>
+                <button type="submit" onclick="a()" class="btn btn-primary">글 작성</button>
             </div>
         </form>
     </div>

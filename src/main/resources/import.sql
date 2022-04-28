@@ -1,0 +1,1 @@
+insert into user (`id`, `user_id`, `name`, `user_pw`, `role`, `created_at`, `updated_at`) values (1, 'dldbwls', 'test', '{bcrypt}$2a$10$d3QK7jlUd8NI6EdHmILzfejSoF.XSlmT/eRdb9zaXuM8YuWmTdzSO', 'ROLE_ADMIN', now(), now());

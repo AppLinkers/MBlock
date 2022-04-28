@@ -90,7 +90,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/main")
                 .successHandler(formAuthenticationSuccessHandler)
                 .failureHandler(formAuthenticationFailureHandler)
-                .permitAll();
+                .permitAll()
+                .and()
+                .csrf().disable();
     }
 
 }

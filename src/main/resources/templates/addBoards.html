@@ -39,9 +39,9 @@
     <script th:inline="javascript">
         function a(){
             var boardType = [[${boardType}]];
-            if(boardType==="Announce"){
+            if(boardType==="announce"){
                 document.form.action="/admin/addAnnounce/";
-            }else if(boardType==="Analyzed"){
+            }else if(boardType==="analyzed"){
                 document.form.action="/admin/addAnalyzed/";
             }
             document.form.submit();

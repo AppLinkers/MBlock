@@ -38,8 +38,8 @@ public class AdminController {
     @GetMapping("/announceManager")
     public String getAnnounceManager(Model model, @RequestParam(defaultValue = "0") int page) {
         Page<AnnounceFindRes> announceFindResList = announceService.findAll(page);
-        model.addAttribute("announce", announceFindResList);
-        return "announceManager";
+        model.addAttribute("announces", announceFindResList);
+        return "announceManage";
     }
 
     @GetMapping("/InvestManage")
@@ -50,8 +50,8 @@ public class AdminController {
         return "qnaChat";
     }
 
-    @GetMapping("/addAnalyzedPage")
-    public String getAddAnnouncePage(Model model, @RequestParam("type")String type) {
+    @GetMapping("/addBoardPage")
+    public String getAddBoardPage(Model model, @RequestParam("type")String type) {
         model.addAttribute("boardType", type);
         return "addBoards";
     }

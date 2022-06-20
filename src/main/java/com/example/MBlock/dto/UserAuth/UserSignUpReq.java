@@ -1,8 +1,11 @@
 package com.example.MBlock.dto.UserAuth;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class UserSignUpReq {
+
+    private String name;
 
     private String loginId;
 
@@ -12,5 +15,5 @@ public class UserSignUpReq {
 
     private String phone;
 
-    // 더 추가 필요
+    private MultipartFile profileImg;
 }

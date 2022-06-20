@@ -1,5 +1,6 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.UserAuthService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,14 +29,19 @@ public class UserAuthController {
 
     @PostMapping("/register")
     public String register(UserSignUpReq userSignUpReq) {
-        userAuthService.signUp(userSignUpReq);
+        try {
+            userAuthService.signUp(userSignUpReq);
+        } catch (IOException e) {
+            // image upload 실패
+            e.printStackTrace();
+        }
         return "redirect:/login";
     }
 
-//    @GetMapping("/login")
-//    public String getLoginForm(UserLoginReq userLoginReq) {
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String getLoginForm(UserLoginReq userLoginReq) {
+        return "login";
+    }
 
     @GetMapping("/main")
     public String main(Model model) {

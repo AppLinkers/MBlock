@@ -2,7 +2,6 @@
 (function(){
     const spanEl = document.querySelector("main h3 span");
     const txtArr = ['Analyze','Invest','Trade','Earn'];
-
     let index =0;
     let currentTxt = txtArr[index].split("");
 

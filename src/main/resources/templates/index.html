@@ -14,11 +14,11 @@
 <header>
     <div class="container">
         <h1>
-            <button onclick="location.href='index.html'">M <span>Block</span></button>
+            <button><a th:href="@{/main}">M <span>Block</span></a></button>
         </h1>
         <nav>
             <ul>
-                <li><a href="#" onclick="location.href='index.html'">Home</a>
+                <li><a th:href="@{/main}">Home</a>
                     <div class="line"></div>
                 </li>
                 <li><a th:href="@{/business}">Business</a>

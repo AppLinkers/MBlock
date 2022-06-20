@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("h2-console/**").permitAll()
-                .mvcMatchers("/login", "/register", "/main", "/business/", "/news", "/invest","/announce" ,"/consulting", "/contact").permitAll()
+                .mvcMatchers("/login", "/register", "/main", "/business", "/news", "/invest","/announce" ,"/consulting", "/contact","/admin").permitAll()
                 .mvcMatchers("/user").hasAnyRole("PENDING", "ACCEPTED")
                 .mvcMatchers("/admin").hasAnyRole("ACCEPTED")
                 .expressionHandler(defaultWebSecurityExpressionHandler())
@@ -87,7 +87,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login_proc")
-                .defaultSuccessUrl("/main")
+                .defaultSuccessUrl("/admin")
                 .successHandler(formAuthenticationSuccessHandler)
                 .failureHandler(formAuthenticationFailureHandler)
                 .permitAll()

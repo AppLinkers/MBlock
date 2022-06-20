@@ -11,24 +11,19 @@ import lombok.*;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Analyzed extends BaseEntity implements Auditable {
+public class News extends BaseEntity implements Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private String user_name;
+    private String title;
 
     private String context;
 
-    private String file_url;
-
-    @Builder
-    public Analyzed(String title, String user_name, String context) {
-        this.title = title;
-        this.user_name = user_name;
-        this.context = context;
-    }
+    private String imgUrl;
 }

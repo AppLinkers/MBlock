@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public DefaultWebSecurityExpressionHandler defaultWebSecurityExpressionHandler() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
-        roleHierarchy.setHierarchy("ROLE_ADMIN > ROLE_USER");
+        roleHierarchy.setHierarchy("ACCEPTED > PENDING");
 
         DefaultWebSecurityExpressionHandler defaultWebSecurityExpressionHandler = new DefaultWebSecurityExpressionHandler();
         defaultWebSecurityExpressionHandler.setRoleHierarchy(roleHierarchy);
@@ -68,8 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("h2-console/**").permitAll()
                 .mvcMatchers("/login", "/register", "/logout", "/main", "/business/**", "/customer/**", "/portfolio/**").permitAll()
-                .mvcMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .mvcMatchers("/admin").hasAnyRole("ADMIN")
+                .mvcMatchers("/user").hasAnyRole("PENDING", "ACCEPTED")
+                .mvcMatchers("/admin").hasAnyRole("ACCEPTED")
                 .expressionHandler(defaultWebSecurityExpressionHandler())
                 .anyRequest().authenticated()
                 .and()

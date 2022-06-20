@@ -25,11 +25,11 @@ public class UserDetailService implements UserDetailsService {
         User user = userRepository.findByUser_id(username).orElseThrow(() -> new UsernameNotFoundException("아이디가 존재하지 않습니다."));
 
         List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(user.getRole().toString()));
+        roles.add(new SimpleGrantedAuthority(user.getApproved().toString()));
 
         return UserDetail.builder()
-                .username(user.getUser_id())
-                .password(user.getUser_pw())
+                .username(user.getLogin_id())
+                .password(user.getLogin_pw())
                 .authorityList(roles)
                 .build();
     }

@@ -1,7 +1,6 @@
 package com.example.MBlock.controller;
 
-import com.example.MBlock.dto.userAuth.UserLoginReq;
-import com.example.MBlock.dto.userAuth.UserSignUpReq;
+import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.UserAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -32,10 +31,10 @@ public class UserAuthController {
         return "redirect:/login";
     }
 
-    @GetMapping("/login")
-    public String getLoginForm(UserLoginReq userLoginReq) {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String getLoginForm(UserLoginReq userLoginReq) {
+//        return "login";
+//    }
 
     @GetMapping("/main")
     public String main(Model model) {

@@ -1,9 +1,8 @@
 package com.example.MBlock.service;
 
 import com.example.MBlock.domain.User;
-import com.example.MBlock.domain.type.Role;
-import com.example.MBlock.dto.userAuth.UserSignUpReq;
-import com.example.MBlock.dto.userAuth.UserSignUpRes;
+import com.example.MBlock.dto.UserAuth.UserSignUpReq;
+import com.example.MBlock.dto.UserAuth.UserSignUpRes;
 import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,19 +19,15 @@ public class UserAuthService {
 
     @Transactional
     public UserSignUpRes signUp(UserSignUpReq request){
-        validateDuplicated(request.getUsername());
+        validateDuplicated(request.getLoginId());
 
-        User user = User.builder()
-                .user_id(request.getUsername())
-                .user_pw(passwordEncoder.encode(request.getPassword()))
-                .role(Role.valueOf(request.getRole()))
-                .build();
+        User user = new User();
 
         User saved_user = userRepository.save(user);
 
         return UserSignUpRes.builder()
                 .id(saved_user.getId())
-                .user_id(saved_user.getUser_id())
+                .loginId(saved_user.getLogin_id())
                 .build();
     }
 

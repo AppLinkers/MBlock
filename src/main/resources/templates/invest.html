@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/invest.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <h1>
+                <button><a th:href="@{/main}">M <span>Block</span></a></button>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/main}">Home</a>
+                        <div class="line"></div>
+                    </li>
+                    <li><a th:href="@{/business}">Business</a>
+                    </li>
+                    <li><a href="#">Portfolio<i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a th:href="@{/news}">News</a></li>
+                                <li><a th:href="@{/invest}">Investment</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">Customer<i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a th:href="@{/announce}">공지사항</a></li>
+                                <li><a th:href="@{/consulting}">Consulting</a></li>
+                                <li><a th:href="@{/contact}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
+        </div>
+    </header>
+    <!-- board -->
+    <section id="board">
+        <div class="container">
+            <div class="title">
+                <h3>Portfolio</h3>
+                <h2>Invested Coins/Tokens</h2>
+            </div>
+            <div class="profit">
+                <div class="profit-inner">
+                    <p>Total Assets</p>
+                    <h3>$ <span class="profit-num" data-target="113">0</span>M</h3>
+                </div>
+                <div class="profit-inner">
+                    <p>YesterDay Profits</p>
+                    <h3>+ $ <span class="profit-num" data-target="3">0</span>M</h3>
+                    <h4>+ 3.67% <i class="fa-solid fa-arrow-up"></i></h4>
+                </div>
+                <div class="profit-inner">
+                    <p>Montly Profits</p>
+                    <h3>+ $ <span class="profit-num" data-target="100">0</span>M</h3>
+                    <h4>+ 10.45% <i class="fa-solid fa-arrow-up"></i></h4>
+                </div>
+            </div>
+            <div class="title">
+                <h3>Chart</h3>
+            </div>
+            <div class="coin">
+                <div class="coin-title">
+                    <div class="title-inner">Name</div>
+                    <div class="title-inner">보유</div>
+                    <div class="title-inner">매수 평균</div>
+                    <div class="title-inner">총 수익</div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/bitcoin.png" alt="비트코인">
+                        </div>
+                        <h4>BitCoin</h4>
+                        <h5>BHC</h5>
+                    </div>
+                    <div class="coin-inner">
+                        100 BTC
+                    </div>
+                    <div class="coin-inner">
+                        $ 3,000,000
+                    </div>
+                    <div class="coin-inner">
+                        $ 570,000
+                        <p>+ 77.2%</p>
+                    </div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/eth.png" alt="비트코인">
+                        </div>
+                        <h4>Ethereum</h4>
+                        <h5>ETH</h5>
+                    </div>
+                    <div class="coin-inner">
+                        600 ETH
+                    </div>
+                    <div class="coin-inner">
+                        $ 21,000,000
+                    </div>
+                    <div class="coin-inner">
+                        $ 1,080,000
+                        <p>+ 65.2%</p>
+                    </div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/bnb.png" alt="bnb">
+                        </div>
+                        <h4>BNB</h4>
+                        <h5>BNB</h5>
+                    </div>
+                    <div class="coin-inner">
+                        100,000 BNB
+                    </div>
+                    <div class="coin-inner">
+                        $ 1,000,000
+                    </div>
+                    <div class="coin-inner">
+                        $ 870,000
+                        <p>+ 26.4%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- bottom -->
+    <section id="bottom">
+        <div class="container">
+            <div class="bottom-nav">
+                <h3>M <span>Block</span></h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Customer</a></li>
+                </ul>
+            </div>
+            <div class="bottom-info">
+                <p>E-mail</p>
+                <h4>aaa@google.com</h4>
+                <p>Tel.</p>
+                <h4>010-9999-9999</h4>
+            </div>
+            <div class="bottom-line"></div>
+            <div class="bottom-sns">
+                <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+    <script src="../invest.js"></script>
+</body>
+</html>

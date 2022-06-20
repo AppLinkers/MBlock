@@ -21,22 +21,22 @@
                 <li><a href="#" onclick="location.href='index.html'">Home</a>
                     <div class="line"></div>
                 </li>
-                <li><a href="#" onclick="location.href='business.html'">Business</a>
+                <li><a th:href="@{/business}">Business</a>
                 </li>
                 <li><a href="#">Portfolio<i class="fa-solid fa-angle-down"></i></a>
                     <div class="dropdown">
                         <ul>
-                            <li><a href="#" onclick="location.href='news.html'">News</a></li>
-                            <li><a href="#" onclick="location.href='invest.html'">Investment</a></li>
+                            <li><a th:href="@{/news}">News</a></li>
+                            <li><a th:href="@{/invest}">Investment</a></li>
                         </ul>
                     </div>
                 </li>
                 <li><a href="#">Customer<i class="fa-solid fa-angle-down"></i></a>
                     <div class="dropdown">
                         <ul>
-                            <li><a href="#" onclick="location.href='announce.html'">공지사항</a></li>
-                            <li><a href="#"  onclick="location.href='consulting.html'">Consulting</a></li>
-                            <li><a href="#"  onclick="location.href='contact.html'">Contact</a></li>
+                            <li><a th:href="@{/announce}">공지사항</a></li>
+                            <li><a th:href="@{/consulting}">Consulting</a></li>
+                            <li><a th:href="@{/contact}">Contact</a></li>
                         </ul>
                     </div>
                 </li>

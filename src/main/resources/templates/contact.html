@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <h1>
+                <button><a th:href="@{/main}"> M <span>Block</span></a></button>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/main}">Home</a>
+                        <div class="line"></div>
+                    </li>
+                    <li><a th:href="@{/business}">Business</a>
+                    </li>
+                    <li><a href="#">Portfolio<i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a th:href="@{/news}">News</a></li>
+                                <li><a th:href="@{/invest}">Investment</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">Customer<i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a th:href="@{/announce}">공지사항</a></li>
+                                <li><a th:href="@{/consulting}">Consulting</a></li>
+                                <li><a th:href="@{/contact}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
+        </div>
+    </header>
+    <!-- board -->
+    <section id="board">
+        <div class="container">
+            <div class="title">
+                <h3>Contact</h3>
+            </div>
+            <div class="board-main">
+                <div class="left">
+                    <ul>
+                        <li  onclick="location.href='announce.html'">공지사항</li>
+                        <li  onclick="location.href='consulting.html'">Consulting</li>
+                        <li  onclick="location.href='contact.html'">Contact</li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.4796795752113!2d127.0229031156468!3d37.49660323588717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15b991ce5e7%3A0x8db0a66fc1393705!2z7ISc7Jq47Yq567OE7IucIOyEnOy0iOq1rCDshJzstIjrjIDroZwgMzk4!5e0!3m2!1sko!2skr!4v1655195341802!5m2!1sko!2skr" width="100%" height="100%" style="border:0;" allowfullscreen="false" loading="lazy" ></iframe>
+                    </div>
+                    <div class="contact">
+                        <h4>찾아오시는 길</h4>
+                        <div class="contact-inner">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <h5>주소</h5>
+                            <p>서울시 강남구 강남대로</p>
+                        </div>
+                        <div class="contact-inner">
+                            <i class="fa-solid fa-phone"></i>
+                            <h5>전화</h5>
+                            <p>02-0000-0000</p>
+                        </div>
+                        <div class="contact-inner">
+                            <i class="fa-solid fa-envelope"></i>
+                            <h5>이메일</h5>
+                            <p>abc@google.com</p>
+                        </div>
+                    </div>
+                    <div class="subway">
+                        <h4>지하철</h4>
+                        <div class="subway-inner">
+                            <i class="fa-solid fa-train-subway" style="color: green;"></i>
+                            <h5 style="color: green;">2호선</h5>
+                            <p>1번 출구 도보 3분</p>
+                        </div>
+                        <div class="subway-inner">
+                            <i class="fa-solid fa-train-subway" style="color: darkred;"></i>
+                            <h5 style="color: darkred;">신분당선</h5>
+                            <p>4번 출구 도보 7분</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- bottom -->
+    <section id="bottom">
+        <div class="container">
+            <div class="bottom-nav">
+                <h3>M <span>Block</span></h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Customer</a></li>
+                </ul>
+            </div>
+            <div class="bottom-info">
+                <p>E-mail</p>
+                <h4>aaa@google.com</h4>
+                <p>Tel.</p>
+                <h4>010-9999-9999</h4>
+            </div>
+            <div class="bottom-line"></div>
+            <div class="bottom-sns">
+                <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

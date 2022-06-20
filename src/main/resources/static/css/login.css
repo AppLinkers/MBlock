@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+/* header */
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 1;
+    background: white;
+    align-items: center;
+}
+header .container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+header button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+header h1 button {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a7e0a5;
+    padding-bottom: 5px;
+}
+header h1 button span {
+    color: #000;
+}
+
+/* main */
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../images/triangles-1430105.png);
+    background-size: cover;
+}
+main .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main .login-con{
+    width: 40%;
+    height: 25%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1rem;
+}
+main h2{
+    font-size: 1.5rem;
+    padding: 1rem 0 2rem 0;
+    letter-spacing: 2px;
+}
+main .form-group{
+    margin-bottom: 1.25rem;
+}
+main .form-group label{
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #555555;
+}
+main .form-group input{
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.1rem;
+}
+main .form-group input:focus{
+    border: 1px solid #a7e0a5;
+    box-shadow: 0 0 5px #a7e0a5;
+}
+main button{
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg,#11998e,#38ef7d);
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+main .line{
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 1.5rem 0 1rem 0;
+}
+main h3{
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #555555;
+    font-weight: 400;
+}
+main h3 span{
+    color: #a7e0a5;
+    font-weight: bold;
+}
+main h3 i{
+    color: #a7e0a5;
+}

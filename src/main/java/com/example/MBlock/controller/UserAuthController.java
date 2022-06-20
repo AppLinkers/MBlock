@@ -40,7 +40,7 @@ public class UserAuthController {
     public String main(Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("name", name);
-        return "main";
+        return "index";
     }
 
     @GetMapping("/logout")

@@ -129,69 +129,6 @@ header button i {
     color: #717171;
 }
 
-/* main */
-main {
-    margin-top: 75px;
-    width: 100%;
-    height: 100vh;
-    background: url(../images/UnicornVectorGradient_1.jpg);
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    color: black;
-}
-
-main h2{
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-main p{
-    max-width: 1000px;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
-}
-main button.start{
-    border: none;
-    padding: 1rem 3rem;
-    border-radius: 5px;
-    margin-top: 3rem;
-    background: linear-gradient(90deg,#11998e,#38ef7d);
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-main button:hover.start{
-    opacity: 0.9;
-    transition: all .2s ease-in-out;
-}
-main button.down {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    animation: upDown 1s ease-in-out infinite;
-}
-@keyframes upDown{
-    0%{
-        bottom: 0;
-    }
-    50%{
-        bottom: 1rem;
-    }
-    100%{
-        bottom: 0;
-    }
-}
-
 /* section */
 section {
     font-family: 'Roboto', sans-serif;
@@ -202,40 +139,60 @@ section:nth-child(2n+1){
     background-color: #f8f8f8;
 }
 
-/* intro */
-section .intro-con::after{
+/* board */
+section .title{
+    padding: 6rem 0 4rem 0;
+}
+section .title h3{
+    font-size: 1rem;
+    color: #555555;
+    font-weight: 500;
+}
+section .title h2{
+    font-size: 2rem;
+}
+section .board-main::after{
     content: "";
     display: block;
     clear: both;
 }
-section .intro-con .intro-inner{
-    width: 30%;
-    padding: 2rem;
+section .board-main .left{
     float: left;
-    margin-right: 5%;
+    width: 40%;
 }
-section .intro-con .intro-inner:last-child{
-    margin-right: 0;
+section .board-main .left img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
 }
-section .intro-con .intro-inner h4{
-    font-size: 1.25rem;
-    color: #aaaaaa;
+section .board-main .right{
+    width: 50%;
+    height: 303px;
+    float: left;
+    padding: 0 2rem;
 }
-section .intro-con .intro-inner h3{
-    font-size: 2.5rem;
-    margin: 1rem 0 1.5rem 0;
-    color: #555555;
+section .board-main .right h3{
+    font-size: 1.8rem;
+    max-lines: 2;
+    margin-bottom: 1rem;
 }
-section .intro-con .intro-inner p{
-    font-size: 1rem;
-    line-height: 1.8;
+section .board-main .right h2{
+    font-size: 1.2rem;
 }
-
-/* board */
-section .title{
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0 6rem 0;
+section .board-main .right button{
+    background: transparent;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin-top: 8rem;
+    font-weight: bold;
+    color: #000;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+section .board-main .right button:hover{
+    background-color: #000;
+    color: white;
 }
 section .board-con::after{
     content: "";
@@ -246,17 +203,32 @@ section .board-con .board-inner{
     width: 30%;
     height: 476px;
     padding: 0 0 2rem 0;
+    margin-bottom: 2rem;
     float: left;
     margin-right: 5%;
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 3px 5px 5px #717171;
 }
-section .board-con .board-inner:hover,
-section .board-con .board-inner:focus{
-    animation: updownboard 1s ease-in-out;
+section .board-con .board-inner:focus,
+section .board-con .board-inner:hover{
+    animation: updown 1s ease-in-out;
 }
-section .board-con .board-inner:last-child{
+@keyframes updown{
+    0%{
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    50%{
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+    }
+    100%{
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+}
+section .board-con .board-inner:nth-child(3n){
     margin-right: 0;
 }
 section .board-con .board-inner img{
@@ -277,40 +249,13 @@ section .board-con .board-inner .content p{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-line-clamp: 3; /* 라인수 */
     -webkit-box-orient: vertical;
     word-wrap:break-word; 
     line-height: 1.2em;
     height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
   
 }
-section .more{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 12rem 0 0 0;
-    cursor: pointer;
-}
-section .more p {
-    font-weight: bold;
-}
-section .more i{
-    font-weight: bold;
-}
-@keyframes updownboard{
-    0%{
-        margin-top: 0;
-    }
-    50%{
-        margin-top: -1rem;
-    }
-    100%{
-        margin-top: 0;
-    }
-}
-
-/* associate */
 
 /* bottom */
 section .bottom-nav{
@@ -373,6 +318,3 @@ section .bottom-sns a{
     margin-left: 1rem;
     font-size: 1.75rem;
 }
-
-
-

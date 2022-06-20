@@ -27,7 +27,7 @@ header{
     top: 0;
     width: 100%;
     height: 75px;
-    z-index: 1;
+    z-index: 99;
     background: white;
     align-items: center;
 }
@@ -203,6 +203,64 @@ section .board-main .right .form-group textarea{
     border-radius: 5px;
     padding: 0.8rem;
     line-height: 1.2;
+}
+section .board-main .right .select-menu{
+    margin-bottom: 1.25rem;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    position: relative;
+}
+section .board-main .right .select-menu .select-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+section .board-main .right .select-menu .select-btn i{
+    transition: 0.3s;
+}
+section .board-main .right .select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+/* section .board-main .right .select-menu .select-btn .caret{
+    transition: 0.3s;
+}
+section .board-main .right .select-menu .select-btn .caret-rotate{
+    transform: rotate(180deg);
+} */
+section .board-main .right .select-menu .options{
+    z-index: 1;
+    position: absolute;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 0.8rem;
+    top: 3.5rem;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+}
+section .board-main .right .select-menu.active .options{
+    display: block;
+    opacity: 1;
+}
+/* section .board-main .right .select-menu .menu-open{
+    display: block;
+    opacity: 1;
+} */
+section .board-main .right .select-menu .options li{
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+section .board-main .right .select-menu .options li:hover{
+    background: #f4f4f4;
 }
 section .board-main .right .form-group input:focus,
 section .board-main .right .form-group textarea:focus{

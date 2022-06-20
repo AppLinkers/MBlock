@@ -54,9 +54,9 @@
             <div class="board-main">
                 <div class="left">
                     <ul>
-                        <li><a th:href="@{/announce}">공지사항</a></li>
-                        <li><a th:href="@{/consulting}">Consulting</a></li>
-                        <li><a th:href="@{/contact}">Contact</a></li>
+                        <a th:href="@{/announce}"><li>공지사항</li></a>
+                        <a th:href="@{/consulting}"><li>Consulting</li></a>
+                        <a th:href="@{/contact}"><li>Contact</li></a>
                     </ul>
                 </div>
                 <div class="right">
@@ -72,6 +72,18 @@
                         <div class="form-group">
                             <label for="phone">연락처</label>
                             <input type="tel" id="phone">
+                        </div>
+                        <div class="select-menu">
+                            <div class="select-btn">
+                                <span class="sBtn-text">트레이더 선택</span>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                            <ul class="options">
+                                <li class="option"><span class="option-text">Moo</span></li>
+                                <li class="option"><span class="option-text">Su</span></li>
+                                <li class="option"><span class="option-text">Jung</span></li>
+                                <li class="option"><span class="option-text">Min</span></li>
+                            </ul>
                         </div>
                         <div class="form-group">
                             <label for="content">상담 내용</label>
@@ -109,5 +121,6 @@
             </div>
         </div>
     </section>
+    <script src="../js/consult.js"></script>
 </body>
 </html>

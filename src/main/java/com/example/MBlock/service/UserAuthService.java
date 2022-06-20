@@ -15,7 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class UserAuthService {
 
-    private S3Uploader s3Uploader;
+    private final S3Uploader s3Uploader;
 
     private final UserRepository userRepository;
 

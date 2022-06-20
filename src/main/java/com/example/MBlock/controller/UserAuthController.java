@@ -76,25 +76,4 @@ public class UserAuthController {
         model.addAttribute("name", name);
         return "admin";
     }
-
-
-    //controller 분할 필요
-    @GetMapping("/news")
-    public String getNews(){return "news";}
-
-    @GetMapping("/invest")
-    public String getInvest(){return "invest";}
-
-
-    @GetMapping("/announce")
-    public String getAnnounce(){return "announce";}
-
-    @GetMapping("/contact")
-    public String getContact(){return "contact";}
-
-    @GetMapping("/consulting")
-    public String getConsulting(){return "consulting";}
-
-    @GetMapping("/business")
-    public String getBusiness(){return "business";}
 }

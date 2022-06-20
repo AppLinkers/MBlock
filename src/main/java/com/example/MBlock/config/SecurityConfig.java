@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("h2-console/**").permitAll()
-                .mvcMatchers("/login", "/register", "/logout", "/main", "/business/**", "/customer/**", "/portfolio/**", "/news","/invest","/announce" ,"/consulting", "/contact").permitAll()
+                .mvcMatchers("/login", "/register", "/main", "/business/", "/news", "/invest","/announce" ,"/consulting", "/contact").permitAll()
                 .mvcMatchers("/user").hasAnyRole("PENDING", "ACCEPTED")
                 .mvcMatchers("/admin").hasAnyRole("ACCEPTED")
                 .expressionHandler(defaultWebSecurityExpressionHandler())

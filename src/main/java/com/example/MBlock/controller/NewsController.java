@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class NewsController {
 
-
-
     @GetMapping("/news")
     public String getNews(){return "news";}
 }

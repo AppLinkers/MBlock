@@ -8,7 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,10 +18,19 @@ public class AnnounceController {
     private final AnnounceService announceService;
 
     @GetMapping("/announce")
-    public String getAnnounce(@PageableDefault(size=10, sort="id", direction = Sort.Direction.DESC)Pageable pageable){
+    public String getAnnounce(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<GetAnnounceRes> announceList = announceService.getAnnounceAll(pageable);
+
+        model.addAttribute("announceList", announceList);
 
         return "announce";
     }
 
+    @RequestMapping(value = "/announce", method = RequestMethod.GET, params = "id")
+    @ResponseBody
+    public String getAnnounceOne(@RequestParam("id") Long id) {
+        System.out.println(announceService.getAnnounce(id).toString());
+
+        return "test";
+    }
 }

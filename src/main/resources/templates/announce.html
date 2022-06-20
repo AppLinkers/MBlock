@@ -71,8 +71,7 @@
                             <div class="content-date">2022-06-14</div>
                             <div class="content-num">113</div>
                         </li>
-                        <li th:each="announce : ${announceList}" >
-                            <a th:href="@{/announce?id=} + ${announce.id}"></a>
+                        <li th:each="announce : ${announceList}" th:href="@{/announce?id=} + ${announce.id}">
                             <div class="content-title" ><p th:text="${announce.title}"></p></div>
                             <div class="content-date" th:text="${announce.dateTime}"></div>
                             <div class="content-num" th:text="${announce.viewCount}"></div>

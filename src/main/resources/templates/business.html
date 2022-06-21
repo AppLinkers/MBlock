@@ -70,33 +70,33 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus exercitationem laborum repudiandae nisi ipsum incidunt iusto.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </div>
         <div class="member-con">
-            <div class="member-inner">
+            <div class="member-inner" th:each="user : ${userList}">
                 <div class="img">
-                    <img src="../images/profile1.jpg" alt="샘플1">
+                    <img th:src="${user.imgUrl}" alt="샘플1">
                 </div>
                 <div class="content">
-                    <h3>Name</h3>
-                    <p>Chief Executive Officer</p>
+                    <h3 th:text="${user.name}">Name</h3>
+                    <p th:text="${user.role}">Chief Executive Officer</p>
                 </div>
             </div>
-            <div class="member-inner">
-                <div class="img">
-                    <img src="../images/profile2.jpg" alt="샘플2">
-                </div>
-                <div class="content">
-                    <h3>Name</h3>
-                    <p>Master of Coin</p>
-                </div>
-            </div>
-            <div class="member-inner">
-                <div class="img">
-                    <img src="../images/profile3.jpg" alt="샘플3">
-                </div>
-                <div class="content">
-                    <h3>Name</h3>
-                    <p>Head of Markets</p>
-                </div>
-            </div>
+<!--            <div class="member-inner">-->
+<!--                <div class="img">-->
+<!--                    <img src="../images/profile2.jpg" alt="샘플2">-->
+<!--                </div>-->
+<!--                <div class="content">-->
+<!--                    <h3>Name</h3>-->
+<!--                    <p>Master of Coin</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="member-inner">-->
+<!--                <div class="img">-->
+<!--                    <img src="../images/profile3.jpg" alt="샘플3">-->
+<!--                </div>-->
+<!--                <div class="content">-->
+<!--                    <h3>Name</h3>-->
+<!--                    <p>Head of Markets</p>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </section>

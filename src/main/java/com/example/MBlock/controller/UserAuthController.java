@@ -3,6 +3,7 @@ package com.example.MBlock.controller;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.UserAuthService;
+import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class UserAuthController {
 
     private final UserAuthService userAuthService;
+    private final UserService userService;
 
     @GetMapping("/register")
     public String getRegisterForm(UserSignUpReq userSignUpReq) {
@@ -75,5 +77,11 @@ public class UserAuthController {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("name", name);
         return "admin";
+    }
+
+    @GetMapping("/admin/memberManage")
+    public String manageUser(Model model) {
+        model.addAttribute("userList", userService.getUserAll());
+        return "memberManage";
     }
 }

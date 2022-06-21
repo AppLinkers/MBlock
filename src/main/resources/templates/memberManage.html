@@ -35,14 +35,14 @@
     </thead>
     <tbody>
     <tr>
-        <tr each="">
-        <td text="mblock"></td>
-        <td text="mblock"></td>
-        <td text="status"></td>
-        <td text="company"></td>
-        <td>
-            <a href = "#" class="btn btn-primary">Update</a>
-        </td>
+        <tr th:each="user : ${userList}">
+            <td text="status"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.role}"></td>
+            <td text="company"></td>
+            <td>
+                <a href = "#" class="btn btn-primary">Update</a>
+            </td>
     </tr>
     </tr>
     </tbody>

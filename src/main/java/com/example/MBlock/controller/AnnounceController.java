@@ -42,9 +42,9 @@ public class AnnounceController {
 
     // write Announce
     @PostMapping("/announce")
-    public void writeAnnounce(WriteAnnounceReq request) {
+    public void writeAnnounce(WriteAnnounceReq writeAnnounceReq) {
         try {
-            announceService.write(request);
+            announceService.write(writeAnnounceReq);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,9 +52,7 @@ public class AnnounceController {
 
 
     @GetMapping("/announce/add")
-    public String goToAddAnnounce(Model model){
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        model.addAttribute("name", name);
+    public String goToAddAnnounce(WriteAnnounceReq writeAnnounceReq){
         return "admin_announce_add";
     }
 

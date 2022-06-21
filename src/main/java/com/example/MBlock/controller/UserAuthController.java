@@ -86,6 +86,9 @@ public class UserAuthController {
         return "admin";
     }
 
+
+    //admin page controller
+
     @GetMapping("/admin/memberManage")
     public String manageUser(Model model) {
         model.addAttribute("userList", userService.getUserInfoAll());

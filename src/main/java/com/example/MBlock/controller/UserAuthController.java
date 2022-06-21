@@ -81,7 +81,7 @@ public class UserAuthController {
 
     @GetMapping("/admin/memberManage")
     public String manageUser(Model model) {
-        model.addAttribute("userList", userService.getUserAll());
+        model.addAttribute("userList", userService.getUserInfoAll());
         return "memberManage";
     }
 }

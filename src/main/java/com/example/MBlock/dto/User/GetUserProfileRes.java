@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class GetUserRes {
+public class GetUserProfileRes {
 
     private String name;
 

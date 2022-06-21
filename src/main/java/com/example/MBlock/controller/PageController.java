@@ -25,9 +25,9 @@ public class PageController {
     @GetMapping("/business")
     public String getBusiness(Model model){
 
-        System.out.println(userService.getUserAll());
+        System.out.println(userService.getUserProfileAll());
 
-        model.addAttribute("userList", userService.getUserAll());
+        model.addAttribute("userList", userService.getUserProfileAll());
 
         return "business";
     }

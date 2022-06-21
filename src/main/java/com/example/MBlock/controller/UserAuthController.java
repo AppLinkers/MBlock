@@ -1,10 +1,16 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
+import com.example.MBlock.service.AnnounceService;
 import com.example.MBlock.service.UserAuthService;
 import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -22,6 +28,7 @@ import java.io.IOException;
 public class UserAuthController {
 
     private final UserAuthService userAuthService;
+    private final AnnounceService announceService;
     private final UserService userService;
 
     @GetMapping("/register")
@@ -84,4 +91,29 @@ public class UserAuthController {
         model.addAttribute("userList", userService.getUserInfoAll());
         return "memberManage";
     }
+
+    @GetMapping("/admin/announce")
+    public String manageAnnounce(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<GetAnnounceRes> announceList = announceService.getAnnounceAll(pageable);
+        model.addAttribute("announceList", announceList);
+        return "admin_announce";
+    }
+
+    @GetMapping("/admin/news")
+    public String manageNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        return "admin_news";
+    }
+
+    @GetMapping("/admin/invest")
+    public String manageInvest(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        return "admin_invest";
+    }
+
+    @GetMapping("/admin/consult")
+    public String manageConsult(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        return "admin_consult";
+    }
+
+
+
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/admin_news_add.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <h1>
+                <button onclick="location.href='index.html'">M <span>Block</button>
+            </h1>
+        </div>
+    </header>
+    <!-- main -->
+    <main>
+        <div class="container">
+            <div class="top">
+                <span>관리자 페이지</span>
+            </div>
+            <div class="content">
+                <div class="left">
+                    <ul>
+                        <li><div class="list" onclick="location.href='admin_announce.html'">공지사항</div></li>
+                        <li><div class="list" onclick="location.href='admin_news.html'">투자게시판 관리</div></li>
+                        <li><div class="list"onclick="location.href='admin_invest.html'">투자종목 관리</div></li>
+                        <li><div class="list" onclick="location.href='admin_consult.html'">개인 문의</div></li>
+                        <li><div class="list" onclick="location.href='admin_chat.html'">단체 채팅</div></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="title"><h2>투자게시판 작성</h2></div>
+                    <form action="#">
+                        <div class="form-group">
+                            <label>메인 이미지</label>
+                            <input id="selectImg" type="file" hidden>
+                            <div class="main-img" onclick="defaultBtnActive()">
+                                <img src="" alt="" >
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                select your image
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">제목</label>
+                            <input type="text" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">내용</label>
+                            <textarea id="content"></textarea>
+                        </div>
+                        <button>게시하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../add_news.js"></script>
+</body>
+</html>

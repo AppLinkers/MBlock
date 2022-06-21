@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/admin_announce.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <h1>
+                <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+            </h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="top">
+                <span>관리자 페이지</span>
+            </div>
+            <div class="content">
+                <div class="left">
+                    <ul>
+                        <li><div class="list">공지사항</div></li>
+                        <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+                        <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+                        <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                        <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="title"><h2>공지사항 관리</h2></div>
+                    <div class="control">
+                        <button><a th:href="@{/announce/add}">추가</a></button>
+                        <button>삭제</button>
+                    </div>
+                    <div class="label">
+                        <div class="check"></div>
+                        <div class="tit">제목</div>
+                        <div class="name">작성자</div>
+                        <div class="date">작성 날짜</div>
+                        <div class="fix"></div>
+                    </div>
+                    <div class="list">
+                        <ul th:each="announce : ${announceList}">
+                            <li>
+                                <div class="check"><input type="checkbox"></div>
+                                <div class="tit" th:text="${announce.title}"></div>
+                                <div class="name" th:text="${announce.writer_name}"></div>
+                                <div class="date" th:text="${announce.dateTime}"></div>
+                                <div class="fix">수정</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

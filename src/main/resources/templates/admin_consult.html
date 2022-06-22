@@ -48,7 +48,7 @@
                                 <div class="name" th:text="${consult.name}"></div>
                                 <div class="tit" th:text="${consult.context}" th:href="@{/admin/consult/detail/{id}(id=${consult.id})}"></div>
                                 <div class="trader" th:text="${consult.id}">Jung</div>
-                                <div class="date">2022-06-21</div>
+                                <div class="date" th:text="${consult.datetime}"></div>
                                 <div class="answer">N</div>
                             </li>
                         </ul>

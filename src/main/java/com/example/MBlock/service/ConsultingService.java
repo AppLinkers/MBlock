@@ -7,6 +7,7 @@ import com.example.MBlock.repository.ConsultingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,8 @@ public class ConsultingService {
                             .phone(c.getPhone())
                             .email(c.getEmail())
                             .context(c.getContext())
-                            .trader(c.getTrader()).build());
+                            .trader(c.getTrader())
+                            .datetime(c.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))).build());
                 }
         );
 

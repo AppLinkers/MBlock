@@ -29,11 +29,11 @@ public class AnnounceService {
     public void write(WriteAnnounceReq request) throws IOException {
         String imgUrl = null;
 
-        if (request.getImgFile().isPresent()) {
+        if (request.getImgFile() != null) {
             imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
         }
 
-        User user = userRepository.findById(request.getWriter_id()).get();
+        User user = userRepository.findByUser_id(request.getWriter_login_id()).get();
 
         Announce announce = Announce.builder()
                 .user(user)

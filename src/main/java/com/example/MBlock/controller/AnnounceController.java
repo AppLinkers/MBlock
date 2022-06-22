@@ -44,6 +44,8 @@ public class AnnounceController {
     @PostMapping("/announce")
     public void writeAnnounce(WriteAnnounceReq writeAnnounceReq) {
         try {
+            String login_id = SecurityContextHolder.getContext().getAuthentication().getName();
+            writeAnnounceReq.setWriter_login_id(login_id);
             announceService.write(writeAnnounceReq);
         } catch (IOException e) {
             e.printStackTrace();

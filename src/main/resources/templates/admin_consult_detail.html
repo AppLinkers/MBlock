@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/admin_consult.css">
+    <link rel="stylesheet" href="../css/admin_consult_detail.css">
 </head>
 <body>
     <!-- header -->
@@ -35,27 +35,37 @@
                 </div>
                 <div class="right">
                     <div class="title"><h2>개인 문의</h2></div>
-                    <div class="label">
-                        <div class="name">작성자</div>
-                        <div class="tit">상담 내용</div>
-                        <div class="trader">희망 Trader</div>
-                        <div class="date">작성 날짜</div>
-                        <div class="answer">답변 여부</div>
+                    <div class="head">
+                        <div class="label">작성자</div>
+                        <div class="info">작성자 이름</div>
+                        <div class="label">작성 날짜</div>
+                        <div class="info">2022-06-21</div>
                     </div>
-                    <div class="list">
-                        <ul th:each="consult : ${consultList}">
-                            <li>
-                                <div class="name" th:text="${consult.writer}">작성자</div>
-                                <div class="tit" th:text="${consult.title}" onclick="location.href='admin_consult_detail.html'">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto pariatur qui dicta mollitia ullam optio veniam quibusdam eaque impedit est laudantium praesentium, doloribus distinctio et consectetur voluptatum fuga sunt reprehenderit.</div>
-                                <div class="trader" th:text="${consult.trader}">Moo</div>
-                                <div class="date" th:text="${consult.dateTime}">2022-06-21</div>
-                                <div class="answer" style="color:#11998e">Y</div>
-                            </li>
-                        </ul>
+                    <div class="head">
+                        <div class="label">희망 트레이더</div>
+                        <div class="info">Moo</div>
+                        <div class="label">답변 여부</div>
+                        <div class="info">Y</div>
                     </div>
+                    <div class="head">
+                        <div class="label">연락처</div>
+                        <div class="info">010-0000-0000</div>
+                    </div>
+                    <div class="head">
+                        <div class="label">이메일 </div>
+                        <div class="info" id="copy-email">abc@google.com<i class="fa-regular fa-clone"></i></div>
+                    </div>
+                    <div class="counsel">
+                        <h3>상담내용</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum iste, nesciunt expedita fugit maxime voluptatem exercitationem asperiores dolorem atque inventore laborum dolore aperiam numquam recusandae quibusdam provident natus nobis nihil.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, saepe ratione repudiandae non vel recusandae beatae sint blanditiis laborum architecto ea, ducimus quis tempore dicta nobis commodi quidem aspernatur amet?
+                        </p>
+                    </div>
+                    <button>답변 완료</button>
                 </div>
             </div>
         </div>
     </main>
+    <script src="../consult_detail.js"></script>
 </body>
 </html>

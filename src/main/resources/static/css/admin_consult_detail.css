@@ -110,79 +110,47 @@ main .right{
 }
 main .right .title{
     color: rgb(43, 43, 43);
+    margin-bottom: 2.5rem;
 }
-main .right .label::after{
-    content: "";
-    display: block;
-    clear: both;
-}
-main .right .label{
+main .right .head{
     display: flex;
-    margin-top: 2.5rem;
-    font-size: 0.7rem;
-    color: #717171;
-    font-weight: bold;
+    border: 1px solid #f5f5f5;
+}
+main .right .head .label{
+    float: left;
+    width: 15%;
     background-color: #f8f8f8;
-    padding: 1.2rem 0;
     text-align: center;
-}
-main .right .label .name{
-    float: left;
-    width: 10%;
-}
-main .right .label .tit{
-    float: left;
-    width: 60%;
-}
-main .right .label .date{
-    float: left;
-    width: 15%;
-}
-main .right .label .trader{
-    float: left;
-    width: 10%;
-}
-main .right .label .answer{
-    float: left;
-    width: 5%;
-}
-main .right .list ul li{
-    display: flex;
+    padding: 1rem 1.5rem;
     font-size: 0.8rem;
-    color: #000;
-    padding: 1.4rem 0;
-    text-align: center;
-    border-bottom: 1px solid #f4f4f4;
-}
-main .right .list ul li .name{
-    float: left;
-    width: 10%;
-}
-main .right .list ul li .tit{
-    float: left;
-    width: 60%;
-    cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 0 1rem;
-}
-main .right .list ul li .tit:focus,
-main .right .list ul li .tit:hover{
-    text-decoration: underline;
-}
-main .right .list ul li .date{
-    float: left;
-    width: 15%;
-}
-main .right .list ul li .trader{
-    float: left;
-    width: 10%;
-}
-main .right .list ul li .answer{
-    float: left;
-    width: 5%;
-    color: darkred;
     font-weight: bold;
-    font-size: 0.7rem;
+    color: #777777;
+}
+main .right .head .info{
+    float: left;
+    width: 35%;
+    text-align: left;
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+}
+main .right .head .info i{
+    color: #777777;
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+main .right .counsel{
+    padding: 3rem 1.5rem 5rem 1.5rem;
+}
+main .right .counsel p{
+    margin-top: 2rem;
+}
+main .right button{
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(45deg,#11998e,#38ef7d);
+    color: white;
+    font-size: 0.8rem;
+    float: right;
+    cursor: pointer;
 }

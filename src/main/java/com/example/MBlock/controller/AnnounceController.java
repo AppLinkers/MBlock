@@ -42,7 +42,7 @@ public class AnnounceController {
 
     // write Announce
     @PostMapping("/announce")
-    public void writeAnnounce(WriteAnnounceReq writeAnnounceReq) {
+    public String writeAnnounce(WriteAnnounceReq writeAnnounceReq) {
         try {
             String login_id = SecurityContextHolder.getContext().getAuthentication().getName();
             writeAnnounceReq.setWriter_login_id(login_id);
@@ -50,6 +50,8 @@ public class AnnounceController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return "redirect:/admin/announce";
     }
 
 

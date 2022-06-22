@@ -122,7 +122,7 @@ public class UserAuthController {
         return "admin_consult";
     }
 
-    @GetMapping("/admin/consult/detail/{id}")
+    @RequestMapping(value = "/admin/consult", method = RequestMethod.GET, params = "id")
     public String consultDetail(Model model, @RequestParam("id") Long id){
         GetConsultingRes consult = consultingService.getConsulting(id);
         model.addAttribute("consult", consult);

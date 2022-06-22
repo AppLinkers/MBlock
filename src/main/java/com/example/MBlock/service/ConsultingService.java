@@ -63,7 +63,7 @@ public class ConsultingService {
                 .email(consulting.getEmail())
                 .phone(consulting.getPhone())
                 .trader(consulting.getTrader())
-               // .dateTime(announce.getUpdatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .datetime(consulting.getUpdatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .build();
     }
 }

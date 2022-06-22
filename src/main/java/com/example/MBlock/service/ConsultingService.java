@@ -1,12 +1,15 @@
 package com.example.MBlock.service;
 
+import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.Consulting;
+import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
 import com.example.MBlock.repository.ConsultingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,5 +50,19 @@ public class ConsultingService {
         );
 
         return result;
+    }
+
+
+    public GetConsultingRes getConsulting(Long id) {
+        Consulting consulting = consultingRepository.findById(id).get();
+
+        return GetConsultingRes.builder()
+                .name(consulting.getName())
+                .context(consulting.getContext())
+                .email(consulting.getEmail())
+                .phone(consulting.getPhone())
+                .trader(consulting.getTrader())
+               // .dateTime(announce.getUpdatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .build();
     }
 }

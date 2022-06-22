@@ -1,9 +1,11 @@
 package com.example.MBlock.controller;
 
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
+import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.AnnounceService;
+import com.example.MBlock.service.ConsultingService;
 import com.example.MBlock.service.UserAuthService;
 import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +18,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,6 +31,7 @@ public class UserAuthController {
 
     private final UserAuthService userAuthService;
     private final AnnounceService announceService;
+    private final ConsultingService consultingService;
     private final UserService userService;
 
     @GetMapping("/register")
@@ -113,8 +116,17 @@ public class UserAuthController {
     }
 
     @GetMapping("/admin/consult")
-    public String manageConsult(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String manageConsult(Model model) {
+        List<GetConsultingRes> consultList = consultingService.getAllConsulting();
+        model.addAttribute("consultList", consultList);
         return "admin_consult";
+    }
+
+    @GetMapping("/admin/consult/detail/{id}")
+    public String consultDetail(Model model, @RequestParam("id") Long id){
+        GetConsultingRes consult = consultingService.getConsulting(id);
+        model.addAttribute("consult", consult);
+        return "admin_consult_detail";
     }
 
 

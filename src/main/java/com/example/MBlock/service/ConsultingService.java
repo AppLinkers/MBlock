@@ -45,7 +45,8 @@ public class ConsultingService {
                             .phone(c.getPhone())
                             .email(c.getEmail())
                             .context(c.getContext())
-                            .trader(c.getTrader()).build());
+                            .trader(c.getTrader())
+                            .datetime(c.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))).build());
                 }
         );
 

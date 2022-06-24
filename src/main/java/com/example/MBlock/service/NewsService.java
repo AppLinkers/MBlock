@@ -9,6 +9,9 @@ import com.example.MBlock.dto.News.WriteNewsReq;
 import com.example.MBlock.repository.NewsRepository;
 import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -42,7 +45,13 @@ public class NewsService {
         newsRepository.save(news);
     }
 
-    // Read All - Page or slice
+    // Read All - slice
+    public Slice<GetNewsRes> getAllNews(Pageable pageable) {
+        Slice<News> newsList = newsRepository.findAllBy(pageable);
+
+        return newsList.map(news ->
+                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount()));
+    }
 
 
     // Read One

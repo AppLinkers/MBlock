@@ -2,6 +2,7 @@ package com.example.MBlock.controller;
 
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
+import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.AnnounceService;
@@ -105,10 +106,7 @@ public class UserAuthController {
         return "admin_announce";
     }
 
-    @GetMapping("/admin/news")
-    public String manageNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        return "admin_news";
-    }
+
 
     @GetMapping("/admin/invest")
     public String manageInvest(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {

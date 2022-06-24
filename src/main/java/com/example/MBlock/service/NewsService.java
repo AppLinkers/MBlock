@@ -1,21 +1,17 @@
 package com.example.MBlock.service;
 
-import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.News;
 import com.example.MBlock.domain.User;
-import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.News.WriteNewsReq;
 import com.example.MBlock.repository.NewsRepository;
 import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 
 @Service
 @RequiredArgsConstructor
@@ -28,10 +24,9 @@ public class NewsService {
     private final S3Uploader s3Uploader;
 
     public void write(WriteNewsReq request) throws IOException {
-        String imgUrl = null;
-
+        String imgUrl=null;
         if (request.getImgFile() != null) {
-            imgUrl = s3Uploader.upload(request.getImgFile().get(), "news" );
+          imgUrl = s3Uploader.upload(request.getImgFile().get(), "news" );
         }
 
         User user = userRepository.findByUser_id(request.getWriter_login_id()).get();

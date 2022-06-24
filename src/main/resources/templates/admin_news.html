@@ -36,7 +36,7 @@
                 <div class="right">
                     <div class="title"><h2>투자게시판 관리</h2></div>
                     <div class="control">
-                        <button onclick="location.href='admin_news_add.html'">추가</button>
+                        <a th:href="@{/admin/news/add}"><button>추가</button></a>
                         <button>삭제</button>
                     </div>
                     <div class="label">
@@ -47,40 +47,12 @@
                         <div class="fix"></div>
                     </div>
                     <div class="list">
-                        <ul>
+                        <ul th:each="news : ${newsList}">
                             <li>
                                 <div class="check"><input type="checkbox"></div>
-                                <div class="tit">Investment board title</div>
-                                <div class="name">작성자</div>
+                                <div class="tit" th:text="${news.title}">Investment board title</div>
+                                <div class="name" th:text="${news.writer_name}">작성자</div>
                                 <div class="date">2022-06-21</div>
-                                <div class="fix">수정</div>
-                            </li>
-                            <li>
-                                <div class="check"><input type="checkbox"></div>
-                                <div class="tit">Investment board title</div>
-                                <div class="name">작성자</div>
-                                <div class="date">2022-06-20</div>
-                                <div class="fix">수정</div>
-                            </li>
-                            <li>
-                                <div class="check"><input type="checkbox"/></div>
-                                <div class="tit">Investment board title</div>
-                                <div class="name">작성자</div>
-                                <div class="date">2022-06-17</div>
-                                <div class="fix">수정</div>
-                            </li>
-                            <li>
-                                <div class="check"><input type="checkbox"></div>
-                                <div class="tit">Investment board title</div>
-                                <div class="name">작성자</div>
-                                <div class="date">2022-06-15</div>
-                                <div class="fix">수정</div>
-                            </li>
-                            <li>
-                                <div class="check"><input type="checkbox"></div>
-                                <div class="tit">Investment board title</div>
-                                <div class="name">작성자</div>
-                                <div class="date">2022-06-12</div>
                                 <div class="fix">수정</div>
                             </li>
                         </ul>

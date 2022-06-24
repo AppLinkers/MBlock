@@ -8,8 +8,6 @@ import java.util.Optional;
 @Data
 public class WriteNewsReq {
 
-    private Long id;
-
     private String writer_login_id;
 
     private String title;

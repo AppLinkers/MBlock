@@ -172,13 +172,13 @@ main .right .form-group .main-img img.active{
 main .right .form-group .main-img i{
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
-    color: #11998e;
+    color: #38ef7d;
 }
 main .right button{
     border: none;
     border-radius: 5px;
     padding: 0.8rem 1rem;
-    background: linear-gradient(45deg,#11998e,#38ef7d);
+    background-color: #38ef7d;
     color: white;
     font-size: 0.8rem;
     float: right;

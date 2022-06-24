@@ -31,13 +31,12 @@ public class AnnounceController {
     }
 
     @RequestMapping(value = "/announce", method = RequestMethod.GET, params = "id")
-    @ResponseBody
     public String getAnnounceOne(Model model, @RequestParam("id") Long id) {
         System.out.println(announceService.getAnnounce(id).toString());
 
         model.addAttribute("announce", announceService.getAnnounce(id));
 
-        return "test";
+        return "announce_detail";
     }
 
     // write Announce

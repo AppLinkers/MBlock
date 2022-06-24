@@ -37,29 +37,27 @@
                     <div class="title"><h2>개인 문의</h2></div>
                     <div class="head">
                         <div class="label">작성자</div>
-                        <div class="info">작성자 이름</div>
+                        <div class="info" th:text="${consult.name}"></div>
                         <div class="label">작성 날짜</div>
-                        <div class="info">2022-06-21</div>
+                        <div class="info" th:text="${consult.datetime}">2022-06-21</div>
                     </div>
                     <div class="head">
                         <div class="label">희망 트레이더</div>
-                        <div class="info">Moo</div>
+                        <div class="info" th:text="${consult.trader}">trader</div>
                         <div class="label">답변 여부</div>
                         <div class="info">Y</div>
                     </div>
                     <div class="head">
                         <div class="label">연락처</div>
-                        <div class="info">010-0000-0000</div>
+                        <div class="info" th:text="${consult.phone}">010-0000-0000</div>
                     </div>
                     <div class="head">
                         <div class="label">이메일 </div>
-                        <div class="info" id="copy-email">abc@google.com<i class="fa-regular fa-clone"></i></div>
+                        <div class="info" id="copy-email" th:text="${consult.email}">abc@google.com<i class="fa-regular fa-clone"></i></div>
                     </div>
                     <div class="counsel">
                         <h3>상담내용</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum iste, nesciunt expedita fugit maxime voluptatem exercitationem asperiores dolorem atque inventore laborum dolore aperiam numquam recusandae quibusdam provident natus nobis nihil.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, saepe ratione repudiandae non vel recusandae beatae sint blanditiis laborum architecto ea, ducimus quis tempore dicta nobis commodi quidem aspernatur amet?
-                        </p>
+                        <p th:text="${consult.context}">context</p>
                     </div>
                     <button>답변 완료</button>
                 </div>

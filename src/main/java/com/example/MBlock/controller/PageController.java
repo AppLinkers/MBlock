@@ -1,6 +1,7 @@
 package com.example.MBlock.controller;
 
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
+import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.ConsultingService;
 import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @RequiredArgsConstructor
 public class PageController {
+
+    private final AdminService adminService;
 
     private final UserService userService;
 
@@ -34,10 +37,8 @@ public class PageController {
 
     @GetMapping("/business")
     public String getBusiness(Model model){
-
-        System.out.println(userService.getUserProfileAll());
-
         model.addAttribute("userList", userService.getUserProfileAll());
+        model.addAttribute("partnerList", adminService.getPartnerAll());
 
         return "business";
     }

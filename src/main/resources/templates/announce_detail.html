@@ -63,7 +63,7 @@
                     <h4 th:text="${announce.title}">공지사항 제목</h4>
                     <div class="info">
                         <div class="img">
-                            <img src="../images/profile1.jpg" alt="공지사항이미지">
+                            <img th:src="${announce.writer_img}" alt="공지사항이미지">
                         </div>
                         <div class="info-inner">
                             <h5 th:text="${announce.writer_name}">Moo</h5>

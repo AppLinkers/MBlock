@@ -50,7 +50,7 @@ public class AnnounceService {
         Page<Announce> findAnnounceList = announceRepository.findAll(pageable);
 
         return findAnnounceList.map(announce ->
-                new GetAnnounceRes(announce.getId(), announce.getUser().getName(), announce.getTitle(), announce.getContext(), announce.getImgUrl(), announce.getViewCount(), announce.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
+                new GetAnnounceRes(announce.getId(), announce.getUser().getName(),announce.getUser().getProfile_img() ,announce.getTitle(), announce.getContext(), announce.getImgUrl(), announce.getViewCount(), announce.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
         );
     }
 
@@ -61,6 +61,7 @@ public class AnnounceService {
 
         return GetAnnounceRes.builder()
                 .writer_name(announce.getUser().getName())
+                .writer_img(announce.getUser().getProfile_img())
                 .title(announce.getTitle())
                 .context(announce.getContext())
                 .imgUrl(announce.getImgUrl())

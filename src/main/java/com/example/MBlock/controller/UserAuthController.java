@@ -115,11 +115,6 @@ public class UserAuthController {
         return "admin_invest";
     }
 
-    @GetMapping("/admin/chat")
-    public String manageChat(Model model) {
-        return "admin_chat";
-    }
-
     @GetMapping("/admin/consult")
     public String manageConsult(Model model) {
         List<GetConsultingRes> consultList = consultingService.getAllConsulting();

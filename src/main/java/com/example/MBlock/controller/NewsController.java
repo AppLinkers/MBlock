@@ -25,7 +25,10 @@ public class NewsController {
     private final NewsService newsService;
 
     @GetMapping("/news")
-    public String getNews(){return "news";}
+    public String getNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+        Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
+        model.addAttribute("newsList", newsList);
+        return "news";}
 
     @GetMapping("/admin/news")
     public String manageNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {

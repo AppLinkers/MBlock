@@ -52,7 +52,7 @@
 			<h3>Portfolio</h3>
 			<h2>News</h2>
 		</div>
-		<!-- <div class="board-main">
+		<div class="board-main">
             <div class="left">
                 <img src="../images/mock4.png" alt="샘플 1">
             </div>
@@ -61,8 +61,8 @@
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quod beatae placeat doloribus dicta minima. Provident accusamus fugiat ullam officia architecto cumque hic, soluta culpa, et in, pariatur dignissimos praesentium!</p>
                 <button>Learn more <i class="fa-solid fa-arrow-right"></i></button>
             </div>
-        </div> -->
-		<div class="board-con">
+        </div>
+		<div class="board-con" style="margin-top: 100px;" th:each="news : ${newsList}">
 			<div class="board-inner">
 				<div class="img">
 					<img src="../images/mock1.png" alt="샘플2">
@@ -83,15 +83,6 @@
 			</div>
 			<div class="board-inner">
 				<div class="img">
-					<img src="../images/mock3.png" alt="샘플4">
-				</div>
-				<div class="content">
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-				</div>
-			</div>
-			<div class="board-inner">
-				<div class="img">
 					<img src="../images/mock5.png" alt="샘플5">
 				</div>
 				<div class="content">
@@ -101,13 +92,14 @@
 			</div>
 			<div class="board-inner">
 				<div class="img">
-					<img src="../images/mock6.png" alt="샘플6">
+					<img th:src="${news.imgUrl}" alt="샘플4">
 				</div>
 				<div class="content">
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
+					<h3 th:text="${news.title}">Title</h3>
+					<p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </section>

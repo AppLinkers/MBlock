@@ -1,5 +1,6 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.News.WriteNewsReq;
 import com.example.MBlock.service.NewsService;
@@ -14,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
@@ -55,4 +58,20 @@ public class NewsController {
 
         return "redirect:/admin/news";
     }
+
+    @GetMapping("/news/update/{id}")
+    public String goToUpdateNews(@PathVariable(value="id") long id, Model model){
+        model.addAttribute("news", newsService.getNews(id));
+        model.addAttribute("id", id);
+        return "admin_news_update";
+    }
+
+
+    @PostMapping("/news/update/{id}")
+    public String updateNews(@PathVariable (value="id") long id, @ModelAttribute("news") WriteNewsReq writeNewsReq) throws IOException {
+        newsService.updateNews(writeNewsReq,id);
+        return "redirect:/admin/news";
+    }
+
+
 }

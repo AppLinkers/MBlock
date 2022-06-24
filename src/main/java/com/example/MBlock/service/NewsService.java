@@ -1,7 +1,9 @@
 package com.example.MBlock.service;
 
+import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.News;
 import com.example.MBlock.domain.User;
+import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.News.WriteNewsReq;
 import com.example.MBlock.repository.NewsRepository;
@@ -9,6 +11,7 @@ import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -61,5 +64,21 @@ public class NewsService {
                 .imgUrl(news.getImgUrl())
                 .viewCount(news.getViewCount())
                 .build();
+    }
+
+    @Modifying
+    public void updateNews(WriteNewsReq request, Long newsId) throws IOException {
+        News news = newsRepository.findById(newsId).get();
+
+        news.setTitle(request.getTitle());
+        news.setContext(request.getContext());
+
+        if (request.getImgFile() != null) {
+            String imgUrl = s3Uploader.upload(request.getImgFile().get(), "news");
+            news.setImgUrl(imgUrl);
+        }
+
+
+        newsRepository.save(news);
     }
 }

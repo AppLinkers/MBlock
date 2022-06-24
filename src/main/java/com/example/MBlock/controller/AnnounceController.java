@@ -32,10 +32,7 @@ public class AnnounceController {
 
     @RequestMapping(value = "/announce", method = RequestMethod.GET, params = "id")
     public String getAnnounceOne(Model model, @RequestParam("id") Long id) {
-        System.out.println(announceService.getAnnounce(id).toString());
-
         model.addAttribute("announce", announceService.getAnnounce(id));
-
         return "announce_detail";
     }
 
@@ -58,5 +55,23 @@ public class AnnounceController {
     public String goToAddAnnounce(WriteAnnounceReq writeAnnounceReq){
         return "admin_announce_add";
     }
+
+
+  //  @RequestMapping(value = "/announce/update", method = RequestMethod.GET, params = "id")
+    @GetMapping("/announce/update/{id}")
+    public String goToUpdateAnnounce(@PathVariable (value="id") long id,Model model){
+        model.addAttribute("announce", announceService.getAnnounce(id));
+        model.addAttribute("id", id);
+        return "admin_announce_update";
+    }
+
+
+    @PostMapping("announce/update/{id}")
+    public String updateAnnounce(@PathVariable (value="id") long id, @ModelAttribute("announce") WriteAnnounceReq writeAnnounceReq) throws IOException {
+        announceService.updateAnnounce(writeAnnounceReq,id);
+        return "redirect:/admin/announce";
+    }
+
+
 
 }

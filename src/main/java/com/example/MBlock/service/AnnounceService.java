@@ -80,5 +80,23 @@ public class AnnounceService {
         }
     }
 
+    //update
+
+    @Modifying
+    public void updateAnnounce(WriteAnnounceReq request, Long announceId) throws IOException {
+        Announce announce = announceRepository.findById(announceId).get();
+
+        announce.setTitle(request.getTitle());
+        announce.setContext(request.getContext());
+
+        if (request.getImgFile() != null) {
+            String imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
+            announce.setImgUrl(imgUrl);
+        }
+
+
+        announceRepository.save(announce);
+    }
+
 
 }

@@ -54,7 +54,7 @@
                                 <div class="tit" th:text="${announce.title}"></div>
                                 <div class="name" th:text="${announce.writer_name}"></div>
                                 <div class="date" th:text="${announce.dateTime}"></div>
-                                <div class="fix">수정</div>
+                                <a th:href="@{/announce/update/{id}(id=${announce.id})}"><div class="fix">수정</div></a>
                             </li>
                         </ul>
                     </div>

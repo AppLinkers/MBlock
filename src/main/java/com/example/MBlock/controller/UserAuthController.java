@@ -2,7 +2,6 @@ package com.example.MBlock.controller;
 
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
-import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.AnnounceService;

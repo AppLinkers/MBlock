@@ -1,12 +1,10 @@
 package com.example.MBlock.controller;
 
-import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.News.GetNewsRes;
+import com.example.MBlock.dto.News.SetMainNewsReq;
 import com.example.MBlock.dto.News.WriteNewsReq;
 import com.example.MBlock.service.NewsService;
-import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
@@ -28,20 +26,26 @@ public class NewsController {
     private final NewsService newsService;
 
     @GetMapping("/news")
-    public String getNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+    public String getNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
+
+        System.out.println(newsList.getContent());
+
         model.addAttribute("newsList", newsList);
-        return "news";}
+        return "news";
+    }
 
     @GetMapping("/admin/news")
     public String manageNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
-        model.addAttribute("newsList",newsList);
+
+        model.addAttribute("newsList", newsList);
+
         return "admin_news";
     }
 
     @GetMapping("/admin/news/add")
-    public String addNews(WriteNewsReq writeNewsReq){
+    public String addNews(WriteNewsReq writeNewsReq) {
         return "admin_news_add";
     }
 
@@ -60,7 +64,7 @@ public class NewsController {
     }
 
     @GetMapping("/news/update/{id}")
-    public String goToUpdateNews(@PathVariable(value="id") long id, Model model){
+    public String goToUpdateNews(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("news", newsService.getNews(id));
         model.addAttribute("id", id);
         return "admin_news_update";
@@ -68,10 +72,14 @@ public class NewsController {
 
 
     @PostMapping("/news/update/{id}")
-    public String updateNews(@PathVariable (value="id") long id, @ModelAttribute("news") WriteNewsReq writeNewsReq) throws IOException {
-        newsService.updateNews(writeNewsReq,id);
+    public String updateNews(@PathVariable(value = "id") long id, @ModelAttribute("news") WriteNewsReq writeNewsReq) throws IOException {
+        newsService.updateNews(writeNewsReq, id);
         return "redirect:/admin/news";
     }
 
+    @PostMapping("/news/main")
+    public void setMainNews(SetMainNewsReq request) {
+        newsService.setMainNews(request);
 
+    }
 }

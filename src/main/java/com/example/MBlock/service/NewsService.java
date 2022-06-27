@@ -2,8 +2,8 @@ package com.example.MBlock.service;
 
 import com.example.MBlock.domain.News;
 import com.example.MBlock.domain.User;
-import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.News.GetNewsRes;
+import com.example.MBlock.dto.News.SetMainNewsReq;
 import com.example.MBlock.dto.News.WriteNewsReq;
 import com.example.MBlock.repository.NewsRepository;
 import com.example.MBlock.repository.UserRepository;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -47,7 +48,8 @@ public class NewsService {
     public Slice<GetNewsRes> getAllNews(Pageable pageable) {
         Slice<News> newsList = newsRepository.findAllBy(pageable);
         return newsList.map(news ->
-                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))));
+                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")), news.isMain())
+        );
     }
 
 
@@ -80,5 +82,17 @@ public class NewsService {
 
 
         newsRepository.save(news);
+    }
+
+    @Modifying
+    public void setMainNews(SetMainNewsReq request) {
+        System.out.println(request);
+        News oldMain = newsRepository.findById(request.getOldNewsId()).get();
+        News newMain = newsRepository.findById(request.getNewNewsId()).get();
+
+        oldMain.setMain(false);
+        newMain.setMain(true);
+
+        newsRepository.saveAll(List.of(oldMain, newMain));
     }
 }

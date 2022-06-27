@@ -65,3 +65,10 @@ insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) value
 insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) values(32, 'test message 32', 'TALK', 0, 2);
 insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) values(33, 'test message 33', 'TALK', 0, 2);
 insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) values(34, 'test message 34', 'TALK', 0, 2);
+<<<<<<< HEAD
+=======
+
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(0, 1, 'test title 1', 'test context 1', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'Y', now());
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(1, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', now());
+
+>>>>>>> 7628c06d8df17f449b3b03bd22e39a10c3bebadc

@@ -68,3 +68,4 @@ insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) value
 
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`) values(0, 1, 'test title 1', 'test context 1', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'Y');
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`) values(1, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N');
+

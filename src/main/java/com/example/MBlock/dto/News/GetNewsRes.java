@@ -24,4 +24,6 @@ public class GetNewsRes {
     private Integer viewCount;
 
     private String dateTime;
+
+    private boolean isMain;
 }

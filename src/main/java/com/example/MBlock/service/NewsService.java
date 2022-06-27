@@ -46,24 +46,11 @@ public class NewsService {
 
     // Read All - slice
     public Slice<GetNewsRes> getAllNews(Pageable pageable) {
-        Slice<News> newsList = newsRepository.findAllByMainIsFalse(pageable);
+        Slice<News> newsList = newsRepository.findAllBy(pageable);
 
         return newsList.map(news ->
-                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))));
-    }
-
-    public GetNewsRes getMainNews() {
-        News main = newsRepository.findNewsByMainIsTrue();
-
-        return GetNewsRes.builder()
-                .id(main.getId())
-                .writer_name(main.getUser().getName())
-                .title(main.getTitle())
-                .context(main.getContext())
-                .imgUrl(main.getImgUrl())
-                .viewCount(main.getViewCount())
-                .dateTime(main.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
-                .build();
+                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")), news.isMain())
+        );
     }
 
 

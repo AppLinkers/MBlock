@@ -59,6 +59,9 @@ public class AnnounceService {
     public GetAnnounceRes getAnnounce(Long id) {
         Announce announce = announceRepository.findById(id).get();
 
+        announce.setViewCount(announce.getViewCount() + 1);
+        announceRepository.save(announce);
+
         return GetAnnounceRes.builder()
                 .writer_name(announce.getUser().getName())
                 .writer_img(announce.getUser().getProfile_img())

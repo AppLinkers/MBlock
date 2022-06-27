@@ -3,6 +3,7 @@ package com.example.MBlock.domain;
 import javax.persistence.*;
 
 import com.example.MBlock.domain.listener.Auditable;
+import com.example.MBlock.support.BooleanToYNConverter;
 import lombok.*;
 import org.springframework.lang.Nullable;
 
@@ -30,6 +31,9 @@ public class News extends BaseEntity implements Auditable {
     private String imgUrl;
 
     private Integer viewCount = 0;
+
+    @Convert(converter = BooleanToYNConverter.class)
+    private boolean isMain = false;
 
     @Builder
     public News(User user, String title, String context, @Nullable String imgUrl) {

@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
 
-    Slice<News> findAllBy(Pageable pageable);
+    Slice<News> findAllByMainIsFalse(Pageable pageable);
+
+    News findNewsByMainIsTrue();
 }

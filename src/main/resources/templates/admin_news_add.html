@@ -39,7 +39,7 @@
                     <form th:method="post" th:action="@{/news}" th:object="${writeNewsReq}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>메인 이미지</label>
-                            <input id="selectImg" type="file" th:field="*{imgFile}" hidden required>
+                            <input id="selectImg" type="file" th:field="*{imgFile}" hidden >
                             <div class="main-img" onclick="defaultBtnActive()">
                                 <img src="" alt="" >
                                 <i class="fa-solid fa-cloud-arrow-up"></i>

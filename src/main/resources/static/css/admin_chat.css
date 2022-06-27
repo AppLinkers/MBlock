@@ -149,11 +149,11 @@ main .mid .chatBox ul li .chat ul li span{
     border-radius: 0 10px 10px 10px;
     max-width: 40%;
 }
-#me ul li{
+main .mid .chatBox ul li.me ul li{
     justify-content: right;
     margin-top: 0.5rem;
 }
-#me ul li span{
+main .mid .chatBox ul li.me ul li span{
     align-self: flex-end;
     background-color: #64dd17;
     color: whitesmoke;

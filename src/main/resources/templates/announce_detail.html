@@ -72,7 +72,8 @@
                         </div>
                     </div>
                     <div class="content">
-                        <img src="../images/gradient2.jpg" alt="공지사항이미지2">
+                        <img th:if="${announce.imgUrl} == null" src="../images/gradient2.jpg"  alt="공지사항 이미지">
+                        <img th:if="${announce.imgUrl} != null" th:src="${announce.imgUrl}" th:alt="${announce.imgUrl}">
                         <div class="content-inner" th:text="${announce.context}">
                             context
                         </div>

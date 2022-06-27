@@ -29,6 +29,8 @@ public class AnnounceService {
     public void write(WriteAnnounceReq request) throws IOException {
         String imgUrl = null;
 
+        System.out.println(request);
+
         if (request.getImgFile() != null) {
             imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
         }
@@ -97,6 +99,8 @@ public class AnnounceService {
 
         announceRepository.save(announce);
     }
+
+
 
 
 }

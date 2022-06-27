@@ -1,6 +1,5 @@
 package com.example.MBlock.service;
 
-import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.News;
 import com.example.MBlock.domain.User;
 import com.example.MBlock.dto.Announce.WriteAnnounceReq;
@@ -15,6 +14,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +28,7 @@ public class NewsService {
 
     public void write(WriteNewsReq request) throws IOException {
         String imgUrl=null;
-        if (request.getImgFile() != null) {
+        if (request.getImgFile().isPresent()) {
           imgUrl = s3Uploader.upload(request.getImgFile().get(), "news" );
         }
 
@@ -46,9 +46,8 @@ public class NewsService {
     // Read All - slice
     public Slice<GetNewsRes> getAllNews(Pageable pageable) {
         Slice<News> newsList = newsRepository.findAllBy(pageable);
-
         return newsList.map(news ->
-                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount()));
+                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))));
     }
 
 
@@ -63,6 +62,7 @@ public class NewsService {
                 .context(news.getContext())
                 .imgUrl(news.getImgUrl())
                 .viewCount(news.getViewCount())
+                .dateTime(news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
                 .build();
     }
 

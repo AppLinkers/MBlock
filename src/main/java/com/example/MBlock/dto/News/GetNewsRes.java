@@ -22,4 +22,6 @@ public class GetNewsRes {
     private String imgUrl;
 
     private Integer viewCount;
+
+    private String dateTime;
 }

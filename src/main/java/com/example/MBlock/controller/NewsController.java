@@ -12,10 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -61,6 +58,12 @@ public class NewsController {
         }
 
         return "redirect:/admin/news";
+    }
+
+    @RequestMapping(value = "/news", method = RequestMethod.GET, params = "id")
+    public String newsDetail(Model model, @RequestParam("id") Long id) {
+        model.addAttribute("news", newsService.getNews(id));
+        return "news_detail";
     }
 
     @GetMapping("/news/update/{id}")

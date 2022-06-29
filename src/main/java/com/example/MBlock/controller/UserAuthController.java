@@ -105,7 +105,10 @@ public class UserAuthController {
         return "admin_announce";
     }
 
-
+    @GetMapping("/admin/partners")
+    public String managePartners(Model model) {
+        return "admin_partner";
+    }
 
     @GetMapping("/admin/invest")
     public String manageInvest(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {

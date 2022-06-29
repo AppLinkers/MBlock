@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +7,18 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/admin_announce.css">
+    <link rel="stylesheet" href="../css/admin_partner.css">
 </head>
 <body>
     <!-- header -->
     <header>
         <div class="container">
             <h1>
-                <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+                <button onclick="location.href='index.html'">M <span>Block</button>
             </h1>
         </div>
     </header>
+    <!-- main -->
     <main>
         <div class="container">
             <div class="top">
@@ -34,34 +35,45 @@
                         <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
                     </ul>
                 </div>
-
                 <div class="right">
-                    <div class="title"><h2>공지사항 관리</h2></div>
+                    <div class="title"><h2>협력사 관리</h2></div>
                     <div class="control">
-                        <button><a th:href="@{/announce/add}">추가</a></button>
-                        <button>삭제</button>
+                        <a th:href="@{/partners/add}"><button>추가</button></a>
                     </div>
-                    <div class="label">
-                        <div class="check"></div>
-                        <div class="tit">제목</div>
-                        <div class="name">작성자</div>
-                        <div class="date">작성 날짜</div>
-                        <div class="fix"></div>
-                    </div>
-                    <div class="list">
-                        <ul th:each="announce : ${announceList}">
-                            <li>
-                                <div class="check"><input type="checkbox"></div>
-                                <div class="tit" th:text="${announce.title}"></div>
-                                <div class="name" th:text="${announce.writer_name}"></div>
-                                <div class="date" th:text="${announce.dateTime}"></div>
-                                <a th:href="@{/announce/update/{id}(id=${announce.id})}"><div class="fix">수정</div></a>
-                            </li>
-                        </ul>
+                    <ul>
+                        <li>
+                            <img src="../images/rok.JPG" alt="협력사이미지">
+                            <p>ROK CAPITAL</p>
+                            <button id="delete">삭제</button>
+                        </li>
+                        <li>
+                            <img src="../images/despread.png" alt="협력사이미지">
+                            <p>DeSpread</p>
+                            <button id="delete">삭제</button>
+                        </li>
+                        <li>
+                            <img src="../images/upbit.png" alt="협력사이미지">
+                            <p>Upbit</p>
+                            <button id="delete">삭제</button>
+                        </li>
+                        <li>
+                            <img src="../images/bithumb.png" alt="협력사이미지">
+                            <p>Bitumb</p>
+                            <button id="delete">삭제</button>
+                        </li>
+                    </ul>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <i class="fa-solid fa-xmark"></i>
+                            <strong>삭제하시겠습니까?</strong>
+                            <p>삭제 후 복구가 불가합니다</p>
+                            <div class="delete">삭제하기</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <script src="../modal.js"></script>
 </body>
 </html>

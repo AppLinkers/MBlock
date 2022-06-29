@@ -7,10 +7,9 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/admin_consult.css">
+    <link rel="stylesheet" href="../css/admin_partner_add.css">
 </head>
 <body>
-<!-- header -->
 <header>
     <div class="container">
         <h1>
@@ -35,28 +34,27 @@
                 </ul>
             </div>
                 <div class="right">
-                    <div class="title"><h2>개인 문의</h2></div>
-                    <div class="label">
-                        <div class="name">작성자</div>
-                        <div class="tit">상담 내용</div>
-                        <div class="trader">희망 Trader</div>
-                        <div class="date">작성 날짜</div>
-                        <div class="answer">답변 여부</div>
-                    </div>
-                    <div class="list">
-                        <ul th:each="consult : ${consultList}">
-                            <li>
-                                <div class="name" th:text="${consult.name}"></div>
-                                <a th:href="@{/admin/consult?id=} + ${consult.id}"><div class="tit" th:text="${consult.context}"></div></a>
-                                <div class="trader" th:text="${consult.name}">Jung</div>
-                                <div class="date" th:text="${consult.datetime}"></div>
-                                <div class="answer">N</div>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="title"><h2>협력사 추가</h2></div>
+                    <form action="#">
+                        <div class="form-group">
+                            <label>로고 이미지</label>
+                            <input id="selectImg" type="file" hidden>
+                            <div class="main-img" onclick="defaultBtnActive()">
+                                <img src="" alt="" >
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                select your image
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name">
+                        </div>
+                        <button>게시하기</button>
+                    </form>
                 </div>
             </div>
         </div>
     </main>
+    <script src="../add_image.js"></script>
 </body>
 </html>

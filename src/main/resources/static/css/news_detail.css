@@ -27,7 +27,7 @@ header{
     top: 0;
     width: 100%;
     height: 75px;
-    z-index: 1;
+    z-index: 9;
     background: white;
     align-items: center;
 }
@@ -129,116 +129,84 @@ header button i {
     color: #717171;
 }
 
-/* main */
-main {
-    margin-top: 75px;
-    width: 100%;
-    height: calc(100vh - 75px);
-    background: url(../images/UnicornVectorGradient_1.jpg);
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-
-}
-main h2{
-    font-size: 4.5rem;
-    margin-bottom: 2.5rem;
-    font-family: 'Kaushan Script', cursive;
-    color: rgb(20, 20, 20);
-}
-
-main p{
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: rgb(60, 60, 60);
-}
-main button.start{
-    border: none;
-    padding: 1.5rem 3rem;
-    border-radius: 10px;
-    margin-top: 4rem;
-    background-color: #38ef7d;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
-}
-main button:hover.start{
-    background-color: #34df75;
-}
-main button.down {
-    background-color: transparent;
-    border: none;
-    color: rgb(60, 60, 60);
-    font-size: 2rem;
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    animation: upDown 1s ease-in-out infinite;
-}
-@keyframes upDown{
-    0%{
-        bottom: 2rem;
-    }
-    50%{
-        bottom: 3rem;
-    }
-    100%{
-        bottom: 2rem;
-    }
-}
-
 /* section */
 section {
     font-family: 'Roboto', sans-serif;
-    padding: 5rem 0;
+    padding: 6rem 0;
 }
 
-section:nth-child(2n+1){
+section:nth-child(2n){
     background-color: #f8f8f8;
 }
 
-/* intro */
-section .intro-con::after{
-    content: "";
-    display: block;
-    clear: both;
+/* main */
+main{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-section .intro-con .intro-inner{
-    width: 30%;
-    padding: 2rem;
-    float: left;
-    margin-right: 5%;
+main .background{
+    width: 100%;
+    height: 500px;
+    background: url(../images/mock2.png);
+    background-size: cover;
+    filter: blur(10px);
 }
-section .intro-con .intro-inner:last-child{
-    margin-right: 0;
+main .main-img{
+    width: 40%;
+    padding-bottom: 4rem;
+    margin-top: -450px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #717171;
 }
-section .intro-con .intro-inner h4{
-    font-size: 1.25rem;
-    color: #aaaaaa;
+main .main-img img{
+    width: 100%;
+    min-height: 450px;
+    border-radius: 10px 10px 0 0;
 }
-section .intro-con .intro-inner h3{
-    font-size: 2.5rem;
-    margin: 1rem 0 1.5rem 0;
-    color: #555555;
+main .main-img h3{
+    padding: 3rem 1rem 1rem 1rem;
+    font-size: 2rem;
 }
-section .intro-con .intro-inner p{
-    font-size: 1rem;
-    line-height: 1.8;
+main .main-img p{
+    font-size: 0.9rem;
+    color: #717171;
 }
 
 /* board */
-section .title{
+section .content{
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    margin-bottom: 8rem;
+}
+section .writer{
+    padding: 4rem;
     display: flex;
-    justify-content: center;
-    padding: 2rem 0 6rem 0;
+    align-items: center;
+    border-top: 2px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+}
+section .writer .writer-img{
+    width: 60px;
+    height: 60px;
+    margin-right: 3rem;
+}
+section .writer .writer-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+section .writer .writer-info h4{
+    font-size: 1.3rem;
+}
+section .more{
+    padding: 5rem 0;
 }
 section .board-con::after{
     content: "";
@@ -249,17 +217,32 @@ section .board-con .board-inner{
     width: 30%;
     height: 476px;
     padding: 0 0 2rem 0;
+    margin-bottom: 2rem;
     float: left;
     margin-right: 5%;
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 3px 5px 5px #717171;
 }
-section .board-con .board-inner:hover,
-section .board-con .board-inner:focus{
-    animation: updownboard 1s ease-in-out;
+section .board-con .board-inner:focus,
+section .board-con .board-inner:hover{
+    animation: updown 1s ease-in-out;
 }
-section .board-con .board-inner:last-child{
+@keyframes updown{
+    0%{
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    50%{
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+    }
+    100%{
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+}
+section .board-con .board-inner:nth-child(3n){
     margin-right: 0;
 }
 section .board-con .board-inner .img{
@@ -272,7 +255,7 @@ section .board-con .board-inner .img img{
     height: 100%;
 }
 section .board-con .board-inner .content{
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     height: 40%;
 }
 section .board-con .board-inner .content h3{
@@ -282,52 +265,21 @@ section .board-con .board-inner .content h3{
     display: -webkit-box;
     -webkit-line-clamp: 2; /* 라인수 */
     -webkit-box-orient: vertical;
-    word-wrap:break-word;
+    word-wrap:break-word; 
     line-height: 1.2em;
     height: 2.4em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
 section .board-con .board-inner .content p{
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    line-height: 1.8;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* 라인수 */
     -webkit-box-orient: vertical;
-    word-wrap:break-word;
+    word-wrap:break-word; 
     line-height: 1.2em;
     height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-
+  
 }
-section .more{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 12rem 0 0 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-section .more p {
-    font-weight: bold;
-}
-section .more i{
-    font-weight: bold;
-}
-@keyframes updownboard{
-    0%{
-        margin-top: 0;
-    }
-    50%{
-        margin-top: -1rem;
-    }
-    100%{
-        margin-top: 0;
-    }
-}
-
-/* associate */
 
 /* bottom */
 section .bottom-nav{
@@ -390,6 +342,3 @@ section .bottom-sns a{
     margin-left: 1rem;
     font-size: 1.75rem;
 }
-
-
-

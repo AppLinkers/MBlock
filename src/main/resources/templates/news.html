@@ -90,7 +90,7 @@
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
 				</div>
 			</div>
-			<div class="board-inner">
+			<div class="board-inner"><a th:href="@{/news?id=} + ${news.id}">
 				<div class="img">
 					<img th:src="${news.imgUrl}" alt="샘플4">
 				</div>
@@ -98,6 +98,7 @@
 					<h3 th:text="${news.title}">Title</h3>
 					<p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
 				</div>
+			</a>
 			</div>
 
 		</div>

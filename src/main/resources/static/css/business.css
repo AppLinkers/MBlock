@@ -206,7 +206,7 @@ section .member-con .member-inner{
     align-items: center;
     text-align: center;
 }
-section .member-con .member-inner:last-child{
+section .member-con .member-inner:nth-child(3n){
     margin-right: 0;
 }
 section .member-con .member-inner .img{

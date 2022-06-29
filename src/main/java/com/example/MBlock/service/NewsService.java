@@ -29,7 +29,7 @@ public class NewsService {
 
     public void write(WriteNewsReq request) throws IOException {
         String imgUrl=null;
-        if (request.getImgFile().isPresent()) {
+        if (request.getImgFile() != null) {
           imgUrl = s3Uploader.upload(request.getImgFile().get(), "news" );
         }
 

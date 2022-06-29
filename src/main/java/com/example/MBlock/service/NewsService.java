@@ -95,4 +95,11 @@ public class NewsService {
 
         newsRepository.saveAll(List.of(oldMain, newMain));
     }
+
+    @Modifying
+    public void deleteNews(Long newsId) {
+        News news = newsRepository.findById(newsId).get();
+
+        newsRepository.delete(news);
+    }
 }

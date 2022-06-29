@@ -7,6 +7,7 @@ import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
 import com.example.MBlock.repository.ConsultingRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
@@ -65,5 +66,12 @@ public class ConsultingService {
                 .trader(consulting.getTrader())
                 .datetime(consulting.getUpdatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .build();
+    }
+
+    @Modifying
+    public void deleteConsulting(Long consultingId) {
+        Consulting consulting = consultingRepository.findById(consultingId).get();
+
+        consultingRepository.delete(consulting);
     }
 }

@@ -5,6 +5,7 @@ import com.example.MBlock.dto.Partner.AddPartnerReq;
 import com.example.MBlock.dto.Partner.GetPartnerRes;
 import com.example.MBlock.repository.PartnerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -49,5 +50,13 @@ public class AdminService {
         );
 
         return result;
+    }
+
+    @Modifying
+    public void deletePartner(Long partnerId) {
+        Partner partner = partnerRepository.findById(partnerId).get();
+
+        partnerRepository.delete(partner);
+
     }
 }

@@ -65,6 +65,12 @@ public class AnnounceController {
         return "admin_announce_update";
     }
 
+    @GetMapping("/announce/delete/{id}")
+    public String deleteAnnounce(@PathVariable(value = "id") long id, Model model){
+        String login_id = SecurityContextHolder.getContext().getAuthentication().getName();
+        announceService.deleteAnnounce(id,login_id);
+        return "redirect:/admin/announce";
+    }
 
     @PostMapping("announce/update/{id}")
     public String updateAnnounce(@PathVariable (value="id") long id, @ModelAttribute("announce") WriteAnnounceReq writeAnnounceReq) throws IOException {

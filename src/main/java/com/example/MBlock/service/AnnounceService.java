@@ -77,10 +77,10 @@ public class AnnounceService {
 
     // Delete
     @Modifying
-    public void deleteAnnounce(Long announceId, Long writerId) {
+    public void deleteAnnounce(Long announceId, String writerId) {
         Announce announce = announceRepository.findById(announceId).get();
 
-        if (announce.getUser().getId().equals(writerId)) {
+        if (announce.getUser().getLogin_id().equals(writerId)) {
             announceRepository.delete(announce);
         }
     }

@@ -4,10 +4,7 @@ import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
-import com.example.MBlock.service.AnnounceService;
-import com.example.MBlock.service.ConsultingService;
-import com.example.MBlock.service.UserAuthService;
-import com.example.MBlock.service.UserService;
+import com.example.MBlock.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +30,7 @@ public class UserAuthController {
     private final AnnounceService announceService;
     private final ConsultingService consultingService;
     private final UserService userService;
+    private final AdminService adminService;
 
     @GetMapping("/register")
     public String getRegisterForm(UserSignUpReq userSignUpReq) {
@@ -107,6 +105,7 @@ public class UserAuthController {
 
     @GetMapping("/admin/partners")
     public String managePartners(Model model) {
+        model.addAttribute("partnerList", adminService.getPartnerAll());
         return "admin_partner";
     }
 

@@ -14,7 +14,7 @@
     <header>
         <div class="container">
             <h1>
-                <button onclick="location.href='index.html'">M <span>Block</button>
+                <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
             </h1>
         </div>
     </header>
@@ -40,7 +40,7 @@
                     <div class="control">
                         <a th:href="@{/partners/add}"><button>추가</button></a>
                     </div>
-                    <ul>
+                    <ul th:each="partnerList: ${partnerList}">
                         <li>
                             <img src="../images/rok.JPG" alt="협력사이미지">
                             <p>ROK CAPITAL</p>
@@ -57,8 +57,8 @@
                             <button id="delete">삭제</button>
                         </li>
                         <li>
-                            <img src="../images/bithumb.png" alt="협력사이미지">
-                            <p>Bitumb</p>
+                            <img th:src="${partnerList.imgUrl}" alt="협력사이미지">
+                            <p th:text="${partnerList.name}">Bitumb</p>
                             <button id="delete">삭제</button>
                         </li>
                     </ul>

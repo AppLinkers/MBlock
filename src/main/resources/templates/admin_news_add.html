@@ -8,6 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../css/admin_news_add.css">
+    <script>
+        function my_btn_handler() {
+            var parent = document.getElementById("img-form");
+            var filecheck = document.getElementById("selectImg");
+            if (!filecheck.value) {
+                parent.removeChild(filecheck);
+                return true;
+            }
+
+        }
+    </script>
 </head>
 <body>
     <!-- header -->
@@ -38,7 +49,7 @@
                 <div class="right">
                     <div class="title"><h2>투자게시판 작성</h2></div>
                     <form th:method="post" th:action="@{/news}" th:object="${writeNewsReq}" enctype="multipart/form-data">
-                        <div class="form-group">
+                        <div id="img-form" class="form-group">
                             <label>메인 이미지</label>
                             <input id="selectImg" type="file" th:field="*{imgFile}" hidden >
                             <div class="main-img" onclick="defaultBtnActive()">
@@ -55,7 +66,7 @@
                             <label for="content">내용</label>
                             <textarea id="content" th:field="*{context}" required></textarea>
                         </div>
-                        <button>게시하기</button>
+                        <button type="submit" onclick="my_btn_handler()">게시하기</button>
                     </form>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
@@ -25,6 +26,13 @@ public class PartnerController {
     @PostMapping("/partners/add")
     public String addPartners(AddPartnerReq addPartnerReq) throws IOException {
         adminService.addPartner(addPartnerReq);
+        return "redirect:/admin/partners";
+    }
+
+
+    @GetMapping("/partners/delete/{id}")
+    public String deletePartners(@PathVariable(value = "id") long id, Model model){
+        adminService.deletePartner(id);
         return "redirect:/admin/partners";
     }
 

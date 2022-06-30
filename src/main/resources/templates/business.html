@@ -60,6 +60,36 @@
         <div class="title">
             <h2>About Us</h2>
         </div>
+        <div class="about-inner">
+            <div class="about-img">
+                <img src="../images/knight.jpg" alt="about-image1">
+            </div>
+            <div class="about-content">
+                <h4>Trading Team</h4>
+                <h3>No .1</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae, possimus quasi quisquam animi quas minima provident reiciendis qui ducimus excepturi beatae, unde quos cupiditate accusamus cumque omnis itaque, dolore quae.</p>
+            </div>
+        </div>
+        <div class="about-inner">
+            <div class="about-content">
+                <h4>Analysis</h4>
+                <h3>100 +</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae, possimus quasi quisquam animi quas minima provident reiciendis qui ducimus excepturi beatae, unde quos cupiditate accusamus cumque omnis itaque, dolore quae.</p>
+            </div>
+            <div class="about-img">
+                <img src="../images/megaphone.png" alt="about-image2">
+            </div>
+        </div>
+        <div class="about-inner">
+            <div class="about-img">
+                <img src="../images/piggy.jpg" alt="about-image3">
+            </div>
+            <div class="about-content">
+                <h4>Assets</h4>
+                <h3>$1.0 B+</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae, possimus quasi quisquam animi quas minima provident reiciendis qui ducimus excepturi beatae, unde quos cupiditate accusamus cumque omnis itaque, dolore quae.</p>
+            </div>
+        </div>
     </div>
 </section>
 <!-- members -->
@@ -105,6 +135,14 @@
     <div class="container">
         <div class="title">
             <h2>Partners</h2>
+        </div>
+        <div class="partner-list">
+            <ul>
+                <li th:each="partner : ${partnerList}">
+                    <img th:src="${partner.imgUrl}" alt="협력사이미지">
+                    <p th:text="${partner.name}">ROK CAPITAL</p>
+                </li>
+            </ul>
         </div>
     </div>
 </section>

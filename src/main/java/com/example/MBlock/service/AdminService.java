@@ -44,6 +44,7 @@ public class AdminService {
         partnerList.forEach(
                 p -> {
                     result.add(GetPartnerRes.builder()
+                            .id(p.getId())
                             .name(p.getName())
                             .imgUrl(p.getImgUrl()).build());
                 }

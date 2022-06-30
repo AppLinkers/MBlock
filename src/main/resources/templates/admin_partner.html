@@ -59,7 +59,7 @@
                         <li>
                             <img th:src="${partnerList.imgUrl}" alt="협력사이미지">
                             <p th:text="${partnerList.name}">Bitumb</p>
-                            <button id="delete">삭제</button>
+                            <a th:href="@{/partners/delete/{id}(id=${partnerList.id})}"><button id="delete">삭제</button></a>
                         </li>
                     </ul>
                     <div class="modal">

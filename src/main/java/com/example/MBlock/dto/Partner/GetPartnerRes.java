@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetPartnerRes {
 
+    private long id;
+
     private String name;
 
     private String imgUrl;

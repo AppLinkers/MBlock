@@ -55,6 +55,7 @@
                                 <div class="name" th:text="${news.writer_name}">작성자</div>
                                 <div class="date">2022-06-21</div>
                                 <a th:href="@{/news/update/{id}(id=${news.id})}"><div class="fix">수정</div></a>
+                                <a th:href="@{/news/delete/{id}(id=${news.id})}"><div class="fix">삭제</div></a>
                             </li>
                         </ul>
                     </div>

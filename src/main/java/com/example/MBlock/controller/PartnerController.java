@@ -4,7 +4,6 @@ import com.example.MBlock.dto.Partner.AddPartnerReq;
 import com.example.MBlock.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +18,7 @@ public class PartnerController {
     private final AdminService adminService;
 
     @GetMapping("/partners/add")
-    public String addPartnersPage(AddPartnerReq addPartnerReq,Model model) {
+    public String addPartnersPage(AddPartnerReq addPartnerReq) {
         return "admin_partner_add";
     }
 
@@ -31,7 +30,7 @@ public class PartnerController {
 
 
     @GetMapping("/partners/delete/{id}")
-    public String deletePartners(@PathVariable(value = "id") long id, Model model){
+    public String deletePartners(@PathVariable(value = "id") long id){
         adminService.deletePartner(id);
         return "redirect:/admin/partners";
     }

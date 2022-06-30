@@ -12,9 +12,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -68,6 +70,28 @@ public class NewsService {
                 .build();
     }
 
+    public List<GetNewsRes> getTop3NewsOrderByUpdatedAtDesc() {
+        List<GetNewsRes> result = new ArrayList<>();
+
+        List<News> newsList = newsRepository.findTop3ByOrderByUpdatedAtDesc();
+
+        newsList.forEach(
+                news -> {
+                    result.add(GetNewsRes.builder()
+                            .id(news.getId())
+                            .writer_name(news.getUser().getName())
+                            .title(news.getTitle())
+                            .context(news.getContext())
+                            .imgUrl(news.getImgUrl())
+                            .viewCount(news.getViewCount())
+                            .dateTime(news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
+                            .build());
+                }
+        );
+
+        return result;
+    }
+
     @Modifying
     public void updateNews(WriteNewsReq request, Long newsId) throws IOException {
         News news = newsRepository.findById(newsId).get();
@@ -84,9 +108,8 @@ public class NewsService {
         newsRepository.save(news);
     }
 
-    @Modifying
+    @Transactional
     public void setMainNews(SetMainNewsReq request) {
-        System.out.println(request);
         News oldMain = newsRepository.findById(request.getOldNewsId()).get();
         News newMain = newsRepository.findById(request.getNewNewsId()).get();
 

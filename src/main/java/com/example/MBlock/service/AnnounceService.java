@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -86,7 +87,7 @@ public class AnnounceService {
     }
 
     //update
-    @Modifying
+    @Transactional
     public void updateAnnounce(WriteAnnounceReq request, Long announceId) throws IOException {
         Announce announce = announceRepository.findById(announceId).get();
 

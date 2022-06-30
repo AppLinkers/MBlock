@@ -66,5 +66,7 @@ insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) value
 insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) values(33, 'test message 33', 'TALK', 0, 2);
 insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) values(34, 'test message 34', 'TALK', 0, 2);
 
-insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(0, 1, 'test title 1', 'test context 1', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'Y', now());
-insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(1, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', now());
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(0, 1, 'test title 1', 'test context 1', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'Y', DATEADD('DAY', -3, CURRENT_DATE));
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(1, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -7, CURRENT_DATE));
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(2, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -5, CURRENT_DATE));
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(3, 1, 'test title 3', 'test context 3', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', CURRENT_DATE );

@@ -6,6 +6,7 @@ import com.example.MBlock.dto.User.GetUserInfoRes;
 import com.example.MBlock.dto.User.GetUserProfileRes;
 import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,6 +38,12 @@ public class UserService {
         return result;
     }
 
+    @Modifying
+    public void deleteMember(Long memberId) {
+        User user = userRepository.findById(memberId).get();
+            userRepository.delete(user);
+    }
+
     public List<GetUserInfoRes> getUserInfoAll() {
         List<GetUserInfoRes> result = new ArrayList<>();
 
@@ -45,6 +52,7 @@ public class UserService {
         userList.forEach(
                 u -> {
                     result.add(GetUserInfoRes.builder()
+                            .id(u.getId())
                             .login_id(u.getLogin_id())
                             .name(u.getName())
                             .role(u.getRole())

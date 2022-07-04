@@ -6,6 +6,9 @@ const modalAccept = document.querySelector("main .right .modal-accept");
 const acceptBtn = document.querySelector("main .right .list ul li .control-accept");
 const xBtnAccept = modalAccept.querySelector("i");
 
+const chosenId = document.getElementById("chosenId");
+const getId = document.getElementById("getIdText");
+var data = "";
 deleteBtn.onclick = function() {
     modal.style.display = "block";
 }
@@ -23,7 +26,10 @@ window.onclick = function(event){
 
 acceptBtn.onclick = function() {
     modalAccept.style.display = "block";
+    alert(getId.value)
 }
+
+
 xBtnAccept.onclick = function(){
     modalAccept.style.display = "none";
 }

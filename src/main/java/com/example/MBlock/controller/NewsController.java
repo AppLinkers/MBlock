@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,9 +26,6 @@ public class NewsController {
     @GetMapping("/news")
     public String getNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
-
-        System.out.println(newsList.getContent());
-
         model.addAttribute("newsList", newsList);
         return "news";
     }
@@ -35,9 +33,7 @@ public class NewsController {
     @GetMapping("/admin/news")
     public String manageNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
-
         model.addAttribute("newsList", newsList);
-
         return "admin_news";
     }
 
@@ -91,4 +87,5 @@ public class NewsController {
         newsService.deleteNews(id);
         return "redirect:/admin/news";
     }
+
 }

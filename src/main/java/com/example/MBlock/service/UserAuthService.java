@@ -1,6 +1,8 @@
 package com.example.MBlock.service;
 
 import com.example.MBlock.domain.User;
+import com.example.MBlock.domain.type.Approved;
+import com.example.MBlock.dto.UserAuth.ChangeUserApprovedReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpRes;
 import com.example.MBlock.repository.UserRepository;
@@ -48,5 +50,15 @@ public class UserAuthService {
         if (userRepository.findByUser_id(user_id).isPresent()) {
             throw new RuntimeException();
         }
+    }
+
+    @Transactional
+    public void changeUserStatue(ChangeUserApprovedReq request) {
+
+        User user = userRepository.findByUser_id(request.getUserLoginId()).get();
+
+        user.setApproved(Approved.valueOf(request.getApproved()));
+
+        userRepository.save(user);
     }
 }

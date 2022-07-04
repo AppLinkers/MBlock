@@ -1,8 +1,10 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.domain.Announce;
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
+import com.example.MBlock.dto.UserAuth.ChangeUserApprovedReq;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.service.*;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -97,11 +100,20 @@ public class UserAuthController {
         return "admin_member";
     }
 
-//    @PostMapping("member/update/{id}")
-//    public String updateMemberStatus(@PathVariable (value="id") long id, @ModelAttribute("status")  writeAnnounceReq) throws IOException {
-//        announceService.updateAnnounce(writeAnnounceReq,id);
-//        return "redirect:/admin/announce";
-//    }
+    @PostMapping("/member/update/{id}")
+    public String updateMemberStatus(@PathVariable (value="id") String id,ChangeUserApprovedReq request) throws IOException {
+        System.out.println(id);
+        request.setUserLoginId(id);
+        request.setApproved("ACCEPTED");
+        userAuthService.changeUserStatue(request);
+        return "redirect:/admin/member";
+    }
+
+    @GetMapping("/member/delete/{id}")
+    public String deleteMember(@PathVariable(value = "id") long id, Model model){
+        userService.deleteMember(id);
+        return "redirect:/admin/member";
+    }
 
     @GetMapping("/admin/announce")
     public String manageAnnounce(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {

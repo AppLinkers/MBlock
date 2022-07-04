@@ -129,7 +129,7 @@ public class UserAuthController {
     }
 
     @GetMapping("/admin/invest")
-    public String manageInvest(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String manageInvest(Model model) {
         return "admin_invest";
     }
 

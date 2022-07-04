@@ -8,9 +8,9 @@ insert into user (`id`, `login_id`, `name`, `login_pw`, `role`, `created_at`, `u
 insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(0, 1, 'test1', 'test1', 'test1', 1, now());
 insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(1, 1, 'test1', 'test1', 'test1', 2, now());
 insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(2, 1, 'test1', 'test1', 'test1', 3, now());
-insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(3, 1, 'test1', 'test1', 'test1', 4, now());
-insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(4, 1, 'test1', 'test1', 'test1', 5, now());
-insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(5, 1, 'test1', 'test1', 'test1', 6, now());
+insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(3, 2, 'test1', 'test1', 'test1', 4, now());
+insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(4, 2, 'test1', 'test1', 'test1', 5, now());
+insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(5, 2, 'test1', 'test1', 'test1', 6, now());
 insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(6, 1, 'test1', 'test1', 'test1', 7, now());
 insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(7, 1, 'test1', 'test1', 'test1', 8, now());
 insert into announce(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `updated_at`) values(8, 1, 'test1', 'test1', 'test1', 9, now());
@@ -68,5 +68,5 @@ insert into message(`id`, `message`, `message_type`, `room_id`, `user_id`) value
 
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(0, 1, 'test title 1', 'test context 1', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'Y', DATEADD('DAY', -3, CURRENT_DATE));
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(1, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -7, CURRENT_DATE));
-insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(2, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -5, CURRENT_DATE));
-insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(3, 1, 'test title 3', 'test context 3', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', CURRENT_DATE );
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(2, 2, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -5, CURRENT_DATE));
+insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(3, 2, 'test title 3', 'test context 3', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', CURRENT_DATE );

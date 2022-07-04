@@ -5,6 +5,8 @@ import javax.persistence.*;
 import com.example.MBlock.domain.listener.Auditable;
 import com.example.MBlock.support.BooleanToYNConverter;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.lang.Nullable;
 
 @Entity
@@ -20,6 +22,7 @@ public class News extends BaseEntity implements Auditable {
     private Long id;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -58,14 +58,12 @@
 
 <!--                                삭제 모달-->
                                 <div class="modal">
-                                    <form th:method="post" th:action="@{/member/delete/{id}(id=${member.id})}">
                                         <div class="modal-content">
                                             <i class="fa-solid fa-xmark"></i>
                                             <strong>삭제하시겠습니까?</strong>
                                             <p>삭제 후 복구가 불가합니다</p>
                                             <a th:href="@{/member/delete/{id}(id=${member.id})}"><div class="delete">삭제하기</div></a>
                                         </div>
-                                    </form>
                                 </div>
 
 <!--                                승인 모달-->

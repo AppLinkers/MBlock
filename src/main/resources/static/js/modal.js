@@ -1,11 +1,12 @@
 const modal = document.querySelector("main .right .modal");
-const deleteBtn = document.querySelector("#delete");
+const deleteBtns = document.querySelectorAll("#delete");
 const xBtn = modal.querySelector("i");
 
-
-deleteBtn.onclick = function() {
-    modal.style.display = "block";
-}
+deleteBtns.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', ()=> {
+        modal.style.display = "block";
+    })
+})
 xBtn.onclick = function(){
     modal.style.display = "none";
 }

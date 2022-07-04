@@ -1,17 +1,18 @@
 const modal = document.querySelector("main .right .modal");
-const deleteBtn = document.querySelector("main .right .list ul li .control-delete");
+const deleteBtns = document.querySelectorAll("main .right .list ul li .control-delete");
 const xBtn = modal.querySelector("i");
 
 const modalAccept = document.querySelector("main .right .modal-accept");
-const acceptBtn = document.querySelector("main .right .list ul li .control-accept");
+const acceptBtns = document.querySelectorAll("main .right .list ul li .control-accept");
 const xBtnAccept = modalAccept.querySelector("i");
 
-const chosenId = document.getElementById("chosenId");
-const getId = document.getElementById("getIdText");
-var data = "";
-deleteBtn.onclick = function() {
-    modal.style.display = "block";
-}
+
+//삭제 버튼
+deleteBtns.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click',()=> {
+        modal.style.display = "block";
+    })
+})
 xBtn.onclick = function(){
     modal.style.display = "none";
 }
@@ -24,12 +25,12 @@ window.onclick = function(event){
     }
 }
 
-acceptBtn.onclick = function() {
-    modalAccept.style.display = "block";
-    alert(getId.value)
-}
-
-
+//승인 버튼
+acceptBtns.forEach(acceptBtn => {
+    acceptBtn.addEventListener('click',()=> {
+        modalAccept.style.display = "block";
+    })
+})
 xBtnAccept.onclick = function(){
     modalAccept.style.display = "none";
 }

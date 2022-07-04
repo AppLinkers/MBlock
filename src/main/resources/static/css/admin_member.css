@@ -199,35 +199,41 @@ main .right .modal-accept .modal-content p{
     font-size: 0.9rem;
     font-weight: bold;
 }
-main .right .modal .modal-content .delete{
+main .right .modal .modal-content button{
     color: darkred;
     font-weight: bold;
     font-size: 0.8rem;
     margin-top: 3.5rem;
     text-align: center;
+    width: 100%;
+    background: transparent;
+    border: none;
     cursor: pointer;
     padding: 0.6rem 0;
     border-radius: 10px;
     transition: all .2s;
 }
-main .right .modal-accept .modal-content .accept{
+main .right .modal-accept .modal-content button{
     color: #38ef7d;
     font-weight: bold;
     font-size: 0.8rem;
     margin-top: 3.5rem;
     text-align: center;
+    width: 100%;
+    background: transparent;
+    border: none;
     cursor: pointer;
     padding: 0.6rem 0;
     border-radius: 10px;
     transition: all .2s;
 }
-main .right .modal .modal-content .delete:hover,
-main .right .modal .modal-content .delete:focus{
+main .right .modal .modal-content button:hover,
+main .right .modal .modal-content button:focus{
     background-color: darkred;
     color: white;
 }
-main .right .modal-accept .modal-content .accept:hover,
-main .right .modal-accept .modal-content .accept:focus{
+main .right .modal-accept .modal-content button:hover,
+main .right .modal-accept .modal-content button:focus{
     background-color: #38ef7d;
     color: white;
 }

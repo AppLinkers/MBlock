@@ -1,6 +1,7 @@
 package com.example.MBlock.controller;
 
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
+import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
@@ -90,11 +91,17 @@ public class UserAuthController {
 
     //admin page controller
 
-    @GetMapping("/admin/memberManage")
+    @GetMapping("/admin/member")
     public String manageUser(Model model) {
         model.addAttribute("userList", userService.getUserInfoAll());
-        return "memberManage";
+        return "admin_member";
     }
+
+//    @PostMapping("member/update/{id}")
+//    public String updateMemberStatus(@PathVariable (value="id") long id, @ModelAttribute("status")  writeAnnounceReq) throws IOException {
+//        announceService.updateAnnounce(writeAnnounceReq,id);
+//        return "redirect:/admin/announce";
+//    }
 
     @GetMapping("/admin/announce")
     public String manageAnnounce(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {

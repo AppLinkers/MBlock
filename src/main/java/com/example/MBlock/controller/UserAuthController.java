@@ -1,6 +1,7 @@
 package com.example.MBlock.controller;
 
 import com.example.MBlock.domain.Announce;
+import com.example.MBlock.domain.type.Approved;
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
@@ -120,11 +121,12 @@ public class UserAuthController {
     public String memberUpdate(@PathVariable(value = "id") long id, Model model){
         model.addAttribute("member", userService.getUserById(id));
         model.addAttribute("id", id);
-        return "admin_member_update";
+        return "admin_member_detail";
     }
 
     @PostMapping("/member/update/{id}")
-    public String updateMember(@PathVariable (value="id") long id, @ModelAttribute("user") UserUpdateReq userUpdateReq) throws IOException{
+    public String updateMember(@PathVariable (value="id") long id, @ModelAttribute("member") UserUpdateReq userUpdateReq) throws IOException{
+        userUpdateReq.setApproved(Approved.ACCEPTED);
         userService.updateMember(userUpdateReq,id);
         return "redirect:/admin/member";
     }

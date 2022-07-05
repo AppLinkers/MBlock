@@ -33,7 +33,7 @@ public class UserService {
 
         return GetUserInfoRes.builder()
                 .name(user.getName())
-                .id(user.getId())
+                .login_id(user.getLogin_id())
                 .role(user.getRole())
                 .phone(user.getPhone())
                 .profile_img(user.getProfile_img())
@@ -50,8 +50,8 @@ public class UserService {
         user.setRole(request.getRole());
         user.setPhone(request.getPhone());
 
-        if (request.getProfileImg() != null) {
-            String imgUrl = s3Uploader.upload(request.getProfileImg().get(), "member");
+        if (request.getProfile_img() != null) {
+            String imgUrl = s3Uploader.upload(request.getProfile_img().get(), "member");
             user.setProfile_img(imgUrl);
         }
         userRepository.save(user);

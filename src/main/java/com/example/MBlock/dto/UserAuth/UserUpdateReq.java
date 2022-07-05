@@ -14,7 +14,7 @@ public class UserUpdateReq {
 
     private String phone;
 
-    private Optional<MultipartFile> profileImg;
+    private Optional<MultipartFile> profile_img;
 
     private Approved approved;
 }

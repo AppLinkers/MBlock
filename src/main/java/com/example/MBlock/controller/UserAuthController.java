@@ -8,6 +8,7 @@ import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.UserAuth.ChangeUserApprovedReq;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
+import com.example.MBlock.dto.UserAuth.UserUpdateReq;
 import com.example.MBlock.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -61,6 +62,16 @@ public class UserAuthController {
         return "login";
     }
 
+    @GetMapping("/")
+    public String index(Model model) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<GetNewsRes> topNews = newsService.getTop3News();
+        model.addAttribute("partnerList", adminService.getPartnerAll());
+        model.addAttribute("topNews", topNews);
+        model.addAttribute("name", name);
+        return "index";
+    }
+
     @GetMapping("/main")
     public String main(Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -110,6 +121,12 @@ public class UserAuthController {
         model.addAttribute("member", userService.getUserById(id));
         model.addAttribute("id", id);
         return "admin_member_update";
+    }
+
+    @PostMapping("/member/update/{id}")
+    public String updateMember(@PathVariable (value="id") long id, @ModelAttribute("user") UserUpdateReq userUpdateReq) throws IOException{
+        userService.updateMember(userUpdateReq,id);
+        return "redirect:/admin/member";
     }
 
     @PostMapping("/member/status/{id}")

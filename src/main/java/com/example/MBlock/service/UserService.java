@@ -4,13 +4,17 @@ import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.User;
 import com.example.MBlock.domain.type.Approved;
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
+import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.User.GetUserInfoRes;
 import com.example.MBlock.dto.User.GetUserProfileRes;
+import com.example.MBlock.dto.UserAuth.UserUpdateReq;
 import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +25,7 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-
+    private final S3Uploader s3Uploader;
 
     public GetUserInfoRes getUserById(long id){
 
@@ -33,7 +37,24 @@ public class UserService {
                 .role(user.getRole())
                 .phone(user.getPhone())
                 .profile_img(user.getProfile_img())
+                .approved(user.getApproved().toString())
                 .build();
+    }
+
+
+    @Transactional
+    public void updateMember(UserUpdateReq request, Long memberId) throws IOException {
+        User user = userRepository.findById(memberId).get();
+
+        user.setApproved(request.getApproved());
+        user.setRole(request.getRole());
+        user.setPhone(request.getPhone());
+
+        if (request.getProfileImg() != null) {
+            String imgUrl = s3Uploader.upload(request.getProfileImg().get(), "member");
+            user.setProfile_img(imgUrl);
+        }
+        userRepository.save(user);
     }
 
     // Read All

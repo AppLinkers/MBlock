@@ -52,8 +52,8 @@
                                 <p class="info" th:text="${member.login_id}">멤버 아이디</p>
                                 <div class="info" th:text="${member.role}">Coin master</div>
                                 <div class="info" th:text="${member.phone}">010-0000-0000</div>
-                                <div class="control-accept" th:if="${member.approved.equals('PENDING')}">pending</div>
-                                <div class="control-accept" th:unless="${member.approved.equals('PENDING')}"><i class="fa-solid fa-check" style="color: #11998e;"></i></div>
+                                <div class="control-accept" th:if="${member.approved.equals('PENDING')}" onclick="acceptModal()">pending</div>
+                                <div class="control-accept" th:unless="${member.approved.equals('PENDING')}" ><i class="fa-solid fa-check" style="color: #11998e;"></i></div>
                                 <div class="control-delete" id="delete"><i class="fa-solid fa-trash-can"></i></div>
 
 <!--                                삭제 모달-->
@@ -67,7 +67,7 @@
                                 </div>
 
 <!--                                승인 모달-->
-                                <div class="modal-accept">
+                                <div th:class="modal-accept" style="display: none">
                                     <form th:method="post" th:action="@{/member/update/{id}(id=${member.login_id})}">
                                         <div class="modal-content">
                                             <i class="fa-solid fa-xmark"></i>

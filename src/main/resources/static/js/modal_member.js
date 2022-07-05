@@ -26,11 +26,19 @@ window.onclick = function(event){
 }
 
 //승인 버튼
-acceptBtns.forEach(acceptBtn => {
-    acceptBtn.addEventListener('click',()=> {
-        modalAccept.style.display = "block";
-    })
-})
+// acceptBtns.forEach(acceptBtn => {
+//     acceptBtn.addEventListener('click',()=> {
+//         modalAccept.style.display = "block";
+//     })
+// })
+
+function acceptModal(){
+    modalAccept.style.display = "block";
+}
+
+
+
+
 xBtnAccept.onclick = function(){
     modalAccept.style.display = "none";
 }

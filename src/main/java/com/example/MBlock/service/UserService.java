@@ -1,7 +1,9 @@
 package com.example.MBlock.service;
 
+import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.User;
 import com.example.MBlock.domain.type.Approved;
+import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.User.GetUserInfoRes;
 import com.example.MBlock.dto.User.GetUserProfileRes;
 import com.example.MBlock.repository.UserRepository;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +21,20 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+
+
+    public GetUserInfoRes getUserById(long id){
+
+        User user = userRepository.findById(id).get();
+
+        return GetUserInfoRes.builder()
+                .name(user.getName())
+                .id(user.getId())
+                .role(user.getRole())
+                .phone(user.getPhone())
+                .profile_img(user.getProfile_img())
+                .build();
+    }
 
     // Read All
     public List<GetUserProfileRes> getUserProfileAll() {

@@ -201,7 +201,7 @@ section {
     padding: 5rem 0;
 }
 
-section:nth-child(2n+1){
+section:nth-child(2n){
     background-color: #f8f8f8;
 }
 
@@ -282,7 +282,7 @@ section .board-con .board-inner .content h3{
     display: -webkit-box;
     -webkit-line-clamp: 2; /* 라인수 */
     -webkit-box-orient: vertical;
-    word-wrap:break-word;
+    word-wrap:break-word; 
     line-height: 1.2em;
     height: 2.4em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
@@ -295,10 +295,10 @@ section .board-con .board-inner .content p{
     display: -webkit-box;
     -webkit-line-clamp: 3; /* 라인수 */
     -webkit-box-orient: vertical;
-    word-wrap:break-word;
+    word-wrap:break-word; 
     line-height: 1.2em;
     height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-
+  
 }
 section .more{
     display: flex;
@@ -328,7 +328,33 @@ section .more i{
 }
 
 /* associate */
-
+section .partner-list{
+    display: flex;
+    flex-direction: column;
+}
+section .partner-list ul::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+section .partner-list ul li{
+    float: left;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+section .partner-list ul li img{
+    height: 75px;
+    margin-bottom: 2rem;
+}
+section .partner-list ul li p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 /* bottom */
 section .bottom-nav{
     width: 100%;

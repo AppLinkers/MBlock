@@ -70,7 +70,7 @@ public class NewsService {
                 .build();
     }
 
-    public List<GetNewsRes> getTop3NewsOrderByUpdatedAtDesc() {
+    public List<GetNewsRes> getTop3News() {
         List<GetNewsRes> result = new ArrayList<>();
 
         List<News> newsList = newsRepository.findTop3ByOrderByUpdatedAtDesc();

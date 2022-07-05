@@ -62,7 +62,7 @@
                 <button>Learn more <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
-		<div class="board-con" style="margin-top: 100px;" th:each="news : ${newsList}">
+		<div class="board-con" style="margin-top: 100px;">
 			<div class="board-inner">
 				<div class="img">
 					<img src="../images/mock1.png" alt="샘플2">
@@ -90,16 +90,16 @@
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
 				</div>
 			</div>
-<!--			<div class="board-inner"><a th:href="@{/news?id=} + ${news.id}">-->
-<!--				<div class="img">-->
-<!--					<img th:src="${news.imgUrl}" alt="샘플4">-->
-<!--				</div>-->
-<!--				<div class="content">-->
-<!--					<h3 th:text="${news.title}">Title</h3>-->
-<!--					<p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>-->
-<!--				</div>-->
-<!--			</a>-->
-<!--			</div>-->
+			<div class="board-inner" th:each="news : ${newsList}"><a th:href="@{/news?id=} + ${news.id}">
+				<div class="img">
+					<img th:src="${news.imgUrl}" alt="샘플4">
+				</div>
+				<div class="content">
+					<h3 th:text="${news.title}">Title</h3>
+					<p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
+				</div>
+			</a>
+			</div>
 
 		</div>
 	</div>

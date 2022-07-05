@@ -4,6 +4,7 @@ import com.example.MBlock.domain.Announce;
 import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
+import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.dto.UserAuth.ChangeUserApprovedReq;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
@@ -32,6 +33,7 @@ public class UserAuthController {
 
     private final UserAuthService userAuthService;
     private final AnnounceService announceService;
+    private final NewsService newsService;
     private final ConsultingService consultingService;
     private final UserService userService;
     private final AdminService adminService;
@@ -62,6 +64,9 @@ public class UserAuthController {
     @GetMapping("/main")
     public String main(Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<GetNewsRes> topNews = newsService.getTop3News();
+        model.addAttribute("partnerList", adminService.getPartnerAll());
+        model.addAttribute("topNews", topNews);
         model.addAttribute("name", name);
         return "index";
     }
@@ -100,7 +105,14 @@ public class UserAuthController {
         return "admin_member";
     }
 
-    @PostMapping("/member/update/{id}")
+    @GetMapping("/member/update/{id}")
+    public String memberUpdate(@PathVariable(value = "id") long id, Model model){
+        model.addAttribute("member", userService.getUserById(id));
+        model.addAttribute("id", id);
+        return "admin_member_update";
+    }
+
+    @PostMapping("/member/status/{id}")
     public String updateMemberStatus(@PathVariable (value="id") String id,ChangeUserApprovedReq request) throws IOException {
         System.out.println(id);
         request.setUserLoginId(id);
@@ -129,7 +141,7 @@ public class UserAuthController {
     }
 
     @GetMapping("/admin/invest")
-    public String manageInvest(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String manageInvest(Model model) {
         return "admin_invest";
     }
 

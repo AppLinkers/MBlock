@@ -59,6 +59,7 @@ public class NewsController {
     @RequestMapping(value = "/news", method = RequestMethod.GET, params = "id")
     public String newsDetail(Model model, @RequestParam("id") Long id) {
         model.addAttribute("news", newsService.getNews(id));
+        model.addAttribute("topNews", newsService.getTop3News());
         return "news_detail";
     }
 
@@ -87,5 +88,6 @@ public class NewsController {
         newsService.deleteNews(id);
         return "redirect:/admin/news";
     }
+
 
 }

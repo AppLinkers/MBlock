@@ -48,8 +48,8 @@
                     <div class="list">
                         <ul th:each="member : ${userList}">
                             <li>
-                                <div class="info-name" th:text="${member.name}">멤버 이름</div>
-                                <p class="info" th:text="${member.login_id}">멤버 아이디</p>
+                                <div class="info-name" th:text="${member.name}"><a th:href="@{/member/update/{id}(id=${member.id})}">멤버 이름</a></div>
+                                <div class="info" th:text="${member.login_id}">멤버 아이디</div>
                                 <div class="info" th:text="${member.role}">Coin master</div>
                                 <div class="info" th:text="${member.phone}">010-0000-0000</div>
                                 <div class="control-accept" th:if="${member.approved.equals('PENDING')}" onclick="acceptModal()">pending</div>
@@ -68,7 +68,7 @@
 
 <!--                                승인 모달-->
                                 <div th:class="modal-accept" style="display: none">
-                                    <form th:method="post" th:action="@{/member/update/{id}(id=${member.login_id})}">
+                                    <form th:method="post" th:action="@{/member/status/{id}(id=${member.login_id})}">
                                         <div class="modal-content">
                                             <i class="fa-solid fa-xmark"></i>
                                             <strong>승인하시겠습니까?</strong>

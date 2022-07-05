@@ -73,32 +73,15 @@
                 <h3>More News</h3>
             </div>
             <div class="board-con">
-                <div class="board-inner">
+                <div class="board-inner" th:each="news: ${topNews}"><a th:href="@{/news?id=} + ${news.id}">
                     <div class="img">
-                        <img src="../images/mock1.png" alt="샘플2">
+                        <img th:src="${news.imgUrl}" alt="샘플2">
                     </div>
                     <div class="content">
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
+                        <h3 th:text="${news.title}">Title</h3>
+                        <p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
                     </div>
-                </div>
-                <div class="board-inner">
-                    <div class="img">
-                        <img src="../images/mock5.png" alt="샘플3">
-                    </div>
-                    <div class="content">
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-                    </div>
-                </div>
-                <div class="board-inner">
-                    <div class="img">
-                        <img src="../images/mock3.png" alt="샘플4">
-                    </div>
-                    <div class="content">
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-                    </div>
+                </a>
                 </div>
             </div>
         </div>

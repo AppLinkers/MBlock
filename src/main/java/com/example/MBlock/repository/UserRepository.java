@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<List<User>> findUserByApprovedIs(Approved approved);
 
+    @Override
+    Optional<User> findById(Long aLong);
 }

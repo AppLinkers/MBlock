@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/admin_partner.css">
+</head>
+<body>
+<!-- header -->
+<header>
+    <div class="container">
+        <h1>
+            <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+        </h1>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="top">
+            <span>관리자 페이지</span>
+        </div>
+        <div class="content">
+            <div class="left">
+                <ul>
+                    <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
+                    <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+                    <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+                    <li><a th:href="@{/admin/partners}"><div class="list">협력업체 관리</div></a></li>
+                    <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                    <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
+                    <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+                </ul>
+            </div>
+                <div class="right">
+                    <div class="title"><h2>협력사 관리</h2></div>
+                    <div class="control">
+                        <a th:href="@{/partners/add}"><button>추가</button></a>
+                    </div>
+                    <ul>
+                        <li th:each="partnerList: ${partnerList}">
+                            <img th:src="${partnerList.imgUrl}" alt="협력사이미지">
+                            <p th:text="${partnerList.name}">Bitumb</p>
+                            <a th:href="@{/partners/delete/{id}(id=${partnerList.id})}"><button id="delete">삭제</button></a>
+                        </li>
+                    </ul>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <i class="fa-solid fa-xmark"></i>
+                            <strong>삭제하시겠습니까?</strong>
+                            <p>삭제 후 복구가 불가합니다</p>
+                            <div class="delete">삭제하기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../modal.js"></script>
+</body>
+</html>

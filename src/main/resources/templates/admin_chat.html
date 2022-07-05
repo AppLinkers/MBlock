@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/admin_chat.css">
+    <script src="../webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="../webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
+    <script th:inline="javascript">
+        var sock = new SockJS("/ws-stomp");
+        var ws = Stomp.over(sock);
+        var reconnect = 0;
+        var roomId = 0;
+
+
+
+        function connect() {
+            ws.connect({}, function(frame) {
+                ws.subscribe("/sub/chat/room/" + roomId, function (message) {
+                    var messageList = document.getElementById("messageList");
+
+                    var recv = JSON.parse(message.body);
+
+                    var message_body = document.createElement("li");
+
+                    var _message = document.createElement("div");
+                    _message.setAttribute("class", "chat");
+
+                    if (recv.userLoginId === [[${userLoginId}]]) {
+                        message_body.setAttribute("class", "me");
+                    } else {
+                        message_body.setAttribute("class", "other");
+
+                        var name = document.createElement("div");
+                        name.setAttribute("class", "name");
+                        name.textContent = recv.userName;
+                        _message.appendChild(name);
+
+                        var profileImgTag = document.createElement("div");
+                        profileImgTag.setAttribute("class", "profile");
+
+                        var profileImg = document.createElement("img");
+                        profileImg.setAttribute("src", recv.userProfileImg);
+
+                        profileImgTag.appendChild(profileImg);
+
+                        message_body.appendChild(profileImgTag);
+                    }
+
+                    var message_ul = document.createElement("ul");
+                    var message_li = document.createElement("li");
+                    var message_span = document.createElement("span");
+                    console.log(recv.message);
+                    message_span.textContent = recv.message;
+                    message_li.appendChild(message_span);
+                    message_ul.appendChild(message_li);
+
+                    _message.appendChild(message_ul);
+                    message_body.appendChild(_message);
+
+                    messageList.appendChild(message_body);
+                });
+            }, function(error) {
+                if(reconnect++ <= 5) {
+                    setTimeout(function() {
+                        console.log("connection reconnect");
+                        sock = new SockJS("/ws-stomp");
+                        connect();
+                    }, 10*1000);
+                }
+            });
+        }
+        connect();
+
+        function sendMessage() {
+            var send_text = document.getElementById("send_text")
+            ws.send("/pub/message", {}, JSON.stringify({messageType:'TALK', roomId:roomId, message: send_text.value, user_login_id : [[${userLoginId}]]}));
+            send_text.value = '';
+        }
+    </script>
+</head>
+<body>
+<!-- header -->
+<header>
+    <div class="container">
+        <h1>
+            <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+        </h1>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="top">
+            <span>관리자 페이지</span>
+        </div>
+        <div class="content">
+            <div class="left">
+                <ul>
+                    <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
+                    <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+                    <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+                    <li><a th:href="@{/admin/partners}"><div class="list">협력업체 관리</div></a></li>
+                    <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                    <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
+                    <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+                </ul>
+            </div>
+            <div class="mid">
+                <div class="chatBox">
+                    <ul id="messageList">
+                        <div class="date">2022년 06월 22일</div>
+                        <li th:each="message: ${messageList}" th:class="${#strings.equals(message.userLoginId, userLoginId)} ? 'me' : 'other'" >
+                            <div class="profile" th:if="!${#strings.equals(message.userLoginId, userLoginId)}">
+                                <img th:src="${message.userProfileImg}" alt="챗 이미지">
+                            </div>
+                            <div class="chat">
+                                <div class="name" th:text="${message.userName}" th:if="!${#strings.equals(message.userLoginId, userLoginId)}"></div>
+                                <ul>
+                                    <li>
+                                        <span th:text="${message.message}"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+<!--                        <li>-->
+<!--                            <div class="profile">-->
+<!--                                <img src="../images/profile2.jpg" alt="챗이미지">-->
+<!--                            </div>-->
+<!--                            <div class="chat">-->
+<!--                                <div class="name">Jung</div>-->
+<!--                                <ul>-->
+<!--                                    <li>-->
+<!--                                        <span>example chat1</span>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <span>example chat2</span>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <span>example chat3</span>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li class="me">-->
+<!--                            <div class="chat">-->
+<!--                                <ul>-->
+<!--                                    <li>-->
+<!--                                        <span>example chat1</span>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, dignissimos asperiores. Dignissimos dolor debitis, quod dolorum nisi exercitationem illum excepturi quam corrupti! Aliquam, necessitatibus animi. Hic sed voluptates magnam praesentium.</span>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="profile">-->
+<!--                                <img src="../images/profile3.jpg" alt="챗이미지">-->
+<!--                            </div>-->
+<!--                            <div class="chat">-->
+<!--                                <div class="name">Su</div>-->
+<!--                                <ul>-->
+<!--                                    <li>-->
+<!--                                        <span>example chat1</span>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint inventore et fugit totam voluptas sed quidem, dicta dolorum ducimus laudantium aliquam earum nesciunt consequuntur magnam tempore, est, numquam nulla!</span>-->
+<!--                                    </li>-->
+<!--                                    <li id="chat-img">-->
+<!--                                        <img src="../images/mock5.png" alt="">-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </li>-->
+                    </ul>
+                </div>
+                <div class="chatArea">
+                    <i class="fa-solid fa-plus"></i>
+                    <input type="text" id="send_text" onkeypress="javascript:if(event.keyCode==13) {sendMessage()}">
+                    <i class="fa-solid fa-location-arrow" onclick="sendMessage()"></i>
+                </div>
+            </div>
+            <div class="right">
+                <h4>Members</h4>
+                <ul>
+                    <li th:each="userProfile : ${userList}">
+                        <div class="img">
+                            <img th:src="${userProfile.imgUrl}" alt="프로필 예시1">
+                        </div>
+                        <span th:text="${userProfile.name}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -134,7 +134,7 @@ section {
     padding: 5rem 0;
 }
 
-section:nth-child(2n+1){
+section:nth-child(2n){
     background-color: #f8f8f8;
 }
 
@@ -142,7 +142,7 @@ section:nth-child(2n+1){
 main{
     width: 100%;
     height: 642px;
-    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../images/background-7089457_1920.png);
+    background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(../images/background-7089457_1920.png);
     background-size: cover;
     display: flex;
     align-items: center;
@@ -177,7 +177,39 @@ main h3 span::after{
         opacity: 0;
     }
 }
+/* about */
+section .about-inner{
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 8rem;
+}
+section .about-inner .about-img{
+    float: left;
+    width: 30%;
 
+}
+section .about-inner .about-img img{
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+section .about-inner .about-content{
+    float: left;
+    width: 70%;
+    padding: 0 3rem;
+}
+section .about-inner .about-content h4{
+    color: #717171;
+    margin-bottom: 0.5rem;
+}
+section .about-inner .about-content h3{
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+section .about-inner .about-content p{
+    line-height: 1.8;
+    letter-spacing: 1.2px;
+}
 /* members */
 section .title{
     padding: 3rem 0;
@@ -205,8 +237,9 @@ section .member-con .member-inner{
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 1rem;
 }
-section .member-con .member-inner:last-child{
+section .member-con .member-inner:nth-child(3n){
     margin-right: 0;
 }
 section .member-con .member-inner .img{
@@ -227,8 +260,34 @@ section .member-con .member-inner .content p{
     color: #717171;
     font-size: 0.9rem;
 }
-
-/* bottom */
+/* associate */
+section .partner-list{
+    display: flex;
+    flex-direction: column;
+}
+section .partner-list ul::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+section .partner-list ul li{
+    float: left;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+section .partner-list ul li img{
+    height: 75px;
+    margin-bottom: 2rem;
+}
+section .partner-list ul li p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
 /* bottom */
 section .bottom-nav{
     width: 100%;

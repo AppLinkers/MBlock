@@ -1,10 +1,11 @@
 const defaultBtn = document.querySelector("#selectImg");
 const customBtn = document.querySelector("main .form-group .profile-img");
 const img = document.querySelector("main .form-group .profile-img img");
-
+const register = document.getElementById("register");
 function defaultBtnActive(){
     defaultBtn.click();
 }
+
 
 defaultBtn.addEventListener("change",function(){
     const file = this.files[0];

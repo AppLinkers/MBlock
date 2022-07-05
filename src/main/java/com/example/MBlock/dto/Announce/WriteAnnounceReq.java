@@ -9,7 +9,7 @@ import java.util.Optional;
 @Data
 public class WriteAnnounceReq {
 
-    private Long writer_id;
+    private String writer_login_id;
 
     private String title;
 

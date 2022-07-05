@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins&family=Roboto&family=Monoton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/style.css">
@@ -52,7 +53,7 @@
         <p>Ride on highly trained team and huge amount of stack</p>
         <p>Within the best strategy and huge amount of stack,</p>
         <p>it will bring you amount of profits!</p>
-        <button class="start">Get Started</button>
+        <a th:href="@{/consulting}"><button class="start">Get Started!</button></a>
         <button class="down"><i class="fa-solid fa-angle-down"></i></button>
     </div>
 </main>
@@ -84,39 +85,27 @@
         <div class="title">
             <h2>Investment Board</h2>
         </div>
-        <div class="board-con">
-            <div class="board-inner">
+        <div class="board-con" >
+            <div class="board-inner"th:each="news: ${topNews}"><a th:href="@{/news?id=} + ${news.id}">
                 <div class="img">
-                    <img src="../images/mock1.png" alt="샘플1">
+                    <img th:src="${news.imgUrl}" alt="샘플1">
                 </div>
                 <div class="content">
-                    <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
+                    <h3 th:text="${news.title}">Title</h3>
+                    <p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
                 </div>
-            </div>
-            <div class="board-inner">
-                <div class="img">
-                    <img src="../images/mock4.png" alt="샘플2">
-                </div>
-                <div class="content">
-                    <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-                </div>
-            </div>
-            <div class="board-inner">
-                <div class="img">
-                    <img src="../images/mock5.png" alt="샘플3">
-                </div>
-                <div class="content">
-                    <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-                </div>
+            </a>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="more">
             <p><a th:href="@{/invest}">More</a></p>
+=======
+        <a th:href="@{/news}"><div class="more">
+            <p>More</p>
+>>>>>>> 4d7c5fd53bc2170ef09d3eeee2ede01377b5240d
             <i class="fa-solid fa-angle-right"></i>
-        </div>
+        </div></a>
     </div>
 </section>
 <!-- associate -->
@@ -124,6 +113,14 @@
     <div class="container">
         <div class="title">
             <h2>Partners</h2>
+            <div class="partner-list">
+                <ul >
+                    <li th:each="partner: ${partnerList}">
+                        <img th:src="${partner.imgUrl}" alt="협력사이미지">
+                        <p th:text="${partner.name}">ROK CAPITAL</p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/admin_member.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <h1>
+                <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+            </h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="top">
+                <span>관리자 페이지</span>
+            </div>
+            <div class="content">
+                <div class="left">
+                    <ul>
+                        <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
+                        <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+                        <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+                        <li><a th:href="@{/admin/partners}"><div class="list">협력업체 관리</div></a></li>
+                        <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                        <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
+                        <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="title"><h2>멤버 관리</h2></div>
+                    <div class="label">
+                        <div class="info">이름</div>
+                        <div class="info">아이디</div>
+                        <div class="info">직책</div>
+                        <div class="info">휴대폰 번호</div>
+                        <div class="control">승인</div>
+                        <div class="control">삭제</div>
+                    </div>
+                    <div class="list">
+                        <ul th:each="member : ${userList}">
+                            <li>
+                                <div class="info-name" th:text="${member.name}"><a th:href="@{/member/update/{id}(id=${member.id})}">멤버 이름</a></div>
+                                <div class="info" th:text="${member.login_id}">멤버 아이디</div>
+                                <div class="info" th:text="${member.role}">Coin master</div>
+                                <div class="info" th:text="${member.phone}">010-0000-0000</div>
+                                <div class="control-accept" th:if="${member.approved.equals('PENDING')}" onclick="acceptModal()">pending</div>
+                                <div class="control-accept" th:unless="${member.approved.equals('PENDING')}" ><i class="fa-solid fa-check" style="color: #11998e;"></i></div>
+                                <div class="control-delete" id="delete"><i class="fa-solid fa-trash-can"></i></div>
+
+<!--                                삭제 모달-->
+                                <div class="modal">
+                                        <div class="modal-content">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            <strong>삭제하시겠습니까?</strong>
+                                            <p>삭제 후 복구가 불가합니다</p>
+                                            <a th:href="@{/member/delete/{id}(id=${member.id})}"><div class="delete">삭제하기</div></a>
+                                        </div>
+                                </div>
+
+<!--                                승인 모달-->
+                                <div th:class="modal-accept" style="display: none">
+                                    <form th:method="post" th:action="@{/member/status/{id}(id=${member.login_id})}">
+                                        <div class="modal-content">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            <strong>승인하시겠습니까?</strong>
+                                            <p>선택 멤버를 승인합니다</p>
+                                            <span th:text="${member.login_id}"></span>
+                                            <button class="accept">승인하기</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/modal_member.js"></script>
+</body>
+</html>

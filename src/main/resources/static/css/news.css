@@ -231,11 +231,14 @@ section .board-con .board-inner:hover{
 section .board-con .board-inner:nth-child(3n){
     margin-right: 0;
 }
-section .board-con .board-inner img{
+section .board-con .board-inner .img{
     width: 100%;
     height: 60%;
-    display: block;
+}
+section .board-con .board-inner .img img{
     border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 100%;
 }
 section .board-con .board-inner .content{
     padding: 1.5rem;

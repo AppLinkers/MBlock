@@ -15,6 +15,8 @@ public class GetAnnounceRes {
 
     private String writer_name;
 
+    private String writer_img;
+
     private String title;
 
     private String context;

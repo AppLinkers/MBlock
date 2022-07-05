@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../css/admin_announce_add.css">
+</head>
+<body>
+<!-- header -->
+<header>
+    <div class="container">
+        <h1>
+            <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+        </h1>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="top">
+            <span>관리자 페이지</span>
+        </div>
+        <div class="content">
+            <div class="left">
+                <ul>
+                    <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
+                    <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+                    <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+                    <li><a th:href="@{/admin/partners}"><div class="list">협력업체 관리</div></a></li>
+                    <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                    <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
+                    <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="title"><h2>공지사항 수정</h2></div>
+                <form th:method="post" th:action="@{/announce/update/{id}(id=${id})}" th:object="${announce}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>메인 이미지</label>
+                        <input id="selectImg" type="file" th:field="*{imgUrl}"  hidden>
+                        <div class="main-img" onclick="defaultBtnActive()">
+                            <img src="" alt="" >
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            select your image
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">제목</label>
+                        <input type="text" id="title" th:field="*{title}">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">내용</label>
+                        <textarea id="content" autocomplete="off" th:field="*{context}" required></textarea>
+                    </div>
+                    <button>게시하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

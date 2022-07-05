@@ -1,0 +1,344 @@
+/* 기본 구조 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+/* nav */
+
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 9;
+    background: white;
+    align-items: center;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+header button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+header h1 button {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a7e0a5;
+    padding-bottom: 5px;
+}
+header h1 button span {
+    color: #000;
+}
+header nav{
+    height: 100%;
+}
+header nav ul{
+    display: flex;
+    height: 100%;
+}
+header nav ul li{
+    display: flex;
+    padding: 0 50px;
+    position: relative;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+header nav ul li a{
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    transition: all .2s;
+}
+header nav ul li .line{
+    width: 40%;
+    height: 0.3rem;
+    background: linear-gradient(90deg,#11998e,#38ef7d);
+    position: absolute;
+    bottom: 0;
+}
+header nav ul li a i {
+    float: right;
+    margin-left: 10px;
+    padding-top: 3px;
+}
+header nav ul li:hover a{
+    font-weight: bold;
+}
+header nav ul li .dropdown {
+    display: none;
+}
+header nav ul li:hover .dropdown{
+    display: block;
+    position: absolute;
+    top: 80%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 3px 5px 5px #717171;
+}
+header nav ul li:hover .dropdown ul{
+    display: block;
+}
+header nav ul li:hover .dropdown ul li{
+    margin: 0.8rem 0.5rem;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+}
+header nav ul li:hover .dropdown ul li:hover{
+    background-color: #f4f4f4;
+}
+header nav ul li:hover .dropdown ul li a{
+    font-weight: 400;
+    transition: all .2s;
+    padding: 0.75rem 0;
+    font-size: 0.8rem;
+}
+header nav ul li:hover .dropdown ul li:hover a{
+    color: #54c242;
+    font-weight: bold;
+}
+header button i {
+    font-size: 1.2rem;
+    color: #717171;
+}
+
+/* section */
+section {
+    font-family: 'Roboto', sans-serif;
+    padding: 6rem 0;
+}
+
+section:nth-child(2n){
+    background-color: #f8f8f8;
+}
+
+/* main */
+main{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main .background{
+    width: 100%;
+    height: 500px;
+    background: url(../images/mock2.png);
+    background-size: cover;
+    filter: blur(10px);
+}
+main .main-img{
+    width: 40%;
+    padding-bottom: 4rem;
+    margin-top: -450px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #717171;
+}
+main .main-img img{
+    width: 100%;
+    min-height: 450px;
+    border-radius: 10px 10px 0 0;
+}
+main .main-img h3{
+    padding: 3rem 1rem 1rem 1rem;
+    font-size: 2rem;
+}
+main .main-img p{
+    font-size: 0.9rem;
+    color: #717171;
+}
+
+/* board */
+section .content{
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    margin-bottom: 8rem;
+}
+section .writer{
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+}
+section .writer .writer-img{
+    width: 60px;
+    height: 60px;
+    margin-right: 3rem;
+}
+section .writer .writer-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+section .writer .writer-info h4{
+    font-size: 1.3rem;
+}
+section .more{
+    padding: 5rem 0;
+}
+section .board-con::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+section .board-con .board-inner{
+    width: 30%;
+    height: 476px;
+    padding: 0 0 2rem 0;
+    margin-bottom: 2rem;
+    float: left;
+    margin-right: 5%;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #717171;
+}
+section .board-con .board-inner:focus,
+section .board-con .board-inner:hover{
+    animation: updown 1s ease-in-out;
+}
+@keyframes updown{
+    0%{
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+    50%{
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+    }
+    100%{
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+}
+section .board-con .board-inner:nth-child(3n){
+    margin-right: 0;
+}
+section .board-con .board-inner .img{
+    width: 100%;
+    height: 60%;
+}
+section .board-con .board-inner .img img{
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 100%;
+}
+section .board-con .board-inner .content{
+    padding: 1.5rem;
+    height: 40%;
+}
+section .board-con .board-inner .content h3{
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 2.4em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+}
+section .board-con .board-inner .content p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+  
+}
+
+/* bottom */
+section .bottom-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+section .bottom-nav h3{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #a7e0a5;
+}
+section .bottom-nav h3 span{
+    color: #000;
+}
+section .bottom-nav ul{
+    display: flex;
+}
+section .bottom-nav ul li{
+    padding: 0 25px;
+}
+section .bottom-nav ul li a{
+    font-family: 'Roboto', sans-serif;
+    color: #717171;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+section .bottom-nav ul li:hover a{
+    color: #000;
+    transition: all 0.3s ease-in-out;
+}
+section .bottom-info{
+    padding: 0 0 0 0;
+}
+section .bottom-info p{
+    color: #717171;
+    font-weight: bold;
+    font-size: 0.7rem;
+}
+section .bottom-info h4{
+    color: #717171;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 0.5rem 0 1.5rem 0;
+}
+section .bottom-line {
+    width: 100%;
+    height: 1px;
+    background-color: #aaaaaa;
+}
+section .bottom-sns{
+    padding: 0.8rem 0;
+    display: flex;
+    justify-content: flex-end;
+}
+section .bottom-sns a{
+    margin-left: 1rem;
+    font-size: 1.75rem;
+}

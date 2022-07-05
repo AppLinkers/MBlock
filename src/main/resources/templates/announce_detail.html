@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/announce_detail.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <h1>
+                <button><a th:href="@{/main}">M <span>Block</span></a></button>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/main}">Home</a>
+                    </li>
+                    <li><a th:href="@{/business}">Business</a>
+                    </li>
+                    <li><a href="#">Portfolio<i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a th:href="@{/news}">News</a></li>
+                                <li><a th:href="@{/invest}">Investment</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">Customer<i class="fa-solid fa-angle-down"></i></a>
+                        <div class="line"></div>
+                        <div class="dropdown">
+                            <ul>
+                                <li><a th:href="@{/announce}">공지사항</a></li>
+                                <li><a th:href="@{/consulting}">Consulting</a></li>
+                                <li><a th:href="@{/contact}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
+        </div>
+    </header>
+    <!-- board -->
+    <section id="board">
+        <div class="container">
+            <div class="title">
+                <h3>공지사항</h3>
+            </div>
+            <div class="board-main">
+                <div class="left">
+                    <ul>
+                        <li><a th:href="@{/announce}">공지사항</a></li>
+                        <li><a th:href="@{/consulting}">Consulting</a></li>
+                        <li><a th:href="@{/contact}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <h4 th:text="${announce.title}">공지사항 제목</h4>
+                    <div class="info">
+                        <div class="img">
+                            <img th:src="${announce.writer_img}" alt="공지사항이미지">
+                        </div>
+                        <div class="info-inner">
+                            <h5 th:text="${announce.writer_name}">Moo</h5>
+                            <div class="num" th:text="${announce.dateTime}">2022년 06월 22일 17:11</div>
+                            <div class="num">조회수:<span th:text="${announce.viewCount}"></span></div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img th:if="${announce.imgUrl} == ''" src="../images/gradient2.jpg"  alt="공지사항 이미지">
+                        <img th:if="${announce.imgUrl} != ''" th:src="${announce.imgUrl}" th:alt="${announce.imgUrl}">
+                        <div class="content-inner" th:text="${announce.context}">
+                            context
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- bottom -->
+    <section id="bottom">
+        <div class="container">
+            <div class="bottom-nav">
+                <h3>M <span>Block</span></h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Customer</a></li>
+                </ul>
+            </div>
+            <div class="bottom-info">
+                <p>E-mail</p>
+                <h4>aaa@google.com</h4>
+                <p>Tel.</p>
+                <h4>010-9999-9999</h4>
+            </div>
+            <div class="bottom-line"></div>
+            <div class="bottom-sns">
+                <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

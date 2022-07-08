@@ -147,9 +147,6 @@ main .right .list ul li .info-name{
     width: 20%;
     cursor: pointer;
 }
-main .right .list ul li .info-name:hover{
-    text-decoration: underline;
-}
 main .right .list ul li .info{
     float: left;
     width: 20%;

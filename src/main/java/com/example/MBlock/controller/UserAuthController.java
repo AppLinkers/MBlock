@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -124,9 +125,16 @@ public class UserAuthController {
         return "admin_member_detail";
     }
 
+    @ModelAttribute("approvedCode")
+    public List<UserService.ApprvoedCode> apprvoedCodes() {
+        List<UserService.ApprvoedCode> apprvoedCodes = new ArrayList<>();
+        apprvoedCodes.add(new UserService.ApprvoedCode("PENDING","승인 대기중"));
+        apprvoedCodes.add(new UserService.ApprvoedCode("ACCEPTED","승인됨"));
+        return apprvoedCodes;
+    }
+
     @PostMapping("/member/update/{id}")
     public String updateMember(@PathVariable (value="id") long id, @ModelAttribute("member") UserUpdateReq userUpdateReq) throws IOException{
-        userUpdateReq.setApproved(Approved.ACCEPTED);
         userService.updateMember(userUpdateReq,id);
         return "redirect:/admin/member";
     }

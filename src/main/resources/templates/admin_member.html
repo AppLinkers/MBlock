@@ -52,9 +52,9 @@
                                 <div class="info" th:text="${member.login_id}">멤버 아이디</div>
                                 <div class="info" th:text="${member.role}">Coin master</div>
                                 <div class="info" th:text="${member.phone}">010-0000-0000</div>
-                                <div class="control-accept" th:if="${member.approved.equals('PENDING')}" onclick="acceptModal()">pending</div>
+                                <div class="control-accept" th:if="${member.approved.equals('PENDING')}" onclick="acceptModal()">승인 대기중</div>
                                 <div class="control-accept" th:unless="${member.approved.equals('PENDING')}" ><i class="fa-solid fa-check" style="color: #11998e;"></i></div>
-                                <div class="control-delete" id="delete"><a th:href="@{/member/update/{id}(id=${member.id})}">수정하기</a></div>
+                                <div class="control-delete"><a th:href="@{/member/update/{id}(id=${member.id})}">수정하기</a></div>
                             </li>
                         </ul>
                     </div>

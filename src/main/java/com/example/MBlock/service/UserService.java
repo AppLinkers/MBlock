@@ -9,6 +9,8 @@ import com.example.MBlock.dto.User.GetUserInfoRes;
 import com.example.MBlock.dto.User.GetUserProfileRes;
 import com.example.MBlock.dto.UserAuth.UserUpdateReq;
 import com.example.MBlock.repository.UserRepository;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,13 @@ public class UserService {
                 .profile_img(user.getProfile_img())
                 .approved(user.getApproved().toString())
                 .build();
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class ApprvoedCode {
+        private  String code;
+        private  String displayName;
     }
 
 

@@ -66,14 +66,11 @@
                         <div class="edit">
                             <h3>멤버 관리</h3>
                             <div class="select-menu">
-                                <div class="select-btn">
-                                    <span class="sBtn-text" >승인 대기중</span>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </div>
-                                <ul class="options">
-                                    <li class="option"><span class="option-text">승인 대기중</span></li>
-                                    <li class="option"><span class="option-text">승인</span></li>
-                                </ul>
+                                <i class="fa-solid fa-angle-down"></i>
+                                <select th:field="*{approved}" class="form-select">
+                                    <option th:each="approvedCode : ${approvedCode}" th:value="${approvedCode.code}"
+                                            th:text="${approvedCode.displayName}" th:selected="${approvedCode} == ${member.approved}" th:field="*{approved}"></option>
+                                </select>
                             </div>
                             <div class="withdraw">
                                 회원정보 삭제

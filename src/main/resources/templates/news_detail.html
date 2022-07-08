@@ -62,11 +62,11 @@
             </div>
             <div class="writer">
                 <div class="writer-img">
-                    <img src="../images/profile1.jpg" alt="뉴스프로필">
+                    <img th:src="${news.profile_img}" alt="뉴스프로필">
                 </div>
                 <div class="writer-info">
                     <h4 th:text="${news.writer_name}">Moo</h4>
-                    <p>Team Leader</p>
+                    <p th:text="${news.writer_role}">Team Leader</p>
                 </div>
             </div>
             <div class="more">

@@ -13,7 +13,11 @@ public class GetNewsRes {
 
     private Long id;
 
+    private String profile_img;
+
     private String writer_name;
+
+    private String writer_role;
 
     private String title;
 

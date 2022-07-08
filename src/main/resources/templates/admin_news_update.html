@@ -40,9 +40,9 @@
                 <form th:method="post" th:action="@{/news/update/{id}(id=${id})}" th:object="${news}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>메인 이미지</label>
-                        <input id="selectImg" type="file" th:field="*{imgUrl}" >
+                        <input id="selectImg" type="file" th:field="*{imgUrl}" hidden>
                         <div class="main-img" onclick="defaultBtnActive()">
-                            <img src="" alt="" >
+                            <img th:src="${news.imgUrl}" alt="" >
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             select your image
                         </div>

@@ -135,9 +135,8 @@ section {
     padding: 5rem 0;
     width: 100%;
     height: 100%;
-    background: url(../images/gradient1.jpg);
+    background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.3)) ,url(../images/gradient1.jpg);
     background-size: cover;
-    
 }
 section:nth-child(2n+1){
     background-color: #f8f8f8;
@@ -184,22 +183,105 @@ section .profit .profit-inner h4{
 section .profit .profit-inner:last-child{
     margin-right: 0;
 }
+section .control{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 1.5rem;
+}
+section .control .control-upbit,
+section .control .control-binance{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 1.5rem 1rem;
+    border-bottom: 2px solid transparent;
+}
+section .control .control-upbit.active{
+    border-bottom: 2px solid #093687;
+}
+section .control .control-binance.active{
+    border-bottom: 2px solid #F3BA2F;
+}
+section .control .control-upbit.active img,
+section .control .control-binance.active img{
+    filter: saturate(1);
+}
+section .control .control-upbit.active p,
+section .control .control-binance.active p{
+    color: #000;
+}
+section .control .control-upbit img,
+section .control .control-binance img{
+    width: 2rem;
+    height: 2rem;
+    filter: saturate(0);
+    transition: all .3s ease;
+}
+section .control .control-upbit p,
+section .control .control-binance p{
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: #717171;
+    transition: all .3s ease;
+}
+section .control .control-upbit:hover img,
+section .control .control-binance:hover img{
+    filter: saturate(1);
+}
+section .control .control-upbit:hover p,
+section .control .control-binance:hover p{
+    color: #000;
+}
 section .coin{
-    padding: 3rem 0 6rem 0;
+    padding: 1rem 0 6rem 0;
+}
+section .currency{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 2rem;
+}
+section .currency .currency-inner{
+    width: 110px;
+    height: 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem;
+}
+section .currency .currency-inner .currency-select{
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: #555555;
+    cursor: pointer;
+}
+section .currency .currency-inner .currency-select:hover{
+    background: black;
+    color: white;
 }
 section .coin .coin-title{
     margin-bottom: 1rem;
 }
 section .coin .coin-title::after{
-   content: "";
-   display: block;
-   clear: both;
+    content: "";
+    display: block;
+    clear: both;
 }
 section .coin .coin-title .title-inner{
     width: 25%;
     float: left;
     font-size: 0.9rem;
     color: #555555;
+    display: flex;
+    justify-content: right;
+}
+section .coin .coin-title .title-inner:first-child{
+    justify-content: left;
 }
 section .coin .coin-con::after{
     content: "";
@@ -213,8 +295,12 @@ section .coin .coin-con .coin-inner{
     font-size: 0.9rem;
     display: flex;
     align-items: center;
+    justify-content: right;
     padding: 1rem 0;
     font-weight: 600;
+}
+section .coin .coin-con .coin-inner:first-child{
+    justify-content: left;
 }
 section .coin .coin-con .coin-inner .img{
     width: 30px;
@@ -234,8 +320,11 @@ section .coin .coin-con .coin-inner h5{
     margin-top: 2px;
 }
 section .coin .coin-con .coin-inner p{
-    margin-left: 1rem;
     color: darkred;
+}
+section .coin .coin-con .coin-inner small{
+    margin-left: 0.5rem;
+    color: #717171;
 }
 
 /* bottom */

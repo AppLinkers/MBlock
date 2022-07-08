@@ -19,3 +19,17 @@
         updateCount();
     }
 })();
+
+const upbit = document.querySelector("section .control .control-upbit");
+const binance =document.querySelector("section .control .control-binance");
+
+upbit.addEventListener("click", ()=> {
+    upbit.classList.add("active");
+    binance.classList.remove("active");
+})
+binance.addEventListener("click", ()=> {
+    upbit.classList.remove("active");
+    binance.classList.add("active");
+})
+
+const currency = document.querySelector("section .currency .currency-inner .currency-select");

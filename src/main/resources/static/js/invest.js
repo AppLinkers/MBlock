@@ -19,3 +19,12 @@
         updateCount();
     }
 })();
+
+
+
+
+
+function upbitView(){
+    upBitDiv.style.display="block";
+    binanceDiv.style.display="none";
+}

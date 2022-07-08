@@ -71,7 +71,19 @@
             <div class="title">
                 <h3>Chart</h3>
             </div>
-            <div class="coin">
+            <div onclick="
+                var upBitDiv = document.getElementById('upbit');
+                var binanceDiv = document.getElementById('binance');
+                upBitDiv.style.display='none';
+                binanceDiv.style.display='block';">binance</div>
+            <div onclick="
+                var upBitDiv = document.getElementById('upbit');
+                var binanceDiv = document.getElementById('binance');
+                upBitDiv.style.display='block';
+                binanceDiv.style.display='none';">upbit</div>
+
+
+            <div class="coin" id="upbit">
                 <div class="coin-title">
                     <div class="title-inner">Name</div>
                     <div class="title-inner">보유</div>
@@ -103,6 +115,76 @@
                             <img src="../images/eth.png" alt="비트코인">
                         </div>
                         <h4>Ethereum</h4>
+                        <h5>ETH</h5>
+                    </div>
+                    <div class="coin-inner">
+                        600 ETH
+                    </div>
+                    <div class="coin-inner">
+                        $ 21,000,000
+                    </div>
+                    <div class="coin-inner">
+                        $ 1,080,000
+                        <p>+ 65.2%</p>
+                    </div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/bnb.png" alt="bnb">
+                        </div>
+                        <h4>BNB</h4>
+                        <h5>BNB</h5>
+                    </div>
+                    <div class="coin-inner">
+                        100,000 BNB
+                    </div>
+                    <div class="coin-inner">
+                        $ 1,000,000
+                    </div>
+                    <div class="coin-inner">
+                        $ 870,000
+                        <p>+ 26.4%</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!--           binance-->
+
+            <div class="coin" id="binance">
+                <div class="coin-title">
+                    <div class="title-inner">Name</div>
+                    <div class="title-inner">보유</div>
+                    <div class="title-inner">매수 평균</div>
+                    <div class="title-inner">총 수익</div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/bitcoin.png" alt="비트코인">
+                        </div>
+                        <h4>비트코인</h4>
+                        <h5>BHC</h5>
+                    </div>
+                    <div class="coin-inner">
+                        100 BTC
+                    </div>
+                    <div class="coin-inner">
+                        $ 3,000,000
+                    </div>
+                    <div class="coin-inner">
+                        $ 570,000
+                        <p>+ 77.2%</p>
+                    </div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/eth.png" alt="비트코인">
+                        </div>
+                        <h4>이더리움</h4>
                         <h5>ETH</h5>
                     </div>
                     <div class="coin-inner">

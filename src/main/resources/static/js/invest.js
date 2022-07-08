@@ -20,6 +20,7 @@
     }
 })();
 
+// 업비트 아니면 바이낸스 보여주기
 const upbit = document.querySelector("section .control .control-upbit");
 const binance =document.querySelector("section .control .control-binance");
 
@@ -33,3 +34,9 @@ binance.addEventListener("click", ()=> {
 })
 
 const currency = document.querySelector("section .currency .currency-inner .currency-select");
+
+function upbitView(){
+    upBitDiv.style.display="block";
+    binanceDiv.style.display="none";
+}
+

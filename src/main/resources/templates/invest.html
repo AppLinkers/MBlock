@@ -72,16 +72,96 @@
                 <h3>Chart</h3>
             </div>
             <div class="control">
-                <div class="control-upbit active">
+                <div class="control-upbit active"
+                     onclick="var upBitDiv = document.getElementById('upbit');
+                            var binanceDiv = document.getElementById('binance');
+                            upBitDiv.style.display='block';
+                            binanceDiv.style.display='none';">
                     <img src="../images/upbit.svg" alt="업비트 로고">
                     <p><strong>Upbit</strong> 차트</p>
                 </div>
-                <div class="control-binance" >
+                <div class="control-binance"
+                     onclick="var upBitDiv = document.getElementById('upbit');
+                            var binanceDiv = document.getElementById('binance');
+                            upBitDiv.style.display='none';
+                            binanceDiv.style.display='block';" >
                     <img src="../images/binance-logo.svg" alt="바이낸스 로고">
                     <p><strong>Binacne</strong> 차트</p>
                 </div>
             </div>
-            <div class="coin">
+
+
+            <div class="coin" id="upbit">
+                <div class="currency">
+                    <div class="currency-inner">
+                        <div class="currency-select">KRW</div>
+                        <div class="currency-select">USDT</div>
+                    </div>
+                </div>
+                <div class="coin-title">
+                    <div class="title-inner">이름</div>
+                    <div class="title-inner">현재가</div>
+                    <div class="title-inner">전일 대비</div>
+                    <div class="title-inner">거래 대금</div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/bitcoin.png" alt="비트코인">
+                        </div>
+                        <h4>비트코인</h4>
+                        <h5>BHC</h5>
+                    </div>
+                    <div class="coin-inner">
+                        28,757,000
+                    </div>
+                    <div class="coin-inner">
+                        <p>+2.27%</p>
+                    </div>
+                    <div class="coin-inner">
+                        303,331 <small>백만</small>
+                    </div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/eth.png" alt="비트코인">
+                        </div>
+                        <h4>이더리움</h4>
+                        <h5>ETH</h5>
+                    </div>
+                    <div class="coin-inner">
+                        1,638,500
+                    </div>
+                    <div class="coin-inner">
+                        <p>+1.93%</p>
+                    </div>
+                    <div class="coin-inner">
+                        124,898 <small>백만</small>
+                    </div>
+                </div>
+                <div class="coin-con">
+                    <div class="coin-inner">
+                        <div class="img">
+                            <img src="../images/bnb.png" alt="bnb">
+                        </div>
+                        <h4>비앤비</h4>
+                        <h5>BNB</h5>
+                    </div>
+                    <div class="coin-inner">
+                        146,000
+                    </div>
+                    <div class="coin-inner">
+                        <p>+0.76%</p>
+                    </div>
+                    <div class="coin-inner">
+                        11,921 <small>백만</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="coin" id="binance">
                 <div class="currency">
                     <div class="currency-inner">
                         <div class="currency-select">KRW</div>

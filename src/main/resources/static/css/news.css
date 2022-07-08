@@ -156,6 +156,9 @@ section .board-main::after{
     display: block;
     clear: both;
 }
+section .board-main{
+    cursor: pointer;
+}
 section .board-main .left{
     float: left;
     width: 40%;
@@ -164,28 +167,50 @@ section .board-main .left img{
     width: 100%;
     height: 100%;
     border-radius: 15px;
+    cursor: pointer;
 }
 section .board-main .right{
     width: 50%;
     height: 303px;
     float: left;
     padding: 0 2rem;
+    position: relative;
 }
 section .board-main .right h3{
     font-size: 1.8rem;
-    max-lines: 2;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
+    line-height: 1.2em;
+    height: 2.4em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
-section .board-main .right h2{
-    font-size: 1.2rem;
+section .board-main .right p{
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
+    line-height: 1.2em;
+    height: 6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
 section .board-main .right button{
+    position: absolute;
+    bottom: 0;
     background: transparent;
     padding: 0.8rem 1.2rem;
     border: 2px solid #000;
     border-radius: 5px;
-    margin-top: 8rem;
     font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
     color: #000;
     transition: all .2s ease-in-out;
     cursor: pointer;
@@ -193,6 +218,9 @@ section .board-main .right button{
 section .board-main .right button:hover{
     background-color: #000;
     color: white;
+}
+section .board-con{
+    margin-top: 3rem;
 }
 section .board-con::after{
     content: "";
@@ -241,23 +269,33 @@ section .board-con .board-inner .img img{
     height: 100%;
 }
 section .board-con .board-inner .content{
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     height: 40%;
 }
 section .board-con .board-inner .content h3{
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
+    line-height: 1.2em;
+    height: 2.4em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
 section .board-con .board-inner .content p{
+    font-size: 1rem;
+    letter-spacing: 2px;
+    line-height: 1.8;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* 라인수 */
     -webkit-box-orient: vertical;
-    word-wrap:break-word; 
+    word-wrap:break-word;
     line-height: 1.2em;
     height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-  
+
 }
 
 /* bottom */

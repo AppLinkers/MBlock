@@ -149,12 +149,14 @@ main{
 main .background{
     width: 100%;
     height: 500px;
-    background: url(../images/mock2.png);
-    background-size: cover;
+    background: url(../images/mock1.png);
+    background-position: center;
+    background-size:cover;
     filter: blur(10px);
 }
 main .main-img{
     width: 40%;
+    height: 640px;
     padding-bottom: 4rem;
     margin-top: -450px;
     z-index: 2;
@@ -163,10 +165,11 @@ main .main-img{
     align-items: center;
     border-radius: 10px;
     box-shadow: 3px 5px 5px #717171;
+    background: white
 }
 main .main-img img{
     width: 100%;
-    min-height: 450px;
+    height: 450px;
     border-radius: 10px 10px 0 0;
 }
 main .main-img h3{

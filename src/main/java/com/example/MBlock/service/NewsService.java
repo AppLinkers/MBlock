@@ -50,7 +50,7 @@ public class NewsService {
     public Slice<GetNewsRes> getAllNews(Pageable pageable) {
         Slice<News> newsList = newsRepository.findAllBy(pageable);
         return newsList.map(news ->
-                new GetNewsRes(news.getId(), news.getUser().getName(), news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")), news.isMain())
+                new GetNewsRes(news.getId(), news.getUser().getProfile_img() ,news.getUser().getName(), news.getUser().getRole() ,news.getTitle(), news.getContext(), news.getImgUrl(), news.getViewCount(), news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")), news.isMain())
         );
     }
 
@@ -61,7 +61,9 @@ public class NewsService {
 
         return GetNewsRes.builder()
                 .id(news.getId())
+                .profile_img(news.getUser().getProfile_img())
                 .writer_name(news.getUser().getName())
+                .writer_role(news.getUser().getRole())
                 .title(news.getTitle())
                 .context(news.getContext())
                 .imgUrl(news.getImgUrl())
@@ -80,6 +82,7 @@ public class NewsService {
                     result.add(GetNewsRes.builder()
                             .id(news.getId())
                             .writer_name(news.getUser().getName())
+                            .writer_role(news.getUser().getRole())
                             .title(news.getTitle())
                             .context(news.getContext())
                             .imgUrl(news.getImgUrl())

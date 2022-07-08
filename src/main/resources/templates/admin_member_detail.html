@@ -72,9 +72,9 @@
                                             th:text="${approvedCode.displayName}" th:selected="${approvedCode} == ${member.approved}" th:field="*{approved}"></option>
                                 </select>
                             </div>
-                            <div class="withdraw">
-                                회원정보 삭제
-                            </div>
+                            <a th:href="@{/member/delete/{id}(id=${id})}">
+                                <div class="withdraw"> 회원정보 삭제 </div>
+                            </a>
                             <button>수정하기</button>
                         </div>
                     </form>

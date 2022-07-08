@@ -72,8 +72,8 @@
                         </div>
                     </div>
                     <div class="content">
-                        <img th:if="${announce.imgUrl} == ''" src="../images/gradient2.jpg"  alt="공지사항 이미지">
-                        <img th:if="${announce.imgUrl} != ''" th:src="${announce.imgUrl}" th:alt="${announce.imgUrl}">
+                        <img th:if="${announce.imgUrl} == ${announce.title}" src="../images/gradient2.jpg"  alt="공지사항 이미지">
+                        <img th:if="${announce.imgUrl} != ${announce.title}" th:src="${announce.imgUrl}" th:alt="${announce.imgUrl}">
                         <div class="content-inner" th:text="${announce.context}">
                             context
                         </div>

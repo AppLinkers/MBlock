@@ -43,7 +43,7 @@ public class PageController {
     @GetMapping("/consulting/replied/{id}")
     public String consultReply(@PathVariable(value="id") Long id){
         consultingService.consultReply(id);
-        return "redirect:/admin/consulting";
+        return "redirect:/admin/consult";
     }
 
     @GetMapping("/business")

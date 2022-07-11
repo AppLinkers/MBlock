@@ -215,6 +215,16 @@ section .board-main .right .form-group textarea{
     padding: 0.8rem;
     line-height: 1.2;
 }
+section .board-main .right .form-group p{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.8rem;
+    height: 300px;
+    overflow-y: auto;
+    line-height: 1.8;
+    word-spacing: 1.5px;
+    font-size: 0.9rem;
+}
 section .board-main .right .select-menu{
     margin-bottom: 1.25rem;
     padding: 0.8rem;

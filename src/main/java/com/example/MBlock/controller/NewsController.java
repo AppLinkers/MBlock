@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,7 +27,9 @@ public class NewsController {
     @GetMapping("/news")
     public String getNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
+        GetNewsRes mainNews = newsService.getMainNews();
         model.addAttribute("newsList", newsList);
+        model.addAttribute("mainNews", mainNews);
         return "news";
     }
 

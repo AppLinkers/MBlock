@@ -54,9 +54,9 @@
             <div class="board-main">
                 <div class="left">
                     <ul>
-                        <li><a th:href="@{/announce}">공지사항</a></li>
-                        <li><a th:href="@{/consulting}">Consulting</a></li>
-                        <li><a th:href="@{/contact}">Contact</a></li>
+                        <li><a th:href="@{/announce}"><span>공지사항</span></a></li>
+                        <li><a th:href="@{/consulting}"><span>Consulting</span></a></li>
+                        <li><a th:href="@{/contact}"><span>Contact</span></a></li>
                     </ul>
                 </div>
                 <div class="right">
@@ -75,7 +75,7 @@
                         </div>
                         <div class="select-menu">
                             <div class="select-btn">
-                                <input class="sBtn-text" id="traderInput" th:field="*{trader}" placeholder="트레이더 선택"> <!--오류잡아야함-->
+                                <input class="sBtn-text" id="traderInput" th:field="*{trader}" placeholder="트레이더 선택" readonly> <!--오류잡아야함-->
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
                             <ul class="options">

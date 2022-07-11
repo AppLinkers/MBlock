@@ -54,12 +54,12 @@
 		</div>
 		<div class="board-main">
             <div class="left">
-                <img src="../images/mock4.png" alt="샘플 1">
+                <img th:src="${mainNews.imgUrl}" alt="샘플 1">
             </div>
             <div class="right">
-                <h3>investment board title</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quod beatae placeat doloribus dicta minima. Provident accusamus fugiat ullam officia architecto cumque hic, soluta culpa, et in, pariatur dignissimos praesentium!</p>
-                <button>Learn more <i class="fa-solid fa-arrow-right"></i></button>
+                <h3 th:text="${mainNews.title}">investment board title</h3>
+                <p th:text="${mainNews.context}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quod beatae placeat doloribus dicta minima. Provident accusamus fugiat ullam officia architecto cumque hic, soluta culpa, et in, pariatur dignissimos praesentium!</p>
+                <a th:href="@{/news?id=} + ${mainNews.id}"><button>Learn more <i class="fa-solid fa-arrow-right"></i></button></a>
             </div>
         </div>
 		<div class="board-con" style="margin-top: 100px;">

@@ -96,7 +96,7 @@ public class NewsService {
         return result;
     }
     public GetNewsRes getMainNews() {
-        Optional<News> mainNews = newsRepository.findNewsByMainIsTrue();
+        Optional<News> mainNews = newsRepository.findNewsByIsMainTrue();
 
         if (mainNews.isPresent()) {
             News news = mainNews.get();

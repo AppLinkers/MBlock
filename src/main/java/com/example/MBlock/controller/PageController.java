@@ -34,9 +34,8 @@ public class PageController {
     public String getConsulting(WriteConsultingReq writeConsultingReq){return "consulting";}
 
     @PostMapping("/consulting")
-    public String writeConsulting(WriteConsultingReq writeConsultingReq, MessageReq message) {
+    public String writeConsulting(WriteConsultingReq writeConsultingReq) {
         consultingService.writeConsulting(writeConsultingReq);
-        messageService.send(message);
         return "redirect:/consulting";
     }
 

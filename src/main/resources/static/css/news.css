@@ -162,6 +162,7 @@ section .board-main{
 section .board-main .left{
     float: left;
     width: 40%;
+    height: 303px;
 }
 section .board-main .left img{
     width: 100%;

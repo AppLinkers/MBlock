@@ -95,25 +95,25 @@ public class NewsService {
 
         return result;
     }
-    public GetNewsRes getMainNews() {
-        Optional<News> mainNews = newsRepository.findNewsByMainIsTrue();
-
-        if (mainNews.isPresent()) {
-            News news = mainNews.get();
-            return GetNewsRes.builder()
-                    .id(news.getId())
-                    .writer_name(news.getUser().getName())
-                    .writer_role(news.getUser().getRole())
-                    .title(news.getTitle())
-                    .context(news.getContext())
-                    .imgUrl(news.getImgUrl())
-                    .viewCount(news.getViewCount())
-                    .dateTime(news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
-                    .build();
-        } else {
-            return new GetNewsRes();
-        }
-    }
+//    public GetNewsRes getMainNews() {
+//        Optional<News> mainNews = newsRepository.findNewsByMainIsTrue();
+//
+//        if (mainNews.isPresent()) {
+//            News news = mainNews.get();
+//            return GetNewsRes.builder()
+//                    .id(news.getId())
+//                    .writer_name(news.getUser().getName())
+//                    .writer_role(news.getUser().getRole())
+//                    .title(news.getTitle())
+//                    .context(news.getContext())
+//                    .imgUrl(news.getImgUrl())
+//                    .viewCount(news.getViewCount())
+//                    .dateTime(news.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
+//                    .build();
+//        } else {
+//            return new GetNewsRes();
+//        }
+//    }
 
     @Modifying
     public void updateNews(WriteNewsReq request, Long newsId) throws IOException {

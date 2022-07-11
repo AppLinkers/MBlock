@@ -40,7 +40,7 @@
                 <form th:method="post" th:action="@{/announce/update/{id}(id=${id})}" th:object="${announce}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>메인 이미지</label>
-                        <input id="selectImg" type="file" th:field="*{imgUrl}"  hidden>
+                        <input id="selectImg" type="file" th:field="*{imgUrl}" >
                         <div class="main-img" onclick="defaultBtnActive()">
                             <img th:src="${announce.imgUrl}" alt="" >
                             <i class="fa-solid fa-cloud-arrow-up"></i>

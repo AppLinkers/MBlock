@@ -52,26 +52,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
-    public DefaultWebSecurityExpressionHandler defaultWebSecurityExpressionHandler() {
-        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
-        roleHierarchy.setHierarchy("ACCEPTED > PENDING");
-
-        DefaultWebSecurityExpressionHandler defaultWebSecurityExpressionHandler = new DefaultWebSecurityExpressionHandler();
-        defaultWebSecurityExpressionHandler.setRoleHierarchy(roleHierarchy);
-
-        return defaultWebSecurityExpressionHandler;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("h2-console/**").permitAll()
-                .mvcMatchers("/login","/" ,"/register", "/main", "/business", "/news", "/invest","/announce" ,"/consulting", "/contact", "/admin","/newsDetail").permitAll()
-                .mvcMatchers("/user").hasAnyRole("PENDING", "ACCEPTED")
-                .mvcMatchers("/admin").hasAnyRole("ACCEPTED")
-                .expressionHandler(defaultWebSecurityExpressionHandler())
-                .anyRequest().authenticated()
+                .antMatchers("/").permitAll()
+                .antMatchers("/user/**").hasAnyAuthority("SYSTEM", "ACCEPTED", "PENDING")
+                .antMatchers("/admin/**").hasAnyAuthority("SYSTEM", "ACCEPTED")
+                .anyRequest().permitAll()
                 .and()
                 .csrf()
                 .ignoringAntMatchers("/h2-console/**")

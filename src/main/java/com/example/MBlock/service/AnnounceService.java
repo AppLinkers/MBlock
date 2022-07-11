@@ -26,17 +26,17 @@ public class AnnounceService {
 
     private final S3Uploader s3Uploader;
 
-    // Create
+    /**
+     * Write Announce
+     */
     public void write(WriteAnnounceReq request) throws IOException {
         String imgUrl = null;
 
-        System.out.println(request);
-
-        if (request.getImgUrl() != null) {
-            imgUrl = s3Uploader.upload(request.getImgUrl().get(), "announce");
+        if (request.getImgFile() != null) {
+            imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
         }
 
-        User user = userRepository.findByUser_id(request.getWriter_login_id()).get();
+        User user = userRepository.findByUserLoginId(request.getWriter_login_id()).get();
 
         Announce announce = Announce.builder()
                 .user(user)
@@ -48,17 +48,30 @@ public class AnnounceService {
         announceRepository.save(announce);
     }
 
-    // Read All - Page
-    public Page<GetAnnounceRes> getAnnounceAll(Pageable pageable) {
+    /**
+     * Read All Announce
+     */
+    public Page<GetAnnounceRes> getAllAnnounce(Pageable pageable) {
         Page<Announce> findAnnounceList = announceRepository.findAll(pageable);
 
         return findAnnounceList.map(announce ->
-                new GetAnnounceRes(announce.getId(), announce.getUser().getName(),announce.getUser().getProfile_img() ,announce.getTitle(), announce.getContext(), announce.getImgUrl(), announce.getViewCount(), announce.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd")))
+                new GetAnnounceRes(
+                        announce.getId(),
+                        announce.getUser().getName(),
+                        announce.getUser().getProfile_img(),
+                        announce.getTitle(),
+                        announce.getContext(),
+                        announce.getImgUrl(),
+                        announce.getViewCount(),
+                        announce.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))
+                )
         );
     }
 
 
-    // Read One
+    /**
+     * Read One Announce
+     */
     public GetAnnounceRes getAnnounce(Long id) {
         Announce announce = announceRepository.findById(id).get();
 
@@ -66,6 +79,7 @@ public class AnnounceService {
         announceRepository.save(announce);
 
         return GetAnnounceRes.builder()
+                .id(announce.getId())
                 .writer_name(announce.getUser().getName())
                 .writer_img(announce.getUser().getProfile_img())
                 .title(announce.getTitle())
@@ -76,17 +90,9 @@ public class AnnounceService {
                 .build();
     }
 
-    // Delete
-    @Modifying
-    public void deleteAnnounce(Long announceId, String writerId) {
-        Announce announce = announceRepository.findById(announceId).get();
-
-        if (announce.getUser().getLogin_id().equals(writerId)) {
-            announceRepository.delete(announce);
-        }
-    }
-
-    //update
+    /**
+     * Update Announce
+     */
     @Transactional
     public void updateAnnounce(WriteAnnounceReq request, Long announceId) throws IOException {
         Announce announce = announceRepository.findById(announceId).get();
@@ -94,13 +100,23 @@ public class AnnounceService {
         announce.setTitle(request.getTitle());
         announce.setContext(request.getContext());
 
-        if (request.getImgUrl() != null) {
-            String imgUrl = s3Uploader.upload(request.getImgUrl().get(), "announce");
+        if (request.getImgFile() != null) {
+            String imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
             announce.setImgUrl(imgUrl);
         }
 
-
         announceRepository.save(announce);
+    }
+
+    /**
+     * Delete Announce
+     */
+    @Modifying
+    public void deleteAnnounce(Long announceId) {
+        Announce announce = announceRepository.findById(announceId).get();
+
+        announceRepository.delete(announce);
+
     }
 
 

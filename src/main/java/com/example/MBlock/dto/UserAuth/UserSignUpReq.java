@@ -11,7 +11,7 @@ public class UserSignUpReq {
 
     private String loginPw;
 
-    private String role;
+    private String position;
 
     private String phone;
 

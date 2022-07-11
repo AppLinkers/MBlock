@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins&family=Roboto&family=Monoton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <!-- header -->
@@ -36,7 +36,7 @@
                     <div class="dropdown">
                         <ul>
                             <li><a th:href="@{/announce}">공지사항</a></li>
-                            <li><a th:href="@{/consulting}">Consulting</a></li>
+                            <li><a th:href="@{/consulting/form}">Consulting</a></li>
                             <li><a th:href="@{/contact}">Contact</a></li>
                         </ul>
                     </div>
@@ -53,7 +53,7 @@
         <p>Ride on highly trained team and huge amount of stack</p>
         <p>Within the best strategy and huge amount of stack,</p>
         <p>it will bring you amount of profits!</p>
-        <a th:href="@{/consulting}"><button class="start">Get Started!</button></a>
+        <a th:href="@{/consulting/form}"><button class="start">Get Started!</button></a>
         <button class="down"><i class="fa-solid fa-angle-down"></i></button>
     </div>
 </main>
@@ -86,7 +86,7 @@
             <h2>Investment Board</h2>
         </div>
         <div class="board-con" >
-            <div class="board-inner"th:each="news: ${topNews}"><a th:href="@{/news?id=} + ${news.id}">
+            <div class="board-inner"th:each="news: ${topNews}"><a th:href="@{|/news/${news.id}|}">
                 <div class="img">
                     <img th:src="${news.imgUrl}" alt="샘플1">
                 </div>

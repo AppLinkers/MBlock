@@ -17,11 +17,11 @@ public class GetUserInfoRes {
 
     private String name;
 
-    private String role;
+    private String position;
 
     private String phone;
 
-    private String approved;
+    private String role;
 
     private String profile_img;
 

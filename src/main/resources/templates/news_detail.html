@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/news_detail.css">
+    <link rel="stylesheet" href="/css/news_detail.css">
 </head>
 <body>
 <!-- header -->
@@ -35,7 +35,7 @@
                     <div class="dropdown">
                         <ul>
                             <li><a th:href="@{/announce}">공지사항</a></li>
-                            <li><a th:href="@{/consulting}">Consulting</a></li>
+                            <li><a th:href="@{/consulting/form}">Consulting</a></li>
                             <li><a th:href="@{/contact}">Contact</a></li>
                         </ul>
                     </div>
@@ -66,14 +66,14 @@
                 </div>
                 <div class="writer-info">
                     <h4 th:text="${news.writer_name}">Moo</h4>
-                    <p th:text="${news.writer_role}">Team Leader</p>
+                    <p th:text="${news.writer_position}">Team Leader</p>
                 </div>
             </div>
             <div class="more">
                 <h3>More News</h3>
             </div>
             <div class="board-con">
-                <div class="board-inner" th:each="news: ${topNews}"><a th:href="@{/news?id=} + ${news.id}">
+                <div class="board-inner" th:each="news: ${topNews}"><a th:href="@{|/news${news.id}|}">
                     <div class="img">
                         <img th:src="${news.imgUrl}" alt="샘플2">
                     </div>

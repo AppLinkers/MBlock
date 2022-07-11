@@ -17,7 +17,7 @@ public class GetNewsRes {
 
     private String writer_name;
 
-    private String writer_role;
+    private String writer_position;
 
     private String title;
 

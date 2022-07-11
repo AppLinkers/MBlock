@@ -18,18 +18,23 @@ public class MessageController {
 
     private final MessageService messageService;
 
+    /**
+     * Admin Chat Page
+     */
     @GetMapping("/admin/chat")
-    public String manageChat(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<MessageRes> messageList = messageService.findByRoomId(0L);
+    public String adminChat(Model model) {
+        String userLoginId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        model.addAttribute("userLoginId", name);
+        model.addAttribute("userLoginId", userLoginId);
         model.addAttribute("userList", messageService.findUserByRoomId(0L));
-        model.addAttribute("messageList", messageList);
+        model.addAttribute("messageList", messageService.findByRoomId(0L));
 
         return "admin_chat";
     }
 
+    /**
+     * Send Message Service
+     */
     @MessageMapping("/message")
     public void message(MessageReq message) {
         messageService.send(message);

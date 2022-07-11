@@ -1,89 +1,65 @@
 package com.example.MBlock.controller;
 
-import com.example.MBlock.domain.Announce;
-import com.example.MBlock.domain.type.Approved;
-import com.example.MBlock.dto.Announce.GetAnnounceRes;
-import com.example.MBlock.dto.Announce.WriteAnnounceReq;
-import com.example.MBlock.dto.Consulting.GetConsultingRes;
-import com.example.MBlock.dto.News.GetNewsRes;
-import com.example.MBlock.dto.UserAuth.ChangeUserApprovedReq;
+import com.example.MBlock.dto.UserAuth.ChangeUserRoleReq;
 import com.example.MBlock.dto.UserAuth.UserLoginReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.dto.UserAuth.UserUpdateReq;
-import com.example.MBlock.service.*;
+import com.example.MBlock.service.UserAuthService;
+import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class UserAuthController {
 
-    private final UserAuthService userAuthService;
-    private final AnnounceService announceService;
-    private final NewsService newsService;
-    private final ConsultingService consultingService;
     private final UserService userService;
-    private final AdminService adminService;
+    private final UserAuthService userAuthService;
 
-    @GetMapping("/register")
-    public String getRegisterForm(UserSignUpReq userSignUpReq) {
+    /**
+     * Register Page
+     */
+    @GetMapping("/register/form")
+    public String registerPage(UserSignUpReq userSignUpReq) {
         return "register";
     }
 
-
-
+    /**
+     * Register Service
+     */
     @PostMapping("/register")
     public String register(UserSignUpReq userSignUpReq) {
         try {
             userAuthService.signUp(userSignUpReq);
         } catch (IOException e) {
-            // image upload 실패
             e.printStackTrace();
         }
         return "redirect:/login";
     }
 
+    /**
+     * Login Page
+     */
     @GetMapping("/login")
-    public String getLoginForm(UserLoginReq userLoginReq) {
+    public String loginPage(UserLoginReq userLoginReq) {
         return "login";
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<GetNewsRes> topNews = newsService.getTop3News();
-        model.addAttribute("partnerList", adminService.getPartnerAll());
-        model.addAttribute("topNews", topNews);
-        model.addAttribute("name", name);
-        return "index";
-    }
-
-    @GetMapping("/main")
-    public String main(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<GetNewsRes> topNews = newsService.getTop3News();
-        model.addAttribute("partnerList", adminService.getPartnerAll());
-        model.addAttribute("topNews", topNews);
-        model.addAttribute("name", name);
-        return "index";
-    }
-
+    /**
+     * Logout Service
+     */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -95,98 +71,53 @@ public class UserAuthController {
         return "redirect:/login";
     }
 
-    @GetMapping("/user")
-    public String user(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        model.addAttribute("name", name);
-        return "user";
-    }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        model.addAttribute("name", name);
-        return "admin";
-    }
-
-
-    //admin page controller
-
+    /**
+     * Read All User Page
+     */
     @GetMapping("/admin/member")
-    public String manageUser(Model model) {
+    public String getUserAll(Model model) {
         model.addAttribute("userList", userService.getUserInfoAll());
         return "admin_member";
     }
 
-    @GetMapping("/member/update/{id}")
-    public String memberUpdate(@PathVariable(value = "id") Long id, Model model){
+    /**
+     * Update User Page
+     */
+    @GetMapping("admin/member/{id}/form")
+    public String memberUpdate(@PathVariable(value = "id") Long id, Model model, UserUpdateReq userUpdateReq){
         model.addAttribute("member", userService.getUserById(id));
         model.addAttribute("id", id);
         return "admin_member_detail";
     }
 
-    @ModelAttribute("approvedCode")
-    public List<UserService.ApprvoedCode> apprvoedCodes() {
-        List<UserService.ApprvoedCode> apprvoedCodes = new ArrayList<>();
-        apprvoedCodes.add(new UserService.ApprvoedCode("PENDING","승인 대기중"));
-        apprvoedCodes.add(new UserService.ApprvoedCode("ACCEPTED","승인됨"));
-        return apprvoedCodes;
-    }
-
-    @PostMapping("/member/update/{id}")
-    public String updateMember(@PathVariable (value="id") long id, @ModelAttribute("member") UserUpdateReq userUpdateReq) throws IOException{
-        System.out.println(userUpdateReq.getProfile_img());
+    /**
+     * Update User Service
+     */
+    @PostMapping("admin/member/{id}")
+    public String updateMember(@PathVariable (value="id") long id, UserUpdateReq userUpdateReq) throws IOException {
         userService.updateMember(userUpdateReq,id);
         return "redirect:/admin/member";
     }
 
-    @PostMapping("/member/status/{id}")
-    public String updateMemberStatus(@PathVariable (value="id") String id,ChangeUserApprovedReq request) throws IOException {
-        System.out.println(id);
+    /**
+     * Update User Role Service
+     */
+    @PostMapping("admin/member/{id}/role")
+    public String updateMemberStatus(@PathVariable (value="id") String id, ChangeUserRoleReq request) {
         request.setUserLoginId(id);
-        request.setApproved("ACCEPTED");
+        request.setRole("ACCEPTED");
         userAuthService.changeUserStatue(request);
         return "redirect:/admin/member";
     }
 
-    @GetMapping("/member/delete/{id}")
+    /**
+     * /delete 제거
+     * Delete User Service
+     */
+    @GetMapping("admin/member/{id}")
     public String deleteMember(@PathVariable(value = "id") long id, Model model){
         userService.deleteMember(id);
         return "redirect:/admin/member";
     }
-
-    @GetMapping("/admin/announce")
-    public String manageAnnounce(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<GetAnnounceRes> announceList = announceService.getAnnounceAll(pageable);
-        model.addAttribute("announceList", announceList);
-        return "admin_announce";
-    }
-
-    @GetMapping("/admin/partners")
-    public String managePartners(Model model) {
-        model.addAttribute("partnerList", adminService.getPartnerAll());
-        return "admin_partner";
-    }
-
-    @GetMapping("/admin/invest")
-    public String manageInvest(Model model) {
-        return "admin_invest";
-    }
-
-    @GetMapping("/admin/consult")
-    public String manageConsult(Model model) {
-        List<GetConsultingRes> consultList = consultingService.getAllConsulting();
-        model.addAttribute("consultList", consultList);
-        return "admin_consult";
-    }
-
-    @RequestMapping(value = "/admin/consult", method = RequestMethod.GET, params = "id")
-    public String consultDetail(Model model, @RequestParam("id") Long id){
-        GetConsultingRes consult = consultingService.getConsulting(id);
-        model.addAttribute("consult", consult);
-        return "admin_consult_detail";
-    }
-
-
-
 }

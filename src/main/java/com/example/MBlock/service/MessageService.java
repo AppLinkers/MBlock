@@ -34,7 +34,7 @@ public class MessageService {
     @Transactional
     public void send(MessageReq request) {
 
-        User user = userRepository.findByUser_id(request.getUser_login_id()).get();
+        User user = userRepository.findByUserLoginId(request.getUser_login_id()).get();
         Room room = roomRepository.findById(request.getRoomId()).get();
 
         Message message = new Message();
@@ -76,7 +76,13 @@ public class MessageService {
         room.getUserAndRoomList().forEach(
                 userAndRoom -> {
                     User user = userAndRoom.getUser();
-                    result.add(GetUserProfileRes.builder().name(user.getName()).role(user.getRole()).imgUrl(user.getProfile_img()).build());
+                    result.add(
+                            GetUserProfileRes.builder().
+                                    name(user.getName()).
+                                    position(user.getPosition()).
+                                    imgUrl(user.getProfile_img()).
+                                    build()
+                    );
                 }
         );
 

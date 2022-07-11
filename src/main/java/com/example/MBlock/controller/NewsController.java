@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,8 +22,11 @@ public class NewsController {
 
     private final NewsService newsService;
 
+    /**
+     * Read All Page
+     */
     @GetMapping("/news")
-    public String getNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String getAllNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
         GetNewsRes mainNews = newsService.getMainNews();
         model.addAttribute("newsList", newsList);
@@ -32,6 +34,18 @@ public class NewsController {
         return "news";
     }
 
+    /**
+     * Read One Page
+     */
+    @GetMapping("/news/{id}")
+    public String getNews(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("news", newsService.getNews(id));
+        return "news_detail";
+    }
+
+    /**
+     * Read All Page for Admin
+     */
     @GetMapping("/admin/news")
     public String manageNews(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Slice<GetNewsRes> newsList = newsService.getAllNews(pageable);
@@ -39,13 +53,18 @@ public class NewsController {
         return "admin_news";
     }
 
-    @GetMapping("/admin/news/add")
+    /**
+     * Write News Page for Admin
+     */
+    @GetMapping("/admin/news/form")
     public String addNews(WriteNewsReq writeNewsReq) {
         return "admin_news_add";
     }
 
-    // write Announce
-    @PostMapping("/news")
+    /**
+     * Write News Service for Admin
+     */
+    @PostMapping("/admin/news")
     public String writeNews(WriteNewsReq writeNewsReq) {
         try {
             String login_id = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -58,36 +77,41 @@ public class NewsController {
         return "redirect:/admin/news";
     }
 
-    @RequestMapping(value = "/news", method = RequestMethod.GET, params = "id")
-    public String newsDetail(Model model, @RequestParam("id") Long id) {
-        model.addAttribute("news", newsService.getNews(id));
-        return "news_detail";
-    }
-
-    @GetMapping("/news/update/{id}")
-    public String goToUpdateNews(@PathVariable(value = "id") long id, Model model) {
+    /**
+     * Update New Page for Admin
+     */
+    @GetMapping("/admin/news/{id}/form")
+    public String updateNewsPage(@PathVariable(value = "id") long id, Model model, WriteNewsReq writeNewsReq) {
         model.addAttribute("news", newsService.getNews(id));
         model.addAttribute("id", id);
         return "admin_news_update";
     }
 
 
-    @PostMapping("/news/update/{id}")
+    /**
+     * Update News Service for Admin
+     */
+    @PostMapping("/admin/news/{id}")
     public String updateNews(@PathVariable(value = "id") long id, WriteNewsReq writeNewsReq) throws IOException {
         newsService.updateNews(writeNewsReq, id);
         return "redirect:/admin/news";
     }
 
-    @PostMapping("/news/main")
-    public void setMainNews(SetMainNewsReq request) {
-        newsService.setMainNews(request);
-
-    }
-
-    @GetMapping("news/delete/{id}")
+    /**
+     * Delete News Service for Admin
+     */
+    @GetMapping("admin/news/{id}")
     public String deleteNews(@PathVariable(value = "id") long id, Model model){
         newsService.deleteNews(id);
         return "redirect:/admin/news";
+    }
+
+    /**
+     * Set Main News Service for Admin
+     */
+    @GetMapping("admin/news/{id}/main")
+    public void setMainNews(@PathVariable(value = "id") Long id) {
+        newsService.setMainNews(id);
     }
 
 }

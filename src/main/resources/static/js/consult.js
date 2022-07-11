@@ -23,7 +23,8 @@ options.forEach(option => {
 
 function nullCheck(){
     if(name != "" && email!= "" && phone != "" && traderInput != ""&& content != ""){
-        alert("상담 제출이 완료되었습니다. 빠른 시일 내로 연락드리겠습니다!")
+        alert("상담 제출이 완료되었습니다. 빠른 시일 내로 연락드리겠습니다!");
+        return true;
     }
 }
 

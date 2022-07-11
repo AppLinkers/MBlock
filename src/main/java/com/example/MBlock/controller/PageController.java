@@ -1,57 +1,92 @@
 package com.example.MBlock.controller;
 
-import com.example.MBlock.domain.Message;
-import com.example.MBlock.dto.Consulting.WriteConsultingReq;
-import com.example.MBlock.dto.Message.MessageReq;
+import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.service.AdminService;
-import com.example.MBlock.service.ConsultingService;
-import com.example.MBlock.service.MessageService;
+import com.example.MBlock.service.NewsService;
 import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class PageController {
 
-    private final AdminService adminService;
-
     private final UserService userService;
-    private final MessageService messageService;
+    private final AdminService adminService;
+    private final NewsService newsService;
 
-    private final ConsultingService consultingService;
+    /**
+     * Main Page
+     */
+    @GetMapping("/")
+    public String index(Model model) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<GetNewsRes> topNews = newsService.getTop3News();
+        model.addAttribute("partnerList", adminService.getPartnerAll());
+        model.addAttribute("topNews", topNews);
+        model.addAttribute("name", name);
+        return "index";
+    }
 
+    @GetMapping("/main")
+    public String main(Model model) {
+        return "redirect:/";
+    }
+
+    /**
+     * Invest Page
+     */
     @GetMapping("/invest")
-    public String getInvest(){return "invest";}
+    public String investPage(){return "invest";}
 
+    /**
+     * Contact Page
+     */
     @GetMapping("/contact")
-    public String getContact(){return "contact";}
+    public String contactPage(){return "contact";}
 
-    @GetMapping("/consulting")
-    public String getConsulting(WriteConsultingReq writeConsultingReq){return "consulting";}
-
-    @PostMapping("/consulting")
-    public String writeConsulting(WriteConsultingReq writeConsultingReq) {
-        consultingService.writeConsulting(writeConsultingReq);
-        return "redirect:/consulting";
-    }
-
-    @GetMapping("/consulting/replied/{id}")
-    public String consultReply(@PathVariable(value="id") Long id){
-        consultingService.consultReply(id);
-        return "redirect:/admin/consult";
-    }
-
+    /**
+     * Business Page
+     */
     @GetMapping("/business")
-    public String getBusiness(Model model){
+    public String businessPage(Model model){
         model.addAttribute("userList", userService.getUserProfileAll());
         model.addAttribute("partnerList", adminService.getPartnerAll());
 
         return "business";
+    }
+
+    /**
+     * 어떤 Page??
+     */
+    @GetMapping("/user")
+    public String user(Model model) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("name", name);
+        return "user";
+    }
+
+    /**
+     * Admin Page for Admin
+     */
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("name", name);
+        return "admin";
+    }
+
+    /**
+     * Read All Invest Page for Admin
+     */
+    @GetMapping("/admin/invest")
+    public String manageInvest(Model model) {
+        return "admin_invest";
     }
 
 

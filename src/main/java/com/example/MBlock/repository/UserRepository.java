@@ -1,7 +1,7 @@
 package com.example.MBlock.repository;
 
 import com.example.MBlock.domain.User;
-import com.example.MBlock.domain.type.Approved;
+import com.example.MBlock.domain.type.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("select u from User u where u.login_id = :user_id")
-    Optional<User> findByUser_id(String user_id);
+    @Query("select u from User u where u.login_id = :userLoginId")
+    Optional<User> findByUserLoginId(String userLoginId);
 
-    Optional<List<User>> findUserByApprovedIs(Approved approved);
+    Optional<List<User>> findUserByRoleIs(Role role);
 
     @Override
-    Optional<User> findById(Long aLong);
+    Optional<User> findById(Long userId);
 }

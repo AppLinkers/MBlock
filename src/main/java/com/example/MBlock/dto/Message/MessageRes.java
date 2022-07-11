@@ -7,9 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MessageRes {
 
     private MessageType messageType; // 생성 및 입장 / 퇴장 / 일반 채팅 / 이미지 채팅 구분

@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/admin_consult_detail.css">
+    <link rel="stylesheet" href="/css/admin_consult_detail.css">
 </head>
 <body>
 <!-- header -->
@@ -29,8 +29,8 @@
                     <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
                     <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
                     <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
-                    <li><a th:href="@{/admin/partners}"><div class="list">협력업체 관리</div></a></li>
-                    <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                    <li><a th:href="@{/admin/partner}"><div class="list">협력업체 관리</div></a></li>
+                    <li><a th:href="@{/admin/consulting}"><div class="list" >개인 문의</div></a></li>
                     <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
                     <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
                 </ul>
@@ -61,11 +61,13 @@
                         <h3>상담내용</h3>
                         <p th:text="${consult.context}">context</p>
                     </div>
-                    <a th:href="@{/consulting/replied/{id}(id=${consult.id})}"><button>답변 완료</button></a>
+                    <form method="POST" th:action="@{|/admin/consulting/${consult.id}|}">
+                        <button type="submit" name="submit" value="value" class="link-button">답변 완료</button>
+                    </form>
                 </div>
             </div>
         </div>
     </main>
-    <script src="../consult_detail.js"></script>
+    <script src="/js/consult_detail.js"></script>
 </body>
 </html>

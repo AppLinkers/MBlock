@@ -1,10 +1,7 @@
 package com.example.MBlock.service;
 
-import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.User;
-import com.example.MBlock.domain.type.Approved;
-import com.example.MBlock.dto.Announce.GetAnnounceRes;
-import com.example.MBlock.dto.Announce.WriteAnnounceReq;
+import com.example.MBlock.domain.type.Role;
 import com.example.MBlock.dto.User.GetUserInfoRes;
 import com.example.MBlock.dto.User.GetUserProfileRes;
 import com.example.MBlock.dto.UserAuth.UserUpdateReq;
@@ -17,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,18 +32,11 @@ public class UserService {
         return GetUserInfoRes.builder()
                 .name(user.getName())
                 .login_id(user.getLogin_id())
-                .role(user.getRole())
+                .position(user.getPosition())
                 .phone(user.getPhone())
                 .profile_img(user.getProfile_img())
-                .approved(user.getApproved().toString())
+                .role(user.getRole().toString())
                 .build();
-    }
-
-    @Data
-    @AllArgsConstructor
-    public static class ApprvoedCode {
-        private  String code;
-        private  String displayName;
     }
 
 
@@ -55,8 +44,8 @@ public class UserService {
     public void updateMember(UserUpdateReq request, Long memberId) throws IOException {
         User user = userRepository.findById(memberId).get();
 
-        user.setApproved(request.getApproved());
         user.setRole(request.getRole());
+        user.setPosition(request.getPosition());
         user.setPhone(request.getPhone());
 
         if (request.getProfile_img() != null) {
@@ -70,13 +59,13 @@ public class UserService {
     public List<GetUserProfileRes> getUserProfileAll() {
         List<GetUserProfileRes> result = new ArrayList<>();
 
-        Optional<List<User>> userList = userRepository.findUserByApprovedIs(Approved.ACCEPTED);
+        Optional<List<User>> userList = userRepository.findUserByRoleIs(Role.ACCEPTED);
 
         userList.ifPresent(users -> users.forEach(
                 u -> {
                     result.add(GetUserProfileRes.builder()
                             .name(u.getName())
-                            .role(u.getRole())
+                            .position(u.getPosition())
                             .imgUrl(u.getProfile_img())
                             .build());
                 }
@@ -88,7 +77,7 @@ public class UserService {
     @Modifying
     public void deleteMember(Long memberId) {
         User user = userRepository.findById(memberId).get();
-            userRepository.delete(user);
+        userRepository.delete(user);
     }
 
     public List<GetUserInfoRes> getUserInfoAll() {
@@ -102,9 +91,9 @@ public class UserService {
                             .id(u.getId())
                             .login_id(u.getLogin_id())
                             .name(u.getName())
-                            .role(u.getRole())
+                            .position(u.getPosition())
                             .phone(u.getPhone())
-                            .approved(u.getApproved().toString())
+                            .role(u.getRole().toString())
                             .profile_img(u.getProfile_img()).build());
                 }
         );

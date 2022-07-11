@@ -1,7 +1,7 @@
 package com.example.MBlock.advice;
 
 import com.example.MBlock.domain.UserDetail;
-import com.example.MBlock.domain.type.Approved;
+import com.example.MBlock.domain.type.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -33,7 +33,7 @@ public class FormAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("invalid");
         }
 
-        if (userDetail.getAuthorities().contains(new SimpleGrantedAuthority(Approved.PENDING.toString()))) {
+        if (userDetail.getAuthorities().contains(new SimpleGrantedAuthority(Role.PENDING.toString()))) {
             throw new InsufficientAuthenticationException("unauthorized");
         }
 

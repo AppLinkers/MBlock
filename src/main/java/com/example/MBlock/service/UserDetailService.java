@@ -22,10 +22,10 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUser_id(username).orElseThrow(() -> new UsernameNotFoundException("아이디가 존재하지 않습니다."));
+        User user = userRepository.findByUserLoginId(username).orElseThrow(() -> new UsernameNotFoundException("아이디가 존재하지 않습니다."));
 
         List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(user.getApproved().toString()));
+        roles.add(new SimpleGrantedAuthority(user.getRole().toString()));
 
         return UserDetail.builder()
                 .username(user.getLogin_id())

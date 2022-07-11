@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/admin_news.css">
+    <link rel="stylesheet" href="/css/admin_news.css">
 </head>
 <body>
 <!-- header -->
@@ -29,8 +29,8 @@
                     <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
                     <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
                     <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
-                    <li><a th:href="@{/admin/partners}"><div class="list">협력업체 관리</div></a></li>
-                    <li><a th:href="@{/admin/consult}"><div class="list" >개인 문의</div></a></li>
+                    <li><a th:href="@{/admin/partner}"><div class="list">협력업체 관리</div></a></li>
+                    <li><a th:href="@{/admin/consulting}"><div class="list" >개인 문의</div></a></li>
                     <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
                     <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
                 </ul>
@@ -38,7 +38,7 @@
                 <div class="right">
                     <div class="title"><h2>투자게시판 관리</h2></div>
                     <div class="control">
-                        <a th:href="@{/admin/news/add}"><button>추가</button></a>
+                        <a th:href="@{/admin/news/form}"><button>추가</button></a>
                         <button>삭제</button>
                     </div>
                     <div class="label">
@@ -54,9 +54,9 @@
                                 <div class="check"><input type="checkbox"></div>
                                 <div class="tit" th:text="${news.title}">Investment board title</div>
                                 <div class="name" th:text="${news.writer_name}">작성자</div>
-                                <div class="date">2022-06-21</div>
-                                <a th:href="@{/news/update/{id}(id=${news.id})}"><div class="fix">수정</div></a>
-                                <a th:href="@{/news/delete/{id}(id=${news.id})}"><div class="fix">삭제</div></a>
+                                <div class="date" th:text="${news.dateTime}">2022-06-21</div>
+                                <a th:href="@{|/admin/news/${news.id}/form|}"><div class="fix">수정</div></a>
+                                <a th:href="@{|/admin/news/${news.id}|}"><div class="fix">삭제</div></a>
                             </li>
                         </ul>
                     </div>

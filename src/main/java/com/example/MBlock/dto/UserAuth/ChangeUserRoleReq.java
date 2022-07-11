@@ -3,10 +3,10 @@ package com.example.MBlock.dto.UserAuth;
 import lombok.Data;
 
 @Data
-public class ChangeUserApprovedReq {
+public class ChangeUserRoleReq {
 
     private String userLoginId;
 
-    private String approved;
+    private String role;
 
 }

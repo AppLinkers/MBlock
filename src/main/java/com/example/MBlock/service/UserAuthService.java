@@ -1,8 +1,8 @@
 package com.example.MBlock.service;
 
 import com.example.MBlock.domain.User;
-import com.example.MBlock.domain.type.Approved;
-import com.example.MBlock.dto.UserAuth.ChangeUserApprovedReq;
+import com.example.MBlock.domain.type.Role;
+import com.example.MBlock.dto.UserAuth.ChangeUserRoleReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpReq;
 import com.example.MBlock.dto.UserAuth.UserSignUpRes;
 import com.example.MBlock.repository.UserRepository;
@@ -33,7 +33,7 @@ public class UserAuthService {
                 .login_id(request.getLoginId())
                 .login_pw(passwordEncoder.encode(request.getLoginPw()))
                 .name(request.getName())
-                .role(request.getRole())
+                .position(request.getPosition())
                 .phone(request.getPhone())
                 .profile_img(imgUrl)
                 .build();
@@ -47,17 +47,17 @@ public class UserAuthService {
     }
 
     public void validateDuplicated(String user_id) {
-        if (userRepository.findByUser_id(user_id).isPresent()) {
+        if (userRepository.findByUserLoginId(user_id).isPresent()) {
             throw new RuntimeException();
         }
     }
 
     @Transactional
-    public void changeUserStatue(ChangeUserApprovedReq request) {
+    public void changeUserStatue(ChangeUserRoleReq request) {
 
-        User user = userRepository.findByUser_id(request.getUserLoginId()).get();
+        User user = userRepository.findByUserLoginId(request.getUserLoginId()).get();
 
-        user.setApproved(Approved.valueOf(request.getApproved()));
+        user.setRole(Role.valueOf(request.getRole()));
 
         userRepository.save(user);
     }

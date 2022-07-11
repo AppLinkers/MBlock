@@ -158,10 +158,12 @@ main .right .list ul li .name{
     float: left;
     width: 10%;
 }
-main .right .list ul li .tit{
+main .right .list ul li a{
     float: left;
     width: 60%;
     cursor: pointer;
+}
+main .right .list ul li .tit{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

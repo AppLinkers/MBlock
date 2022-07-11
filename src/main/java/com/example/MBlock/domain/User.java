@@ -6,6 +6,7 @@ import com.example.MBlock.domain.listener.Auditable;
 import com.example.MBlock.domain.type.Approved;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class User extends BaseEntity implements Auditable {
     @Enumerated(EnumType.STRING)
     private Approved approved = Approved.PENDING;
 
+    @Nullable
     private String profile_img;
 
     @JsonIgnore

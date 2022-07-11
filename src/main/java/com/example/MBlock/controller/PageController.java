@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -34,10 +35,15 @@ public class PageController {
     public String getConsulting(WriteConsultingReq writeConsultingReq){return "consulting";}
 
     @PostMapping("/consulting")
-    public String writeConsulting(WriteConsultingReq writeConsultingReq, MessageReq message) {
+    public String writeConsulting(WriteConsultingReq writeConsultingReq) {
         consultingService.writeConsulting(writeConsultingReq);
-        messageService.send(message);
         return "redirect:/consulting";
+    }
+
+    @GetMapping("/consulting/replied/{id}")
+    public String consultReply(@PathVariable(value="id") Long id){
+        consultingService.consultReply(id);
+        return "redirect:/admin/consulting";
     }
 
     @GetMapping("/business")

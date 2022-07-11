@@ -110,7 +110,9 @@ main .mid{
 main .mid .chatBox{
     height: calc(100vh - 6rem - 135px);
     padding: 2rem 1rem;
-    overflow: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
 }
 main .mid .chatBox .date{
     font-size: 0.7rem;

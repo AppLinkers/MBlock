@@ -32,8 +32,8 @@ public class AnnounceService {
 
         System.out.println(request);
 
-        if (request.getImgFile() != null) {
-            imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
+        if (request.getImgUrl() != null) {
+            imgUrl = s3Uploader.upload(request.getImgUrl().get(), "announce");
         }
 
         User user = userRepository.findByUser_id(request.getWriter_login_id()).get();
@@ -94,8 +94,8 @@ public class AnnounceService {
         announce.setTitle(request.getTitle());
         announce.setContext(request.getContext());
 
-        if (request.getImgFile() != null) {
-            String imgUrl = s3Uploader.upload(request.getImgFile().get(), "announce");
+        if (request.getImgUrl() != null) {
+            String imgUrl = s3Uploader.upload(request.getImgUrl().get(), "announce");
             announce.setImgUrl(imgUrl);
         }
 

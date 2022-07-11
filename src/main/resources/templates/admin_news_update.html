@@ -37,10 +37,10 @@
             </div>
             <div class="right">
                 <div class="title"><h2>투자게시판 수정</h2></div>
-                <form th:method="post" th:action="@{/news/update/{id}(id=${id})}" th:object="${news}" enctype="multipart/form-data">
+                <form th:method="post" th:action="@{/news/update/{id}(id=${id})}" th:object="${writeNewsReq}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>메인 이미지</label>
-                        <input id="selectImg" type="file" th:field="*{imgUrl}" hidden>
+                        <input id="selectImg" type="file" th:field="*{imgFile}" hidden>
                         <div class="main-img" onclick="defaultBtnActive()">
                             <img th:src="${news.imgUrl}" alt="" >
                             <i class="fa-solid fa-cloud-arrow-up"></i>

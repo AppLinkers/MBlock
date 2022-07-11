@@ -23,6 +23,8 @@ public class GetConsultingRes {
 
     private String trader;
 
+    private boolean replied;
+
     private String datetime;
 
 }

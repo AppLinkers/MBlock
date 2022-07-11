@@ -15,5 +15,5 @@ public class WriteAnnounceReq {
 
     private String context;
 
-    private Optional<MultipartFile> imgFile;
+    private Optional<MultipartFile> imgUrl;
 }

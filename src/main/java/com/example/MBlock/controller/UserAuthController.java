@@ -119,7 +119,7 @@ public class UserAuthController {
     }
 
     @GetMapping("/member/update/{id}")
-    public String memberUpdate(@PathVariable(value = "id") long id, Model model){
+    public String memberUpdate(@PathVariable(value = "id") Long id, Model model){
         model.addAttribute("member", userService.getUserById(id));
         model.addAttribute("id", id);
         return "admin_member_detail";
@@ -135,6 +135,7 @@ public class UserAuthController {
 
     @PostMapping("/member/update/{id}")
     public String updateMember(@PathVariable (value="id") long id, @ModelAttribute("member") UserUpdateReq userUpdateReq) throws IOException{
+        System.out.println(userUpdateReq.getProfile_img());
         userService.updateMember(userUpdateReq,id);
         return "redirect:/admin/member";
     }

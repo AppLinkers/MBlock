@@ -47,7 +47,7 @@
                         <div class="label">희망 트레이더</div>
                         <div class="info" th:text="${consult.trader}">trader</div>
                         <div class="label">답변 여부</div>
-                        <div class="info">Y</div>
+                        <div class="info" th:text="${consult.replied}">Y</div>
                     </div>
                     <div class="head">
                         <div class="label">연락처</div>
@@ -61,7 +61,7 @@
                         <h3>상담내용</h3>
                         <p th:text="${consult.context}">context</p>
                     </div>
-                    <button>답변 완료</button>
+                    <a th:href="@{/consulting/replied/{id}(id=${consult.id})}"><button>답변 완료</button></a>
                 </div>
             </div>
         </div>

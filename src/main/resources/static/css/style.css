@@ -248,6 +248,7 @@ section .board-con::after{
 section .board-con .board-inner{
     width: 30%;
     height: 476px;
+    background: white;
     padding: 0 0 2rem 0;
     float: left;
     margin-right: 5%;

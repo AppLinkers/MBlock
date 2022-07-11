@@ -57,8 +57,9 @@
                                     <input type="tel" id="phone" th:field="*{phone}">
                                 </div>
                             </div>
+
                             <div class="img">
-                                <input id="selectImg" type="file" th:field="*{profile_img}" >
+                                <input id="selectImg" type="file" th:field="*{profile_img}" hidden>
                                 <img th:src="${member.profile_img}"  alt="프로필 이미지">
                                 <div class="imgBtn" onclick="defaultBtnActive()"><i class="fa-solid fa-user-pen"></i> 사진 변경</div>
                             </div>

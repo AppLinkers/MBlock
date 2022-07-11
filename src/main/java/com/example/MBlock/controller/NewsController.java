@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -62,7 +61,6 @@ public class NewsController {
     @RequestMapping(value = "/news", method = RequestMethod.GET, params = "id")
     public String newsDetail(Model model, @RequestParam("id") Long id) {
         model.addAttribute("news", newsService.getNews(id));
-        model.addAttribute("topNews", newsService.getTop3News());
         return "news_detail";
     }
 
@@ -75,7 +73,7 @@ public class NewsController {
 
 
     @PostMapping("/news/update/{id}")
-    public String updateNews(@PathVariable(value = "id") long id, @ModelAttribute("news") WriteNewsReq writeNewsReq) throws IOException {
+    public String updateNews(@PathVariable(value = "id") long id, WriteNewsReq writeNewsReq) throws IOException {
         newsService.updateNews(writeNewsReq, id);
         return "redirect:/admin/news";
     }
@@ -91,6 +89,5 @@ public class NewsController {
         newsService.deleteNews(id);
         return "redirect:/admin/news";
     }
-
 
 }

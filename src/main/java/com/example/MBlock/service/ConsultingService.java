@@ -27,6 +27,7 @@ public class ConsultingService {
                 .phone(request.getPhone())
                 .trader(request.getTrader())
                 .context(request.getContext())
+                .privacy(request.isPrivacy())
                 .build();
 
         consultingRepository.save(consulting);
@@ -46,6 +47,7 @@ public class ConsultingService {
                             .phone(c.getPhone())
                             .email(c.getEmail())
                             .context(c.getContext())
+                            .replied(c.isReplied())
                             .trader(c.getTrader())
                             .datetime(c.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))).build());
                 }
@@ -54,11 +56,19 @@ public class ConsultingService {
         return result;
     }
 
+    public void consultReply(Long id){
+        Consulting consulting = consultingRepository.findById(id).get();
+        consulting.setReplied(true);
+        consultingRepository.save(consulting);
+    }
+
 
     public GetConsultingRes getConsulting(Long id) {
         Consulting consulting = consultingRepository.findById(id).get();
 
         return GetConsultingRes.builder()
+                .id(consulting.getId())
+                .replied(consulting.isReplied())
                 .name(consulting.getName())
                 .context(consulting.getContext())
                 .email(consulting.getEmail())

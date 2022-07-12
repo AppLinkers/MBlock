@@ -86,15 +86,16 @@
             <h2>Investment Board</h2>
         </div>
         <div class="board-con" >
-            <div class="board-inner"th:each="news: ${topNews}"><a th:href="@{|/news/${news.id}|}">
-                <div class="img">
-                    <img th:src="${news.imgUrl}" alt="샘플1">
-                </div>
-                <div class="content">
-                    <h3 th:text="${news.title}">Title</h3>
-                    <p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-                </div>
-            </a>
+            <div class="board-inner"th:each="news: ${topNews}">
+                <a th:href="@{|/news/${news.id}|}">
+                    <div class="img">
+                        <img th:src="${news.imgUrl}" alt="샘플1">
+                    </div>
+                    <div class="content">
+                        <h3 th:text="${news.title}">Title</h3>
+                        <p th:text="${news.context}">content</p>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="more">

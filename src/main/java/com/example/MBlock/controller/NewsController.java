@@ -40,6 +40,7 @@ public class NewsController {
     @GetMapping("/news/{id}")
     public String getNews(Model model, @PathVariable("id") Long id) {
         model.addAttribute("news", newsService.getNews(id));
+        model.addAttribute("topNews", newsService.getTop3News());
         return "news_detail";
     }
 
@@ -109,9 +110,10 @@ public class NewsController {
     /**
      * Set Main News Service for Admin
      */
-    @GetMapping("admin/news/{id}/main")
-    public void setMainNews(@PathVariable(value = "id") Long id) {
+    @GetMapping("admin/news/main/{id}")
+    public String setMainNews(@PathVariable(value = "id") Long id) {
         newsService.setMainNews(id);
+        return "redirect:/admin/news";
     }
 
 }

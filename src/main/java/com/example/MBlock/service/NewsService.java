@@ -156,6 +156,7 @@ public class NewsService {
         return GetNewsRes.builder()
                 .id(news.getId())
                 .writer_name(news.getUser().getName())
+                .profile_img(news.getUser().getProfile_img())
                 .writer_position(news.getUser().getPosition())
                 .title(news.getTitle())
                 .context(news.getContext())

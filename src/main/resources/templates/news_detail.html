@@ -73,7 +73,7 @@
                 <h3>More News</h3>
             </div>
             <div class="board-con">
-                <div class="board-inner" th:each="news: ${topNews}"><a th:href="@{|/news${news.id}|}">
+                <div class="board-inner" th:each="news: ${topNews}"><a th:href="@{/news/${news.id}}">
                     <div class="img">
                         <img th:src="${news.imgUrl}" alt="샘플2">
                     </div>

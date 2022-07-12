@@ -35,11 +35,16 @@ public class ConsultingService {
                 .privacy(request.isPrivacy())
                 .build();
 
+        String consultMsg = request.getName()+"님이 Trader "+
+                            request.getTrader()+" 에게 컨설팅 문의가 들어왔습니다"
+                            +" 전화번호 : "+request.getPhone()+
+                            " email : "+ request.getEmail();
+
         MessageReq messageReq = MessageReq.builder()
                 .roomId(0L)
                 .user_login_id("admin")
                 .messageType(MessageType.TALK)
-                .message("consulting 이 작성되었습니다.").build();
+                .message(consultMsg).build();
 
         messageService.send(messageReq);
 

@@ -51,7 +51,7 @@
                     <div class="list">
                         <ul th:each="news : ${newsList}">
                             <li>
-                                <div class="check"><input type="checkbox"></div>
+                                <a th:href="@{|/admin/news/main/${news.id}|}"><div class="check">메인등록하기</div></a>
                                 <div class="tit" th:text="${news.title}">Investment board title</div>
                                 <div class="name" th:text="${news.writer_name}">작성자</div>
                                 <div class="date" th:text="${news.dateTime}">2022-06-21</div>

@@ -53,7 +53,8 @@
                                 </a>
                                 <div class="trader" th:text="${consult.trader}"></div>
                                 <div class="date" th:text="${consult.datetime}"></div>
-                                <div class="answer" th:text="${consult.replied}"></div>
+                                <div class="answer" th:if="${consult.replied}" th:text="Y" style="color: #11998e"></div>
+                                <div class="answer" th:unless="${consult.replied}" th:text="N"></div>
                             </li>
                         </ul>
                     </div>

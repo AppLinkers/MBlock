@@ -142,8 +142,7 @@ main .right .label{
 }
 main .right .label .check{
     float: left;
-    width: 5%;
-
+    width: 10%;
 }
 main .right .label .tit{
     float: left;
@@ -151,7 +150,7 @@ main .right .label .tit{
 }
 main .right .label .name{
     float: left;
-    width: 15%;
+    width: 10%;
 }
 main .right .label .date{
     float: left;
@@ -171,20 +170,15 @@ main .right .list ul li{
 }
 main .right .list ul li .check{
     float: left;
-    width: 5%;
+    width: 10%;
 }
 main .right .list ul li .tit{
     float: left;
     width: 60%;
-    cursor: pointer;
-}
-main .right .list ul li .tit:focus,
-main .right .list ul li .tit:hover{
-    text-decoration: underline;
 }
 main .right .list ul li .name{
     float: left;
-    width: 15%;
+    width: 10%;
 }
 main .right .list ul li .date{
     float: left;

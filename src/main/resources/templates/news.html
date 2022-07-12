@@ -90,15 +90,16 @@
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
 				</div>
 			</div>
-			<div class="board-inner" th:each="news : ${newsList}"><a th:href="@{|/news/${news.id}|}">
-				<div class="img">
-					<img th:src="${news.imgUrl}" alt="샘플4">
-				</div>
-				<div class="content">
-					<h3 th:text="${news.title}">Title</h3>
-					<p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-				</div>
-			</a>
+			<div class="board-inner" th:each="news : ${newsList}" th:unless="${news.isMain()}">
+				<a th:href="@{|/news/${news.id}|}">
+					<div class="img">
+						<img th:src="${news.imgUrl}" alt="샘플4">
+					</div>
+					<div class="content">
+						<h3 th:text="${news.title}">Title</h3>
+						<p th:text="${news.context}">content</p>
+					</div>
+				</a>
 			</div>
 
 		</div>

@@ -47,7 +47,8 @@
                         <div class="label">희망 트레이더</div>
                         <div class="info" th:text="${consult.trader}">trader</div>
                         <div class="label">답변 여부</div>
-                        <div class="info" th:text="${consult.replied}">Y</div>
+                        <div class="info" th:if="${consult.replied}" th:text="Y"></div>
+                        <div class="info" th:unless="${consult.replied}" th:text="N"></div>
                     </div>
                     <div class="head">
                         <div class="label">연락처</div>

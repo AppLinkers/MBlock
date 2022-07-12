@@ -112,7 +112,7 @@
             <div class="mid">
                 <div class="chatBox">
                     <ul id="messageList">
-                        <div class="date">2022년 06월 22일</div>
+                        <div th:if="${}" class="date">2022년 06월 22일</div>
                         <li th:each="message: ${messageList}" th:class="${#strings.equals(message.userLoginId, userLoginId)} ? 'me' : 'other'" >
                             <div class="profile" th:if="!${#strings.equals(message.userLoginId, userLoginId)}">
                                 <img th:src="${message.userProfileImg}" alt="챗 이미지">

@@ -9,10 +9,12 @@ import com.example.MBlock.dto.Consulting.WriteConsultingReq;
 import com.example.MBlock.dto.Message.MessageReq;
 import com.example.MBlock.repository.ConsultingRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +54,10 @@ public class ConsultingService {
 
     }
 
-    public List<GetConsultingRes> getAllConsulting() {
+    public List<GetConsultingRes> getAllConsulting(Pageable pageable) {
         List<GetConsultingRes> result = new ArrayList<>();
 
-        List<Consulting> consultingList = consultingRepository.findAll();
+        Page<Consulting> consultingList = consultingRepository.findAll(pageable);
 
         consultingList.forEach(
                 c -> {

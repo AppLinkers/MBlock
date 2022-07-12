@@ -4,6 +4,9 @@ import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
 import com.example.MBlock.service.ConsultingService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +38,8 @@ public class ConsultingController {
      * Read All Consulting Page for Admin
      */
     @GetMapping("/admin/consulting")
-    public String manageConsult(Model model) {
-        List<GetConsultingRes> consultList = consultingService.getAllConsulting();
+    public String manageConsult(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable ){
+        List<GetConsultingRes> consultList = consultingService.getAllConsulting(pageable);
         model.addAttribute("consultList", consultList);
         return "admin_consult";
     }

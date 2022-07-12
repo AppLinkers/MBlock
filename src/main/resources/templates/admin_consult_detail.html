@@ -55,14 +55,17 @@
                     </div>
                     <div class="head">
                         <div class="label">이메일 </div>
-                        <div class="info" id="copy-email" th:text="${consult.id}">abc@google.com<i class="fa-regular fa-clone"></i></div>
+                        <div class="info" id="copy-email" th:text="${consult.email}">abc@google.com<i class="fa-regular fa-clone"></i></div>
                     </div>
                     <div class="counsel">
                         <h3>상담내용</h3>
                         <p th:text="${consult.context}">context</p>
                     </div>
                     <form method="POST" th:action="@{|/admin/consulting/${consult.id}|}">
-                        <button type="submit" name="submit" value="value" class="link-button">답변 완료</button>
+                        <button type="submit" name="submit" value="value" class="link-button"
+                                th:if="${consult.replied==false}">답변 완료</button>
+                        <button type="submit" name="submit" value="value" class="link-button" style="background-color: #6c6e78"
+                                th:unless="${consult.replied==false}" disabled>답변 완료된 문의</button>
                     </form>
                 </div>
             </div>

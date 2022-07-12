@@ -73,15 +73,16 @@
                 <h3>More News</h3>
             </div>
             <div class="board-con">
-                <div class="board-inner" th:each="news: ${topNews}"><a th:href="@{/news/${news.id}}">
-                    <div class="img">
-                        <img th:src="${news.imgUrl}" alt="샘플2">
-                    </div>
-                    <div class="content">
-                        <h3 th:text="${news.title}">Title</h3>
-                        <p th:text="${news.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam. Voluptates harum dolores quia quibusdam.</p>
-                    </div>
-                </a>
+                <div class="board-inner" th:each="tnews: ${topNews}" th:unless="${tnews.id.equals(news.id)}">
+                    <a th:href="@{/news/${tnews.id}}">
+                        <div class="img">
+                            <img th:src="${tnews.imgUrl}" alt="샘플2">
+                        </div>
+                        <div class="content">
+                            <h3 th:text="${tnews.title}">Title</h3>
+                            <p th:text="${tnews.context}">content</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

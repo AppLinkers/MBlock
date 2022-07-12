@@ -140,14 +140,9 @@ main .right .label{
     padding: 1.2rem 0;
     text-align: center;
 }
-main .right .label .check{
-    float: left;
-    width: 5%;
-
-}
 main .right .label .tit{
     float: left;
-    width: 60%;
+    width: 65%;
 }
 main .right .label .name{
     float: left;
@@ -169,18 +164,9 @@ main .right .list ul li{
     text-align: center;
     border-bottom: 1px solid #f4f4f4;
 }
-main .right .list ul li .check{
-    float: left;
-    width: 5%;
-}
 main .right .list ul li .tit{
     float: left;
-    width: 60%;
-    cursor: pointer;
-}
-main .right .list ul li .tit:focus,
-main .right .list ul li .tit:hover{
-    text-decoration: underline;
+    width: 65%;
 }
 main .right .list ul li .name{
     float: left;

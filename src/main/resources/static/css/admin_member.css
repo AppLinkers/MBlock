@@ -145,92 +145,21 @@ main .right .list ul li{
 main .right .list ul li .info-name{
     float: left;
     width: 20%;
-    cursor: pointer;
 }
 main .right .list ul li .info{
     float: left;
     width: 20%;
 }
-main .right .list ul li .control-delete,
 main .right .list ul li .control-accept{
     float: left;
     width: 10%;
     font-size: 0.7rem;
     color: #717171;
+}
+main .right .list ul li .control-edit{
+    float: left;
+    width: 10%;
+    font-size: 0.7rem;
+    color: #717171;
     cursor: pointer;
-}
-/* modal */
-main .right .modal,
-main .right .modal-accept{
-    display: none;
-    position: fixed;
-    z-index: 10;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-main .right .modal i,
-main .right .modal-accept i{
-    cursor: pointer;
-    float: right;
-}
-main .right .modal .modal-content,
-main .right .modal-accept .modal-content{
-    background-color: white;
-    padding: 2rem 1.5rem 1rem 1.5rem;
-    border-radius: 10px;
-    width: 25%;
-    margin: 25% auto;
-}
-main .right .modal .modal-content strong,
-main .right .modal-accept .modal-content strong{
-    margin-top: 2rem;
-}
-main .right .modal .modal-content p,
-main .right .modal-accept .modal-content p{
-    color: #777777;
-    margin-top: 0.4rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-main .right .modal .modal-content button{
-    color: darkred;
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-top: 3.5rem;
-    text-align: center;
-    width: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0.6rem 0;
-    border-radius: 10px;
-    transition: all .2s;
-}
-main .right .modal-accept .modal-content button{
-    color: #38ef7d;
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-top: 3.5rem;
-    text-align: center;
-    width: 100%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0.6rem 0;
-    border-radius: 10px;
-    transition: all .2s;
-}
-main .right .modal .modal-content button:hover,
-main .right .modal .modal-content button:focus{
-    background-color: darkred;
-    color: white;
-}
-main .right .modal-accept .modal-content button:hover,
-main .right .modal-accept .modal-content button:focus{
-    background-color: #38ef7d;
-    color: white;
 }

@@ -54,7 +54,7 @@
                                 <div class="info" th:text="${member.phone}">010-0000-0000</div>
                                 <div class="control-accept" th:if="${member.role.equals('PENDING')}" onclick="acceptModal()">승인 대기중</div>
                                 <div class="control-accept" th:unless="${member.role.equals('PENDING')}" ><i class="fa-solid fa-check" style="color: #11998e;"></i></div>
-                                <div class="control-delete"><a th:href="@{|/admin/member/${member.id}/form|}">수정하기</a></div>
+                                <div class="control-edit"><a th:href="@{|/admin/member/${member.id}/form|}">수정하기</a></div>
                             </li>
                         </ul>
                     </div>

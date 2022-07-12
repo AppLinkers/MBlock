@@ -39,10 +39,8 @@
                     <div class="title"><h2>공지사항 관리</h2></div>
                     <div class="control">
                         <button><a th:href="@{/admin/announce/form}">추가</a></button>
-                        <button>삭제</button>
                     </div>
                     <div class="label">
-                        <div class="check"></div>
                         <div class="tit">제목</div>
                         <div class="name">작성자</div>
                         <div class="date">작성 날짜</div>
@@ -51,7 +49,6 @@
                     <div class="list">
                         <ul th:each="announce : ${announceList}">
                             <li>
-                                <div class="check"><input type="checkbox"></div>
                                 <div class="tit" th:text="${announce.title}"></div>
                                 <div class="name" th:text="${announce.writer_name}"></div>
                                 <div class="date" th:text="${announce.dateTime}"></div>

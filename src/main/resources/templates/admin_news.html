@@ -39,10 +39,9 @@
                     <div class="title"><h2>투자게시판 관리</h2></div>
                     <div class="control">
                         <a th:href="@{/admin/news/form}"><button>추가</button></a>
-                        <button>삭제</button>
                     </div>
                     <div class="label">
-                        <div class="check"></div>
+                        <div class="check">메인뉴스</div>
                         <div class="tit">제목</div>
                         <div class="name">작성자</div>
                         <div class="date">작성 날짜</div>
@@ -51,7 +50,8 @@
                     <div class="list">
                         <ul th:each="news : ${newsList}">
                             <li>
-                                <a th:href="@{|/admin/news/main/${news.id}|}"><div class="check">메인등록하기</div></a>
+                                <a th:unless="${news.isMain()}" th:href="@{|/admin/news/main/${news.id}|}" class="check">메인등록</a>
+                                <a th:if="${news.isMain()}" class="check"><i class="fa-solid fa-check" style="color: #11998e;"></i></a>
                                 <div class="tit" th:text="${news.title}">Investment board title</div>
                                 <div class="name" th:text="${news.writer_name}">작성자</div>
                                 <div class="date" th:text="${news.dateTime}">2022-06-21</div>

@@ -10,10 +10,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -51,7 +48,7 @@ public class MessageController {
 
     @PostMapping("/message/img")
     @ResponseBody
-    public String chatImg(@ModelAttribute("image") MultipartFile image) throws IOException {
+    public String chatImg(@ModelAttribute("image") @RequestParam(value = "image",required= true) MultipartFile image) throws IOException {
         if (image != null) {
             return s3Uploader.upload(image, "chat");
         } else {

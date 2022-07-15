@@ -43,7 +43,7 @@ public class MessageService {
         message.setRoom(room);
         message.setUser(user);
 
-        if (message.getMessageType().equals(MessageType.TALK) || message.getMessageType().equals(MessageType.TALK)) {
+        if (message.getMessageType().equals(MessageType.TALK) || message.getMessageType().equals(MessageType.FILE)) {
             message.setMessage(request.getMessage());
 
             messageRepository.save(message);

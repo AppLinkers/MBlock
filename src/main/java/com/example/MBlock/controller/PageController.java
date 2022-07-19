@@ -42,19 +42,23 @@ public class PageController {
      * Invest Page
      */
     @GetMapping("/invest")
-    public String investPage(){return "invest";}
+    public String investPage() {
+        return "invest";
+    }
 
     /**
      * Contact Page
      */
     @GetMapping("/contact")
-    public String contactPage(){return "contact";}
+    public String contactPage() {
+        return "contact";
+    }
 
     /**
      * Business Page
      */
     @GetMapping("/business")
-    public String businessPage(Model model){
+    public String businessPage(Model model) {
         model.addAttribute("userList", userService.getUserProfileAll());
         model.addAttribute("partnerList", adminService.getPartnerAll());
 
@@ -90,5 +94,8 @@ public class PageController {
     }
 
 
-
+    @GetMapping("/test")
+    public String testPage() {
+        return "test";
+    }
 }

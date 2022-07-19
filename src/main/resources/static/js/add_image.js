@@ -1,5 +1,5 @@
 const defaultBtn = document.querySelector("#selectImg");
-const customBtn = document.querySelector("main .form-group .main-img");
+// const customBtn = document.querySelector("main .form-group .main-img");
 const img = document.querySelector("main .form-group .main-img img");
 
 function defaultBtnActive(){

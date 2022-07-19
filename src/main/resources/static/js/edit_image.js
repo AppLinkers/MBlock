@@ -1,5 +1,4 @@
 const defaultBtn = document.querySelector("#selectImg");
-const customBtn = document.querySelector("main .right .profile .img .imgBtn");
 const img = document.querySelector("main .right .profile .img img");
 
 function defaultBtnActive(){

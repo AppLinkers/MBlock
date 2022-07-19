@@ -151,6 +151,10 @@ main .mid .chatBox ul li .chat ul li span{
     border-radius: 0 10px 10px 10px;
     max-width: 40%;
 }
+main .mid .chatBox ul li .chat ul li img{
+    max-width: 40%;
+    border-radius: 10px;
+}
 main .mid .chatBox ul li.me ul li{
     justify-content: right;
     margin-top: 0.5rem;
@@ -163,7 +167,7 @@ main .mid .chatBox ul li.me ul li span{
     border-radius: 10px 0 10px 10px;
     max-width: 40%;
 }
-#chat-img img{
+main .mid .chatBox ul li.me ul li img{
     max-width: 40%;
     border-radius: 10px;
 }

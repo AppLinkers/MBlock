@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <h2>WebSocket Test</h2>
+    <div id="output">
+
+    </div>
+</body>
+
+<script language="JavaScript" type="text/javascript">
+    // upBit API 상세 설명
+    // https://docs.upbit.com/docs/upbit-quotation-websocket
+
+    var upBitUrl = "wss://api.upbit.com/websocket/v1";
+    var output;
+    var fileReader = new FileReader();
+
+    var coin_name = {
+        "KRW-ETC" : "이더리움",
+        "KRW-SOL" : "솔라나",
+        "KRW-AVAX" : "아발란체",
+        "KRW-MATIC" : "폴리곤",
+        "KRW-NEAR" : "니어 프로토콜",
+        "KRW-ATOM" : "코스모스",
+        "KRW-ALGO" : "알고랜드",
+        "KRW-ADA" : "에이다",
+        "KRW-DOT" : "폴카닷"
+    }
+
+
+
+
+
+
+    function init() {
+        output = document.getElementById("output");
+        var test = document.createElement('p');
+        test.id = 'testP';
+        testUpBit();
+    }
+
+    function testUpBit() {
+        upBitWebSocket = new WebSocket(upBitUrl);
+        upBitWebSocket.onopen = function (evt) {
+            onOpen(evt);
+        };
+        upBitWebSocket.onclose = function (evt) {
+            onClose(evt);
+        };
+        upBitWebSocket.onmessage = function (evt) {
+            onMessage(evt);
+        };
+        upBitWebSocket.onerror = function (evt) {
+            onError(evt);
+        };
+    }
+
+    function onOpen(evt) {
+        writeToScreen("연결 완료");
+        doSend(
+            JSON.stringify(
+                [
+                    { "ticket" : "test"},
+                    {"type" : "trade" , "codes" : ["KRW-ETC", "KRW-SOL", "KRW-AVAX", "KRW-MATIC", "KRW-NEAR", "KRW-ATOM", "KRW-ALGO", "KRW-ADA", "KRW-DOT"]},
+                    {"format": "SIMPLE"}
+                ]
+            )
+        );
+    }
+
+    function onClose(evt) {
+        console.log("연결 해제");
+    }
+
+    function onMessage(evt) {
+
+        try {
+            fileReader.readAsText(evt.data);
+
+            fileReader.addEventListener("loadend", function(e){
+                parseCoin(e.srcElement.result);
+                // writeToScreen('<span style="color: blue;"> 수신: ' + e.srcElement.result + '</span>')
+            });
+        } catch (error) {
+
+        }
+    }
+
+    function onError(evt) {
+        writeToScreen('<span style="color: red;"> 에러: </span>' + evt.data);
+    }
+
+    function doSend(message) {
+        upBitWebSocket.send(message);
+        writeToScreen("발신: ", message);
+
+    }
+
+    function writeToScreen(message) {
+        var pre = document.createElement("p");
+        pre.innerHTML = message;
+        output.appendChild(pre);
+    }
+
+    function parseCoin(message) {
+        var data = JSON.parse(message);
+        console.log(Object.keys(coin_name)[0])
+        // console.log("코인 종류", coin_name[data['cd']]);
+        // console.log("코인 코드", data['cd'])
+        // console.log("타입", data['ty']);
+
+        if (data['ty'] !== 'orderbook') {
+            //   console.log("현재 가", data['tp']);
+        }
+        //
+        // if(data['cd'] == 'KRW-ETC'){
+        //     ethP.innerHTML = "이더리움 현재가 : " + data['tp'];
+        // }
+        // appe
+
+        for(var i=0; i<Object.keys(coin_name).length; i++){
+            if(data['cd'] == Object.keys(coin_name)[i]){
+                var p = document.createElement('p');
+                p.innerHTML = coin_name[data['cd']]+" 코인 가격 : " + data['tp'];
+                output.appendChild(p);
+            }
+
+        }
+
+
+    }
+
+    window.addEventListener("load", init, false);
+
+</script>
+</html>

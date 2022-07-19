@@ -3,13 +3,20 @@ package com.example.MBlock.controller;
 import com.example.MBlock.dto.Message.MessageReq;
 import com.example.MBlock.dto.Message.MessageRes;
 import com.example.MBlock.service.MessageService;
+import com.example.MBlock.service.S3Uploader;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -17,6 +24,8 @@ import java.util.List;
 public class MessageController {
 
     private final MessageService messageService;
+
+    private final S3Uploader s3Uploader;
 
     /**
      * Admin Chat Page
@@ -38,5 +47,16 @@ public class MessageController {
     @MessageMapping("/message")
     public void message(MessageReq message) {
         messageService.send(message);
+    }
+
+    @PostMapping("/message/img")
+    @ResponseBody
+    public String chatImg(@ModelAttribute("image") MultipartFile image) throws IOException {
+        if (image != null) {
+            return s3Uploader.upload(image, "chat");
+        } else {
+            throw new RuntimeException();
+        }
+
     }
 }

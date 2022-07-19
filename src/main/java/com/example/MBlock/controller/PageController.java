@@ -61,6 +61,8 @@ public class PageController {
     public String businessPage(Model model) {
         model.addAttribute("userList", userService.getUserProfileAll());
         model.addAttribute("partnerList", adminService.getPartnerAll());
+        model.addAttribute("upBitList", adminService.getCurrencyInfoResAllOfTradingSite("UPBIT"));
+        model.addAttribute("binanceList", adminService.getCurrencyInfoResAllOfTradingSite("BINANCE"));
 
         return "business";
     }

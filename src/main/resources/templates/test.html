@@ -35,12 +35,13 @@
 
 
 
-
-
     function init() {
         output = document.getElementById("output");
-        var test = document.createElement('p');
-        test.id = 'testP';
+        for(var i=0; i<Object.keys(coin_name).length; i++){
+            var coinP = document.createElement('p');
+            coinP.id = Object.keys(coin_name)[i];
+            output.appendChild(coinP);
+        }
         testUpBit();
     }
 
@@ -109,7 +110,6 @@
 
     function parseCoin(message) {
         var data = JSON.parse(message);
-        console.log(Object.keys(coin_name)[0])
         // console.log("코인 종류", coin_name[data['cd']]);
         // console.log("코인 코드", data['cd'])
         // console.log("타입", data['ty']);
@@ -125,11 +125,9 @@
 
         for(var i=0; i<Object.keys(coin_name).length; i++){
             if(data['cd'] == Object.keys(coin_name)[i]){
-                var p = document.createElement('p');
-                p.innerHTML = coin_name[data['cd']]+" 코인 가격 : " + data['tp'];
-                output.appendChild(p);
+                var dataP = document.getElementById(Object.keys(coin_name)[i]);
+                dataP.innerHTML = coin_name[data['cd']]+" 코인 가격 : " + data['tp'];
             }
-
         }
 
 

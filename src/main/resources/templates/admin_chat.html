@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/admin_chat.css">
     <script src="../webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
     <script src="../webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
     <!-- header -->
@@ -51,7 +52,7 @@
                                         <li th:if="${#strings.equals(message.messageType.toString(),'TALK')}">
                                             <span th:text="${message.message}"></span>
                                         </li>
-                                        <li th:unless="${#strings.equals(message.messageType.toString(),'TALK')}">
+                                        <li th:if="${#strings.equals(message.messageType.toString(),'FILE')}">
                                             <img th:src="${message.message}">
                                         </li>
                                     </ul>
@@ -59,9 +60,13 @@
                             </li>
                         </ul>
                     </div>
+
                     <div class="chatArea">
-                        <input id="send_img" type="file" accept="image/*" hidden>
-                        <i class="fa-solid fa-plus" onclick="defaultBtnActive()"></i>
+                        <form id="img_form" method="POST" enctype="multipart/form-data">
+                            <input id="addImgBtn" type="file" accept="image/*" name="image" hidden>
+                        </form>
+
+                        <i class="fa-solid fa-plus" onclick="addImgBtn_onClick()"></i>
                         <input type="text" id="send_text" onkeypress="javascript:if(event.keyCode==13) {sendMessage()}">
                         <i class="fa-solid fa-location-arrow" onclick="sendMessage()"></i>
                     </div>
@@ -122,10 +127,17 @@
 
                     var message_ul = document.createElement("ul");
                     var message_li = document.createElement("li");
-                    var message_span = document.createElement("span");
 
-                    message_span.textContent = recv.message;
-                    message_li.appendChild(message_span);
+                    if (recv.messageType === "TALK") {
+                        var message_span = document.createElement("span");
+                        message_span.textContent = recv.message;
+                        message_li.appendChild(message_span);
+                    } else if (recv.messageType === "FILE") {
+                        var message_img = document.createElement("img");
+                        message_img.src = recv.message;
+                        message_li.appendChild(message_img);
+                    }
+
                     message_ul.appendChild(message_li);
 
                     _message.appendChild(message_ul);
@@ -146,12 +158,19 @@
         connect();
 
         //이미지
-        const defaultBtn = document.querySelector("#send_img");
-        function defaultBtnActive(){
-            defaultBtn.click();
+        var addImgBtn = document.querySelector("#addImgBtn");
+        function addImgBtn_onClick(){
+            addImgBtn.click();
         }
-        defaultBtn.addEventListener("change",function(){
+
+        addImgBtn.addEventListener("change",function(){
+
+            // var addImg = document.querySelector("#addImg");
+
             const file = this.files[0];
+            const formData = new FormData();
+            formData.append("image",file);
+
             if(file){
                 const reader = new FileReader();
 
@@ -159,15 +178,54 @@
 
                 reader.onload = function(){
                     const result = reader.result;
+
                 }
 
             }
         })
 
         function sendMessage() {
-            var send_text = document.getElementById("send_text")
-            ws.send("/pub/message", {}, JSON.stringify({messageType:'TALK', roomId:roomId, message: send_text.value, user_login_id : [[${userLoginId}]]}));
-            send_text.value = '';
+            // img 있으면 img 전송
+            var imgForm = $('#img_form')[0];
+            var fileCheck = document.getElementById("addImgBtn");
+            if (fileCheck.value) {
+                // imgForm.submit();
+
+                var formData = new FormData(imgForm);
+                // formData.append("image", imgForm);
+
+
+                $.ajax({
+                    cache : false,
+                    enctype: 'multipart/form-data',
+                    url : "/message/img",
+                    processData: false,
+                    contentType: false,
+                    async : false,
+                    type : "POST",
+                    data : formData,
+                    success : function(data) {
+                        ws.send("/pub/message", {}, JSON.stringify({messageType:'FILE', roomId:roomId, message: data, user_login_id : [[${userLoginId}]]}));
+                        fileCheck.value = '';
+                    }, // success
+
+                    error : function(xhr, status) {
+                        alert(xhr + " : " + status);
+                    }
+                });
+
+            } else {
+            }
+
+            // 텍스트 있으면 텍스트 전송
+
+            var send_text = document.getElementById("send_text");
+
+            if (send_text.value !== '') {
+                ws.send("/pub/message", {}, JSON.stringify({messageType:'TALK', roomId:roomId, message: send_text.value, user_login_id : [[${userLoginId}]]}));
+                send_text.value = '';
+            }
+
         }
     </script>
 

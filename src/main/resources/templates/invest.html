@@ -102,8 +102,9 @@
                     <div class="title-inner">이름</div>
                     <div class="title-inner">현재가</div>
                     <div class="title-inner">전일 대비</div>
-                    <div class="title-inner">거래 대금</div>
+                    <div class="title-inner">거래 대금(백만)</div>
                 </div>
+                <div id="output"></div>
                 <div class="coin-con">
                     <div class="coin-inner">
                         <div class="img">
@@ -267,7 +268,7 @@
         var fileReader = new FileReader();
 
         var coin_name = {
-            "KRW-ETC" : "이더리움",
+            "KRW-ETH" : "이더리움",
             "KRW-SOL" : "솔라나",
             "KRW-AVAX" : "아발란체",
             "KRW-MATIC" : "폴리곤",
@@ -280,13 +281,55 @@
 
 
 
+        function investUI(){
+            output = document.getElementById('output');
+            for(var i=0; i<Object.keys(coin_name).length; i++){
+                var coinConDiv = document.createElement('div');
+                coinConDiv.setAttribute('class', 'coin-con');
+                var coinInnerDiv = document.createElement('div');
+                coinInnerDiv.setAttribute('class', 'coin-inner');
+                var coinImgDiv = document.createElement('div');
+                coinImgDiv.setAttribute('class', 'img');
+                var coinNameP = document.createElement('h4');
+                coinNameP.id = Object.keys(coin_name)[i]+"name";
 
+                var coinCode= document.createElement('h5');
+                coinCode.id = Object.keys(coin_name)[i]+"code";
+
+                var coinPrice = document.createElement('div');
+                coinPrice.id = Object.keys(coin_name)[i]+"price";
+                coinPrice.setAttribute('class', 'coin-inner');
+
+                var coindayDiv= document.createElement('div');
+                coindayDiv.setAttribute('class', 'coin-inner');
+                var coindayP = document.createElement('p');
+                coindayP.id = Object.keys(coin_name)[i]+"dayP";
+
+                var coinTradeDiv = document.createElement('div');
+                coinTradeDiv.id = Object.keys(coin_name)[i]+"trade";
+                coinTradeDiv.setAttribute('class', 'coin-inner');
+
+                coinInnerDiv.appendChild(coinImgDiv);
+                coinInnerDiv.appendChild(coinNameP);
+                coinInnerDiv.appendChild(coinCode);
+                coinConDiv.appendChild(coinInnerDiv);
+
+                coinConDiv.appendChild(coinPrice);
+
+                coindayDiv.appendChild(coindayP);
+                coinConDiv.appendChild(coindayDiv);
+
+                coinConDiv.appendChild(coinTradeDiv);
+
+                output.appendChild(coinConDiv);
+            }
+
+
+        }
 
 
         function init() {
-            output = document.getElementById("output");
-            var test = document.createElement('p');
-            test.id = 'testP';
+            investUI();
             testUpBit();
         }
 
@@ -312,7 +355,7 @@
                 JSON.stringify(
                     [
                         { "ticket" : "test"},
-                        {"type" : "trade" , "codes" : ["KRW-ETC", "KRW-SOL", "KRW-AVAX", "KRW-MATIC", "KRW-NEAR", "KRW-ATOM", "KRW-ALGO", "KRW-ADA", "KRW-DOT"]},
+                        {"type" : "ticker" , "codes" : ["KRW-ETH", "KRW-SOL", "KRW-AVAX", "KRW-MATIC", "KRW-NEAR", "KRW-ATOM", "KRW-ALGO", "KRW-ADA", "KRW-DOT"]},
                         {"format": "SIMPLE"}
                     ]
                 )
@@ -355,24 +398,26 @@
 
         function parseCoin(message) {
             var data = JSON.parse(message);
-            // console.log("코인 종류", coin_name[data['cd']]);
-            // console.log("코인 코드", data['cd'])
-            // console.log("타입", data['ty']);
-
-            if (data['ty'] !== 'orderbook') {
-                //   console.log("현재 가", data['tp']);
-            }
-            //
-            // if(data['cd'] == 'KRW-ETC'){
-            //     ethP.innerHTML = "이더리움 현재가 : " + data['tp'];
-            // }
-            // appe
-
             for(var i=0; i<Object.keys(coin_name).length; i++){
                 if(data['cd'] == Object.keys(coin_name)[i]){
-                    console.log(coin_name[data['cd']]+" 코인 가격 : " + data['tp']);
+                    var name = document.getElementById(Object.keys(coin_name)[i]+"name");
+                    var price = document.getElementById(Object.keys(coin_name)[i]+"price");
+                    var code = document.getElementById(Object.keys(coin_name)[i]+"code");
+                    var day = document.getElementById(Object.keys(coin_name)[i]+"dayP");
+                    var atpP = document.getElementById(Object.keys(coin_name)[i]+"trade")
+                    var scr = data['scr']*100;
+                    var atp= data['atp24h']/1000000
+                    var atp2 = atp.toFixed(2);
+                    var atpStr = atp2.toString()
+                        .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                    var priceStr = data['tp'].toString()
+                        .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                    day.innerText=scr.toFixed(2);
+                    name.innerText= coin_name[data['cd']];
+                    price.innerText=priceStr;
+                    code.innerText=Object.keys(coin_name)[i];
+                    atpP.innerText = atpStr;
                 }
-
             }
 
 

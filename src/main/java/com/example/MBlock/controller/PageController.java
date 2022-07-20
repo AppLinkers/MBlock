@@ -1,5 +1,6 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.dto.CurrencyInfo.AddCurrencyInfo;
 import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.NewsService;
@@ -9,7 +10,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -42,7 +45,8 @@ public class PageController {
      * Invest Page
      */
     @GetMapping("/invest")
-    public String investPage() {
+    public String investPage(Model model) {
+        model.addAttribute("upBitList", adminService.getCurrencyInfoResAllOfTradingSite("UPBIT"));
         return "invest";
     }
 
@@ -61,7 +65,6 @@ public class PageController {
     public String businessPage(Model model) {
         model.addAttribute("userList", userService.getUserProfileAll());
         model.addAttribute("partnerList", adminService.getPartnerAll());
-        model.addAttribute("upBitList", adminService.getCurrencyInfoResAllOfTradingSite("UPBIT"));
         model.addAttribute("binanceList", adminService.getCurrencyInfoResAllOfTradingSite("BINANCE"));
 
         return "business";

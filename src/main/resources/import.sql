@@ -71,3 +71,14 @@ insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(1, 1, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -7, CURRENT_DATE));
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(2, 2, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -5, CURRENT_DATE));
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(3, 2, 'test title 3', 'test context 3', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', CURRENT_DATE );
+
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(0,'KRW-BTC','비트코인',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(1,'KRW-ETH','이더리움',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(2,'KRW-SOL','솔라나',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(3,'KRW-AVAX','아발란체',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(4,'KRW-MATIC','폴리곤',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(5,'KRW-NEAR','니어 프로토콜',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(6,'KRW-ATOM','코스모스',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(7,'KRW-ALGO','알고랜드',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(8,'KRW-ADA','에이다',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(9,'KRW-DOT','폴카닷',null,'UPBIT');

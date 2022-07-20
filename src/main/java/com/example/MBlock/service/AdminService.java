@@ -1,8 +1,12 @@
 package com.example.MBlock.service;
 
+import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.CurrencyInfo;
 import com.example.MBlock.domain.Partner;
+import com.example.MBlock.domain.User;
 import com.example.MBlock.domain.type.TradingSite;
+import com.example.MBlock.dto.Announce.WriteAnnounceReq;
+import com.example.MBlock.dto.CurrencyInfo.AddCurrencyInfo;
 import com.example.MBlock.dto.CurrencyInfo.GetCurrencyInfoRes;
 import com.example.MBlock.dto.Partner.AddPartnerReq;
 import com.example.MBlock.dto.Partner.GetPartnerRes;
@@ -84,5 +88,37 @@ public class AdminService {
         );
 
         return result;
+    }
+
+
+    /**
+     * add currencyInfo
+     */
+
+    public void addCoin(AddCurrencyInfo request) throws IOException {
+        String imgUrl = null;
+
+        if (request.getImgFile() != null) {
+            imgUrl = s3Uploader.upload(request.getImgFile().get(), "coinLogo");
+        }
+
+        CurrencyInfo currencyInfo = CurrencyInfo.builder()
+                .code(request.getCode())
+                .name(request.getName())
+                .imgUrl(imgUrl)
+                .tradingSite(request.getTradingSite())
+                .build();
+
+        currencyInfoRepository.save(currencyInfo);
+    }
+
+
+    /**
+     * Delete currencyInfo
+     */
+    @Modifying
+    public void deleteAnnounce(Long currencyId) {
+        CurrencyInfo currencyInfo = currencyInfoRepository.findById(currencyId).get();
+        currencyInfoRepository.delete(currencyInfo);
     }
 }

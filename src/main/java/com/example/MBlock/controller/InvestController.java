@@ -25,14 +25,15 @@ public class InvestController {
 
 
     @GetMapping("/invest/add/{site}")
-    public String goToAddInvest(@PathVariable (value="site") TradingSite site, AddCurrencyInfo addCurrencyInfo, Model model){
-        model.addAttribute("site",site);
+    public String goToAddInvest(@PathVariable (value="site") TradingSite tradingSite, AddCurrencyInfo addCurrencyInfo, Model model){
+        model.addAttribute("tradingSite",tradingSite);
         return "admin_invest_add";
     }
 
 
-    @PostMapping("/invest/add")
-    public String addInvestCoin(AddCurrencyInfo request) throws IOException {
+    @PostMapping("/invest/add/{site}")
+    public String addInvestCoin(@PathVariable (value="site") TradingSite tradingSite, AddCurrencyInfo request) throws IOException {
+        request.setTradingSite(tradingSite);
         adminService.addCoin(request);
         return "redirect:/admin/invest";
     }

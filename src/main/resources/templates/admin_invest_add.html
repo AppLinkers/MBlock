@@ -37,7 +37,7 @@
       </div>
       <div class="right">
         <div class="title"><h2>투자종목 추가</h2></div>
-        <form th:method="post" th:action="@{/invest/add}" th:object="${addCurrencyInfo}" enctype="multipart/form-data">
+        <form th:method="post" th:action="@{|/invest/add/${tradingSite}|}" th:object="${addCurrencyInfo}" enctype="multipart/form-data">
           <div class="form-group">
             <label>코인 이미지</label>
             <input id="selectImg" th:field="*{imgFile}" type="file" hidden>
@@ -55,7 +55,6 @@
             <label for="code">코인 코드</label>
             <input type="text" id="code" th:field="*{code}"  placeholder="ex) KRW-BTC">
           </div>
-          <input type="text" th:field="*{tradingSite}" th:value="${site}" hidden>
           <button>게시하기</button>
         </form>
       </div>

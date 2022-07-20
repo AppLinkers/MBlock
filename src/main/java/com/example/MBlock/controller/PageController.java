@@ -50,12 +50,6 @@ public class PageController {
         return "invest";
     }
 
-    @PostMapping("/invest/add")
-    public String addInvestCoin(AddCurrencyInfo request) throws IOException {
-        adminService.addCoin(request);
-        return "redirect:/admin/invest";
-    }
-
     /**
      * Contact Page
      */

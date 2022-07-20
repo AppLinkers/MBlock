@@ -90,6 +90,11 @@ public class AdminService {
         return result;
     }
 
+
+    /**
+     * add currencyInfo
+     */
+
     public void addCoin(AddCurrencyInfo request) throws IOException {
         String imgUrl = null;
 
@@ -105,5 +110,15 @@ public class AdminService {
                 .build();
 
         currencyInfoRepository.save(currencyInfo);
+    }
+
+
+    /**
+     * Delete currencyInfo
+     */
+    @Modifying
+    public void deleteAnnounce(Long currencyId) {
+        CurrencyInfo currencyInfo = currencyInfoRepository.findById(currencyId).get();
+        currencyInfoRepository.delete(currencyInfo);
     }
 }

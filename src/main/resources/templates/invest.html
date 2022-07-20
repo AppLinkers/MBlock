@@ -349,7 +349,10 @@
                     var scr = data['scr']*100;
                     if(scr<0){
                         day.style.color= "darkblue";
-                    }else{
+                    }else if(scr==0){
+                        day.style.color= "black";
+                    }
+                    else{
                         day.style.color= "#D30000";
                     }
                     var atp= data['atp24h']/1000000

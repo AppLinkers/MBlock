@@ -290,6 +290,7 @@
                 coinInnerDiv.setAttribute('class', 'coin-inner');
                 var coinImgDiv = document.createElement('div');
                 coinImgDiv.setAttribute('class', 'img');
+                coinImgDiv.id=Object.keys(coin_name)[i]+"imgUrl"
                 var coinNameP = document.createElement('h4');
                 coinNameP.id = Object.keys(coin_name)[i]+"name";
 
@@ -400,6 +401,7 @@
             var data = JSON.parse(message);
             for(var i=0; i<Object.keys(coin_name).length; i++){
                 if(data['cd'] == Object.keys(coin_name)[i]){
+                    var imgUrl = document.getElementById(Object.keys(coin_name)[i]+"imgUrl");
                     var name = document.getElementById(Object.keys(coin_name)[i]+"name");
                     var price = document.getElementById(Object.keys(coin_name)[i]+"price");
                     var code = document.getElementById(Object.keys(coin_name)[i]+"code");
@@ -412,11 +414,13 @@
                         .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                     var priceStr = data['tp'].toString()
                         .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
                     day.innerText=scr.toFixed(2);
                     name.innerText= coin_name[data['cd']];
                     price.innerText=priceStr;
                     code.innerText=Object.keys(coin_name)[i];
                     atpP.innerText = atpStr;
+
                 }
             }
 

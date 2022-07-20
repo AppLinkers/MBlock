@@ -1,5 +1,7 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.domain.type.TradingSite;
+import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.CurrencyInfo.AddCurrencyInfo;
 import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.NewsService;
@@ -21,6 +23,12 @@ public class InvestController {
     private final AdminService adminService;
     private final NewsService newsService;
 
+
+    @GetMapping("/invest/add/{site}")
+    public String goToAddInvest(@PathVariable (value="site") TradingSite site, AddCurrencyInfo addCurrencyInfo, Model model){
+        model.addAttribute("site",site);
+        return "admin_invest_add";
+    }
 
 
     @PostMapping("/invest/add")

@@ -37,10 +37,10 @@
       </div>
       <div class="right">
         <div class="title"><h2>투자종목 추가</h2></div>
-        <form action="#">
+        <form th:method="post" th:action="@{/invest/add}" th:object="${addCurrencyInfo}" enctype="multipart/form-data">
           <div class="form-group">
             <label>코인 이미지</label>
-            <input id="selectImg" type="file" hidden>
+            <input id="selectImg" th:field="*{imgFile}" type="file" hidden>
             <div class="main-img" onclick="defaultBtnActive()">
               <img src="" alt="" >
               <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -49,12 +49,13 @@
           </div>
           <div class="form-group">
             <label for="title">코인명</label>
-            <input type="text" id="title">
+            <input type="text" th:field="*{name}" id="title">
           </div>
           <div class="form-group">
             <label for="code">코인 코드</label>
-            <input type="text" id="code" placeholder="ex) KRW-BTC">
+            <input type="text" id="code" th:field="*{code}"  placeholder="ex) KRW-BTC">
           </div>
+          <input type="text" th:field="*{tradingSite}" th:value="${site}" hidden>
           <button>게시하기</button>
         </form>
       </div>

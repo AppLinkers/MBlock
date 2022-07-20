@@ -105,60 +105,6 @@
                     <div class="title-inner">거래 대금(백만)</div>
                 </div>
                 <div id="output"></div>
-                <div class="coin-con">
-                    <div class="coin-inner">
-                        <div class="img">
-                            <img src="../images/bitcoin.png" alt="비트코인">
-                        </div>
-                        <h4>비트코인</h4>
-                        <h5>BHC</h5>
-                    </div>
-                    <div class="coin-inner">
-                        28,757,000
-                    </div>
-                    <div class="coin-inner">
-                        <p>+2.27%</p>
-                    </div>
-                    <div class="coin-inner">
-                        303,331 <small>백만</small>
-                    </div>
-                </div>
-                <div class="coin-con">
-                    <div class="coin-inner">
-                        <div class="img">
-                            <img src="../images/eth.png" alt="비트코인">
-                        </div>
-                        <h4>이더리움</h4>
-                        <h5>ETH</h5>
-                    </div>
-                    <div class="coin-inner">
-                        1,638,500
-                    </div>
-                    <div class="coin-inner">
-                        <p>+1.93%</p>
-                    </div>
-                    <div class="coin-inner">
-                        124,898 <small>백만</small>
-                    </div>
-                </div>
-                <div class="coin-con">
-                    <div class="coin-inner">
-                        <div class="img">
-                            <img src="../images/bnb.png" alt="bnb">
-                        </div>
-                        <h4>비앤비</h4>
-                        <h5>BNB</h5>
-                    </div>
-                    <div class="coin-inner">
-                        146,000
-                    </div>
-                    <div class="coin-inner">
-                        <p>+0.76%</p>
-                    </div>
-                    <div class="coin-inner">
-                        11,921 <small>백만</small>
-                    </div>
-                </div>
             </div>
 
 
@@ -267,21 +213,6 @@
         var fileReader = new FileReader();
         var list = /*[[${upBitList}]]*/ [];
 
-
-        var coin_name = {
-            "KRW-ETH" : "이더리움",
-            "KRW-SOL" : "솔라나",
-            "KRW-AVAX" : "아발란체",
-            "KRW-MATIC" : "폴리곤",
-            "KRW-NEAR" : "니어 프로토콜",
-            "KRW-ATOM" : "코스모스",
-            "KRW-ALGO" : "알고랜드",
-            "KRW-ADA" : "에이다",
-            "KRW-DOT" : "폴카닷"
-        }
-
-
-
         function investUI(){
             output = document.getElementById('output');
             for(var i=0; i<list.length; i++){
@@ -294,13 +225,16 @@
                 coinImgDiv.id=list[i].code+"imgUrl"
                 var coinNameP = document.createElement('h4');
                 coinNameP.id = list[i].code+"name";
+                coinNameP.innerText = list[i].name;
 
                 var coinCode= document.createElement('h5');
                 coinCode.id = list[i].code+"code";
+                coinCode.innerText = list[i].code;
 
                 var coinPrice = document.createElement('div');
                 coinPrice.id = list[i].code+"price";
                 coinPrice.setAttribute('class', 'coin-inner');
+                coinPrice.innerText= "loading..."
 
                 var coindayDiv= document.createElement('div');
                 coindayDiv.setAttribute('class', 'coin-inner');
@@ -413,6 +347,11 @@
                     var day = document.getElementById(list[i].code+"dayP");
                     var atpP = document.getElementById(list[i].code+"trade")
                     var scr = data['scr']*100;
+                    if(scr<0){
+                        day.style.color= "darkblue";
+                    }else{
+                        day.style.color= "#D30000";
+                    }
                     var atp= data['atp24h']/1000000
                     var atp2 = atp.toFixed(2);
                     var atpStr = atp2.toString()

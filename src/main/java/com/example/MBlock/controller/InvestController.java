@@ -19,9 +19,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class InvestController {
 
-    private final UserService userService;
     private final AdminService adminService;
-    private final NewsService newsService;
 
 
     @GetMapping("/invest/add/{site}")

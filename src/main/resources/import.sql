@@ -72,13 +72,13 @@ insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(2, 2, 'test title 2', 'test context 2', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', DATEADD('DAY', -5, CURRENT_DATE));
 insert into news(`id`, `user_id`, `title`, `context`, `img_url`, `view_count`, `is_main`, `updated_at`) values(3, 2, 'test title 3', 'test context 3', 'https://mblockimg.s3.us-east-2.amazonaws.com/profile/60947c86-8a91-431a-8aa7-f718acd6c130', 0, 'N', CURRENT_DATE );
 
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(0,'KRW-BTC','비트코인',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(1,'KRW-ETH','이더리움',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(2,'KRW-SOL','솔라나',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(3,'KRW-AVAX','아발란체',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(4,'KRW-MATIC','폴리곤',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(5,'KRW-NEAR','니어 프로토콜',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(6,'KRW-ATOM','코스모스',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(7,'KRW-ALGO','알고랜드',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(8,'KRW-ADA','에이다',null,'UPBIT');
-insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(9,'KRW-DOT','폴카닷',null,'UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(0,'KRW-BTC','비트코인', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/1220e7c6-e118-4e87-8159-9451f36d91f8','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(1,'KRW-ETH','이더리움', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/56de2d2b-d465-4539-a4e7-f2eba573f4b8','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(2,'KRW-SOL','솔라나', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/58180bf9-c4ff-4bab-b194-4c91812af135','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(3,'KRW-AVAX','아발란체', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/5ff3fc7b-0705-47a9-b3ed-cadf09751f94','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(4,'KRW-MATIC','폴리곤', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/605d712a-97bf-4e25-b81e-c8751e87cf69','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(5,'KRW-NEAR','니어 프로토콜', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/6971227b-0d00-4948-a853-c5d68c0c623f','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(6,'KRW-ATOM','코스모스', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/81bd5b74-a1d2-4f56-8226-20deb94b6546','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(7,'KRW-ALGO','알고랜드', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/93ac5762-8ea2-4669-b65d-44a45e214b93','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(8,'KRW-ADA','에이다', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/9b5e8d74-ac47-47d6-aa4e-182d4f3d8724','UPBIT');
+insert into currency_info(`id`,`code`,`name`,`img_url`,`trading_site`) values(9,'KRW-DOT','폴카닷', 'https://mblockimg.s3.us-east-2.amazonaws.com/coinLogo/ae101f8b-68a5-4dfe-b310-fed72a2b3d42','UPBIT');

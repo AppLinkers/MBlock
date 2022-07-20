@@ -258,14 +258,15 @@
             </div>
         </div>
     </section>
-    <script src="/js/invest.js"></script>
-    <script language="JavaScript" type="text/javascript">
+    <script th:inline="javascript">
         // upBit API 상세 설명
         // https://docs.upbit.com/docs/upbit-quotation-websocket
 
         var upBitUrl = "wss://api.upbit.com/websocket/v1";
         var output;
         var fileReader = new FileReader();
+        var list = /*[[${upBitList}]]*/ [];
+
 
         var coin_name = {
             "KRW-ETH" : "이더리움",
@@ -283,31 +284,31 @@
 
         function investUI(){
             output = document.getElementById('output');
-            for(var i=0; i<Object.keys(coin_name).length; i++){
+            for(var i=0; i<list.length; i++){
                 var coinConDiv = document.createElement('div');
                 coinConDiv.setAttribute('class', 'coin-con');
                 var coinInnerDiv = document.createElement('div');
                 coinInnerDiv.setAttribute('class', 'coin-inner');
                 var coinImgDiv = document.createElement('div');
                 coinImgDiv.setAttribute('class', 'img');
-                coinImgDiv.id=Object.keys(coin_name)[i]+"imgUrl"
+                coinImgDiv.id=list[i].code+"imgUrl"
                 var coinNameP = document.createElement('h4');
-                coinNameP.id = Object.keys(coin_name)[i]+"name";
+                coinNameP.id = list[i].code+"name";
 
                 var coinCode= document.createElement('h5');
-                coinCode.id = Object.keys(coin_name)[i]+"code";
+                coinCode.id = list[i].code+"code";
 
                 var coinPrice = document.createElement('div');
-                coinPrice.id = Object.keys(coin_name)[i]+"price";
+                coinPrice.id = list[i].code+"price";
                 coinPrice.setAttribute('class', 'coin-inner');
 
                 var coindayDiv= document.createElement('div');
                 coindayDiv.setAttribute('class', 'coin-inner');
                 var coindayP = document.createElement('p');
-                coindayP.id = Object.keys(coin_name)[i]+"dayP";
+                coindayP.id = list[i].code+"dayP";
 
                 var coinTradeDiv = document.createElement('div');
-                coinTradeDiv.id = Object.keys(coin_name)[i]+"trade";
+                coinTradeDiv.id = list[i].code+"trade";
                 coinTradeDiv.setAttribute('class', 'coin-inner');
 
                 coinInnerDiv.appendChild(coinImgDiv);
@@ -352,11 +353,15 @@
 
         function onOpen(evt) {
             writeToScreen("연결 완료");
+            var codeList = [];
+            for(var i=0; i<list.length; i++){
+                codeList[i] = list[i].code;
+            }
             doSend(
                 JSON.stringify(
                     [
                         { "ticket" : "test"},
-                        {"type" : "ticker" , "codes" : ["KRW-ETH", "KRW-SOL", "KRW-AVAX", "KRW-MATIC", "KRW-NEAR", "KRW-ATOM", "KRW-ALGO", "KRW-ADA", "KRW-DOT"]},
+                        {"type" : "ticker" , "codes" :  codeList},
                         {"format": "SIMPLE"}
                     ]
                 )
@@ -399,14 +404,14 @@
 
         function parseCoin(message) {
             var data = JSON.parse(message);
-            for(var i=0; i<Object.keys(coin_name).length; i++){
-                if(data['cd'] == Object.keys(coin_name)[i]){
-                    var imgUrl = document.getElementById(Object.keys(coin_name)[i]+"imgUrl");
-                    var name = document.getElementById(Object.keys(coin_name)[i]+"name");
-                    var price = document.getElementById(Object.keys(coin_name)[i]+"price");
-                    var code = document.getElementById(Object.keys(coin_name)[i]+"code");
-                    var day = document.getElementById(Object.keys(coin_name)[i]+"dayP");
-                    var atpP = document.getElementById(Object.keys(coin_name)[i]+"trade")
+            for(var i=0; i<list.length; i++){
+                if(data['cd'] == list[i].code){
+                    var imgUrl = document.getElementById(list[i].code+"imgUrl");
+                    var name = document.getElementById(list[i].code+"name");
+                    var price = document.getElementById(list[i].code+"price");
+                    var code = document.getElementById(list[i].code+"code");
+                    var day = document.getElementById(list[i].code+"dayP");
+                    var atpP = document.getElementById(list[i].code+"trade")
                     var scr = data['scr']*100;
                     var atp= data['atp24h']/1000000
                     var atp2 = atp.toFixed(2);
@@ -416,9 +421,9 @@
                         .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
                     day.innerText=scr.toFixed(2);
-                    name.innerText= coin_name[data['cd']];
+                    name.innerText= list[i].name;
                     price.innerText=priceStr;
-                    code.innerText=Object.keys(coin_name)[i];
+                    code.innerText=list[i].code;
                     atpP.innerText = atpStr;
 
                 }

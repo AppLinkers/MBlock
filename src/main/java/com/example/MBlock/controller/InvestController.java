@@ -22,13 +22,21 @@ public class InvestController {
     private final NewsService newsService;
 
 
+    @GetMapping("/invest/add/{tradeSite}")
+    public String goToInvestAdd(@PathVariable(value = "tradeSite") String site, Model model, AddCurrencyInfo request){
+        model.addAttribute("site",site);
+        return "admin_invest_add";
+    }
 
+
+    //add invest coin
     @PostMapping("/invest/add")
     public String addInvestCoin(AddCurrencyInfo request) throws IOException {
         adminService.addCoin(request);
         return "redirect:/admin/invest";
     }
 
+    //delete invest coin
     @GetMapping("/invest/delete/{id}")
     public String deleteInvestCoin(@PathVariable(value = "id") long id, Model model){
         adminService.deleteAnnounce(id);

@@ -350,6 +350,7 @@
                     var day = document.getElementById(list[i].code+"dayP");
                     var atpP = document.getElementById(list[i].code+"trade")
                     var scr = data['scr']*100;
+
                     if(scr<0){
                         day.style.color= "darkblue";
                     }else if(scr==0){
@@ -365,7 +366,7 @@
                     var priceStr = data['tp'].toString()
                         .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
-                    day.innerText=scr.toFixed(2);
+                    day.innerText=scr.toFixed(2)+" %";
                     name.innerText= list[i].name;
                     price.innerText=priceStr;
                     code.innerText=list[i].code;

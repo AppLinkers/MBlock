@@ -224,6 +224,9 @@
                 var coinImgDiv = document.createElement('div');
                 coinImgDiv.setAttribute('class', 'img');
                 coinImgDiv.id=list[i].code+"imgUrl"
+                var coinImg = document.createElement('img');
+                coinImg.src = list[i].imgUrl;
+                coinImgDiv.appendChild(coinImg);
                 var coinNameP = document.createElement('h4');
                 coinNameP.id = list[i].code+"name";
                 coinNameP.innerText = list[i].name;
@@ -341,7 +344,6 @@
             var data = JSON.parse(message);
             for(var i=0; i<list.length; i++){
                 if(data['cd'] == list[i].code){
-                    var imgUrl = document.getElementById(list[i].code+"imgUrl");
                     var name = document.getElementById(list[i].code+"name");
                     var price = document.getElementById(list[i].code+"price");
                     var code = document.getElementById(list[i].code+"code");
@@ -368,6 +370,7 @@
                     price.innerText=priceStr;
                     code.innerText=list[i].code;
                     atpP.innerText = atpStr;
+
 
                 }
             }

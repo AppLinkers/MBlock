@@ -168,6 +168,9 @@ main .right .invest .label .fix{
     float: left;
     width: 15%;
 }
+main .right .invest .list{
+    overflow-y: auto;
+}
 main .right .invest .list ul li{
     display: flex;
     font-size: 0.8rem;

@@ -13,6 +13,8 @@ import com.example.MBlock.dto.Partner.GetPartnerRes;
 import com.example.MBlock.repository.CurrencyInfoRepository;
 import com.example.MBlock.repository.PartnerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
@@ -89,7 +91,6 @@ public class AdminService {
 
         return result;
     }
-
 
     /**
      * add currencyInfo

@@ -54,7 +54,7 @@
                         <label>메인 이미지</label>
                         <input id="selectImg" type="file" th:field="*{imgFile}" hidden>
                         <div class="main-img" onclick="defaultBtnActive()">
-                            <img th:src="${announce.imgUrl}" alt="" class="active">
+                            <img th:src="${announce.getImgUrl()}" alt="" class="active">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             select your image
                         </div>

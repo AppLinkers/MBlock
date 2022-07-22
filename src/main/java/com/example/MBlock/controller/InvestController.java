@@ -3,10 +3,11 @@ package com.example.MBlock.controller;
 import com.example.MBlock.domain.type.TradingSite;
 import com.example.MBlock.dto.Announce.WriteAnnounceReq;
 import com.example.MBlock.dto.CurrencyInfo.AddCurrencyInfo;
+import com.example.MBlock.dto.CurrencyInfo.GetCurrencyInfoRes;
 import com.example.MBlock.service.AdminService;
-import com.example.MBlock.service.NewsService;
-import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +20,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class InvestController {
 
-    private final UserService userService;
     private final AdminService adminService;
-    private final NewsService newsService;
 
 
     @GetMapping("/invest/add/{site}")
@@ -29,6 +28,9 @@ public class InvestController {
         model.addAttribute("tradingSite",tradingSite);
         return "admin_invest_add";
     }
+
+/*    @GetMapping("/invest")
+    public String getAllInvest(Model m)*/
 
 
     @PostMapping("/invest/add/{site}")

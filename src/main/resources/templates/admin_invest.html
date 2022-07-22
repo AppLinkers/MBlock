@@ -61,11 +61,11 @@
                         </div>
                         <div class="list">
                             <ul>
-                                <li>
+                                <li th:each="currency : ${currencyList}">
                                     <div class="coin">
-                                        <img src="../images/bitcoin.png" alt="">
-                                        <h4>비트코인</h4>
-                                        <p>KRW-BTC</p>
+                                        <img th:src="${currency.imgUrl}" alt="">
+                                        <h4 th:text="${currency.name}">비트코인</h4>
+                                        <p th:text="${currency.code}">KRW-BTC</p>
                                     </div>
                                     <div class="fix">삭제</div>
                                 </li>

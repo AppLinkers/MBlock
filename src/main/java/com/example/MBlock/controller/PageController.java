@@ -97,7 +97,9 @@ public class PageController {
     @GetMapping("/admin/invest")
     public String manageInvest(Model model) {
         List<GetCurrencyInfoRes> upbitCoin = adminService.getCurrencyInfoResAllOfTradingSite("UPBIT");
+        List<GetCurrencyInfoRes> binanceCoin = adminService.getCurrencyInfoResAllOfTradingSite("BINANCE");
         model.addAttribute("upbitCoin", upbitCoin);
+        model.addAttribute("binanceCoin",binanceCoin);
         return "admin_invest";
     }
 

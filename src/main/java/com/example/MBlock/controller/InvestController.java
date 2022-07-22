@@ -29,9 +29,6 @@ public class InvestController {
         return "admin_invest_add";
     }
 
-/*    @GetMapping("/invest")
-    public String getAllInvest(Model m)*/
-
 
     @PostMapping("/invest/add/{site}")
     public String addInvestCoin(@PathVariable (value="site") TradingSite tradingSite, AddCurrencyInfo request) throws IOException {

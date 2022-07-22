@@ -110,6 +110,12 @@ main .right{
 }
 main .right .title{
     color: rgb(43, 43, 43);
+    margin-bottom: 2rem;
+}
+main .right .invest:after{
+    content: "";
+    display: block;
+    clear: both;
 }
 main .right .invest{
     float: left;
@@ -169,7 +175,11 @@ main .right .invest .label .fix{
     width: 15%;
 }
 main .right .invest .list{
+    height: 271px;
     overflow-y: auto;
+}
+main .right .invest .list ul{
+    height: 100%;
 }
 main .right .invest .list ul li{
     display: flex;

@@ -46,6 +46,8 @@ public class PageController {
     @GetMapping("/invest")
     public String investPage(Model model) {
         model.addAttribute("upBitList", adminService.getCurrencyInfoResAllOfTradingSite("UPBIT"));
+        model.addAttribute("binanceList", adminService.getCurrencyInfoResAllOfTradingSite("BINANCE"));
+
         return "invest";
     }
 

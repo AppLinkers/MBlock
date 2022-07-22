@@ -163,6 +163,7 @@
         var siteBool = true;
         var fileReader = new FileReader();
         var list = /*[[${upBitList}]]*/ [];
+        var binanceCoin = /*[[${binanceList}]]*/ [];
         var coin_name = {
             "ETHUSDT" : "ethusdt@ticker",
             "SOLUSDT" : "solusdt@ticker", // "KRW-SOL" : "솔라나",
@@ -176,52 +177,6 @@
         };
 
 
-        function chartUItest(coinList, outputDiv,i){
-            var coinConDiv = document.createElement('div');
-            coinConDiv.setAttribute('class', 'coin-con');
-            var coinInnerDiv = document.createElement('div');
-            coinInnerDiv.setAttribute('class', 'coin-inner');
-            var coinImgDiv = document.createElement('div');
-            coinImgDiv.setAttribute('class', 'img');
-            coinImgDiv.id=coinList[i]+"imgUrl"
-            var coinImg = document.createElement('img');
-           // coinImg.src = coinList[i];
-          //  coinImgDiv.appendChild(coinImg);
-            var coinNameP = document.createElement('h4');
-            coinNameP.id = coinList[i]+"name";
-            coinNameP.innerText = coinList[i];
-
-            var coinCode= document.createElement('h5');
-            coinCode.id = coinList[i]+"code";
-            coinCode.innerText = coinList[i];
-
-            var coinPrice = document.createElement('div');
-            coinPrice.id = coinList[i]+"price";
-            coinPrice.setAttribute('class', 'coin-inner');
-            coinPrice.innerText= "loading..."
-
-            var coindayDiv= document.createElement('div');
-            coindayDiv.setAttribute('class', 'coin-inner');
-            var coindayP = document.createElement('p');
-            coindayP.id = coinList[i]+"dayP";
-
-            var coinTradeDiv = document.createElement('div');
-            coinTradeDiv.id = coinList[i]+"trade";
-            coinTradeDiv.setAttribute('class', 'coin-inner');
-
-            coinInnerDiv.appendChild(coinImgDiv);
-            coinInnerDiv.appendChild(coinNameP);
-            coinInnerDiv.appendChild(coinCode);
-            coinConDiv.appendChild(coinInnerDiv);
-
-            coinConDiv.appendChild(coinPrice);
-
-            coindayDiv.appendChild(coindayP);
-            coinConDiv.appendChild(coindayDiv);
-
-            coinConDiv.appendChild(coinTradeDiv);
-            outputDiv.appendChild(coinConDiv);
-        }
 
 
         function chartUI(coinList, outputDiv,i){
@@ -282,8 +237,8 @@
                 chartUI(list, output,i);
             }
 
-            for(var i=0; i<Object.values(coin_name).length; i++){
-                chartUItest(Object.values(coin_name),outputB, i);
+            for(var i=0; i<binanceCoin.length; i++){
+                chartUI(binanceCoin,outputB, i);
             }
 
 
@@ -370,14 +325,17 @@
         function parseCoinB(message) {
             var data = JSON.parse(message);
 
-            for(var i=0; i<Object.keys(coin_name).length; i++){
-                if(data['s'] == Object.keys(coin_name)[i]){
-                    var name = document.getElementById(Object.values(coin_name)[i]+"name");
-                    var price = document.getElementById(Object.values(coin_name)[i]+"price");
-                    var code = document.getElementById(Object.values(coin_name)[i]+"code");
-                    var day = document.getElementById(Object.values(coin_name)[i]+"dayP");
-                    var atpP = document.getElementById(Object.values(coin_name)[i]+"trade")
-                    var scr = data['p'];
+            for(var i=0; i<binanceCoin.length; i++){
+                var rawCoin = binanceCoin[i].code;
+                var coin = rawCoin.split('@');
+                var coinStr = coin[0].toUpperCase();
+                if(data['s'] == coinStr){
+                    var name = document.getElementById(binanceCoin[i].code+"name");
+                    var price = document.getElementById(binanceCoin[i].code+"price");
+                    var code = document.getElementById(binanceCoin[i].code+"code");
+                    var day = document.getElementById(binanceCoin[i].code+"dayP");
+                    var atpP = document.getElementById(binanceCoin[i].code+"trade")
+                    var scr = parseFloat(data['P']);
                     if(scr<0){
                         day.style.color= "darkblue";
                     }else if(scr==0){
@@ -393,10 +351,10 @@
                     var priceStr = parseFloat(data['a']).toFixed(2)
                          .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
-                    day.innerText=parseFloat(scr).toFixed(2);
-                    name.innerText= Object.keys(coin_name)[i];
+                    day.innerText=scr.toFixed(2);
+                    name.innerText= binanceCoin[i].name;
                     price.innerText= priceStr
-                    code.innerText=Object.keys(coin_name)[i];
+                    code.innerText=data['s'];
                     atpP.innerText = atpStr
 
 

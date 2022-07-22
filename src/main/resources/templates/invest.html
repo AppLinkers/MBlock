@@ -74,17 +74,26 @@
             <div class="control">
                 <div class="control-upbit active"
                      onclick="var upBitDiv = document.getElementById('upbit');
-                            var binanceDiv = document.getElementById('binance');
-                            upBitDiv.style.display='block';
-                            binanceDiv.style.display='none';">
+                              var binanceDiv = document.getElementById('binance');
+                              const upbitIcon = document.querySelector('section .control .control-upbit');
+                              const binanceIcon = document.querySelector('section .control .control-binance');
+                              upbitIcon.classList.add('active');
+                              binanceIcon.classList.remove('active');
+                              upBitDiv.style.display='block';
+                              binanceDiv.style.display='none';">
                     <img src="../images/upbit.svg" alt="업비트 로고">
                     <p><strong>Upbit</strong> 차트</p>
                 </div>
                 <div class="control-binance"
                      onclick="var upBitDiv = document.getElementById('upbit');
-                            var binanceDiv = document.getElementById('binance');
-                            upBitDiv.style.display='none';
-                            binanceDiv.style.display='block';" >
+                              var binanceDiv = document.getElementById('binance');
+                              const upbitIcon = document.querySelector('section .control .control-upbit');
+                              const binanceIcon = document.querySelector('section .control .control-binance');
+                              upbitIcon.classList.remove('active');
+                              binanceIcon.classList.add('active');
+
+                              upBitDiv.style.display='none';
+                              binanceDiv.style.display='block';" >
                     <img src="../images/binance-logo.svg" alt="바이낸스 로고">
                     <p><strong>Binacne</strong> 차트</p>
                 </div>

@@ -64,8 +64,8 @@
                                 <li th:each="currency : ${upbitCoin}">
                                     <div class="coin">
                                         <img th:src="${currency.imgUrl}">
-                                        <h4 th:text="${currency.name}">비트코인</h4>
-                                        <p th:text="${currency.code}">KRW-BTC</p>
+                                        <h4 th:text="${currency.name}"></h4>
+                                        <p th:text="${currency.code}"></p>
                                     </div>
                                     <a class="fix" th:href="@{|/invest/delete/${currency.id}|}"><div>삭제</div></a>
                                 </li>
@@ -88,13 +88,13 @@
                         </div>
                         <div class="list">
                             <ul>
-                                <li th:each="currency : ${upbitCoin}">
+                                <li th:each="currency : ${binanceCoin}">
                                     <div class="coin">
                                         <img th:src="${currency.imgUrl}">
-                                        <h4 th:text="${currency.name}">비트코인</h4>
-                                        <p th:text="${currency.code}">KRW-BTC</p>
+                                        <h4 th:text="${currency.name}"></h4>
+                                        <p th:text="${currency.code}"></p>
                                     </div>
-                                    <a class="fix" th:href="@{|/invest/delete/${currency}|}"><div>삭제</div></a>
+                                    <a class="fix" th:href="@{|/invest/delete/${currency.id}|}"><div>삭제</div></a>
                                 </li>
                             </ul>
                         </div>

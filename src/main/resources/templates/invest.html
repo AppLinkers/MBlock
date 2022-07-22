@@ -118,7 +118,7 @@
                 <div class="coin-title">
                     <div class="title-inner">Name</div>
                     <div class="title-inner">Price($)</div>
-                    <div class="title-inner">24h Change</div>
+                    <div class="title-inner">24h Change(%)</div>
                     <div class="title-inner">24h Volume(USDT)</div>
                 </div>
 
@@ -160,10 +160,12 @@
         var upBitUrl = "wss://api.upbit.com/websocket/v1";
         var binanceUrl = "wss://stream.binance.com:9443/ws";
         var output;
-        var siteBool = true;
         var fileReader = new FileReader();
         var list = /*[[${upBitList}]]*/ [];
         var binanceCoin = /*[[${binanceList}]]*/ [];
+
+
+
 
 
         function chartUI(coinList, outputDiv,i){
@@ -216,6 +218,7 @@
 
             output = document.getElementById('output');
             outputB=document.getElementById('outputB')
+
             for(var i=0; i<list.length; i++){
                 chartUI(list, output,i);
             }
@@ -268,15 +271,19 @@
         }
 
 
-        /**up binance load**/
+        /**binance load**/
         function onOpenB(evt) {
+            var coinNames = [];
+            for(var i=0; i< binanceCoin.length;i++){
+                coinNames[i] = binanceCoin[i].code;
+            }
             writeToScreen("연결 완료");
             doSendB(
                 JSON.stringify(
                     {
                         "method": "SUBSCRIBE",
                         "params":
-                        Object.values(coin_name),
+                        coinNames,
                         "id": 1
                     }
                 )

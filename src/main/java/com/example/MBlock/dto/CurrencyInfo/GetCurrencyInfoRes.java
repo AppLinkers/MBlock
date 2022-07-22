@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetCurrencyInfoRes {
 
+    private long id;
+
     private String code;
 
     private String name;

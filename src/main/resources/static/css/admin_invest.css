@@ -110,11 +110,18 @@ main .right{
 }
 main .right .title{
     color: rgb(43, 43, 43);
+    margin-bottom: 2rem;
+}
+main .right .invest:after{
+    content: "";
+    display: block;
+    clear: both;
 }
 main .right .invest{
     float: left;
     height: 50%;
     width: 100%;
+    overflow-y: auto;
 }
 main .right .invest .path{
     display: flex;
@@ -167,9 +174,6 @@ main .right .invest .label .coin{
 main .right .invest .label .fix{
     float: left;
     width: 15%;
-}
-main .right .invest .list{
-    overflow-y: auto;
 }
 main .right .invest .list ul li{
     display: flex;

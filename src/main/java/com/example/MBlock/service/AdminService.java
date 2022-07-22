@@ -81,6 +81,7 @@ public class AdminService {
         currencyInfoList.forEach(
                 c -> {
                     result.add(GetCurrencyInfoRes.builder()
+                            .id(c.getId())
                             .code(c.getCode())
                             .name(c.getName())
                             .imgUrl(c.getImgUrl())

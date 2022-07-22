@@ -61,21 +61,13 @@
                         </div>
                         <div class="list">
                             <ul>
-                                <li th:each="currency : ${currencyList}">
+                                <li th:each="currency : ${upbitCoin}">
                                     <div class="coin">
-                                        <img th:src="${currency.imgUrl}" alt="">
+                                        <img th:src="${currency.imgUrl}">
                                         <h4 th:text="${currency.name}">비트코인</h4>
                                         <p th:text="${currency.code}">KRW-BTC</p>
                                     </div>
-                                    <div class="fix">삭제</div>
-                                </li>
-                                <li>
-                                    <div class="coin">
-                                        <img src="../images/eth.png" alt="">
-                                        <h4>이더리움</h4>
-                                        <p>KRW-ETH</p>
-                                    </div>
-                                    <div class="fix">삭제</div>
+                                    <a class="fix" th:href="@{|/invest/delete/${currency.id}|}"><div>삭제</div></a>
                                 </li>
                             </ul>
                         </div>
@@ -96,21 +88,13 @@
                         </div>
                         <div class="list">
                             <ul>
-                                <li>
+                                <li th:each="currency : ${upbitCoin}">
                                     <div class="coin">
-                                        <img src="../images/bitcoin.png" alt="">
-                                        <h4>비트코인</h4>
-                                        <p>USDT-BTC</p>
+                                        <img th:src="${currency.imgUrl}">
+                                        <h4 th:text="${currency.name}">비트코인</h4>
+                                        <p th:text="${currency.code}">KRW-BTC</p>
                                     </div>
-                                    <div class="fix">삭제</div>
-                                </li>
-                                <li>
-                                    <div class="coin">
-                                        <img src="../images/eth.png" alt="">
-                                        <h4>이더리움</h4>
-                                        <p>USDT-ETH</p>
-                                    </div>
-                                    <div class="fix">삭제</div>
+                                    <a class="fix" th:href="@{|/invest/delete/${currency}|}"><div>삭제</div></a>
                                 </li>
                             </ul>
                         </div>

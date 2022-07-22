@@ -107,6 +107,7 @@ main .right{
     width: 80%;
     height: 100vh;
     padding: 3rem;
+    margin: 0 0 6rem 0;
 }
 main .right .title{
     color: rgb(43, 43, 43);
@@ -121,11 +122,13 @@ main .right .invest{
     float: left;
     height: 50%;
     width: 100%;
+    margin-bottom: 3rem;
 }
 main .right .invest .path{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 15%;
 }
 main .right .invest .path .path-name{
     display: flex;
@@ -157,6 +160,7 @@ main .right .invest .label::after{
     clear: both;
 }
 main .right .invest .label{
+    height: 12%;
     display: flex;
     margin-top: 0.5rem;
     font-size: 0.7rem;
@@ -175,7 +179,7 @@ main .right .invest .label .fix{
     width: 15%;
 }
 main .right .invest .list{
-    height: 271px;
+    height: 73%;
     overflow-y: auto;
 }
 main .right .invest .list ul{

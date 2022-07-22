@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurrencyInfo {
+public class CurrencyInfo{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

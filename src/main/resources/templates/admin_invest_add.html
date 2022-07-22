@@ -10,61 +10,57 @@
   <link rel="stylesheet" href="/css/admin_invest_add.css">
 </head>
 <body>
-  <!-- header -->
-  <header>
-    <div class="container">
-      <h1>
-        <button onclick="location.href='index.html'">M <span>Block</button>
-      </h1>
+<!-- header -->
+<header>
+  <div class="container">
+    <h1>
+      <button onclick="location.href='index.html'">M <span>Block</button>
+    </h1>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="top">
+      <span>관리자 페이지</span>
     </div>
-  </header>
-  <main>
-    <div class="container">
-      <div class="top">
-        <span>관리자 페이지</span>
+    <div class="content">
+      <div class="left">
+        <ul>
+          <li><div class="list" onclick="location.href='admin_announce.html'">공지사항</div></li>
+          <li><div class="list" onclick="location.href='admin_news.html'">투자게시판 관리</div></li>
+          <li><div class="list"onclick="location.href='admin_invest.html'">투자종목 관리</div></li>
+          <li><div class="list"onclick="location.href='admin_partner.html'">협력사 관리</div></li>
+          <li><div class="list" onclick="location.href='admin_consult.html'">개인 문의</div></li>
+          <li><div class="list" onclick="location.href='admin_member.html'">멤버 관리</div></li>
+          <li><div class="list" onclick="location.href='admin_chat.html'">단체 채팅</div></li>
+        </ul>
       </div>
-      <div class="content">
-        <div class="left">
-          <ul>
-            <li><div class="list" onclick="location.href='admin_announce.html'">공지사항</div></li>
-            <li><div class="list" onclick="location.href='admin_news.html'">투자게시판 관리</div></li>
-            <li><div class="list"onclick="location.href='admin_invest.html'">투자종목 관리</div></li>
-            <li><div class="list"onclick="location.href='admin_partner.html'">협력사 관리</div></li>
-            <li><div class="list" onclick="location.href='admin_consult.html'">개인 문의</div></li>
-            <li><div class="list" onclick="location.href='admin_member.html'">멤버 관리</div></li>
-            <li><div class="list" onclick="location.href='admin_chat.html'">단체 채팅</div></li>
-          </ul>
-        </div>
-        <div class="right">
-          <div class="title"><h2>투자종목 추가</h2></div>
-          <form th:method="post" th:action="@{/invest/add}" th:object="${request}" enctype="multipart/form-data">
-            <div class="form-group">
-              <label>코인 이미지</label>
-              <input id="selectImg" type="file"  hidden>
-              <div class="main-img" onclick="defaultBtnActive()">
-                <img src="" alt="" >
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                select your image
-              </div>
+      <div class="right">
+        <div class="title"><h2>투자종목 추가</h2></div>
+        <form th:method="post" th:action="@{|/invest/add/${tradingSite}|}" th:object="${addCurrencyInfo}" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>코인 이미지</label>
+            <input id="selectImg" th:field="*{imgFile}" type="file" hidden>
+            <div class="main-img" onclick="defaultBtnActive()">
+              <img src="" alt="" >
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              select your image
             </div>
-            <div class="form-group">
-              <label for="title">코인명</label>
-              <input type="text" id="title" th:field="*{name}">
-            </div>
-            <div class="form-group">
-              <label for="code">코인 코드</label>
-              <input type="text" id="code" placeholder="ex) KRW-BTC" >
-            </div>
-            <div class="form-group">
-              <label for="site">코인 코드</label>
-              <input type="text" id="site" th:value="${site}">
-            </div>
-            <button>게시하기</button>
-          </form>
-        </div>
+          </div>
+          <div class="form-group">
+            <label for="title">코인명</label>
+            <input type="text" th:field="*{name}" id="title">
+          </div>
+          <div class="form-group">
+            <label for="code">코인 코드</label>
+            <input type="text" id="code" th:field="*{code}"  placeholder="ex) KRW-BTC">
+          </div>
+          <button>게시하기</button>
+        </form>
       </div>
     </div>
-  </main>
-  <script src="/js/add_image.js"></script>
+  </div>
+</main>
+<script src="/js/add_image.js"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.example.MBlock.controller;
 
-import com.example.MBlock.dto.CurrencyInfo.AddCurrencyInfo;
 import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.NewsService;
@@ -10,9 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -101,6 +98,6 @@ public class PageController {
 
     @GetMapping("/test")
     public String testPage() {
-        return "test";
+        return "test_binance";
     }
 }

@@ -164,19 +164,6 @@
         var fileReader = new FileReader();
         var list = /*[[${upBitList}]]*/ [];
         var binanceCoin = /*[[${binanceList}]]*/ [];
-        var coin_name = {
-            "ETHUSDT" : "ethusdt@ticker",
-            "SOLUSDT" : "solusdt@ticker", // "KRW-SOL" : "솔라나",
-            "AVAXUSDT" : "avaxusdt@ticker", // "KRW-AVAX" : "아발란체",
-            "MATICUSDT" : "maticusdt@ticker", // "KRW-MATIC" : "폴리곤",
-            "NEARUSDT" : "nearusdt@ticker", // "KRW-NEAR" : "니어 프로토콜",
-            "ATOMUSDT" : "atomusdt@ticker", // "KRW-ATOM" : "코스모스",
-            "ALGOUSDT" :"algousdt@ticker", // "KRW-ALGO" : "알고랜드",
-            "ADAUSDT" : "adausdt@ticker", // "KRW-ADA" : "에이다",
-            "DOTUSDT" : "dotusdt@ticker" // "KRW-DOT" : "폴카닷"
-        };
-
-
 
 
         function chartUI(coinList, outputDiv,i){
@@ -229,10 +216,6 @@
 
             output = document.getElementById('output');
             outputB=document.getElementById('outputB')
-            var binanceList =[];
-            // for(var i=0; i<Object.keys(coin_name).length;i++){
-            //     binanceList[i] = coin_name[0]
-            // }
             for(var i=0; i<list.length; i++){
                 chartUI(list, output,i);
             }

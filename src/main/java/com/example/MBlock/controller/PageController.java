@@ -1,5 +1,7 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.domain.CurrencyInfo;
+import com.example.MBlock.dto.CurrencyInfo.GetCurrencyInfoRes;
 import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.NewsService;
@@ -92,6 +94,8 @@ public class PageController {
      */
     @GetMapping("/admin/invest")
     public String manageInvest(Model model) {
+        List<GetCurrencyInfoRes> upbitCoin = adminService.getCurrencyInfoResAllOfTradingSite("UPBIT");
+        model.addAttribute("upbitCoin", upbitCoin);
         return "admin_invest";
     }
 

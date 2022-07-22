@@ -117,64 +117,13 @@
                 </div>
                 <div class="coin-title">
                     <div class="title-inner">Name</div>
-                    <div class="title-inner">Price</div>
+                    <div class="title-inner">Price($)</div>
                     <div class="title-inner">24h Change</div>
-                    <div class="title-inner">24h Volume</div>
+                    <div class="title-inner">24h Volume(USDT)</div>
                 </div>
-                <div class="coin-con">
-                    <div class="coin-inner">
-                        <div class="img">
-                            <img src="../images/bitcoin.png" alt="비트코인">
-                        </div>
-                        <h4>BitCoin</h4>
-                        <h5>BHC</h5>
-                    </div>
-                    <div class="coin-inner">
-                        28,757,000
-                    </div>
-                    <div class="coin-inner">
-                        <p>+2.27%</p>
-                    </div>
-                    <div class="coin-inner">
-                        303,331 <small>백만</small>
-                    </div>
-                </div>
-                <div class="coin-con">
-                    <div class="coin-inner">
-                        <div class="img">
-                            <img src="../images/eth.png" alt="비트코인">
-                        </div>
-                        <h4>Ethereum</h4>
-                        <h5>ETH</h5>
-                    </div>
-                    <div class="coin-inner">
-                        1,638,500
-                    </div>
-                    <div class="coin-inner">
-                        <p>+1.93%</p>
-                    </div>
-                    <div class="coin-inner">
-                        124,898 <small>백만</small>
-                    </div>
-                </div>
-                <div class="coin-con">
-                    <div class="coin-inner">
-                        <div class="img">
-                            <img src="../images/bnb.png" alt="bnb">
-                        </div>
-                        <h4>BNB</h4>
-                        <h5>BNB</h5>
-                    </div>
-                    <div class="coin-inner">
-                        146,000
-                    </div>
-                    <div class="coin-inner">
-                        <p>+0.76%</p>
-                    </div>
-                    <div class="coin-inner">
-                        11,921 <small>백만</small>
-                    </div>
-                </div>
+
+                <div id="outputB"></div>
+
             </div>
         </div>
     </section>
@@ -209,59 +158,132 @@
         // https://docs.upbit.com/docs/upbit-quotation-websocket
 
         var upBitUrl = "wss://api.upbit.com/websocket/v1";
+        var binanceUrl = "wss://stream.binance.com:9443/ws";
         var output;
+        var siteBool = true;
         var fileReader = new FileReader();
         var list = /*[[${upBitList}]]*/ [];
+        var coin_name = {
+            "ETHUSDT" : "ethusdt@ticker",
+            "SOLUSDT" : "solusdt@ticker", // "KRW-SOL" : "솔라나",
+            "AVAXUSDT" : "avaxusdt@ticker", // "KRW-AVAX" : "아발란체",
+            "MATICUSDT" : "maticusdt@ticker", // "KRW-MATIC" : "폴리곤",
+            "NEARUSDT" : "nearusdt@ticker", // "KRW-NEAR" : "니어 프로토콜",
+            "ATOMUSDT" : "atomusdt@ticker", // "KRW-ATOM" : "코스모스",
+            "ALGOUSDT" :"algousdt@ticker", // "KRW-ALGO" : "알고랜드",
+            "ADAUSDT" : "adausdt@ticker", // "KRW-ADA" : "에이다",
+            "DOTUSDT" : "dotusdt@ticker" // "KRW-DOT" : "폴카닷"
+        };
 
+
+        function chartUItest(coinList, outputDiv,i){
+            var coinConDiv = document.createElement('div');
+            coinConDiv.setAttribute('class', 'coin-con');
+            var coinInnerDiv = document.createElement('div');
+            coinInnerDiv.setAttribute('class', 'coin-inner');
+            var coinImgDiv = document.createElement('div');
+            coinImgDiv.setAttribute('class', 'img');
+            coinImgDiv.id=coinList[i]+"imgUrl"
+            var coinImg = document.createElement('img');
+           // coinImg.src = coinList[i];
+          //  coinImgDiv.appendChild(coinImg);
+            var coinNameP = document.createElement('h4');
+            coinNameP.id = coinList[i]+"name";
+            coinNameP.innerText = coinList[i];
+
+            var coinCode= document.createElement('h5');
+            coinCode.id = coinList[i]+"code";
+            coinCode.innerText = coinList[i];
+
+            var coinPrice = document.createElement('div');
+            coinPrice.id = coinList[i]+"price";
+            coinPrice.setAttribute('class', 'coin-inner');
+            coinPrice.innerText= "loading..."
+
+            var coindayDiv= document.createElement('div');
+            coindayDiv.setAttribute('class', 'coin-inner');
+            var coindayP = document.createElement('p');
+            coindayP.id = coinList[i]+"dayP";
+
+            var coinTradeDiv = document.createElement('div');
+            coinTradeDiv.id = coinList[i]+"trade";
+            coinTradeDiv.setAttribute('class', 'coin-inner');
+
+            coinInnerDiv.appendChild(coinImgDiv);
+            coinInnerDiv.appendChild(coinNameP);
+            coinInnerDiv.appendChild(coinCode);
+            coinConDiv.appendChild(coinInnerDiv);
+
+            coinConDiv.appendChild(coinPrice);
+
+            coindayDiv.appendChild(coindayP);
+            coinConDiv.appendChild(coindayDiv);
+
+            coinConDiv.appendChild(coinTradeDiv);
+            outputDiv.appendChild(coinConDiv);
+        }
+
+
+        function chartUI(coinList, outputDiv,i){
+            var coinConDiv = document.createElement('div');
+            coinConDiv.setAttribute('class', 'coin-con');
+            var coinInnerDiv = document.createElement('div');
+            coinInnerDiv.setAttribute('class', 'coin-inner');
+            var coinImgDiv = document.createElement('div');
+            coinImgDiv.setAttribute('class', 'img');
+            coinImgDiv.id=coinList[i].code+"imgUrl"
+            var coinImg = document.createElement('img');
+            coinImg.src = coinList[i].imgUrl;
+            coinImgDiv.appendChild(coinImg);
+            var coinNameP = document.createElement('h4');
+            coinNameP.id = coinList[i].code+"name";
+            coinNameP.innerText = coinList[i].name;
+
+            var coinCode= document.createElement('h5');
+            coinCode.id = coinList[i].code+"code";
+            coinCode.innerText = coinList[i].code;
+
+            var coinPrice = document.createElement('div');
+            coinPrice.id = coinList[i].code+"price";
+            coinPrice.setAttribute('class', 'coin-inner');
+            coinPrice.innerText= "loading..."
+
+            var coindayDiv= document.createElement('div');
+            coindayDiv.setAttribute('class', 'coin-inner');
+            var coindayP = document.createElement('p');
+            coindayP.id = coinList[i].code+"dayP";
+
+            var coinTradeDiv = document.createElement('div');
+            coinTradeDiv.id = coinList[i].code+"trade";
+            coinTradeDiv.setAttribute('class', 'coin-inner');
+
+            coinInnerDiv.appendChild(coinImgDiv);
+            coinInnerDiv.appendChild(coinNameP);
+            coinInnerDiv.appendChild(coinCode);
+            coinConDiv.appendChild(coinInnerDiv);
+
+            coinConDiv.appendChild(coinPrice);
+
+            coindayDiv.appendChild(coindayP);
+            coinConDiv.appendChild(coindayDiv);
+
+            coinConDiv.appendChild(coinTradeDiv);
+            outputDiv.appendChild(coinConDiv);
+        }
         function investUI(){
 
             output = document.getElementById('output');
+            outputB=document.getElementById('outputB')
+            var binanceList =[];
+            // for(var i=0; i<Object.keys(coin_name).length;i++){
+            //     binanceList[i] = coin_name[0]
+            // }
             for(var i=0; i<list.length; i++){
-                var coinConDiv = document.createElement('div');
-                coinConDiv.setAttribute('class', 'coin-con');
-                var coinInnerDiv = document.createElement('div');
-                coinInnerDiv.setAttribute('class', 'coin-inner');
-                var coinImgDiv = document.createElement('div');
-                coinImgDiv.setAttribute('class', 'img');
-                coinImgDiv.id=list[i].code+"imgUrl"
-                var coinImg = document.createElement('img');
-                coinImg.src = list[i].imgUrl;
-                coinImgDiv.appendChild(coinImg);
-                var coinNameP = document.createElement('h4');
-                coinNameP.id = list[i].code+"name";
-                coinNameP.innerText = list[i].name;
+                chartUI(list, output,i);
+            }
 
-                var coinCode= document.createElement('h5');
-                coinCode.id = list[i].code+"code";
-                coinCode.innerText = list[i].code;
-
-                var coinPrice = document.createElement('div');
-                coinPrice.id = list[i].code+"price";
-                coinPrice.setAttribute('class', 'coin-inner');
-                coinPrice.innerText= "loading..."
-
-                var coindayDiv= document.createElement('div');
-                coindayDiv.setAttribute('class', 'coin-inner');
-                var coindayP = document.createElement('p');
-                coindayP.id = list[i].code+"dayP";
-
-                var coinTradeDiv = document.createElement('div');
-                coinTradeDiv.id = list[i].code+"trade";
-                coinTradeDiv.setAttribute('class', 'coin-inner');
-
-                coinInnerDiv.appendChild(coinImgDiv);
-                coinInnerDiv.appendChild(coinNameP);
-                coinInnerDiv.appendChild(coinCode);
-                coinConDiv.appendChild(coinInnerDiv);
-
-                coinConDiv.appendChild(coinPrice);
-
-                coindayDiv.appendChild(coindayP);
-                coinConDiv.appendChild(coindayDiv);
-
-                coinConDiv.appendChild(coinTradeDiv);
-
-                output.appendChild(coinConDiv);
+            for(var i=0; i<Object.values(coin_name).length; i++){
+                chartUItest(Object.values(coin_name),outputB, i);
             }
 
 
@@ -271,7 +293,25 @@
         function init() {
             investUI();
             testUpBit();
+            testBinance();
         }
+
+        function testBinance() {
+            binanceWebSocket = new WebSocket(binanceUrl);
+            binanceWebSocket.onopen = function (evt) {
+                onOpenB(evt);
+            };
+            binanceWebSocket.onclose = function (evt) {
+                onCloseB(evt);
+            };
+            binanceWebSocket.onmessage = function (evt) {
+                onMessageB(evt);
+            };
+            binanceWebSocket.onerror = function (evt) {
+                onErrorB(evt);
+            };
+        }
+
 
         function testUpBit() {
             upBitWebSocket = new WebSocket(upBitUrl);
@@ -289,6 +329,86 @@
             };
         }
 
+
+        /**up binance load**/
+        function onOpenB(evt) {
+            writeToScreen("연결 완료");
+            doSendB(
+                JSON.stringify(
+                    {
+                        "method": "SUBSCRIBE",
+                        "params":
+                        Object.values(coin_name),
+                        "id": 1
+                    }
+                )
+            );
+        }
+
+        function onCloseB(evt) {
+            console.log("연결 해제");
+        }
+
+        function onMessageB(evt) {
+
+            try {
+                parseCoinB(evt.data);
+            } catch (error) {
+                console.log('error', error);
+            }
+        }
+
+        function onErrorB(evt) {
+            writeToScreen('<span style="color: red;"> 에러: </span>' + evt.data);
+        }
+
+        function doSendB(message) {
+            binanceWebSocket.send(message);
+        }
+
+
+        function parseCoinB(message) {
+            var data = JSON.parse(message);
+
+            for(var i=0; i<Object.keys(coin_name).length; i++){
+                if(data['s'] == Object.keys(coin_name)[i]){
+                    var name = document.getElementById(Object.values(coin_name)[i]+"name");
+                    var price = document.getElementById(Object.values(coin_name)[i]+"price");
+                    var code = document.getElementById(Object.values(coin_name)[i]+"code");
+                    var day = document.getElementById(Object.values(coin_name)[i]+"dayP");
+                    var atpP = document.getElementById(Object.values(coin_name)[i]+"trade")
+                    var scr = data['p'];
+                    if(scr<0){
+                        day.style.color= "darkblue";
+                    }else if(scr==0){
+                        day.style.color= "black";
+                    }
+                    else{
+                        day.style.color= "#D30000";
+                    }
+                    var atp= data['q']
+                    var atp2 = parseFloat(atp).toFixed(2);
+                    var atpStr = atp2.toString()
+                         .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                    var priceStr = parseFloat(data['a']).toFixed(2)
+                         .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+                    day.innerText=parseFloat(scr).toFixed(2);
+                    name.innerText= Object.keys(coin_name)[i];
+                    price.innerText= priceStr
+                    code.innerText=Object.keys(coin_name)[i];
+                    atpP.innerText = atpStr
+
+
+                }
+            }
+
+        }
+
+
+
+
+        /**up bit load**/
         function onOpen(evt) {
             writeToScreen("연결 완료");
             var codeList = [];
@@ -339,6 +459,7 @@
             // pre.innerHTML = message;
             // output.appendChild(pre);
         }
+
 
         function parseCoin(message) {
             var data = JSON.parse(message);

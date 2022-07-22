@@ -10,17 +10,17 @@
         var binanceUrl = "wss://stream.binance.com:9443/ws";
         var output;
 
-        var coin_name = {
-            "KRW-ETH" : "이더리움",
-            "KRW-SOL" : "솔라나",
-            "KRW-AVAX" : "아발란체",
-            "KRW-MATIC" : "폴리곤",
-            "KRW-NEAR" : "니어 프로토콜",
-            "KRW-ATOM" : "코스모스",
-            "KRW-ALGO" : "알고랜드",
-            "KRW-ADA" : "에이다",
-            "KRW-DOT" : "폴카닷"
-        }
+        var coin_name = [
+            "ethusdt@ticker", // "USD-ETH" : "이더리움",
+            "solusdt@ticker", // "KRW-SOL" : "솔라나",
+            "avaxusdt@ticker", // "KRW-AVAX" : "아발란체",
+            "maticusdt@ticker", // "KRW-MATIC" : "폴리곤",
+            "nearusdt@ticker", // "KRW-NEAR" : "니어 프로토콜",
+            "atomusdt@ticker", // "KRW-ATOM" : "코스모스",
+            "algousdt@ticker", // "KRW-ALGO" : "알고랜드",
+            "adausdt@ticker", // "KRW-ADA" : "에이다",
+            "dotusdt@ticker" // "KRW-DOT" : "폴카닷"
+        ];
 
         function init() {
             output = document.getElementById("output");
@@ -50,57 +50,38 @@
                     {
                         "method": "SUBSCRIBE",
                         "params":
-                            [
-                                "ethusdt@aggTrade", // "USD-ETH" : "이더리움",
-                                "solusdt@aggTrade", // "KRW-SOL" : "솔라나",
-                                "avaxusdt@aggTrade", // "KRW-AVAX" : "아발란체",
-                                "maticusdt@aggTrade", // "KRW-MATIC" : "폴리곤",
-                                "nearusdt@aggTrade", // "KRW-NEAR" : "니어 프로토콜",
-                                "atomusdt@aggTrade", // "KRW-ATOM" : "코스모스",
-                                "algousdt@aggTrade", // "KRW-ALGO" : "알고랜드",
-                                "adausdt@aggTrade", // "KRW-ADA" : "에이다",
-                                "dotusdt@aggTrade" // "KRW-DOT" : "폴카닷"
-
-                            ],
+                            coin_name,
                         "id": 1
                     }
                 )
             );
         }
 
-        function onClose(evt) {
+        function onCloseB(evt) {
             console.log("연결 해제");
         }
 
-        function onMessage(evt) {
+        function onMessageB(evt) {
 
             try {
-                parseCoin(evt.data);
+                parseCoinB(evt.data);
             } catch (error) {
                 console.log('error', error);
             }
         }
 
-        function onError(evt) {
+        function onErrorB(evt) {
             writeToScreen('<span style="color: red;"> 에러: </span>' + evt.data);
         }
 
-        function doSend(message) {
-            console.log("doSend", message);
-            writeToScreen("발신: ", message);
+        function doSendB(message) {
             binanceWebSocket.send(message);
-
         }
 
-        function writeToScreen(message) {
-            var pre = document.createElement("p");
-            pre.innerHTML = message;
-            output.appendChild(pre);
-        }
 
-        function parseCoin(message) {
+        function parseCoinB(message) {
             var data = JSON.parse(message);
-            console.log(data['s'], data['p']);
+            console.log("전일대비"+data['p'], "24volume:"+data['q'], "price: "+ data['a']);
 
         }
 

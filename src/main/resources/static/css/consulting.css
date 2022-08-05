@@ -215,6 +215,18 @@ section .board-main .right .form-group textarea{
     padding: 0.8rem;
     line-height: 1.2;
 }
+section .board-main .right .form-group .check{
+    margin: 1.5rem 0 1rem 0;
+}
+section .board-main .right .form-group .check span{
+    margin: 0 2rem 0 0.5rem;
+}
+section .board-main .right .form-group.password{
+    display: none;
+}
+section .board-main .right .form-group.password.active{
+    display: block;
+}
 section .board-main .right .form-group p{
     border: 1px solid #ccc;
     border-radius: 5px;

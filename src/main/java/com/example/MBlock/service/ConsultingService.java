@@ -69,6 +69,7 @@ public class ConsultingService {
                             .email(c.getEmail())
                             .context(c.getContext())
                             .replied(c.isReplied())
+                            .password(c.getPassword())
                             .trader(c.getTrader())
                             .datetime(c.getUpdatedAt().format(DateTimeFormatter.ofPattern("yy-MM-dd"))).build());
                 }

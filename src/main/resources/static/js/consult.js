@@ -19,6 +19,17 @@ options.forEach(option => {
     })
 })
 
+const showBtn = document.getElementById("show");
+const lockBtn = document.getElementById("lock");
+
+const passwordCon = document.querySelector("section .board-main .right .form-group.password"),
+    passowrdInput = document.getElementById("password");
+
+showBtn.addEventListener("click", ()=>{
+    passwordCon.classList.remove("active");
+    passowrdInput.value = "";
+});
+lockBtn.addEventListener("click", ()=>passwordCon.classList.add("active"));
 
 
 function nullCheck(){

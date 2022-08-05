@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/admin_consult.css">
+    <link rel="stylesheet" href="/css/consulting.css">
+</head>
+<body>
+<!-- header -->
+<header>
+    <div class="container">
+        <h1>
+            <button><a th:href="@{/main}"> M <span>Block</span></a></button>
+        </h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/main}">Home</a>
+                </li>
+                <li><a th:href="@{/business}">Business</a>
+                </li>
+                <li><a href="#">Portfolio<i class="fa-solid fa-angle-down"></i></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a th:href="@{/news}">News</a></li>
+                            <li><a th:href="@{/invest}">Investment</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Customer<i class="fa-solid fa-angle-down"></i></a>
+                    <div class="line"></div>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a th:href="@{/announce}">공지사항</a></li>
+                            <li><a th:href="@{/qnaList}">QnA</a></li>
+                            <li><a th:href="@{/consulting/form}">Consulting</a></li>
+                            <li><a th:href="@{/contact}">Contact</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
+    </div>
+</header>
+<main>
+    <div class="left">
+        <ul>
+            <li><a th:href="@{/announce}"><span>공지사항</span></a></li>
+            <li><a th:href="@{/consulting/form}"><span>Consulting</span></a></li>
+            <li><a th:href="@{/contact}"><span>Contact</span></a></li>
+        </ul>
+    </div>
+            <div class="right">
+                <div class="title"><h2>개인 문의</h2></div>
+                <div class="label">
+                    <div class="name">작성자</div>
+                    <div class="tit">상담 내용</div>
+                    <div class="trader">희망 Trader</div>
+                    <div class="date">작성 날짜</div>
+                    <div class="answer">답변 여부</div>
+                </div>
+                <div class="list">
+                    <ul th:each="consult : ${consultList}">
+                        <li>
+                            <div th:if="${consult.password.equals('')}">
+                                비공개 글입니다.
+                            </div>
+
+                            <div th:unless="${consult.password.equals('')}">
+                                <div class="name" th:text="${consult.name}"></div>
+                                <a th:href="@{|/admin/consulting/${consult.id}|}">
+                                    <div class="tit" th:text="${consult.context}"></div>
+                                </a>
+                                <div class="trader" th:text="${consult.trader}"></div>
+                                <div class="date" th:text="${consult.datetime}"></div>
+                                <div class="answer" th:if="${consult.replied}" th:text="Y" style="color: #11998e"></div>
+                                <div class="answer" th:unless="${consult.replied}" th:text="N"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

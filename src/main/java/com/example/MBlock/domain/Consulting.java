@@ -28,6 +28,8 @@ public class Consulting extends BaseEntity implements Auditable {
 
     private String trader;
 
+    private String password;
+
     @Convert(converter = BooleanToYNConverter.class)
     private boolean privacy;
 
@@ -35,7 +37,7 @@ public class Consulting extends BaseEntity implements Auditable {
     private boolean replied;
 
     @Builder
-    public Consulting(String name, String email, String phone, String context, String trader, boolean privacy, boolean replied) {
+    public Consulting(String name, String email,String password ,String phone, String context, String trader, boolean privacy, boolean replied) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -43,5 +45,6 @@ public class Consulting extends BaseEntity implements Auditable {
         this.trader = trader;
         this.privacy=privacy;
         this.replied = replied;
+        this.password = password;
     }
 }

@@ -63,4 +63,11 @@ public class ConsultingController {
         return "redirect:/admin/consulting";
     }
 
+    @GetMapping("/qnaList")
+    public String gotoQnaList(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable ){
+        List<GetConsultingRes> consultList = consultingService.getAllConsulting(pageable);
+        model.addAttribute("consultList", consultList);
+        return "qna_list";
+    }
+
 }

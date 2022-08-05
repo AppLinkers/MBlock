@@ -25,6 +25,8 @@ public class GetConsultingRes {
 
     private boolean replied;
 
+    private String password;
+
     private String datetime;
 
 }

@@ -14,6 +14,8 @@ public class WriteConsultingReq {
 
     private String trader;
 
+    private String password;
+
     private boolean privacy;
 
 

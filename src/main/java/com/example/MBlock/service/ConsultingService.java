@@ -35,6 +35,7 @@ public class ConsultingService {
                 .trader(request.getTrader())
                 .context(request.getContext())
                 .privacy(request.isPrivacy())
+                .password(request.getPassword())
                 .build();
 
         String consultMsg = request.getName()+"님이 Trader "+
@@ -95,6 +96,7 @@ public class ConsultingService {
                 .email(consulting.getEmail())
                 .phone(consulting.getPhone())
                 .trader(consulting.getTrader())
+                .password(consulting.getPassword())
                 .datetime(consulting.getUpdatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .build();
     }

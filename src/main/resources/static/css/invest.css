@@ -156,6 +156,9 @@ section .title h3{
 section .title h2{
     font-size: 2.5rem;
 }
+section .profit{
+    margin-top: 3rem;
+}
 section .profit::after{
     content: "";
     display: block;
@@ -182,6 +185,90 @@ section .profit .profit-inner h4{
 }
 section .profit .profit-inner:last-child{
     margin-right: 0;
+}
+/*=====================YouTube trader=============================*/
+.team__container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+.team__member{
+    padding: 2rem;
+    border: 1px solid #ccc;
+    transition: all 400ms ease;
+    position: relative;
+    overflow: hidden;
+}
+.team__member-image img{
+    width: 100%;
+    height: 180px;
+    filter: saturate(0);
+}
+.team__member:hover img{
+    filter: saturate(1);
+}
+.team__member-info {
+    text-align: center;
+    margin-top: 1.4rem;
+}
+.team__member-info .name{
+    display: flex;
+    justify-content: center;
+}
+.team__member-info .name p{
+    background: #f75842;
+    text-align: center;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 5px;
+    margin-left: 0.5rem;
+}
+.team__member-info .position{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0 3rem 0;
+}
+.team__member-info .position p:first-child{
+    background:#1f2641 ;
+}
+.team__member-info .position p{
+    width: 48%;
+    background: #00bf8e;
+    border-radius: 5px;
+    padding: 0.4rem 0;
+    color: white;
+    font-size: 0.75rem;
+}
+.team__member-trade .trade-info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+.team__member-trade .trade-info p{
+    font-size: 0.8rem;
+    color: #555555;
+}
+.team__member-link{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: -2rem 0 2rem rgba(0,0,0,0.3);
+    transition: all 400ms ease;
+}
+.team__member-link a{
+    padding: 1rem;
+    color: red;
+}
+.team__member:hover .team__member-link{
+    right: 0;
 }
 section .control{
     display: flex;

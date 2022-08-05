@@ -52,6 +52,52 @@
                 <h3>Portfolio</h3>
                 <h2>Invested Coins/Tokens</h2>
             </div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div class="tradingview-widget-container">
+                    <div id="tradingview_7a419" style="height: 400px; width: 600px; margin-right: 60px;"></div>
+                    <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/BTCUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT 차트</span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                        new TradingView.widget(
+                            {
+                                "autosize": true,
+                                "symbol": "BINANCE:BTCUSDT",
+                                "interval": "D",
+                                "timezone": "Etc/UTC",
+                                "theme": "light",
+                                "style": "1",
+                                "locale": "kr",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "allow_symbol_change": true,
+                                "container_id": "tradingview_7a419"
+                            }
+                        );
+                    </script>
+                </div>
+                <div class="tradingview-widget-container">
+                    <div id="tradingview_ca953" style="height: 400px; width: 600px;"></div>
+                    <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/ETHUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">ETHUSDT 차트</span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                        new TradingView.widget(
+                            {
+                                "autosize": true,
+                                "symbol": "BINANCE:ETHUSDT",
+                                "interval": "D",
+                                "timezone": "Etc/UTC",
+                                "theme": "light",
+                                "style": "1",
+                                "locale": "kr",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "allow_symbol_change": true,
+                                "container_id": "tradingview_ca953"
+                            }
+                        );
+                    </script>
+                </div>
+            </div>
             <div class="profit">
                 <div class="profit-inner">
                     <p>Total Assets</p>
@@ -67,6 +113,166 @@
                     <h3>+ $ <span class="profit-num" data-target="100">0</span>M</h3>
                     <h4>+ 10.45% <i class="fa-solid fa-arrow-up"></i></h4>
                 </div>
+            </div>
+            <div class="title">
+                <h3>YouTube Traders</h3>
+            </div>
+            <div class="team__container">
+                <article class="team__member">
+                    <div class="team__member-image">
+                        <img src="../images/trader2.jpg">
+                    </div>
+                    <div class="team__member-info">
+                        <div class="name">
+                            <h4>막노동 고등어</h4>
+                            <p>onAir</p>
+                        </div>
+                        <div class="position">
+                            <p>BTCUSDT</p>
+                            <p>Long</p>
+                        </div>
+                    </div>
+                    <div class="team__member-trade">
+                        <div class="trade-info">
+                            <p>규모</p>
+                            <h5>97.44</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>미실현 손익</p>
+                            <h5>407,155.11</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>진입가</p>
+                            <h5>22,602.50</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>시장평균가</p>
+                            <h5>9,723,387.46</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>청산가</p>
+                            <h5>21,280.00</h5>
+                        </div>
+                    </div>
+                    <div class="team__member-link">
+                        <a><i class="fa-brands fa-youtube"></i></a>
+                        <a th:href="@{/consulting/form}"><i class="fa-solid fa-q"></i></a>
+                    </div>
+                </article>
+                <article class="team__member">
+                    <div class="team__member-image">
+                        <img src="../images/trader1.png">
+                    </div>
+                    <div class="team__member-info">
+                        <h4>박호두</h4>
+                        <div class="position">
+                            <p>BTCUSDT</p>
+                            <p>Long</p>
+                        </div>
+                    </div>
+                    <div class="team__member-trade">
+                        <div class="trade-info">
+                            <p>규모</p>
+                            <h5>97.44</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>미실현 손익</p>
+                            <h5>407,155.11</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>진입가</p>
+                            <h5>22,602.50</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>시장평균가</p>
+                            <h5>97.23,387.46</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>청산가</p>
+                            <h5>21,280.00</h5>
+                        </div>
+                    </div>
+                    <div class="team__member-link">
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                        <a href=""><i class="fa-solid fa-q"></i></a>
+                    </div>
+                </article>
+                <article class="team__member">
+                    <div class="team__member-image">
+                        <img src="../images/trader3.jpg">
+                    </div>
+                    <div class="team__member-info">
+                        <h4>짭구</h4>
+                        <div class="position">
+                            <p>BTCUSDT</p>
+                            <p>Long</p>
+                        </div>
+                    </div>
+                    <div class="team__member-trade">
+                        <div class="trade-info">
+                            <p>규모</p>
+                            <h5>97.44</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>미실현 손익</p>
+                            <h5>407,155.11</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>진입가</p>
+                            <h5>22,602.50</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>시장평균가</p>
+                            <h5>97.23,387.46</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>청산가</p>
+                            <h5>21,280.00</h5>
+                        </div>
+                    </div>
+                    <div class="team__member-link">
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                        <a href=""><i class="fa-solid fa-q"></i></a>
+                    </div>
+                </article>
+                <article class="team__member">
+                    <div class="team__member-image">
+                        <img src="../images/trader4.jpg">
+                    </div>
+                    <div class="team__member-info">
+                        <h4>사또</h4>
+                        <div class="position">
+                            <p>BTCUSDT</p>
+                            <p>Long</p>
+                        </div>
+                    </div>
+                    <div class="team__member-trade">
+                        <div class="trade-info">
+                            <p>규모</p>
+                            <h5>97.44</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>미실현 손익</p>
+                            <h5>407,155.11</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>진입가</p>
+                            <h5>22,602.50</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>시장평균가</p>
+                            <h5>97.23,387.46</h5>
+                        </div>
+                        <div class="trade-info">
+                            <p>청산가</p>
+                            <h5>21,280.00</h5>
+                        </div>
+                    </div>
+                    <div class="team__member-link">
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                        <a href=""><i class="fa-solid fa-q"></i></a>
+                    </div>
+                </article>
             </div>
             <div class="title">
                 <h3>Chart</h3>

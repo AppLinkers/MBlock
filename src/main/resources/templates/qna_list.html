@@ -7,8 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/admin_consult.css">
-    <link rel="stylesheet" href="/css/consulting.css">
+    <link rel="stylesheet" href="/css/qna_list.css">
 </head>
 <body>
 <!-- header -->
@@ -47,16 +46,22 @@
         <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
     </div>
 </header>
-<main>
-    <div class="left">
-        <ul>
-            <li><a th:href="@{/announce}"><span>공지사항</span></a></li>
-            <li><a th:href="@{/consulting/form}"><span>Consulting</span></a></li>
-            <li><a th:href="@{/contact}"><span>Contact</span></a></li>
-        </ul>
-    </div>
+<!--board-->
+<section id="board">
+    <div class="container">
+        <div class="title">
+            <h3>QnA</h3>
+        </div>
+        <div class="board-main">
+            <div class="left">
+                <ul>
+                    <li><a th:href="@{/announce}"><span>공지사항</span></a></li>
+                    <li><a th:href="@{/qnaList}"><span>QnA</span></a></li>
+                    <li><a th:href="@{/consulting/form}"><span>Consulting</span></a></li>
+                    <li><a th:href="@{/contact}"><span>Contact</span></a></li>
+                </ul>
+            </div>
             <div class="right">
-                <div class="title"><h2>개인 문의</h2></div>
                 <div class="label">
                     <div class="name">작성자</div>
                     <div class="tit">상담 내용</div>
@@ -88,6 +93,32 @@
             </div>
         </div>
     </div>
-</main>
+</section>
+<!-- bottom -->
+<section id="bottom">
+    <div class="container">
+        <div class="bottom-nav">
+            <h3>M <span>Block</span></h3>
+            <ul>
+                <li><a th:href="@{/main}">Home</a></li>
+                <li><a th:href="@{/business}">Business</a></li>
+                <li><a th:href="@{/news}">Portfolio</a></li>
+                <li><a th:href="@{/announce}">Customer</a></li>
+            </ul>
+        </div>
+        <div class="bottom-info">
+            <p>E-mail</p>
+            <h4>aaa@google.com</h4>
+            <p>Tel.</p>
+            <h4>010-9999-9999</h4>
+        </div>
+        <div class="bottom-line"></div>
+        <div class="bottom-sns">
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </div>
+</section>
 </body>
 </html>

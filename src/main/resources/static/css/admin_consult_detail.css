@@ -139,12 +139,95 @@ main .right .head .info i{
     cursor: pointer;
 }
 main .right .counsel{
-    padding: 3rem 1.5rem 5rem 1.5rem;
+    padding: 3rem 0rem 15rem 0rem;
 }
 main .right .counsel p{
     margin-top: 2rem;
 }
-main .right button{
+/*=============== Comment ==================*/
+main .right .comment{
+    padding-bottom: 10rem;
+}
+main .right .comment .comment-con{
+    display: flex;
+    margin-top: 3rem;
+}
+main .right .comment .comment-con:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+main .right .comment .comment-con textarea{
+    float: left;
+    width: 82%;
+    resize: none;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.8rem;
+    line-height: 1.2;
+    margin-right: 3%;
+}
+main .right .comment .comment-con textarea:focus{
+    border: 1px solid #a7e0a5;
+    box-shadow: 0 0 5px #a7e0a5;
+}
+main .right .comment .comment-con button{
+    float: left;
+    width: 15%;
+    height: 150px;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    background: #38ef7d;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+main .right .comment .comment-list{
+    margin-top: 3rem;
+}
+main .right .comment .comment-list ul{
+    margin-top: 1.5rem;
+}
+main .right .comment .comment-list li .comment-info{
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 1rem 0 1rem 0;
+}
+main .right .comment .comment-list li .comment-info .comment-img{
+    width: 45px;
+    height: 45px;
+    margin-right: 1rem;
+}
+main .right .comment .comment-list li .comment-info .comment-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+main .right .comment .comment-list li .comment-info .comment-user p{
+    font-size: 0.75rem;
+    color: #717171;
+}
+main .right .comment .comment-list li .comment-info .comment-control{
+    display: flex;
+    font-size: 0.9rem;
+    color: #717171;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1rem;
+}
+main .right .comment .comment-list li .comment-info .comment-control a:last-child{
+    margin-left: 1rem;
+}
+main .right .comment .comment-list li .comment-context p{
+    padding: 1.5rem 0.8rem;
+    line-height: 1.2;
+}
+/*main .right button{
     border: none;
     border-radius: 5px;
     padding: 0.8rem 1rem;
@@ -153,4 +236,4 @@ main .right button{
     font-size: 0.8rem;
     float: right;
     cursor: pointer;
-}
+}*/

@@ -72,11 +72,9 @@
                 <div class="list">
                     <ul th:each="consult : ${consultList}">
                         <li>
-
-                            <div th:unless="${consult.password==null}">
+                            <div class="list-con" th:unless="${consult.password==null}">
                                 <div class="name" th:text="${consult.name}"></div>
-                                <a th:href="@{|/admin/consulting/${consult.id}|}">
-                                    <div class="tit" th:text="${consult.context}"></div>
+                                <a  class="tit" th:href="@{|/admin/consulting/${consult.id}|}" th:text="${consult.context}">
                                 </a>
                                 <div class="trader" th:text="${consult.trader}"></div>
                                 <div class="date" th:text="${consult.datetime}"></div>
@@ -84,7 +82,7 @@
                                 <div class="answer" th:unless="${consult.replied}" th:text="N"></div>
                             </div>
 
-                            <div th:if="${consult.password==null}">
+                            <div class="list-con" th:if="${consult.password==null}">
                                 비공개 글입니다.
                             </div>
                         </li>

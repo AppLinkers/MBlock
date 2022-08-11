@@ -7,8 +7,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/admin_consult.css">
-    <link rel="stylesheet" href="/css/consulting.css">
+    <link rel="stylesheet" href="/css/qna.css">
 </head>
 <body>
 <!-- header -->
@@ -47,7 +46,79 @@
         <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
     </div>
 </header>
-<main>
+<section id="board">
+    <div class="container">
+        <div class="title">
+            <h3>QnA</h3>
+        </div>
+        <div class="board-main">
+            <div class="left">
+                <ul>
+                    <li><a th:href="@{/announce}"><span>공지사항</span></a></li>
+                    <li><a th:href="@{/consulting/form}"><span>Consulting</span></a></li>
+                    <li><a th:href="@{/contact}"><span>Contact</span></a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="label">
+                    <div class="name">작성자</div>
+                    <div class="tit">상담 내용</div>
+                    <div class="trader">희망 Trader</div>
+                    <div class="date">작성 날짜</div>
+                    <div class="answer">답변 여부</div>
+                </div>
+                <div class="list">
+                    <ul th:each="consult : ${consultList}">
+                        <li>
+
+                            <div th:unless="${consult.password==null}">
+                                <div class="name" th:text="${consult.name}"></div>
+                                <a th:href="@{|/admin/consulting/${consult.id}|}">
+                                    <div class="tit" th:text="${consult.context}"></div>
+                                </a>
+                                <div class="trader" th:text="${consult.trader}"></div>
+                                <div class="date" th:text="${consult.datetime}"></div>
+                                <div class="answer" th:if="${consult.replied}" th:text="Y" style="color: #11998e"></div>
+                                <div class="answer" th:unless="${consult.replied}" th:text="N"></div>
+                            </div>
+
+                            <div th:if="${consult.password==null}">
+                                비공개 글입니다.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- bottom -->
+<section id="bottom">
+    <div class="container">
+        <div class="bottom-nav">
+            <h3>M <span>Block</span></h3>
+            <ul>
+                <li><a th:href="@{/main}">Home</a></li>
+                <li><a th:href="@{/business}">Business</a></li>
+                <li><a th:href="@{/news}">Portfolio</a></li>
+                <li><a th:href="@{/announce}">Customer</a></li>
+            </ul>
+        </div>
+        <div class="bottom-info">
+            <p>E-mail</p>
+            <h4>aaa@google.com</h4>
+            <p>Tel.</p>
+            <h4>010-9999-9999</h4>
+        </div>
+        <div class="bottom-line"></div>
+        <div class="bottom-sns">
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </div>
+</section>
+<!--<main>
     <div class="left">
         <ul>
             <li><a th:href="@{/announce}"><span>공지사항</span></a></li>
@@ -88,6 +159,6 @@
             </div>
         </div>
     </div>
-</main>
+</main>-->
 </body>
 </html>

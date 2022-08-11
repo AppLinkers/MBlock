@@ -74,7 +74,7 @@ main .content::after{
 main .left{
     float: left;
     width: 20%;
-    height: 100vh;
+    height: calc(100vh - 6rem - 75px);
     border-right: 1px solid #f5f5f5;
 }
 main .left ul li{
@@ -93,7 +93,7 @@ main .left ul li .list{
     border-radius: 0 15px 15px 0;
     transition: all .2s ease-in-out;
 }
-main .left ul li:nth-child(7) .list{
+main .left ul li:nth-child(4) .list{
     background: linear-gradient(45deg,#11998e,#38ef7d);
     color: white;
 }
@@ -102,64 +102,77 @@ main .left ul li:focus .list{
     background: linear-gradient(45deg,#11998e,#38ef7d);
     color: white;
 }
+/*================== Right ======================*/
 main .right{
     float: left;
     width: 80%;
-    height: 100vh;
+    height: calc(100vh - 6rem - 75px);
     padding: 3rem;
+    position: relative;
 }
 main .right .title{
     color: rgb(43, 43, 43);
 }
-main .right .label::after{
-    content: "";
-    display: block;
-    clear: both;
+main .right .control{
+    padding: 1rem 0;
+    float: right;
 }
-main .right .label{
-    display: flex;
-    margin-top: 2.5rem;
-    font-size: 0.7rem;
-    color: #717171;
-    font-weight: bold;
+main .right .control button{
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
     background-color: #f8f8f8;
-    padding: 1.2rem 0;
-    text-align: center;
-}
-main .right .label .info{
-    float: left;
-    width: 20%;
-}
-main .right .label .control{
-    float: left;
-    width: 10%;
-}
-main .right .list ul li{
-    display: flex;
-    font-size: 0.8rem;
-    color: #000;
-    padding: 1.4rem 0;
-    text-align: center;
-    border-bottom: 1px solid #f4f4f4;
-}
-main .right .list ul li .info-name{
-    float: left;
-    width: 20%;
-}
-main .right .list ul li .info{
-    float: left;
-    width: 20%;
-}
-main .right .list ul li .control-accept{
-    float: left;
-    width: 10%;
-    font-size: 0.7rem;
-    color: #717171;
-}
-main .right .list ul li .control-edit{
-    float: left;
-    width: 10%;
-    font-size: 0.7rem;
-    color: #717171;
+    padding: 0.5rem 1.2rem;
     cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+}
+main .right .edit{
+    width: 35%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: -2rem 0 2rem rgba(0,0,0,0.3);
+    transition: all 400ms ease;
+    z-index: 4;
+    padding: 3rem;
+}
+main .right .edit .close{
+    font-size: 2rem;
+    color: #555555;
+}
+main .right .edit .edit-info{
+    display: flex;
+    padding: 2rem 0;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+main .right .edit .edit-info img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+main .right .edit .edit-info .name p{
+    background: #f75842;
+    text-align: center;
+    padding: 0.5rem;
+    color: white;
+    font-size: 0.75rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+main .right .edit .edit-input{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    color: #555555;
+}
+main .right .edit button{
+    width: 100%;
+    height: 60px;
 }

@@ -103,6 +103,20 @@ public class PageController {
         return "admin_invest";
     }
 
+    /**
+     *
+     * Admin Page for you_tube trader
+     */
+    @GetMapping("/admin/youtube")
+    public String youtubePage(){
+        return "admin_youtube";
+    }
+
+    @GetMapping("/admin/youtube/form")
+    public String writeYoutubePage(){
+        return "admin_youtube_add";
+    }
+
 
     @GetMapping("/test")
     public String testPage() {

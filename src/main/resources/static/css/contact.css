@@ -171,7 +171,7 @@ section .board-main .left ul li a{
     height: 100%;
     padding: 1rem;
 }
-section .board-main .left ul li:nth-child(3){
+section .board-main .left ul li:nth-child(4){
     background: linear-gradient(45deg,#11998e,#38ef7d);
     color: white;
 }

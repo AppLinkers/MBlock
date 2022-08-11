@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/admin_youtube.css">
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <div class="container">
+      <h1>
+        <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+      </h1>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="top">
+        <span>관리자 페이지</span>
+      </div>
+      <div class="content">
+        <div class="left">
+          <ul>
+            <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
+            <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+            <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+            <li><a th:href="@{/admin/youtube}"><div class="list">유튜브 트레이더</div></a></li>
+            <li><a th:href="@{/admin/partner}"><div class="list">협력업체 관리</div></a></li>
+            <li><a th:href="@{/admin/consulting}"><div class="list" >개인 문의</div></a></li>
+            <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
+            <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="title"><h2>유튜브 트레이더</h2></div>
+          <div class="control">
+            <button><a th:href="@{/admin/youtube/form}">추가</a></button>
+          </div>
+          <button>수정하기</button>
+          <div class="edit">
+            <div class="close"><i class="fa-solid fa-angle-left"></i></div>
+            <form>
+              <div class="edit-info">
+                <img src="../images/trader2.jpg">
+                <div class="name">
+                  <h4>막노동 고등어</h4>
+                  <p>방송중</p>
+                </div>
+              </div>
+              <div class="edit-input">
+                <p>포지션</p>
+                <div class="position">
+                  <a>Long</a>
+                  <a>Short</a>
+                </div>
+              </div>
+              <div class="edit-input">
+                <label for="size">규모</label>
+                <input id="size" autocomplete="off">
+              </div>
+              <div class="edit-input">
+                <label for="price">진입가</label>
+                <input id="price" autocomplete="off">
+              </div>
+              <button type="submit">수정하기</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -41,7 +41,38 @@
           <div class="control">
             <button><a th:href="@{/admin/youtube/form}">추가</a></button>
           </div>
-          <button>수정하기</button>
+          <ul>
+            <li>
+              <div class="trader_list">
+                <div class="list_img">
+                  <img src="../images/trader2.jpg">
+                </div>
+                <div class="list_info">
+                  <h4>막노동 고등어</h4>
+                  <div class="list_info_inner">
+                    <p>onAir</p>
+                    <p>BTCUSDT</p>
+                    <p>Long</p>
+                  </div>
+                  <div class="edit_con">
+                    <a id="edit">관리</a>
+                  </div>
+                </div>
+                <div class="list_price">
+                  <p>규모</p>
+                  <h5>97.44</h5>
+                  <p>시장 평균가</p>
+                  <h5>23,959.00</h5>
+                </div>
+                <div class="list_price">
+                  <p>미실현 손익</p>
+                  <h5>466,196.35</h5>
+                  <p>청산가</p>
+                  <h5>17,424.50</h5>
+                </div>
+              </div>
+            </li>
+          </ul>
           <div class="edit">
             <div class="close"><i class="fa-solid fa-angle-left"></i></div>
             <form>
@@ -49,15 +80,19 @@
                 <img src="../images/trader2.jpg">
                 <div class="name">
                   <h4>막노동 고등어</h4>
-                  <p>방송중</p>
+                  <p>onAir</p>
                 </div>
               </div>
               <div class="edit-input">
                 <p>포지션</p>
                 <div class="position">
-                  <a>Long</a>
-                  <a>Short</a>
+                  <a id="long">Long</a>
+                  <a id="short">Short</a>
                 </div>
+              </div>
+              <div class="edit-input">
+                <label for="coin">코인</label>
+                <input id="coin" autocomplete="off">
               </div>
               <div class="edit-input">
                 <label for="size">규모</label>
@@ -67,13 +102,13 @@
                 <label for="price">진입가</label>
                 <input id="price" autocomplete="off">
               </div>
-              <button type="submit">수정하기</button>
+              <button type="submit">적용하기</button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </main>
-
+  <script src="/js/youtube.js"></script>
 </body>
 </html>

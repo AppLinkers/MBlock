@@ -127,12 +127,81 @@ main .right .control button{
     font-weight: 600;
     color: #555;
 }
+/*===================== List ==========================*/
+main .right ul{
+    margin-top: 6rem;
+}
+main .right .trader_list{
+    display: flex;
+    padding: 2rem;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+}
+main .right .trader_list .list_img{
+    float: left;
+    width: 20%;
+    padding: 2rem;
+}
+main .right .trader_list .list_img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+main .right .trader_list .list_info{
+    float: left;
+    width: 30%;
+}
+main .right .trader_list .list_info .list_info_inner{
+    display: flex;
+    margin-top: 1rem;
+}
+main .right .trader_list .list_info .list_info_inner p{
+    padding: 0.5rem;
+    color: white;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+}
+main .right .trader_list .list_info .list_info_inner p:first-child {
+    background: #f75842;
+}
+main .right .trader_list .list_info .list_info_inner p:nth-child(2){
+    background:#1f2641 ;
+}
+main .right .trader_list .list_info .list_info_inner p:last-child{
+    background: #00bf8e;
+}
+main .right .trader_list .list_info .edit_con{
+    display: flex;
+    width: 50%;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    color: #555555;
+    margin-top: 1rem;
+}
+main .right .trader_list .list_price{
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+main .right .trader_list .list_price p{
+    font-size: 1rem;
+    color: #555555;
+    margin-top: 3rem;
+}
+main .right .trader_list .list_price h5{
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+/*===================== Edit ==========================*/
 main .right .edit{
     width: 35%;
     height: 100%;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -100%;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -141,9 +210,15 @@ main .right .edit{
     z-index: 4;
     padding: 3rem;
 }
+main .right .edit.active{
+    right: 0;
+}
 main .right .edit .close{
     font-size: 2rem;
     color: #555555;
+}
+main .right .edit .close i{
+    cursor: pointer;
 }
 main .right .edit .edit-info{
     display: flex;
@@ -158,7 +233,7 @@ main .right .edit .edit-info img{
     margin-right: 1rem;
 }
 main .right .edit .edit-info .name p{
-    background: #f75842;
+    background: #555555;
     text-align: center;
     padding: 0.5rem;
     color: white;
@@ -166,13 +241,54 @@ main .right .edit .edit-info .name p{
     cursor: pointer;
     margin-top: 1rem;
 }
+main .right .edit .edit-info .name p.active{
+    background: #f75842;
+}
 main .right .edit .edit-input{
     display: flex;
     margin-top: 2rem;
     justify-content: space-between;
     color: #555555;
 }
+main .right .edit .edit-input .position a{
+    padding: 0.8rem;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+main .right .edit .edit-input .position a.active:first-child{
+    background: #00bf8e;
+    color: white;
+    border: none;
+}
+main .right .edit .edit-input .position a.active:last-child{
+    background: #f75842;
+    color: white;
+    border: none;
+}
+main .right .edit .edit-input input{
+    padding: 0.8rem;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+main .right .edit .edit-input input:focus{
+    border: 1px solid #a7e0a5;
+    box-shadow: 0 0 5px #a7e0a5;
+}
 main .right .edit button{
     width: 100%;
     height: 60px;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    background: #38ef7d;
+    color: white;
+    font-size: 0.8rem;
+    float: right;
+    cursor: pointer;
+    bottom: 0;
+    margin-top: 4rem;
 }

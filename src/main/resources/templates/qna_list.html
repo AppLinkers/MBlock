@@ -73,8 +73,7 @@
                 <div class="list">
                     <ul th:each="consult : ${consultList}">
                         <li>
-
-                            <div th:unless="${consult.password==null}">
+                            <div th:unless="${consult.password==null}" class="list-con">
                                 <div class="name" th:text="${consult.name}"></div>
                                 <a th:href="@{|/admin/consulting/${consult.id}|}">
                                     <div class="tit" th:text="${consult.context}"></div>
@@ -85,7 +84,7 @@
                                 <div class="answer" th:unless="${consult.replied}" th:text="N"></div>
                             </div>
 
-                            <div th:if="${consult.password==null}">
+                            <div th:if="${consult.password==null}" class="list-con">
                                 비공개 글입니다.
                             </div>
                         </li>

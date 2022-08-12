@@ -2,6 +2,8 @@ package com.example.MBlock.controller;
 
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
+import com.example.MBlock.dto.ConsultingReply.GetConsultingReplyRes;
+import com.example.MBlock.dto.ConsultingReply.WriteConsultingReplyReq;
 import com.example.MBlock.service.ConsultingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -50,16 +52,19 @@ public class ConsultingController {
     @GetMapping("/admin/consulting/{id}")
     public String consultDetail(Model model, @PathVariable("id") Long id){
         GetConsultingRes consult = consultingService.getConsulting(id);
+        List<GetConsultingReplyRes> consultingReplyResList = consultingService.getAllConsultingReplyByConsultingId(id);
+
         model.addAttribute("consult", consult);
+        model.addAttribute("consultingReplyList", consultingReplyResList);
         return "admin_consult_detail";
     }
 
     /**
      * Check Reply Consulting Service for Admin
      */
-    @PostMapping("/admin/consulting/{id}")
-    public String consultReply(@PathVariable(value="id") Long id){
-        consultingService.consultReply(id);
+    @PostMapping("/admin/consulting")
+    public String consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
+        consultingService.consultReply(writeConsultingReplyReq);
         return "redirect:/admin/consulting";
     }
 

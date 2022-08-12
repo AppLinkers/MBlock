@@ -1,29 +1,38 @@
 package com.example.MBlock.service;
 
-import com.example.MBlock.domain.Announce;
 import com.example.MBlock.domain.Consulting;
+import com.example.MBlock.domain.ConsultingReply;
+import com.example.MBlock.domain.User;
 import com.example.MBlock.domain.type.MessageType;
-import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
+import com.example.MBlock.dto.ConsultingReply.GetConsultingReplyRes;
+import com.example.MBlock.dto.ConsultingReply.WriteConsultingReplyReq;
 import com.example.MBlock.dto.Message.MessageReq;
+import com.example.MBlock.repository.ConsultingReplyRepository;
 import com.example.MBlock.repository.ConsultingRepository;
+import com.example.MBlock.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ConsultingService {
 
     private final ConsultingRepository consultingRepository;
+
+    private final ConsultingReplyRepository consultingReplyRepository;
+
+    private final UserRepository userRepository;
 
     private final MessageService messageService;
 
@@ -79,12 +88,44 @@ public class ConsultingService {
     }
 
     @Transactional
-    public void consultReply(Long id){
-        Consulting consulting = consultingRepository.findById(id).get();
+    public void consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
+        Consulting consulting = consultingRepository.findById(writeConsultingReplyReq.getConsulting_id()).get();
+        User writer = userRepository.findById(writeConsultingReplyReq.getUser_id()).get();
+
         consulting.setReplied(true);
+
+        ConsultingReply consultingReply = ConsultingReply.builder()
+                .consulting(consulting)
+                .user(writer)
+                .content(writeConsultingReplyReq.getContent()).build();
+
+        consultingReplyRepository.save(consultingReply);
         consultingRepository.save(consulting);
     }
 
+    public List<GetConsultingReplyRes> getAllConsultingReplyByConsultingId(Long consulting_id) {
+        List<GetConsultingReplyRes> result = new ArrayList<>();
+
+        Optional<List<ConsultingReply>> consultingReplyList = consultingReplyRepository.findAllByConsultingId(consulting_id);
+
+        if (consultingReplyList.isPresent()) {
+            consultingReplyList.get().forEach(
+                    consultingReply -> {
+                        result.add(
+                                GetConsultingReplyRes.builder()
+                                        .id(consultingReply.getId())
+                                        .consulting_id(consultingReply.getConsulting().getId())
+                                        .writer_id(consultingReply.getUser().getId())
+                                        .writer_name(consultingReply.getUser().getName())
+                                        .content(consultingReply.getContent())
+                                        .build()
+                        );
+                    }
+            );
+        }
+
+        return result;
+    }
 
     public GetConsultingRes getConsulting(Long id) {
         Consulting consulting = consultingRepository.findById(id).get();
@@ -108,4 +149,5 @@ public class ConsultingService {
 
         consultingRepository.delete(consulting);
     }
+
 }

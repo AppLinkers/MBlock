@@ -4,7 +4,9 @@ import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
 import com.example.MBlock.dto.ConsultingReply.GetConsultingReplyRes;
 import com.example.MBlock.dto.ConsultingReply.WriteConsultingReplyReq;
+import com.example.MBlock.dto.User.GetUserInfoRes;
 import com.example.MBlock.service.ConsultingService;
+import com.example.MBlock.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,6 +22,7 @@ import java.util.List;
 public class ConsultingController {
 
     private final ConsultingService consultingService;
+    private final UserService userService;
 
     /**
      * Write Consulting Page
@@ -50,12 +53,17 @@ public class ConsultingController {
      * Read One Consulting Page for Admin
      */
     @GetMapping("/admin/consulting/{id}")
-    public String consultDetail(Model model, @PathVariable("id") Long id){
+    public String consultDetail(Model model, @PathVariable("id") Long id ,WriteConsultingReplyReq writeConsultingReplyReq){
         GetConsultingRes consult = consultingService.getConsulting(id);
         List<GetConsultingReplyRes> consultingReplyResList = consultingService.getAllConsultingReplyByConsultingId(id);
-
         model.addAttribute("consult", consult);
-        model.addAttribute("consultingReplyList", consultingReplyResList);
+        if(consultingReplyResList.size()>0){
+            model.addAttribute("consultingReply", consultingReplyResList.get(0));
+            GetUserInfoRes user = userService.getUserById(consultingReplyResList.get(0).getWriter_id());
+            System.out.println(user);
+            model.addAttribute("user",user);
+        }
+
         return "admin_consult_detail";
     }
 
@@ -64,6 +72,7 @@ public class ConsultingController {
      */
     @PostMapping("/admin/consulting")
     public String consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
+        System.out.println(writeConsultingReplyReq);
         consultingService.consultReply(writeConsultingReplyReq);
         return "redirect:/admin/consulting";
     }

@@ -89,6 +89,7 @@ public class ConsultingService {
 
     @Transactional
     public void consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
+        System.out.println(writeConsultingReplyReq +"asdf");
         Consulting consulting = consultingRepository.findById(writeConsultingReplyReq.getConsulting_id()).get();
         User writer = userRepository.findById(writeConsultingReplyReq.getUser_id()).get();
 
@@ -102,6 +103,7 @@ public class ConsultingService {
         consultingReplyRepository.save(consultingReply);
         consultingRepository.save(consulting);
     }
+
 
     public List<GetConsultingReplyRes> getAllConsultingReplyByConsultingId(Long consulting_id) {
         List<GetConsultingReplyRes> result = new ArrayList<>();

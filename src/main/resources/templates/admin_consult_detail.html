@@ -63,25 +63,32 @@
                         <h3>상담내용</h3>
                         <p th:text="${consult.context}">context</p>
                     </div>
+
                     <div class="comment">
-                        <h3>답변하기</h3>
-                        <form>
-                            <div class="comment-con">
-                                <textarea id="content" autocomplete="off" placeholder="답변을 작성해주세요"></textarea>
-                                <button>작성하기</button>
-                            </div>
-                        </form>
-                        <div class="comment-list">
+                        <div th:if="${consult.replied==false}">
+                            <h3>답변하기</h3>
+                            <form method="POST" th:action="@{/admin/consulting}" th:object="${writeConsultingReplyReq}">
+                                <input type="text" name="consulting_id" th:value="${consult.id}" >
+                                <input type="text" th:field="*{user_id}" >
+                                <div class="comment-con">
+                                    <textarea id="content" autocomplete="off" placeholder="답변을 작성해주세요" th:field="*{content}">
+                                    </textarea>
+                                    <button>작성하기</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="comment-list" th:unless="${consult.replied==false}" >
                             <h3>답변 내역</h3>
                             <ul>
                                 <li>
                                     <div class="comment-info">
                                         <div class="comment-img">
-                                            <img src="../images/trader1.png">
+                                            <img th:src="${user.profile_img}">
                                         </div>
                                         <div class="comment-user">
-                                            <h5>답변 작성자</h5>
-                                            <p>2022-08-10</p>
+                                            <h5 th:text="${consultingReply.writer_name}">답변 작성자</h5>
+<!--                                            date 요청-->
+                                            <p> 2022-08-10</p>
                                         </div>
                                         <div class="comment-control">
                                             <a>수정</a>
@@ -89,7 +96,7 @@
                                         </div>
                                     </div>
                                     <div class="comment-context">
-                                        <p>답변 내용답변 내용 답변 내용 답변 내용
+                                        <p th:text="${consultingReply.content}">답변 내용답변 내용 답변 내용 답변 내용
                                             답변 내용 답변 내용 답변 내용 답변 내용</p>
                                     </div>
                                 </li>

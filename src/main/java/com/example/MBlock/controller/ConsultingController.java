@@ -56,6 +56,7 @@ public class ConsultingController {
     @GetMapping("/admin/consulting/{id}")
     public String consultDetail(Model model, @PathVariable("id") Long id ,WriteConsultingReplyReq writeConsultingReplyReq){
         GetConsultingRes consult = consultingService.getConsulting(id);
+        model.addAttribute("consult", consult);
         Optional<GetConsultingReplyRes> consultingReplyRes = consultingService.getOneConsultingReplyByConsultingId(id);
         if (consultingReplyRes.isPresent()) {
             model.addAttribute("consultingReply", consultingReplyRes.get());
@@ -71,7 +72,6 @@ public class ConsultingController {
     public String consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
         String userLoginId = SecurityContextHolder.getContext().getAuthentication().getName();
         writeConsultingReplyReq.setUser_login_id(userLoginId);
-
         consultingService.consultReply(writeConsultingReplyReq);
         return "redirect:/admin/consulting";
     }
@@ -86,6 +86,7 @@ public class ConsultingController {
     @GetMapping("/qna/{id}")
     public String qnaDetail(Model model, @PathVariable("id") Long id){
         GetConsultingRes consult = consultingService.getConsulting(id);
+        model.addAttribute("consult", consult);
         Optional<GetConsultingReplyRes> consultingReplyRes = consultingService.getOneConsultingReplyByConsultingId(id);
         if (consultingReplyRes.isPresent()) {
             model.addAttribute("consultingReply", consultingReplyRes.get());

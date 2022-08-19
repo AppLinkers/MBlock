@@ -69,7 +69,6 @@
                             <h3>답변하기</h3>
                             <form method="POST" th:action="@{/admin/consulting}" th:object="${writeConsultingReplyReq}">
                                 <input type="text" name="consulting_id" th:value="${consult.id}" hidden>
-                                <input type="text" th:field="*{user_id}" hidden>
                                 <div class="comment-con">
                                     <textarea id="content" autocomplete="off" placeholder="답변을 작성해주세요" th:field="*{content}">
                                     </textarea>

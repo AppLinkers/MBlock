@@ -19,5 +19,7 @@ public class GetConsultingReplyRes {
 
     private String writer_name;
 
+    private String writer_profile_img;
+
     private String content;
 }

@@ -7,7 +7,7 @@ public class WriteConsultingReplyReq {
 
     private Long consulting_id;
 
-    private Long user_id;
+    private String user_login_id;
 
     private String content;
 }

@@ -13,4 +13,6 @@ public interface ConsultingReplyRepository extends JpaRepository<ConsultingReply
 
     @Query(value = "SELECT c FROM ConsultingReply c WHERE c.user.id = :consulting_id")
     Optional<List<ConsultingReply>> findAllByConsultingId(Long consulting_id);
+
+    Optional<ConsultingReply> findTopByConsultingId(Long consulting_id);
 }

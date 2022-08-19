@@ -89,9 +89,8 @@ public class ConsultingService {
 
     @Transactional
     public void consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
-        System.out.println(writeConsultingReplyReq +"asdf");
         Consulting consulting = consultingRepository.findById(writeConsultingReplyReq.getConsulting_id()).get();
-        User writer = userRepository.findById(writeConsultingReplyReq.getUser_id()).get();
+        User writer = userRepository.findByUserLoginId(writeConsultingReplyReq.getUser_login_id()).get();
 
         consulting.setReplied(true);
 
@@ -119,6 +118,7 @@ public class ConsultingService {
                                         .consulting_id(consultingReply.getConsulting().getId())
                                         .writer_id(consultingReply.getUser().getId())
                                         .writer_name(consultingReply.getUser().getName())
+                                        .writer_profile_img(consultingReply.getUser().getProfile_img())
                                         .content(consultingReply.getContent())
                                         .build()
                         );
@@ -127,6 +127,23 @@ public class ConsultingService {
         }
 
         return result;
+    }
+
+    public Optional<GetConsultingReplyRes> getOneConsultingReplyByConsultingId(Long consulting_id) {
+        Optional<ConsultingReply> consultingReply = consultingReplyRepository.findTopByConsultingId(consulting_id);
+
+        if (consultingReply.isPresent()) {
+            return Optional.of(GetConsultingReplyRes.builder()
+                    .id(consultingReply.get().getId())
+                    .consulting_id(consultingReply.get().getConsulting().getId())
+                    .writer_id(consultingReply.get().getUser().getId())
+                    .writer_name(consultingReply.get().getUser().getName())
+                    .writer_profile_img(consultingReply.get().getUser().getProfile_img())
+                    .content(consultingReply.get().getContent())
+                    .build());
+        } else {
+            return Optional.empty();
+        }
     }
 
     public GetConsultingRes getConsulting(Long id) {

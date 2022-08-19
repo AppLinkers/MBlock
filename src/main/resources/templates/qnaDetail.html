@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Announce</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/qna_list.css">
+    <link rel="stylesheet" href="/css/announce_detail.css">
 </head>
 <body>
 <!-- header -->
 <header>
     <div class="container">
         <h1>
-            <button><a th:href="@{/main}"> M <span>Block</span></a></button>
+            <button><a th:href="@{/main}">M <span>Block</span></a></button>
         </h1>
         <nav>
             <ul>
@@ -35,7 +35,6 @@
                     <div class="dropdown">
                         <ul>
                             <li><a th:href="@{/announce}">공지사항</a></li>
-                            <li><a th:href="@{/qnaList}">QnA</a></li>
                             <li><a th:href="@{/consulting/form}">Consulting</a></li>
                             <li><a th:href="@{/contact}">Contact</a></li>
                         </ul>
@@ -46,12 +45,11 @@
         <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
     </div>
 </header>
-=======
-<!--board-->
+<!-- board -->
 <section id="board">
     <div class="container">
         <div class="title">
-            <h3>QnA</h3>
+            <h3>QnA List</h3>
         </div>
         <div class="board-main">
             <div class="left">
@@ -63,51 +61,47 @@
                 </ul>
             </div>
             <div class="right">
-                <div class="label">
-                    <div class="name">작성자</div>
-                    <div class="tit">상담 내용</div>
-                    <div class="trader">희망 Trader</div>
-                    <div class="date">작성 날짜</div>
-                    <div class="answer">답변 여부</div>
+                <h4>상담내용</h4>
+                <div class="info">
+                    <div class="info-inner">
+                        <h5 th:text="${consult.name}">Moo</h5>
+                        <div class="num" th:text="${consult.datetime}">2022년 06월 22일 17:11</div>
+                        <div class="num">reply:<span th:text="${consult.replied}"></span></div>
+                    </div>
                 </div>
-                <div class="list">
-                    <ul th:each="consult : ${consultList}">
-                        <li>
-                            <div th:if="${consult.password==''}" class="list-con">
-                                <div class="name" th:text="${consult.name}"></div>
-                                <a th:href="@{|/qna/${consult.id}|}">
-                                    <div class="tit" th:text="${consult.context}"></div>
-                                </a>
-                                <div class="trader" th:text="${consult.trader}"></div>
-                                <div class="date" th:text="${consult.datetime}"></div>
-                                <div class="answer" th:if="${consult.replied}" th:text="Y" style="color: #11998e"></div>
-                                <div class="answer" th:unless="${consult.replied}" th:text="N"></div>
-                            </div>
-
-                            <div th:unless="${consult.password==''}" class="list-con">
-                                <div class="tit" id="secretBoard" th:attr="onclick=|unlock('${consult.password}')|"/>
-                                    비공개 글입니다.
-                                </div>
-                                <script>
-                                    /*<![CDATA[*/
-                                    function unlock(password){
-                                        let person = prompt("비밀번호를 입력해주세요", "비밀번호 4자리");
-                                        const id = [[${consult.id}]];
-
-                                        if(person == password){
-                                            location.href= "/qna/"+id;
-                                        }
-                                    }
-                                    /*]]>*/
-                                </script>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="content">
+                    <div class="content-inner" th:text="${consult.context}">
+                        context
+                    </div>
                 </div>
+
+
+                <div th:unless="${consult.replied==false}"  style="margin-top: 150px;">
+                    <span style="font-weight: bold; font-size: 20px;">답변내역</span>
+                    <div class="info">
+                        <div class="img">
+                            <img th:src="${user.profile_img}">
+                        </div>
+                        <div class="info-inner">
+                            <h5 th:text="${consultingReply.writer_name}">Moo</h5>
+                            <div class="num" th:text="${consult.datetime}">2022년 06월 22일 17:11</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <p th:text="${consultingReply.content}">답변 내용답변 내용 답변 내용 답변 내용
+                            답변 내용 답변 내용 답변 내용 답변 내용</p>
+                    </div>
+                </div>
+
+                <div th:if="${consult.replied==false}">
+
+                </div>
+
             </div>
+
+
         </div>
     </div>
-</section>
 </section>
 <!-- bottom -->
 <section id="bottom">

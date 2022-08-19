@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -72,7 +73,7 @@ public class ConsultingController {
      */
     @PostMapping("/admin/consulting")
     public String consultReply(WriteConsultingReplyReq writeConsultingReplyReq){
-        System.out.println(writeConsultingReplyReq);
+        writeConsultingReplyReq.setUser_id(1L);
         consultingService.consultReply(writeConsultingReplyReq);
         return "redirect:/admin/consulting";
     }
@@ -82,6 +83,19 @@ public class ConsultingController {
         List<GetConsultingRes> consultList = consultingService.getAllConsulting(pageable);
         model.addAttribute("consultList", consultList);
         return "qna_list";
+    }
+
+    @GetMapping("/qna/{id}")
+    public String qnaDetail(Model model, @PathVariable("id") Long id){
+        GetConsultingRes consult = consultingService.getConsulting(id);
+        List<GetConsultingReplyRes> consultingReplyResList = consultingService.getAllConsultingReplyByConsultingId(id);
+        model.addAttribute("consult", consult);
+        if(consultingReplyResList.size()>0){
+            model.addAttribute("consultingReply", consultingReplyResList.get(0));
+            GetUserInfoRes user = userService.getUserById(consultingReplyResList.get(0).getWriter_id());
+            model.addAttribute("user",user);
+        }
+        return "qnaDetail";
     }
 
 }

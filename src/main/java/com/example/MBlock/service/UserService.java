@@ -39,6 +39,12 @@ public class UserService {
                 .build();
     }
 
+    public Long getUserIdById(String id){
+        User user = userRepository.findByUserLoginId(id).get();
+
+        return user.getId();
+    }
+
 
     @Transactional
     public void updateMember(UserUpdateReq request, Long memberId) throws IOException {

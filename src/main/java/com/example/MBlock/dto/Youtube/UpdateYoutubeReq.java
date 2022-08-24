@@ -12,6 +12,10 @@ public class UpdateYoutubeReq {
 
     private String title;
 
+    private String API_KEY;
+
+    private String SECRET_KEY;
+
     private String url;
 
     private boolean onAir;

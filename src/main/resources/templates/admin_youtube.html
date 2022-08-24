@@ -8,6 +8,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/admin_youtube.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+  <script>
+    function test_function() {
+      const binance_positionRisk_url = new URL("https://fapi.binance.com/fapi/v2/positionRisk");
+
+      const date = new Date();
+      var time = date.getTime().toString();
+
+      var signature = CryptoJS.HmacSHA256("timestamp=" + time, "Mp3BGN0YNYrAOJYmnYpnpRx1K4WKhdATaQOs1F5SSSO4dvACStR36g9ZDohCOya8").toString()
+
+      binance_positionRisk_url.searchParams.append("timestamp", time);
+      binance_positionRisk_url.searchParams.append("signature", signature);
+
+      fetch(binance_positionRisk_url, {
+        method: "GET",
+        headers: {
+          "X-MBX-APIKEY" : "Jpd6tAUcc6Ra32Fzl8HUPcpqTJcNZ6TwookoZeDxd6nV3C06omGiOZMtE0PfQZKl"
+        }
+      }).then(res => {
+        console.log("", res);
+        console.log("", res.body);
+        console.log("", res.json());
+      })
+    }
+  </script>
 </head>
 <body>
   <!-- header -->
@@ -92,7 +117,7 @@
                       /*<![CDATA[*/
                       function openEdit(){
                         const onAir = [[${youtube.onAir}]];
-                       // var title = [[${youtube.title}]];
+                        //var title = [[${youtube.title}]];
                         var id = [[${youtube.id}]];
                         getId.value=id;
                         if(onAir==true){
@@ -137,8 +162,8 @@
                   <h4 id="youtubeTitle">막노동 고등어</h4>
                   <p id="youtubeId" hidden="true"></p>
                   <p onclick="onAir()" id="isOnAir">onAir</p>
-                  <input type="text" id="getId" th:field="*{id}" >
-                  <input type="text" id="onAirInput" name="onAir" >
+                  <input type="text" id="getId" th:field="*{id}" hidden>
+                  <input type="text" id="onAirInput" name="onAir" hidden>
                   <script>
                     function onAir(){
                       console.log(isOnAir.value)
@@ -157,24 +182,15 @@
                   </script>
                 </div>
               </div>
+
               <div class="edit-input">
-                <p>포지션</p>
-                <div class="position">
-                  <a id="long">Long</a>
-                  <a id="short">Short</a>
-                </div>
+                <label for="api">API-KEY</label>
+                <input type="text" id="api" autocomplete="off" th:field="*{API_KEY}">
               </div>
+
               <div class="edit-input">
-                <label for="coin">코인</label>
-                <input id="coin" autocomplete="off">
-              </div>
-              <div class="edit-input">
-                <label for="size">규모</label>
-                <input id="size" autocomplete="off">
-              </div>
-              <div class="edit-input">
-                <label for="price">진입가</label>
-                <input id="price" autocomplete="off">
+                <label for="secretKey">SECRET-KEY</label>
+                <input type="text" id="secretKey" autocomplete="off" th:field="*{SECRET_KEY}">
               </div>
               <button type="submit">적용하기</button>
             </form>

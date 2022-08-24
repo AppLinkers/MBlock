@@ -25,6 +25,10 @@ public class Youtube extends BaseEntity implements Auditable {
 
     private boolean onAir;
 
+    private String API_KEY;
+
+    private String SECRET_KEY;
+
     @Builder
     public Youtube(String title, String url, String imgUrl, boolean onAir) {
         this.title = title;

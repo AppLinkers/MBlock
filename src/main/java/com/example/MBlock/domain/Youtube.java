@@ -23,10 +23,13 @@ public class Youtube extends BaseEntity implements Auditable {
 
     private String imgUrl;
 
+    private boolean onAir;
+
     @Builder
-    public Youtube(String title, String url, String imgUrl) {
+    public Youtube(String title, String url, String imgUrl, boolean onAir) {
         this.title = title;
         this.url = url;
         this.imgUrl = imgUrl;
+        this.onAir = onAir;
     }
 }

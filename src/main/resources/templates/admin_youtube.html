@@ -55,7 +55,59 @@
                     <p>Long</p>
                   </div>
                   <div class="edit_con">
-                    <a id="edit">관리</a>
+                    <a class="editBtn">관리</a>
+                  </div>
+                </div>
+                <div class="list_price">
+                  <p>규모</p>
+                  <h5>97.44</h5>
+                  <p>시장 평균가</p>
+                  <h5>23,959.00</h5>
+                </div>
+                <div class="list_price">
+                  <p>미실현 손익</p>
+                  <h5>466,196.35</h5>
+                  <p>청산가</p>
+                  <h5>17,424.50</h5>
+                </div>
+              </div>
+            </li>
+
+            <li th:each="youtube: ${youtubeList}">
+              <div class="trader_list">
+                <div class="list_img">
+                  <img th:src="${youtube.imgFile}">
+                </div>
+                <div class="list_info">
+                  <h4 th:text="${youtube.title}">막노동 고등어</h4>
+                  <div class="list_info_inner">
+                    <p th:if="${youtube.onAir==true}">onAir</p>
+                    <p th:unless="${youtube.onAir==true}" style="background-color: #6c6e78">off</p>
+                    <p>BTCUSDT</p>
+                    <p>Long</p>
+                  </div>
+                  <div class="edit_con">
+                    <a class="editBtn" onclick="openEdit()">관리</a>
+                    <script>
+                      /*<![CDATA[*/
+                      function openEdit(){
+                        const onAir = [[${youtube.onAir}]];
+                       // var title = [[${youtube.title}]];
+                        var id = [[${youtube.id}]];
+                        getId.value=id;
+                        if(onAir==true){
+                          isOnAir.innerHTML="OnAir";
+                          isOnAir.value = false;
+                        }else{
+                          isOnAir.innerHTML="OffAir";
+                          isOnAir.value = true;
+                        }
+
+                        onAirInput.value = onAir;
+                        youtube_edit.classList.toggle("active");
+                      }
+                      /*]]>*/
+                    </script>
                   </div>
                 </div>
                 <div class="list_price">
@@ -73,14 +125,36 @@
               </div>
             </li>
           </ul>
+
+
+
           <div class="edit">
             <div class="close"><i class="fa-solid fa-angle-left"></i></div>
-            <form>
+            <form th:method="post" th:action="@{/youtube/edit}" th:object="${updateYoutubeReq}">
               <div class="edit-info">
                 <img src="../images/trader2.jpg">
                 <div class="name">
-                  <h4>막노동 고등어</h4>
-                  <p>onAir</p>
+                  <h4 id="youtubeTitle">막노동 고등어</h4>
+                  <p id="youtubeId" hidden="true"></p>
+                  <p onclick="onAir()" id="isOnAir">onAir</p>
+                  <input type="text" id="getId" th:field="*{id}" >
+                  <input type="text" id="onAirInput" name="onAir" >
+                  <script>
+                    function onAir(){
+                      console.log(isOnAir.value)
+                      if(isOnAir.value==true){
+                        console.log(isOnAir.value)
+                        isOnAir.innerHTML="OffAir";
+                        isOnAir.value = false;
+                        onAirInput.value=false;
+                      }else if(isOnAir.value==false){
+                        console.log(isOnAir.value)
+                        isOnAir.innerHTML="OnAir";
+                        isOnAir.value = true;
+                        onAirInput.value=true;
+                      }
+                    }
+                  </script>
                 </div>
               </div>
               <div class="edit-input">

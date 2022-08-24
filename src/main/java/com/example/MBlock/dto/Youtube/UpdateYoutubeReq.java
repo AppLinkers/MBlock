@@ -6,7 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Optional;
 
 @Data
-public class WriteYoutubeReq {
+public class UpdateYoutubeReq {
+
+    private Long id;
 
     private String title;
 

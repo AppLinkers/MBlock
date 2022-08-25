@@ -1,9 +1,6 @@
 package com.example.MBlock.service;
 
-import com.example.MBlock.domain.Announce;
-import com.example.MBlock.domain.User;
 import com.example.MBlock.domain.Youtube;
-import com.example.MBlock.dto.Announce.GetAnnounceRes;
 import com.example.MBlock.dto.Youtube.GetYoutubeRes;
 import com.example.MBlock.dto.Youtube.UpdateYoutubeReq;
 import com.example.MBlock.dto.Youtube.WriteYoutubeReq;
@@ -14,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 
 @RequiredArgsConstructor
 @Service
@@ -55,9 +51,8 @@ public class YoutubeService {
 
 
     /**
-     * update All youtuber
+     * update youtuber
      */
-
     public void updateYoutube(UpdateYoutubeReq request){
         Youtube youtuber = youtubeRepository.getById(request.getId());
         youtuber.setAPI_KEY(request.getAPI_KEY());
@@ -72,7 +67,7 @@ public class YoutubeService {
         String imgUrl = null;
 
         if (writeYoutubeReq.getImgFile() != null) {
-            imgUrl = s3Uploader.upload(writeYoutubeReq.getImgFile().get(), "announce");
+            imgUrl = s3Uploader.upload(writeYoutubeReq.getImgFile().get(), "youtube");
         }
 
         Youtube youtube = Youtube.builder()

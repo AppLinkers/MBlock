@@ -3,6 +3,7 @@ package com.example.MBlock.domain;
 import javax.persistence.*;
 
 import com.example.MBlock.domain.listener.Auditable;
+import com.example.MBlock.support.BooleanToYNConverter;
 import lombok.*;
 
 @Entity
@@ -23,6 +24,7 @@ public class Youtube extends BaseEntity implements Auditable {
 
     private String imgUrl;
 
+    @Convert(converter = BooleanToYNConverter.class)
     private boolean onAir;
 
     private String API_KEY;

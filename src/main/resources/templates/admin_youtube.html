@@ -163,7 +163,7 @@
                   <p id="youtubeId" hidden="true"></p>
                   <p onclick="onAir()" id="isOnAir">onAir</p>
                   <input type="text" id="getId" th:field="*{id}" hidden>
-                  <input type="text" id="onAirInput" name="onAir" hidden>
+                  <input type="text" id="onAirInput" name="onAir" th:field="*{onAir}"hidden>
                   <script>
                     function onAir(){
                       console.log(isOnAir.value)

@@ -55,9 +55,8 @@ public class YoutubeService {
      */
     public void updateYoutube(UpdateYoutubeReq request){
         Youtube youtuber = youtubeRepository.getById(request.getId());
-        youtuber.setAPI_KEY(request.getAPI_KEY());
-        //secret key encrypt
-        youtuber.setSECRET_KEY(request.getSECRET_KEY());
+        youtuber.setApiKey(request.getAPI_KEY());
+        youtuber.setSecretKey(java.util.Optional.ofNullable(request.getSECRET_KEY()));
         youtuber.setOnAir(request.isOnAir());
         youtubeRepository.save(youtuber);
     }

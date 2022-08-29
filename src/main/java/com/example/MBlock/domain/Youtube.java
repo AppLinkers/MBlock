@@ -4,7 +4,11 @@ import javax.persistence.*;
 
 import com.example.MBlock.domain.listener.Auditable;
 import com.example.MBlock.support.BooleanToYNConverter;
+import com.example.MBlock.support.CryptoConverter;
 import lombok.*;
+import org.springframework.lang.Nullable;
+
+import java.util.Optional;
 
 @Entity
 @Data
@@ -27,9 +31,10 @@ public class Youtube extends BaseEntity implements Auditable {
     @Convert(converter = BooleanToYNConverter.class)
     private boolean onAir;
 
-    private String API_KEY;
+    private String apiKey;
 
-    private String SECRET_KEY;
+    @Convert(converter = CryptoConverter.class)
+    private Optional<String> secretKey;
 
     @Builder
     public Youtube(String title, String url, String imgUrl, boolean onAir) {

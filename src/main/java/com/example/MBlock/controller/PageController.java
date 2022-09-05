@@ -35,6 +35,21 @@ public class PageController {
         return "index";
     }
 
+    @GetMapping("/nav")
+    public String nav(Model model){
+        return "nav";
+    }
+
+    @GetMapping("/footer")
+    public String footer(Model model){
+        return "footer";
+    }
+
+    @GetMapping("/brand")
+    public String brand(Model model){
+        return "brand";
+    }
+
     @GetMapping("/main")
     public String main(Model model) {
         return "redirect:/";

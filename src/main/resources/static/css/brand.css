@@ -1,0 +1,126 @@
+/* =================NAV================ */
+nav ul a:nth-child(2) li{
+    color: var(--color-primary);
+}
+.window-scroll ul a:nth-child(2) li {
+    color: var(--color-black);
+}
+
+/* =================HEADER================ */
+section#header {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../images/people-2569234.jpg);
+    background-size: cover;
+}
+.header__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.header__container h1 {
+    color: var(--color-primary);
+    text-shadow: 3px 3px 6px var(--color-black);
+    font-weight: 900;
+    margin-top: 0.2rem;
+}
+
+/* =================LINE================ */
+.line {
+    width: 100%;
+    height: 1px;
+    background: var(--color-realBlack);
+    margin: 6rem 0;
+}
+
+
+/* =================ABOUT================ */
+section#about{
+    background: var(--color-white);
+}
+.about__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+.about__content {
+    display: flex;
+    flex-direction: column;
+}
+.about__content h4 {
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+.about__content image {
+    height: 100%;
+}
+
+
+/* =================MEMBER================ */
+.member__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.member__header h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.member__header p {
+    color: var(--color-realBlack);
+    margin-top: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+.member__header button {
+    margin-top: 4rem;
+}
+.member__content {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 8rem;
+    margin-top: 6rem;
+}
+.member__img {
+    width: 100%;
+    height: 18rem;
+}
+.member__img img {
+    height: 100%;
+    border-radius: 50%;
+}
+.member__info {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+
+
+@media screen and (max-width: 1400px) {
+    .member__content {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .member__img {
+        height: 26rem;
+    }
+}
+/* =================MEDIA QEURIES
+(TABLETS)================ */
+@media screen and (max-width: 1024px) {
+    .header__container {
+        align-items: center;
+    }
+    .member__img {
+        height: 20rem;
+    }
+}
+@media screen and (max-width: 700px) {
+    .member__content {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .member__img {
+        height: 32rem;
+    }
+}

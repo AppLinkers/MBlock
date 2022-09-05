@@ -1,0 +1,126 @@
+nav {
+    width: 100vw;
+    height: 4.5rem;
+    display: grid;
+    place-items: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+/* change navbar styles on scroll */
+.window-scroll {
+    background: var(--color-primary);
+}
+.window-scroll h4{
+    color: var(--color-white);
+}
+.window-scroll ul li:hover {
+    color: var(--color-black);
+}
+/* ================================ */
+.nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+nav button {
+    display: none;
+}
+nav button i {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li{
+    padding: 0 50px;
+    display: flex;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}
+nav ul li:hover {
+    color: var(--color-primary);
+    transition: var(--transition);
+}
+
+/* =================MENU================ */
+menu {
+    background: var(--color-white);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: -100%;
+    z-index: 3;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+menu.active {
+    left: 0;
+}
+.menu-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+}
+.menu-head h4{
+    color: var(--color-realBlack);
+    font-weight: 700;
+}
+.menu-head i{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.menu-content {
+    background: var(--color-white);
+
+}
+.menu-content .admin-btn i{
+    transition: .3s;
+}
+.menu-content .admin-btn.active i{
+    transform: rotate(-180deg);
+}
+.menu-content a h2{
+    margin-top: 4rem;
+    cursor: pointer;
+}
+.menu-content button {
+    margin-top: 4rem;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: var(--color-realBlack);
+    font-size: 1.2rem;
+}
+
+
+
+/* =================MEDIA QEURIES
+(TABLETS)================ */
+@media screen and (max-width: 1024px) {
+    nav ul{
+        display: none;
+    }
+    nav button {
+        display: block;
+    }
+}
+
+/* =================MEDIA QEURIES
+(PHONES)================ */
+@media screen and (max-width: 600px) {
+
+}

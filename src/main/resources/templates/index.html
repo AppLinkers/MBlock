@@ -4,150 +4,270 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins&family=Roboto&family=Monoton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/style.css">
+    <title>MCN</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- ICON SCOUT -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- STYLE SHEET -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home.css">
+
 </head>
 <body>
-<!-- header -->
-<header>
-    <div class="container">
-        <h1>
-            <button><a th:href="@{/main}">M <span>Block</span></a></button>
-        </h1>
-        <nav>
-            <ul>
-                <li><a th:href="@{/main}">Home</a>
-                    <div class="line"></div>
-                </li>
-                <li><a th:href="@{/business}">Business</a>
-                </li>
-                <li><a href="#">Portfolio<i class="fa-solid fa-angle-down"></i></a>
-                    <div class="dropdown">
-                        <ul>
-                            <li><a th:href="@{/news}">News</a></li>
-                            <li><a th:href="@{/invest}">Investment</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a href="#">Customer<i class="fa-solid fa-angle-down"></i></a>
-                    <div class="dropdown">
-                        <ul>
-                            <li><a th:href="@{/announce}">공지사항</a></li>
-                            <li><a th:href="@{/consulting/form}">Consulting</a></li>
-                            <li><a th:href="@{/contact}">Contact</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <button><a th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></button>
+<!-- =========== NAVBAR ========== -->
+<nav id="nav">
+</nav>
+
+<!-- =========== HEADER ========== -->
+<section id="header">
+    <div class="container header__container">
+        <h2>YouTube Trader Center MCN</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa soluta id pariatur vero, nulla velit a tenetur modi nostrum cum temporibus iusto. Quo eius magnam commodi modi hic. Omnis, exercitationem.</p>
+        <button class="btn" onclick="location.href='login.html';">Get Started</button>
     </div>
-</header>
-<!-- main -->
-<main id="main">
-    <div class="container">
-        <h2>Grow Your Stack</h2>
-        <p>Ride on highly trained team and huge amount of stack</p>
-        <p>Within the best strategy and huge amount of stack,</p>
-        <p>it will bring you amount of profits!</p>
-        <a th:href="@{/consulting/form}"><button class="start">Get Started!</button></a>
-        <button class="down"><i class="fa-solid fa-angle-down"></i></button>
-    </div>
-</main>
-<!-- intro -->
+</section>
+
+<!-- =========== INTRO ========== -->
 <section id="intro">
-    <div class="container">
-        <div class="intro-con">
-            <div class="intro-inner">
-                <h4>Trading Team</h4>
-                <h3>No.1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam iste at eveniet. Eos nam nobis harum corporis repellendus architecto alias consectetur perspiciatis repellat iure. Repellendus cupiditate asperiores deserunt aliquam.</p>
-            </div>
-            <div class="intro-inner">
-                <h4>Analysis</h4>
-                <h3>100 +</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam iste at eveniet. Eos nam nobis harum corporis repellendus architecto alias consectetur perspiciatis repellat iure. Repellendus cupiditate asperiores deserunt aliquam.</p>
-            </div>
-            <div class="intro-inner">
-                <h4>Assets</h4>
-                <h3>$1.0 B+</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quibusdam iste at eveniet. Eos nam nobis harum corporis repellendus architecto alias consectetur perspiciatis repellat iure. Repellendus cupiditate asperiores deserunt aliquam.</p>
-            </div>
+    <div class="intro__content">
+        <h4>Assets</h4>
+        <h2>2.5 B+</h2>
+    </div>
+    <div class="intro__content">
+        <h4>News</h4>
+        <h2>100 +</h2>
+    </div>
+    <div class="intro__content">
+        <h4>Youtuber</h4>
+        <h2>20 +</h2>
+    </div>
+    <div class="intro__content">
+        <h4>Coins</h4>
+        <h2>Bitcoin</h2>
+    </div>
+</section>
+
+<!-- =========== ABOUT ========== -->
+<section id="about">
+    <div class="container about__container">
+        <div class="about__content">
+            <h4>About Us</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam expedita officia blanditiis tempora nostrum incidunt vitae quaerat accusamus, dolorum amet sunt quod consequatur itaque laudantium quo iure odio saepe distinctio?
+                <br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam aperiam blanditiis at quae architecto dolor.
+                <br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, ut.
+            </p>
+        </div>
+        <div class="about__content">
+            <img src="../images/podcast-5255557_1920.jpg">
         </div>
     </div>
 </section>
-<!-- board -->
-<section id="board">
-    <div class="container">
-        <div class="title">
-            <h2>Investment Board</h2>
-        </div>
-        <div class="board-con" >
-            <div class="board-inner"th:each="news: ${topNews}">
-                <a th:href="@{|/news/${news.id}|}">
-                    <div class="img">
-                        <img th:src="${news.imgUrl}" alt="샘플1">
+
+<!-- =========== CREATOR ========== -->
+<section id="creator">
+    <div class="creator__header">
+        <h4>CREATORS</h4>
+        <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam maxime sed illo? Vero, beatae iusto?</P>
+        <button class="btn" onclick="location.href='creator.html';">Learn More</button>
+    </div>
+    <div class="creator__item">
+        <article>
+            <div class="creator__info">
+                <div class="creator__name">
+                    <h4>막노동 고등어</h4>
+                    <div class="on-air"></div>
+                </div>
+                <div class="position">
+                    <h5>BTCUSDT</h5>
+                    <p>Long</p>
+                </div>
+                <div class="creator__detail">
+                    <div class="creator-row">
+                        <p>규모</p>
+                        <h5 style="color: var(--color-green);">97.77</h5>
+                        <p>진입가</p>
+                        <h5>19,801.00</h5>
+                        <p>청산가</p>
+                        <h5 style="color: var(--color-orange);">17,489.00</h5>
                     </div>
-                    <div class="content">
-                        <h3 th:text="${news.title}">Title</h3>
-                        <p th:text="${news.context}">content</p>
+                    <div class="creator-row">
+                        <p>미실현 손익</p>
+                        <h5 style="color: var(--color-green);">216,921.00</h5>
+                        <p>진입 평균가</p>
+                        <h5>21,382.00</h5>
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
-        <div class="more">
-        <a th:href="@{/news}"><div class="more">
-            <p>More</p>
-            <i class="fa-solid fa-angle-right"></i>
-        </div></a>
-    </div>
-    </div>
-</section>
-<!-- associate -->
-<section id="partner">
-    <div class="container">
-        <div class="title">
-            <h2>Partners</h2>
-        </div>
-            <div class="partner-list">
-                <ul >
-                    <li th:each="partner: ${partnerList}">
-                        <img th:src="${partner.imgUrl}" alt="협력사이미지">
-                        <p th:text="${partner.name}">ROK CAPITAL</p>
-                    </li>
-                </ul>
+            <img src="../images/trader2.jpg">
+        </article>
+        <article>
+            <div class="creator__info">
+                <div class="creator__name">
+                    <h4>막노동 고등어</h4>
+                    <div class="on-air"></div>
+                </div>
+                <div class="position">
+                    <h5>BTCUSDT</h5>
+                    <p>Long</p>
+                </div>
+                <div class="creator__detail">
+                    <div class="creator-row">
+                        <p>규모</p>
+                        <h5 style="color: var(--color-green);">97.77</h5>
+                        <p>진입가</p>
+                        <h5>19,801.00</h5>
+                        <p>청산가</p>
+                        <h5 style="color: var(--color-orange);">17,489.00</h5>
+                    </div>
+                    <div class="creator-row">
+                        <p>미실현 손익</p>
+                        <h5 style="color: var(--color-green);">216,921.00</h5>
+                        <p>진입 평균가</p>
+                        <h5>21,382.00</h5>
+                    </div>
+                </div>
             </div>
+            <img src="../images/trader1.png">
+        </article>
+        <article>
+            <div class="creator__info">
+                <div class="creator__name">
+                    <h4>막노동 고등어</h4>
+                    <div class="on-air"></div>
+                </div>
+                <div class="position">
+                    <h5>BTCUSDT</h5>
+                    <p>Long</p>
+                </div>
+                <div class="creator__detail">
+                    <div class="creator-row">
+                        <p>규모</p>
+                        <h5 style="color: var(--color-green);">97.77</h5>
+                        <p>진입가</p>
+                        <h5>19,801.00</h5>
+                        <p>청산가</p>
+                        <h5 style="color: var(--color-orange);">17,489.00</h5>
+                    </div>
+                    <div class="creator-row">
+                        <p>미실현 손익</p>
+                        <h5 style="color: var(--color-green);">216,921.00</h5>
+                        <p>진입 평균가</p>
+                        <h5>21,382.00</h5>
+                    </div>
+                </div>
+            </div>
+            <img src="../images/trader3.jpg">
+        </article>
+        <article>
+            <div class="creator__info">
+                <div class="creator__name">
+                    <h4>막노동 고등어</h4>
+                    <div class="on-air"></div>
+                </div>
+                <div class="position">
+                    <h5>BTCUSDT</h5>
+                    <p>Long</p>
+                </div>
+                <div class="creator__detail">
+                    <div class="creator-row">
+                        <p>규모</p>
+                        <h5 style="color: var(--color-green);">97.77</h5>
+                        <p>진입가</p>
+                        <h5>19,801.00</h5>
+                        <p>청산가</p>
+                        <h5 style="color: var(--color-orange);">17,489.00</h5>
+                    </div>
+                    <div class="creator-row">
+                        <p>미실현 손익</p>
+                        <h5 style="color: var(--color-green);">216,921.00</h5>
+                        <p>진입 평균가</p>
+                        <h5>21,382.00</h5>
+                    </div>
+                </div>
+            </div>
+            <img src="../images/trader4.jpg">
+        </article>
+    </div>
+</section>
+
+<!-- =========== NEWS ========== -->
+<section id="newses">
+    <div class="container news__container">
+        <div class="news__header">
+            <h4>News & Press</h4>
+            <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam maxime sed illo? Vero, beatae iusto?</P>
+            <button class="btn" onclick="location.href='brand.html';">Learn More</button>
+        </div>
+        <div class="news__content">
+            <article class="news">
+                <div class="news__img">
+                    <img src="../images/piggy.jpg">
+                </div>
+                <div class="news__info">
+                    <p>sort</p>
+                    <h3>News title</h3>
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                </div>
+                <div class="news__btn">
+                    <button class="btn">Read More</button>
+                </div>
+            </article>
+            <article class="news">
+                <div class="news__img">
+                    <img src="../images/microphone-17709_1280.jpg">
+                </div>
+                <div class="news__info">
+                    <p>sort</p>
+                    <h3>News title</h3>
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                </div>
+                <div class="news__btn">
+                    <button class="btn">Read More</button>
+                </div>
+            </article>
+            <article class="news">
+                <div class="news__img">
+                    <img src="../images/sign-7064982_1920.jpg">
+                </div>
+                <div class="news__info">
+                    <p>sort</p>
+                    <h3>News title</h3>
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                </div>
+                <div class="news__btn">
+                    <button class="btn">Read More</button>
+                </div>
+            </article>
+            <article class="news">
+                <div class="news__img">
+                    <img src="../images/mock5.png">
+                </div>
+                <div class="news__info">
+                    <p>sort</p>
+                    <h3>News title</h3>
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                </div>
+                <div class="news__btn">
+                    <button class="btn">Read More</button>
+                </div>
+            </article>
         </div>
     </div>
 </section>
-<!-- bottom -->
-<section id="bottom">
-    <div class="container">
-        <div class="bottom-nav">
-            <h3>M <span>Block</span></h3>
-            <ul>
-                <li><a th:href="@{/main}">Home</a></li>
-                <li><a th:href="@{/business}">Business</a></li>
-                <li><a th:href="@{/news}">Portfolio</a></li>
-                <li><a th:href="@{/announce}">Customer</a></li>
-            </ul>
-        </div>
-        <div class="bottom-info">
-            <p>E-mail</p>
-            <h4>aaa@google.com</h4>
-            <p>Tel.</p>
-            <h4>010-9999-9999</h4>
-        </div>
-        <div class="bottom-line"></div>
-        <div class="bottom-sns">
-            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-    </div>
-</section>
+
+<!-- =========== Footer ========== -->
+<footer id="footer">
+</footer>
+
+<!-- =========== JAVASCRIPT ========== -->
+<script src="../js/base.js"></script>
+
 </body>
 </html>

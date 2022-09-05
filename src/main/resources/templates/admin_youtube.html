@@ -9,28 +9,42 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/admin_youtube.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-  <script>
+  <script th:inline="javascript">
     function test_function() {
-      const binance_positionRisk_url = new URL("https://fapi.binance.com/fapi/v2/positionRisk");
+      var youtubeList = [[ ${youtubeList.content}]];
+      youtubeList.forEach(
+              youtube => {
+                var binance_positionRisk_url = new URL("https://fapi.binance.com/fapi/v2/positionRisk");
+                var apiKey = youtube.apiKey; // "Jpd6tAUcc6Ra32Fzl8HUPcpqTJcNZ6TwookoZeDxd6nV3C06omGiOZMtE0PfQZKl"
+                var secretKey = youtube.secretKey; // "Mp3BGN0YNYrAOJYmnYpnpRx1K4WKhdATaQOs1F5SSSO4dvACStR36g9ZDohCOya8"
 
-      const date = new Date();
-      var time = date.getTime().toString();
+                if (apiKey !== null) {
+                  var date = new Date();
+                  var time = date.getTime().toString();
 
-      var signature = CryptoJS.HmacSHA256("timestamp=" + time, "Mp3BGN0YNYrAOJYmnYpnpRx1K4WKhdATaQOs1F5SSSO4dvACStR36g9ZDohCOya8").toString()
+                  var signature = CryptoJS.HmacSHA256("timestamp=" + time, secretKey).toString()
 
-      binance_positionRisk_url.searchParams.append("timestamp", time);
-      binance_positionRisk_url.searchParams.append("signature", signature);
+                  binance_positionRisk_url.searchParams.append("timestamp", time);
+                  binance_positionRisk_url.searchParams.append("signature", signature);
 
-      fetch(binance_positionRisk_url, {
-        method: "GET",
-        headers: {
-          "X-MBX-APIKEY" : "Jpd6tAUcc6Ra32Fzl8HUPcpqTJcNZ6TwookoZeDxd6nV3C06omGiOZMtE0PfQZKl"
-        }
-      }).then(res => {
-        console.log("", res);
-        console.log("", res.body);
-        console.log("", res.json());
-      })
+                  fetch(binance_positionRisk_url, {
+                    method: "GET",
+                    headers: {
+                      "X-MBX-APIKEY": apiKey
+                    }
+                  }).then(res => {
+                    console.log("", res);
+                    console.log("", res.body);
+                    console.log("", res.json());
+                  })
+                }
+
+              }
+      )
+    }
+
+    window.onload = function () {
+      test_function();
     }
   </script>
 </head>
@@ -111,8 +125,8 @@
                     <p>BTCUSDT</p>
                     <p>Long</p>
                   </div>
-                  <div class="edit_con">
-                    <a class="editBtn" onclick="openEdit()">관리</a>
+                  <div class="edit_con" onclick="openEdit()">
+                    <a class="editBtn">관리</a>
                     <script>
                       /*<![CDATA[*/
                       function openEdit(){
@@ -120,16 +134,17 @@
                         //var title = [[${youtube.title}]];
                         var id = [[${youtube.id}]];
                         getId.value=id;
-                        if(onAir==true){
+                        if(onAir == true){
                           isOnAir.innerHTML="OnAir";
-                          isOnAir.value = false;
+                          isOnAir.value = true;
                         }else{
                           isOnAir.innerHTML="OffAir";
-                          isOnAir.value = true;
+                          isOnAir.value = false;
                         }
 
                         onAirInput.value = onAir;
                         youtube_edit.classList.toggle("active");
+
                       }
                       /*]]>*/
                     </script>
@@ -166,14 +181,11 @@
                   <input type="text" id="onAirInput" name="onAir" th:field="*{onAir}"hidden>
                   <script>
                     function onAir(){
-                      console.log(isOnAir.value)
                       if(isOnAir.value==true){
-                        console.log(isOnAir.value)
                         isOnAir.innerHTML="OffAir";
                         isOnAir.value = false;
                         onAirInput.value=false;
                       }else if(isOnAir.value==false){
-                        console.log(isOnAir.value)
                         isOnAir.innerHTML="OnAir";
                         isOnAir.value = true;
                         onAirInput.value=true;

@@ -33,7 +33,9 @@ public class YoutubeService {
                         youtube.getTitle(),
                         youtube.getUrl(),
                         youtube.getImgUrl(),
-                        youtube.isOnAir()
+                        youtube.isOnAir(),
+                        youtube.getApiKey(),
+                        youtube.getSecretKey() != null ? youtube.getSecretKey().get() : null
                 )
         );
     }

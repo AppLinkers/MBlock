@@ -121,6 +121,6 @@ public class PageController {
 
     @GetMapping("/test")
     public String testPage() {
-        return "test_binance";
+        return "test_bitGet";
     }
 }

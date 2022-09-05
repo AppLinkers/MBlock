@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+    <script language="JavaScript" type="text/javascript">
+
+        var bitGetUrl = "wss://ws.bitget.com/mix/v1/stream";
+        var apiKey = "bg_3aed6923894da93b46ed998e37959726";
+        var passphrase = "mcntestapi123";
+        var timestamp = '' + Date.now();
+        timestamp = timestamp.slice(0, -3);
+        var secretKey = "4e58fb07294caf98648879cfd6872ac3e8144b184e468eec25f43a3976224029";
+
+        var sign = CryptoJS.HmacSHA256(timestamp + 'GET' + '/user/verify', secretKey);
+        sign = CryptoJS.enc.Base64.stringify(sign);
+
+        var output;
+
+        function init() {
+            testBitGet();
+        }
+
+        function testBitGet() {
+            bitGetWebSocket = new WebSocket(bitGetUrl);
+            bitGetWebSocket.onopen = function (evt) {
+                onOpen(evt);
+            };
+            bitGetWebSocket.onclose = function (evt) {
+                onClose(evt);
+            };
+            bitGetWebSocket.onmessage = function (evt) {
+                onMessage(evt);
+            };
+            bitGetWebSocket.onerror = function (evt) {
+                onError(evt);
+            };
+        }
+
+        function onOpen(evt) {
+            console.log("연결 완료");
+            doSend(
+                JSON.stringify(
+                    {
+                        "op":"login",
+                        "args":[
+                            {
+                                "apiKey": apiKey,
+                                "passphrase": passphrase,
+                                "timestamp": timestamp,
+                                "sign": sign
+                            }
+                        ]
+                    }
+                )
+            );
+
+            doSend(
+               JSON.stringify(
+                   {
+                       "op": "subscribe",
+                       "args": [{
+                           "instType": "UMCBL",
+                           "channel": "positions",
+                           "instId": "default"
+                       }]
+                   }
+               )
+            );
+
+
+        }
+
+        function onClose(evt) {
+            console.log("연결 해제");
+        }
+
+        function onMessage(evt) {
+            console.log('메시지');
+            console.log(JSON.parse(evt.data));
+        }
+
+        function onError(evt) {
+            console.log('에러');
+            console.log(JSON.parse(evt.data));
+        }
+
+        function doSend(message) {
+            bitGetWebSocket.send(message);
+        }
+
+        window.addEventListener("load", init, false);
+
+    </script>
+</head>
+<body>
+    <h2>WebSocket Test</h2>
+    <div id="output"></div>
+</body>
+</html>

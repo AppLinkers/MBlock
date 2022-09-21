@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html lang="zxx">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- ICON SCOUT -->
@@ -18,6 +18,11 @@
     <!-- STYLE SHEET -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/home.css">
+
+    <!-- Link Swiper's CSS -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
 </head>
 <body>
@@ -28,246 +33,259 @@
 <!-- =========== HEADER ========== -->
 <section id="header">
     <div class="container header__container">
-        <h2>YouTube Trader Center MCN</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa soluta id pariatur vero, nulla velit a tenetur modi nostrum cum temporibus iusto. Quo eius magnam commodi modi hic. Omnis, exercitationem.</p>
-        <button class="btn" onclick="location.href='login.html';">Get Started</button>
-    </div>
-</section>
-
-<!-- =========== INTRO ========== -->
-<section id="intro">
-    <div class="intro__content">
-        <h4>Assets</h4>
-        <h2>2.5 B+</h2>
-    </div>
-    <div class="intro__content">
-        <h4>News</h4>
-        <h2>100 +</h2>
-    </div>
-    <div class="intro__content">
-        <h4>Youtuber</h4>
-        <h2>20 +</h2>
-    </div>
-    <div class="intro__content">
-        <h4>Coins</h4>
-        <h2>Bitcoin</h2>
-    </div>
-</section>
-
-<!-- =========== ABOUT ========== -->
-<section id="about">
-    <div class="container about__container">
-        <div class="about__content">
-            <h4>About Us</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam expedita officia blanditiis tempora nostrum incidunt vitae quaerat accusamus, dolorum amet sunt quod consequatur itaque laudantium quo iure odio saepe distinctio?
-                <br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam aperiam blanditiis at quae architecto dolor.
-                <br/>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, ut.
-            </p>
-        </div>
-        <div class="about__content">
-            <img src="../images/podcast-5255557_1920.jpg">
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-text">
+                        <h1>TRADE</h1>
+                        <h1>CREATE</h1>
+                        <h1>WITH YOU</h1>
+                        <h2 class="kor">당신과 함께하는</h2>
+                        <h2 class="kor">즐거운 트레이딩</h2>
+                        <button class="btn btn-varient kor" onclick="location.href='creator.html';">크리에이터 보기</button>
+                    </div>
+                    <div class="swiper-img">
+                        <!-- <img src="../image/trader2.jpg"> -->
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-text">
+                        <h1>WELCOME</h1>
+                        <h1>INVEST & CREATE</h1>
+                        <h2 class="kor">크리에이터와 함께</h2>
+                        <h2 class="kor">소통하고 즐기고</h2>
+                        <button class="btn btn-varient kor" onclick="location.href='creator.html';">회사소개 보기</button>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-text">
+                        <h1>TRADE</h1>
+                        <h1>CREATE</h1>
+                        <h1>WITH YOU</h1>
+                        <h2 class="kor">당신과 함께하는</h2>
+                        <h2 class="kor">즐거운 트레이딩</h2>
+                        <button class="btn btn-varient kor" onclick="location.href='creator.html';">뉴스 보기</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- =========== CREATOR ========== -->
 <section id="creator">
-    <div class="creator__header">
-        <h4>CREATORS</h4>
-        <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam maxime sed illo? Vero, beatae iusto?</P>
-        <button class="btn" onclick="location.href='creator.html';">Learn More</button>
-    </div>
-    <div class="creator__item">
-        <article>
-            <div class="creator__info">
-                <div class="creator__name">
-                    <h4>막노동 고등어</h4>
-                    <div class="on-air"></div>
-                </div>
-                <div class="position">
-                    <h5>BTCUSDT</h5>
-                    <p>Long</p>
-                </div>
-                <div class="creator__detail">
-                    <div class="creator-row">
-                        <p>규모</p>
-                        <h5 style="color: var(--color-green);">97.77</h5>
-                        <p>진입가</p>
-                        <h5>19,801.00</h5>
-                        <p>청산가</p>
-                        <h5 style="color: var(--color-orange);">17,489.00</h5>
-                    </div>
-                    <div class="creator-row">
-                        <p>미실현 손익</p>
-                        <h5 style="color: var(--color-green);">216,921.00</h5>
-                        <p>진입 평균가</p>
-                        <h5>21,382.00</h5>
-                    </div>
-                </div>
+    <div class="container creator__container">
+        <div class="title">
+            <div class="title__text">
+                <h2>HOT CREATORS</h2>
             </div>
-            <img src="../images/trader2.jpg">
-        </article>
-        <article>
-            <div class="creator__info">
-                <div class="creator__name">
-                    <h4>막노동 고등어</h4>
-                    <div class="on-air"></div>
-                </div>
-                <div class="position">
-                    <h5>BTCUSDT</h5>
-                    <p>Long</p>
-                </div>
-                <div class="creator__detail">
-                    <div class="creator-row">
-                        <p>규모</p>
-                        <h5 style="color: var(--color-green);">97.77</h5>
-                        <p>진입가</p>
-                        <h5>19,801.00</h5>
-                        <p>청산가</p>
-                        <h5 style="color: var(--color-orange);">17,489.00</h5>
-                    </div>
-                    <div class="creator-row">
-                        <p>미실현 손익</p>
-                        <h5 style="color: var(--color-green);">216,921.00</h5>
-                        <p>진입 평균가</p>
-                        <h5>21,382.00</h5>
-                    </div>
-                </div>
+            <div class="title__line">
+                <div></div>
+                <div class="real__line"></div>
             </div>
-            <img src="../images/trader1.png">
-        </article>
-        <article>
-            <div class="creator__info">
-                <div class="creator__name">
-                    <h4>막노동 고등어</h4>
-                    <div class="on-air"></div>
-                </div>
-                <div class="position">
-                    <h5>BTCUSDT</h5>
-                    <p>Long</p>
-                </div>
-                <div class="creator__detail">
-                    <div class="creator-row">
-                        <p>규모</p>
-                        <h5 style="color: var(--color-green);">97.77</h5>
-                        <p>진입가</p>
-                        <h5>19,801.00</h5>
-                        <p>청산가</p>
-                        <h5 style="color: var(--color-orange);">17,489.00</h5>
+        </div>
+        <div class="sub__title">
+            <h5 class="kor">MCN의 핫한 크리에터를 만나보세요</h5>
+        </div>
+        <div class="creator__item">
+            <article>
+                <div class="creator__info">
+                    <div class="creator__name">
+                        <h5>막노동 고등어</h5>
+                        <div class="on-air"></div>
                     </div>
-                    <div class="creator-row">
-                        <p>미실현 손익</p>
-                        <h5 style="color: var(--color-green);">216,921.00</h5>
-                        <p>진입 평균가</p>
-                        <h5>21,382.00</h5>
+                    <div class="position">
+                        <h5>BTCUSDT</h5>
+                        <p>Long</p>
                     </div>
-                </div>
-            </div>
-            <img src="../images/trader3.jpg">
-        </article>
-        <article>
-            <div class="creator__info">
-                <div class="creator__name">
-                    <h4>막노동 고등어</h4>
-                    <div class="on-air"></div>
-                </div>
-                <div class="position">
-                    <h5>BTCUSDT</h5>
-                    <p>Long</p>
-                </div>
-                <div class="creator__detail">
-                    <div class="creator-row">
-                        <p>규모</p>
-                        <h5 style="color: var(--color-green);">97.77</h5>
-                        <p>진입가</p>
-                        <h5>19,801.00</h5>
-                        <p>청산가</p>
-                        <h5 style="color: var(--color-orange);">17,489.00</h5>
-                    </div>
-                    <div class="creator-row">
-                        <p>미실현 손익</p>
-                        <h5 style="color: var(--color-green);">216,921.00</h5>
-                        <p>진입 평균가</p>
-                        <h5>21,382.00</h5>
+                    <div class="creator__detail">
+                        <div class="creator-row">
+                            <p>규모</p>
+                            <h5 style="color: var(--color-green);">97.77</h5>
+                            <p>진입가</p>
+                            <h5>19,801.00</h5>
+                            <p>청산가</p>
+                            <h5 style="color: var(--color-orange);">17,489.00</h5>
+                        </div>
+                        <div class="creator-row">
+                            <p>미실현 손익</p>
+                            <h5 style="color: var(--color-green);">216,921.00</h5>
+                            <p>진입 평균가</p>
+                            <h5>21,382.00</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <img src="../images/trader4.jpg">
-        </article>
+                <img src="../image/trader2.jpg">
+            </article>
+            <article>
+                <div class="creator__info">
+                    <div class="creator__name">
+                        <h5>막노동 고등어</h5>
+                        <div class="on-air"></div>
+                    </div>
+                    <div class="position">
+                        <h5>BTCUSDT</h5>
+                        <p>Long</p>
+                    </div>
+                    <div class="creator__detail">
+                        <div class="creator-row">
+                            <p>규모</p>
+                            <h5 style="color: var(--color-green);">97.77</h5>
+                            <p>진입가</p>
+                            <h5>19,801.00</h5>
+                            <p>청산가</p>
+                            <h5 style="color: var(--color-orange);">17,489.00</h5>
+                        </div>
+                        <div class="creator-row">
+                            <p>미실현 손익</p>
+                            <h5 style="color: var(--color-green);">216,921.00</h5>
+                            <p>진입 평균가</p>
+                            <h5>21,382.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <img src="../image/trader3.jpg">
+            </article>
+            <article>
+                <div class="creator__info">
+                    <div class="creator__name">
+                        <h5>막노동 고등어</h5>
+                        <div class="on-air"></div>
+                    </div>
+                    <div class="position">
+                        <h5>BTCUSDT</h5>
+                        <p>Long</p>
+                    </div>
+                    <div class="creator__detail">
+                        <div class="creator-row">
+                            <p>규모</p>
+                            <h5 style="color: var(--color-green);">97.77</h5>
+                            <p>진입가</p>
+                            <h5>19,801.00</h5>
+                            <p>청산가</p>
+                            <h5 style="color: var(--color-orange);">17,489.00</h5>
+                        </div>
+                        <div class="creator-row">
+                            <p>미실현 손익</p>
+                            <h5 style="color: var(--color-green);">216,921.00</h5>
+                            <p>진입 평균가</p>
+                            <h5>21,382.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <img src="../image/trader4.jpg">
+            </article>
+        </div>
     </div>
 </section>
 
 <!-- =========== NEWS ========== -->
-<section id="newses">
+<section id="news">
     <div class="container news__container">
-        <div class="news__header">
-            <h4>News & Press</h4>
-            <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam maxime sed illo? Vero, beatae iusto?</P>
-            <button class="btn" onclick="location.href='brand.html';">Learn More</button>
+        <div class="title">
+            <div class="title__text">
+                <h2>MCN NEWS</h2>
+            </div>
+            <div class="title__line">
+                <div></div>
+                <div class="real__line"></div>
+            </div>
         </div>
-        <div class="news__content">
-            <article class="news">
-                <div class="news__img">
-                    <img src="../images/piggy.jpg">
+        <div class="sub__title">
+            <h5 class="kor">MCN의 소식을 전해요</h5>
+        </div>
+        <div class="news__list">
+            <article>
+                <div class="news__header">
+                    <div class="news__image">
+                        <img src="../image/piggy.jpg" alt="">
+                    </div>
+                    <div class="news__sort">
+                        <p>SORT</p>
+                    </div>
                 </div>
-                <div class="news__info">
-                    <p>sort</p>
-                    <h3>News title</h3>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                <div class="news__body">
+                    <div class="news__title">
+                        <h4>NEWS TITLE</h4>
+                    </div>
+                    <div class="news__content">
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
+                    </div>
                 </div>
-                <div class="news__btn">
-                    <button class="btn">Read More</button>
-                </div>
-            </article>
-            <article class="news">
-                <div class="news__img">
-                    <img src="../images/microphone-17709_1280.jpg">
-                </div>
-                <div class="news__info">
-                    <p>sort</p>
-                    <h3>News title</h3>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
-                </div>
-                <div class="news__btn">
-                    <button class="btn">Read More</button>
+                <div class="news__date">
+                    <p>2022. 09. 20</p>
                 </div>
             </article>
-            <article class="news">
-                <div class="news__img">
-                    <img src="../images/sign-7064982_1920.jpg">
+            <article>
+                <div class="news__header">
+                    <div class="news__image">
+                        <img src="../image/microphone-17709_1280.jpg" alt="">
+                    </div>
+                    <div class="news__sort">
+                        <p>SORT</p>
+                    </div>
                 </div>
-                <div class="news__info">
-                    <p>sort</p>
-                    <h3>News title</h3>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                <div class="news__body">
+                    <div class="news__title">
+                        <h4>NEWS TITLE</h4>
+                    </div>
+                    <div class="news__content">
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
+                    </div>
                 </div>
-                <div class="news__btn">
-                    <button class="btn">Read More</button>
+                <div class="news__date">
+                    <p>2022. 09. 20</p>
                 </div>
             </article>
-            <article class="news">
-                <div class="news__img">
-                    <img src="../images/mock5.png">
+            <article>
+                <div class="news__header">
+                    <div class="news__image">
+                        <img src="../image/green-5124174.jpg" alt="">
+                    </div>
+                    <div class="news__sort">
+                        <p>SORT</p>
+                    </div>
                 </div>
-                <div class="news__info">
-                    <p>sort</p>
-                    <h3>News title</h3>
-                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium.</h5>
+                <div class="news__body">
+                    <div class="news__title">
+                        <h4>NEWS TITLE</h4>
+                    </div>
+                    <div class="news__content">
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
+                    </div>
                 </div>
-                <div class="news__btn">
-                    <button class="btn">Read More</button>
+                <div class="news__date">
+                    <p>2022. 09. 20</p>
                 </div>
             </article>
         </div>
+        <button class="btn btn-varient kor" onclick="location.href='news.html';">최신 뉴스 보러가기</button>
     </div>
 </section>
 
-<!-- =========== Footer ========== -->
+<!-- =========== FOOTER ========== -->
 <footer id="footer">
 </footer>
 
-<!-- =========== JAVASCRIPT ========== -->
-<script src="../js/base.js"></script>
 
+<!-- =========== JAVASCRIPT ========== -->
+<script src="../javascript/base.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: ".left-button",
+            prevEl: ".right-button",
+        },
+    });
+</script>
 </body>
 </html>

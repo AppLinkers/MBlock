@@ -10,42 +10,52 @@
   <link rel="stylesheet" href="/css/admin_youtube.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
   <script th:inline="javascript">
-    function test_function() {
-      var youtubeList = [[ ${youtubeList.content}]];
-      youtubeList.forEach(
-              youtube => {
-                var binance_positionRisk_url = new URL("https://fapi.binance.com/fapi/v2/positionRisk");
-                var apiKey = youtube.apiKey; // "Jpd6tAUcc6Ra32Fzl8HUPcpqTJcNZ6TwookoZeDxd6nV3C06omGiOZMtE0PfQZKl"
-                var secretKey = youtube.secretKey; // "Mp3BGN0YNYrAOJYmnYpnpRx1K4WKhdATaQOs1F5SSSO4dvACStR36g9ZDohCOya8"
+    function test_function(api, sec ,id) {
 
-                if (apiKey !== null) {
-                  var date = new Date();
-                  var time = date.getTime().toString();
+      var binance_positionRisk_url = new URL("https://fapi.binance.com/fapi/v2/positionRisk");
+       var apiKey =  api;
+       var secretKey =  sec;
 
-                  var signature = CryptoJS.HmacSHA256("timestamp=" + time, secretKey).toString()
+      if (apiKey !== null) {
+        var date = new Date();
+        var time = date.getTime().toString();
 
-                  binance_positionRisk_url.searchParams.append("timestamp", time);
-                  binance_positionRisk_url.searchParams.append("signature", signature);
+        var signature = CryptoJS.HmacSHA256("timestamp=" + time + "&symbol=ETHUSDT", secretKey).toString()
 
-                  fetch(binance_positionRisk_url, {
-                    method: "GET",
-                    headers: {
-                      "X-MBX-APIKEY": apiKey
-                    }
-                  }).then(res => {
-                    console.log("", res);
-                    console.log("", res.body);
-                    console.log("", res.json());
-                  })
-                }
+        binance_positionRisk_url.searchParams.append("timestamp", time);
+        binance_positionRisk_url.searchParams.append("symbol", "ETHUSDT");
+        binance_positionRisk_url.searchParams.append("signature", signature);
 
-              }
-      )
+
+        fetch(binance_positionRisk_url, {
+          method: "GET",
+          headers: {
+            "X-MBX-APIKEY": apiKey
+          }
+        }).then(res => {
+          const result = res.json();
+          console.log(result);
+          //console.log(result.[[PromiseResult]])
+          const getData = () => {
+            result.then((appData) => {
+              console.log(appData[0].positionAmt);
+              var output = document.getElementById(id);
+              var outputDiv = document.createElement('div');
+              var outputSize = document.createElement('h5');
+              outputSize.innerText = appData[0].positionAmt;
+              outputDiv.appendChild(outputSize);
+              output.appendChild(outputDiv);
+            });
+          };
+          getData();
+
+
+        })
+      }
     }
 
-    window.onload = function () {
-      test_function();
-    }
+
+
   </script>
 </head>
 <body>
@@ -97,19 +107,19 @@
                     <a class="editBtn">관리</a>
                   </div>
                 </div>
-                <div class="list_price">
-                  <p>규모</p>
-                  <h5>97.44</h5>
-                  <p>시장 평균가</p>
-                  <h5>23,959.00</h5>
+                  <div class="list_price">
+                    <p>규모</p>
+                    <h5>97.44</h5>
+                    <p>시장 평균가</p>
+                    <h5>23,959.00</h5>
+                  </div>
+                  <div class="list_price">
+                    <p>미실현 손익</p>
+                    <h5>466,196.35</h5>
+                    <p>청산가</p>
+                    <h5>17,424.50</h5>
+                  </div>
                 </div>
-                <div class="list_price">
-                  <p>미실현 손익</p>
-                  <h5>466,196.35</h5>
-                  <p>청산가</p>
-                  <h5>17,424.50</h5>
-                </div>
-              </div>
             </li>
 
             <li th:each="youtube: ${youtubeList}">
@@ -127,13 +137,11 @@
                   </div>
                   <div class="edit_con" onclick="openEdit()">
                     <a class="editBtn">관리</a>
-                    <script>
-                      /*<![CDATA[*/
+                    <script th:inline="javascript">
                       function openEdit(){
-                        const onAir = [[${youtube.onAir}]];
+                        var onAir = [[${youtube.onAir}]];
                         //var title = [[${youtube.title}]];
                         var id = [[${youtube.id}]];
-                        getId.value=id;
                         if(onAir == true){
                           isOnAir.innerHTML="OnAir";
                           isOnAir.value = true;
@@ -146,10 +154,23 @@
                         youtube_edit.classList.toggle("active");
 
                       }
-                      /*]]>*/
                     </script>
                   </div>
                 </div>
+                <div th:id="'output'+${youtube.id}">
+                </div>
+                <script th:inline="javascript">
+                  var apiStr = [[ ${youtube.apiKey} ]];
+                  var secStr = [[ ${youtube.secretKey} ]];
+                  console.log(apiStr);
+                  if(apiStr == null){
+
+                  }else{
+                    test_function(apiStr,secStr,'output'+[[${youtube.id}]]);
+                    console.log([[${youtube.id}]])
+                  }
+
+                </script>
                 <div class="list_price">
                   <p>규모</p>
                   <h5>97.44</h5>
@@ -177,7 +198,7 @@
                   <h4 id="youtubeTitle">막노동 고등어</h4>
                   <p id="youtubeId" hidden="true"></p>
                   <p onclick="onAir()" id="isOnAir">onAir</p>
-                  <input type="text" id="getId" th:field="*{id}" hidden>
+                  <input type="text" id="getId" th:field="*{id}">
                   <input type="text" id="onAirInput" name="onAir" th:field="*{onAir}"hidden>
                   <script>
                     function onAir(){

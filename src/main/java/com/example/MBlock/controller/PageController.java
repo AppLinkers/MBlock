@@ -25,19 +25,25 @@ public class PageController {
     /**
      * Main Page
      */
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<GetNewsRes> topNews = newsService.getTop3News();
+        //List<GetNewsRes> topNews = newsService.getTop3News();
         model.addAttribute("partnerList", adminService.getPartnerAll());
-        model.addAttribute("topNews", topNews);
+      //  model.addAttribute("topNews", topNews);
         model.addAttribute("name", name);
         return "index";
     }
 
+
     @GetMapping("/nav")
     public String nav(Model model){
         return "nav";
+    }
+
+    @GetMapping("/creator")
+    public String creator(Model model){
+        return "creator";
     }
 
     @GetMapping("/footer")

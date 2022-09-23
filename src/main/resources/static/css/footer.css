@@ -6,12 +6,35 @@ footer {
     display: grid;
     grid-template-columns: 2fr 1fr;
 }
-.footer__content {
-}
 .footer__content h4 {
-    color: var(--color-white);
+    color: var(--color-primary);
     font-weight: 700;
 }
+.footer__link {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+.footer__link p {
+    margin-right: 0.3rem;
+    color: var(--color-gray);
+    font-weight: 500;
+    transition: var(--transition);
+}
+.footer__link p:hover {
+    color: var(--color-white);
+    cursor: pointer;
+}
+.footer__copyright {
+    color: var(--color-gray);
+}
 .footer__social {
-
+    display: flex;
+    justify-content: right;
+}
+.footer__social i {
+    color: var(--color-white);
+    margin-right: 0.6rem;
+    font-size: 1.5rem;
+    cursor: pointer;
 }

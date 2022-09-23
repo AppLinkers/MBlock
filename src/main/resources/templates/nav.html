@@ -16,19 +16,18 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
   <!-- STYLE SHEET -->
-  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/nav.css">
 </head>
 <body>
 <!-- =========== NAVBAR ========== -->
 
 <div class="container nav__container">
-  <a th:href="@{/}"><h4>MCN</h4></a>
+  <a th:href="@{/index}"><h4>MCN</h4></a>
   <ul>
-    <a th:href="@{/}"><li>Home</li></a>
+    <a th:href="@{/index}"><li>Home</li></a>
     <a th:href="@{/brand}"><li>Brand</li></a>
-    <a th:href="@{/}"><li>Creators</li></a>
-    <a th:href="@{/}"><li>News</li></a>
+    <a th:href="@{/creator}"><li>Creators</li></a>
+    <a th:href="@{/news}"><li>News</li></a>
     <a th:href="@{/}"><li>Contact</li></a>
     <a th:href="@{/login}"><button class="btn btn-varient">Login</button></a>
   </ul>
@@ -42,10 +41,10 @@
       <i class="uil uil-multiply" id="close"  onclick="document.getElementById('menu').classList.remove('active')"></i>
     </div>
     <div class="menu-content">
-      <a th:href="@{/}"><h2>Home</h2></a>
-      <a th:href="@{/brand}"><h2>Brand</h2></a>
-      <a th:href="@{/}"><h2>Creators</h2></a>
-      <a th:href="@{/}"><h2>News</h2></a>
+      <a th:href="@{/index}"><h2>Home</h2></a>
+      <a th:href="@{/brand}"><h2>Brands</h2></a>
+      <a th:href="@{/creator}"><h2>Creators</h2></a>
+      <a th:href="@{/news}"><h2>News</h2></a>
       <a th:href="@{/}"><h2>Contact</h2></a>
       <button class="btn btn-varient" onclick="location.href='login.html';">Login</button>
     </div>

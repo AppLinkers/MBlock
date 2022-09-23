@@ -1,10 +1,4 @@
-/* =================NAV================ */
-nav ul a:nth-child(2) li{
-    color: var(--color-primary);
-}
-.window-scroll ul a:nth-child(2) li {
-    color: var(--color-black);
-}
+
 
 /* =================HEADER================ */
 section#header {

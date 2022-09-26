@@ -100,7 +100,7 @@
 		<div class="sub__title">
 			<h5 class="kor">MCN과 크리에이터들의 새로운 소식을 전해요</h5>
 		</div>
-		<div class="news__list" id="jsonContent" name="jsonContent">>
+		<div class="news__list" id="jsonContent" name="jsonContent">
 			<article>
 				<div class="news__header">
 					<div class="news__image">
@@ -349,9 +349,6 @@
 					} else {
 						visibleSm = ' visible-sm';
 					}
-// output+= item.content
-
-//output += '<h4 class="date">' + item.pubDate + "</h4>";
 
 					var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
 					var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
@@ -359,31 +356,28 @@
 					var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
 					var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
 					localStorage.setItem(item.title, JSON.stringify(item));
-					console.log(item.title)
-
-
-					// output += '<div class="blog-element"><img class="img-responsive" src="' + src + '" width="360px" height="240px"></div></header>';
-					// output += '<div class="blog-content"><h4><a href="mcnContentTest.html?title='+item.title+'">' + item.title + '</a></h4>';
-					// output += '<div class="post-meta"><span>By ' + item.author + '</span></div>';
-
-					var yourString = item.description.replace(/<img[^>]*>/g,"");
-					var maxLength = 120 // maximum number of characters to extract
-
-//trim the string to the maximum length
-					var trimmedString = yourString.substr(0, maxLength);
-
-//re-trim if we are in the middle of a word
-					trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+					var content="";
+					if(item.content.includes('<h4>')){
+						var contentIndex = item.content.indexOf('<h4>');
+						var contentStart = contentIndex+4;
+						var contentEnd = item.content.substring(contentStart).indexOf('</h4>')+contentStart;
+						content = item.content.substring(contentStart, contentEnd);
+					}else{
+						var yourString = item.description.replace(/<img[^>]*>/g,"");
+						var maxLength = 120 // maximum number of characters to extract
+						var trimmedString = yourString.substr(0, maxLength);
+						trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+						content = trimmedString
+					}
 
 					output += '<article>';
 					output += '<div class="news__header"> <div class="news__image">';
 					output += '<img src="'+src+'" alt=""> </div> <div class="news__sort"><p>SORT</p></div></div>';
-
 					output += '<div class="news__body"><div class="news__title"><h4>'+item.title+'</h4></div>';
-					output += '<div class="news__content"><h5>'+'a'+'</h5></div></div>'
+					output += '<div class="news__content"><h5>'+content+'</h5></div></div>'
 					output += '<div class="news__date"><p>2022. 09. 20</p></div></article>'
 
-					return k < 5;
+					return k < 6;
 
 				});
 				$content.html(output);

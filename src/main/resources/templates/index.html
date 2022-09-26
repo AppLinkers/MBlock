@@ -88,11 +88,11 @@
         <div class="sub__title">
             <h5 class="kor">MCN의 핫한 크리에터를 만나보세요</h5>
         </div>
-        <div class="creator__item">
-            <article>
+        <div class="creator__item" >
+            <article th:each="youtuber : ${youtubeList}">
                 <div class="creator__info">
                     <div class="creator__name">
-                        <h5>막노동 고등어</h5>
+                        <h5 th:text="${youtuber.title}">막노동 고등어</h5>
                         <div class="on-air"></div>
                     </div>
                     <div class="position">
@@ -116,8 +116,9 @@
                         </div>
                     </div>
                 </div>
-                <img src="../images/trader2.jpg">
+                <img th:src="${youtuber.imgFile}">
             </article>
+
             <article>
                 <div class="creator__info">
                     <div class="creator__name">
@@ -195,7 +196,7 @@
         <div class="sub__title">
             <h5 class="kor">MCN의 소식을 전해요</h5>
         </div>
-        <div class="news__list">
+        <div class="news__list" id="jsonContent" name="jsonContent">
             <article>
                 <div class="news__header">
                     <div class="news__image">
@@ -260,7 +261,7 @@
                 </div>
             </article>
         </div>
-        <button class="btn btn-varient kor" onclick="location.href='news.html';">최신 뉴스 보러가기</button>
+       <a th:href="@{/news}"><button class="btn btn-varient kor" >최신 뉴스 보러가기</button></a>
     </div>
 </section>
 
@@ -285,6 +286,70 @@
             nextEl: ".left-button",
             prevEl: ".right-button",
         },
+    });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!--Medium API-->
+<script type="text/javascript">
+    function getFormatDate(date){
+        var strArray = date.split('-');
+        strArray[2]=strArray[2].substring(0,2);
+        return strArray[0] + '.' + strArray[1] + '.'+strArray[2] ;
+    }
+
+    $(function () {
+        var $content = $('#jsonContent');
+        var data = {
+            rss_url: 'https://medium.com/feed/despread-global'
+        };
+        $.get('https://api.rss2json.com/v1/api.json', data, function (response) {
+            if (response.status == 'ok') {
+//var output = '';
+                var output = '';
+                $.each(response.items, function (k, item) {
+                    var visibleSm;
+                    if(k < 3){
+                        visibleSm = '';
+                    } else {
+                        visibleSm = ' visible-sm';
+                    }
+
+                    var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
+                    var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
+                    var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
+                    var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
+                    var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
+                    localStorage.setItem(item.title, JSON.stringify(item));
+                    var content="";
+                    if(item.content.includes('<h4>')){
+                        var contentIndex = item.content.indexOf('<h4>');
+                        var contentStart = contentIndex+4;
+                        var contentEnd = item.content.substring(contentStart).indexOf('</h4>')+contentStart;
+                        content = item.content.substring(contentStart, contentEnd);
+                    }else{
+                        var yourString = item.description.replace(/<img[^>]*>/g,"");
+                        var maxLength = 120 // maximum number of characters to extract
+                        var trimmedString = yourString.substr(0, maxLength);
+                        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                        content = trimmedString
+                    }
+
+                    output += '<article>';
+                    output += '<div class="news__header"> <div class="news__image">';
+                    output += '<img src="'+src+'" alt=""> </div> <div class="news__sort"><p>SORT</p></div></div>';
+                    output += '<div class="news__body"><div class="news__title"><h4>'+item.title+'</h4></div>';
+                    output += '<div class="news__content"><h5>'+content+'</h5></div></div>'
+                    output += '<div class="news__date"><p>2022. 09. 20</p></div></article>'
+
+                    return k < 2;
+
+                });
+                $content.html(output);
+//$("#header").load("content.html");
+            }
+        });
     });
 </script>
 </body>

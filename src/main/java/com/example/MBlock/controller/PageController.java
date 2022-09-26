@@ -6,7 +6,11 @@ import com.example.MBlock.dto.News.GetNewsRes;
 import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.NewsService;
 import com.example.MBlock.service.UserService;
+import com.example.MBlock.service.YoutubeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +25,17 @@ public class PageController {
     private final UserService userService;
     private final AdminService adminService;
     private final NewsService newsService;
+    private final YoutubeService youtubeService;
 
     /**
      * Main Page
      */
     @GetMapping("/index")
-    public String index(Model model) {
+    public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         //List<GetNewsRes> topNews = newsService.getTop3News();
         model.addAttribute("partnerList", adminService.getPartnerAll());
+        model.addAttribute("youtubeList", youtubeService.getAllYoutuber(pageable));
       //  model.addAttribute("topNews", topNews);
         model.addAttribute("name", name);
         return "index";

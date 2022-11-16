@@ -42,34 +42,34 @@
         </div>
         <div class="trader__form">
             <h1>CONSULTING</h1>
-            <form action="#">
+            <form th:method="post" th:action="@{/consulting}" th:object="${writeConsultingReq}">
                 <div class="form-group">
                     <label for="role" class="kor">크리에이터 선택</label>
                     <div class="select-menu">
                         <div class="select-btn">
-                            <input id="role" class="sBtn-text" placeholder="크리에이터를 선택해주세요" readonly>
+                            <input id="role" class="sBtn-text" th:field="*{trader}"  placeholder="크리에이터를 선택해주세요" readonly>
                             <i class="uil uil-angle-down"></i>
                         </div>
                         <ul class="options" th:each="youtube: ${youtube}">
-                            <li class="option" th:text="${youtube.title}">크리에이터</li>
+                            <li class="option" ><span class="option-text kor" th:text="${youtube.title}">크리에이터2</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name" class="kor">이름</label>
-                    <input id="name" class="btn-input" type="text" required placeholder="실명을 작성해주세요">
+                    <input type="text" id="name" th:field="*{name}" class="btn-input"  required placeholder="실명을 작성해주세요">>
                 </div>
                 <div class="form-group">
                     <label for="phone" class="kor">연락처</label>
-                    <input id="phone" class="btn-input" type="tel" required placeholder="연락 가능한 전화번호를 작성해주세요">
+                    <input type="tel" id="phone" th:field="*{phone}" class="btn-input" required placeholder="연락 가능한 전화번호를 작성해주세요">>
                 </div>
                 <div class="form-group">
                     <label for="email" class="kor">이메일</label>
-                    <input id="email" class="btn-input" type="email" required placeholder="이메일 주소를 작성해주세요">
+                    <input type="email" id="email" th:field="*{email}" class="btn-input" required placeholder="이메일 주소를 작성해주세요">
                 </div>
                 <div class="form-group">
                     <label for="content" class="kor">상담 내용</label>
-                    <textarea id="content" required placeholder="상담 내용을 작성하세요"></textarea>
+                    <textarea id="content" th:field="*{context}" required placeholder="상담 내용을 작성하세요"></textarea>
                 </div>
                 <div class="show-select">
                     <div class="form-group">
@@ -86,7 +86,7 @@
                 </div>
                 <div class="form-allow">
                     <i class="uil uil-check"></i>
-                    <p class="kor">개인 정보 수집 및 이용약관에 동의합니다.</p>
+                    <label>개인정보 처리 및 수집동의 <input type="checkbox" value="privacyAgree" required></label>
                 </div>
                 <button class="btn-black consult__btn kor" type="submit">문의하기</button>
             </form>
@@ -157,22 +157,25 @@
                 </div>
             </div>
         </article>
-        <article>
+        <article th:each="consult : ${consult}">
+            <a th:href="@{|/consulting/detail/${consult.id}|}">
             <div class="qna__label list">
                 <div class="list__content">
-                    <p class="kor">작성자</p>
+                    <p class="kor" th:text="${consult.name}">작성자</p>
                 </div>
                 <div class="list__content">
-                    <p class="kor">내용</p>
-                    <small>2022. 10. 06</small>
+                    <p class="kor" th:text="${consult.context}">내용</p>
+                    <small th:text="${consult.datetime}">2022. 10. 06</small>
                 </div>
                 <div class="list__content">
-                    <p class="kor">크리에이터</p>
+                    <p class="kor" th:text="${consult.trader}">크리에이터</p>
                 </div>
                 <div class="list__content">
-                    <p class="kor">-</p>
+                    <p class="answer" th:if="${consult.replied}" style="color: #11998e">답변 완료</p>
+                    <p class="answer" th:unless="${consult.replied}">-</p>
                 </div>
             </div>
+            </a>
         </article>
     </div>
 </section>

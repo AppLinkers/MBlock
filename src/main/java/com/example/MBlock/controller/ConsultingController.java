@@ -34,8 +34,10 @@ public class ConsultingController {
      * Write Consulting Page
      */
     @GetMapping("/consulting/form")
-    public String writeConsultingPage(Model model,WriteConsultingReq writeConsultingReq, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+    public String writeConsultingPage(Model model,WriteConsultingReq writeConsultingReq ,@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
         Page<GetYoutubeRes> youtubeList = youtubeService.getAllYoutuber(pageable);
+        List<GetConsultingRes> consultList = consultingService.getAllConsulting(pageable);
+        model.addAttribute("consult", consultList);
         model.addAttribute("youtube", youtubeList);
         return "consulting";}
 
@@ -62,7 +64,7 @@ public class ConsultingController {
      * Read One Consulting Page for Admin
      */
     @GetMapping("/admin/consulting/{id}")
-    public String consultDetail(Model model, @PathVariable("id") Long id ,WriteConsultingReplyReq writeConsultingReplyReq){
+    public String consultAdminDetail(Model model, @PathVariable("id") Long id ,WriteConsultingReplyReq writeConsultingReplyReq){
         GetConsultingRes consult = consultingService.getConsulting(id);
         model.addAttribute("consult", consult);
         Optional<GetConsultingReplyRes> consultingReplyRes = consultingService.getOneConsultingReplyByConsultingId(id);
@@ -71,6 +73,17 @@ public class ConsultingController {
         }
 
         return "admin_consult_detail";
+    }
+
+    @GetMapping("/consulting/detail/{id}")
+    public String consultDetail(Model model, @PathVariable("id") Long id ){
+        GetConsultingRes consult = consultingService.getConsulting(id);
+        model.addAttribute("consult", consult);
+        Optional<GetConsultingReplyRes> consultingReplyRes = consultingService.getOneConsultingReplyByConsultingId(id);
+        if (consultingReplyRes.isPresent()) {
+            model.addAttribute("consultingReply", consultingReplyRes.get());
+        }
+        return "faq";
     }
 
     /**

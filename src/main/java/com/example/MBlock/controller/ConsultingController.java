@@ -1,11 +1,15 @@
 package com.example.MBlock.controller;
 
+import com.example.MBlock.domain.Youtube;
 import com.example.MBlock.dto.Consulting.GetConsultingRes;
 import com.example.MBlock.dto.Consulting.WriteConsultingReq;
 import com.example.MBlock.dto.ConsultingReply.GetConsultingReplyRes;
 import com.example.MBlock.dto.ConsultingReply.WriteConsultingReplyReq;
+import com.example.MBlock.dto.Youtube.GetYoutubeRes;
 import com.example.MBlock.service.ConsultingService;
+import com.example.MBlock.service.YoutubeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -24,12 +28,16 @@ import java.util.Optional;
 public class ConsultingController {
 
     private final ConsultingService consultingService;
+    private final YoutubeService youtubeService;
 
     /**
      * Write Consulting Page
      */
     @GetMapping("/consulting/form")
-    public String writeConsultingPage(WriteConsultingReq writeConsultingReq){return "consulting";}
+    public String writeConsultingPage(Model model,WriteConsultingReq writeConsultingReq, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<GetYoutubeRes> youtubeList = youtubeService.getAllYoutuber(pageable);
+        model.addAttribute("youtube", youtubeList);
+        return "consulting";}
 
     /**
      * Write Consulting Service

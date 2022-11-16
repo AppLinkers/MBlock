@@ -20,36 +20,49 @@
   <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-<!-- =========== NAVBAR ========== -->
-<nav id="nav">
-</nav>
-<!-- =========== LOGIN ========== -->
+<!-- =================HEADER================ -->
+<header>
+  <div class="container header__container">
+    <a th:href="@{/}"><h4>MCN</h4></a>
+  </div>
+</header>
+
+<!-- =================LOGIN================ -->
 <section id="login">
   <div class="container login__container">
-    <div></div>
-    <div class="login__box">
-      <h3>Login</h3>
-      <div class="line"></div>
-      <form th:action="@{/login_proc}" th:method="post", th:object="${userLoginReq}">
-        <h5>Id</h5>
-        <input type="text" th:name="username" class="btn btn-input" placeholder="Id">
-        <h5>Password</h5>
-        <input type="password" th:name="password" class="btn btn-input" placeholder="Password">
-        <button class="btn">Login</button>
-      </form>
-      <div class="line"></div>
-      <div class="option">
-        <a><p>Make Account</p><i class="uil uil-angle-right-b"></i></a>
+    <div class="title">
+      <div class="title__text">
+        <h2 class="kor">로그인</h2>
+      </div>
+      <div class="title__line">
+        <div></div>
+        <div class="real__line"></div>
       </div>
     </div>
-    <div></div>
+    <form th:action="@{/login_proc}" th:method="post", th:object="${userLoginReq}">
+      <div class="form-group">
+        <label class="kor">아이디</label>
+        <input type="text" th:name="username" class="btn btn-input" placeholder="Id">
+      </div>
+      <div class="form-group">
+        <label class="kor">비밀번호</label>
+        <input type="password" th:name="password" class="btn btn-input" placeholder="Password">
+      </div>
+      <button class="btn-black loginBtn kor" type="submit">로그인</button>
+    </form>
+    <div class="line"></div>
+    <div class="login-etc">
+      <div class="etc-box">
+        <h5 class="kor">아직 회원이 아니신가요?</h5>
+        <button class="btn-black kor" th:onclick="|location.href='/signup'|">회원가입</button>
+      </div>
+      <div class="etc-box">
+        <h5 class="kor">회원정보를 잊으셨나요?</h5>
+        <button class="btn-black kor">아이디/비밀번호 찾기</button>
+      </div>
+    </div>
   </div>
 </section>
-<!-- =========== Footer ========== -->
-<footer id="footer">
-</footer>
 
-<!-- =========== JAVASCRIPT ========== -->
-<script src="../js/base.js"></script>
 </body>
 </html>

@@ -7,26 +7,16 @@ nav {
     left: 0;
     z-index: 9;
 }
-/* change navbar styles on scroll */
-/* .window-scroll {
-    background: var(--color-primary);
-}
-.window-scroll h4{
-    color: var(--color-white);
-}
-.window-scroll ul li:hover {
-    color: var(--color-black);
-} */
+
 /* ================================ */
 .nav__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-nav a h4 {
+nav h4 {
     color: var(--color-white);
     font-weight: 700;
-    cursor: pointer;
 }
 nav button {
     display: none;
@@ -41,7 +31,7 @@ nav ul {
     justify-content: center;
     align-items: center;
 }
-nav ul a li{
+nav ul li{
     padding: 0 20px;
     display: flex;
     font-size: 1rem;
@@ -51,7 +41,7 @@ nav ul a li{
     margin-right: 50px;
     transition: var(--transition);
 }
-nav ul a li:hover {
+nav ul li:hover {
     color: var(--color-realBlack);
     background: var(--color-white);
 }
@@ -81,6 +71,7 @@ menu.active {
     justify-content: space-between;
     align-items: center;
     height: 5.5rem;
+    padding: 0 2%;
 }
 .menu-head h4{
     color: var(--color-realBlack);
@@ -108,8 +99,8 @@ menu.active {
     margin-top: 4rem;
     width: 100%;
     padding: 1.5rem 0;
-    background: var(--color-realBlack);
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 

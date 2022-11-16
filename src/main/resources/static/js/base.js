@@ -16,3 +16,4 @@ async function importPage(targetDiv, page) {
 
 importPage('nav', "/nav");
 importPage('footer', "/footer");
+

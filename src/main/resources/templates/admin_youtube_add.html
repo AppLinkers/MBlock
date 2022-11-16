@@ -41,7 +41,7 @@
                     <form th:method="post" th:action="@{/admin/youtube}" th:object="${writeYoutubeReq}" enctype="multipart/form-data">
                         <div id="img-form" class="form-group">
                             <label>채널 이미지</label>
-                            <input id="selectImg" type="file" th:field="*{imgFile}" hidden>
+                            <input id="selectImg" type="file" th:field="*{imgFile}">
                             <div class="main-img" onclick="defaultBtnActive()">
                                 <img src="" alt="" >
                                 <i class="fa-solid fa-cloud-arrow-up"></i>

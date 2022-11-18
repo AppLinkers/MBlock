@@ -12,9 +12,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
+import java.lang.reflect.Parameter;
 
 @Controller
 @RequiredArgsConstructor
@@ -47,6 +49,21 @@ public class YoutubeController {
         return "admin_youtube_add";
     }
 
+    @GetMapping("/youtube/update/{id}/form")
+    public String updateYoutubePage(UpdateYoutubeReq updateYoutubeReq, @PathVariable(value="id") long id,Model model){
+        GetYoutubeRes youtubeRes = youtubeService.getYoutubeById(id);
+
+        model.addAttribute("youtuber" , youtubeRes);
+        model.addAttribute("id", id);
+        return "admin_youtube_update";
+    }
+
+    @PostMapping("/youtube/update/{id}")
+    public String updateYoutube(UpdateYoutubeReq updateYoutubeReq, @PathVariable (value="id") long id){
+        youtubeService.updateYoutube(updateYoutubeReq);
+        return "redirect:/admin/youtube";
+    }
+
     /**
      * Write Youtube Service for Admin
      */
@@ -71,5 +88,7 @@ public class YoutubeController {
         youtubeService.updateYoutube(updateYoutubeReq);
         return "redirect:/admin/youtube";
     }
+
+
 
 }

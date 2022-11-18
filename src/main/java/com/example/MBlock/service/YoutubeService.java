@@ -49,8 +49,13 @@ public class YoutubeService {
 
         return GetYoutubeRes.builder()
                 .id(findYoutube.getId())
+                .hotClip(findYoutube.getHotClip())
+                .info(findYoutube.getInfo())
+                .url(findYoutube.getUrl())
                 .onAir(findYoutube.isOnAir())
+                .imgFile(findYoutube.getImgUrl())
                 .title(findYoutube.getTitle())
+                .apiKey(findYoutube.getApiKey())
                 .build();
     }
 

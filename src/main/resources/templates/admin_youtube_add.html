@@ -54,7 +54,11 @@
                         </div>
                         <div class="form-group">
                             <label for="title">채널 설명</label>
-                            <input type="text" autocomplete="off" required>
+                            <input type="text" autocomplete="off" th:field="*{info}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="url">구독자 수</label>
+                            <input type="text" id="subscriber" th:field="*{subscribers}" autocomplete="off" required>
                         </div>
                         <div class="form-group">
                             <label for="url">채널 url</label>
@@ -62,8 +66,9 @@
                         </div>
                         <div class="form-group">
                             <label for="url">hotclip URL</label>
-                            <input type="text" id="hotclip" autocomplete="off" required placeholder="https://www.youtube.com/~">
+                            <input type="text" id="hotclip" th:field="*{hotClip}" autocomplete="off" required placeholder="https://www.youtube.com/~">
                         </div>
+
                         <button type="submit" onclick="">게시하기</button>
                     </form>
                 </div>

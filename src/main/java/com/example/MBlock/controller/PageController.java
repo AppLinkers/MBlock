@@ -3,11 +3,13 @@ package com.example.MBlock.controller;
 import com.example.MBlock.domain.CurrencyInfo;
 import com.example.MBlock.dto.CurrencyInfo.GetCurrencyInfoRes;
 import com.example.MBlock.dto.News.GetNewsRes;
+import com.example.MBlock.dto.Youtube.GetYoutubeRes;
 import com.example.MBlock.service.AdminService;
 import com.example.MBlock.service.NewsService;
 import com.example.MBlock.service.UserService;
 import com.example.MBlock.service.YoutubeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -48,7 +50,9 @@ public class PageController {
     }
 
     @GetMapping("/creator")
-    public String creator(Model model){
+    public String creator(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable){
+        Page<GetYoutubeRes> youtubeList = youtubeService.getAllYoutuber(pageable);
+        model.addAttribute("youtubeList", youtubeList);
         return "creator";
     }
 

@@ -370,12 +370,12 @@
 						content = trimmedString
 					}
 
-					output += '<article>';
+					output += '<article> <a href="'+item.link+'">';
 					output += '<div class="news__header"> <div class="news__image">';
 					output += '<img src="'+src+'" alt=""> </div> <div class="news__sort"><p>SORT</p></div></div>';
 					output += '<div class="news__body"><div class="news__title"><h4>'+item.title+'</h4></div>';
 					output += '<div class="news__content"><h5>'+content+'</h5></div></div>'
-					output += '<div class="news__date"><p>2022. 09. 20</p></div></article>'
+					output += '<div class="news__date"><p>2022. 09. 20</p></div></a></article>'
 
 					return k < 6;
 

@@ -38,7 +38,7 @@ public class YoutubeService {
                         .subscribers(youtube.getSubscribers())
                         .onAir(youtube.isOnAir())
                         .apiKey(youtube.getApiKey())
-                        .secretKey(youtube.getSecretKey().orElse(null))
+                        .secretKey(youtube.getSecretKey() != null ? youtube.getSecretKey().get() : "")
                         .build()
         );
     }

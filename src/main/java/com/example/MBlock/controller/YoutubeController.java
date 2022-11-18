@@ -28,6 +28,11 @@ public class YoutubeController {
     @GetMapping("/admin/youtube")
     public String manageYoutube(Model model, UpdateYoutubeReq updateYoutubeReq , @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<GetYoutubeRes> youtubeList = youtubeService.getAllYoutuber(pageable);
+        youtubeList.get().forEach(
+            youtube -> {
+                System.out.println(youtube.toString());
+            }
+        );
         model.addAttribute("youtubeList", youtubeList);
         return "admin_youtube";
     }

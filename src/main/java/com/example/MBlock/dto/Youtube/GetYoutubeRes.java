@@ -13,9 +13,15 @@ public class GetYoutubeRes {
 
     private String title;
 
+    private String info;
+
+    private String hotClip;
+
     private String url;
 
     private String imgFile;
+
+    private Integer subscribers;
 
     private boolean onAir;
 
@@ -24,11 +30,14 @@ public class GetYoutubeRes {
     private String secretKey;
 
     @Builder
-    public GetYoutubeRes(Long id, String title, String url, String imgFile, boolean onAir, String apiKey, String secretKey) {
+    public GetYoutubeRes(Long id, String title, String info, String hotClip, String url, String imgFile, Integer subscribers, boolean onAir, String apiKey, String secretKey) {
         this.id = id;
         this.title = title;
+        this.info = info;
+        this.hotClip = hotClip;
         this.url = url;
         this.imgFile = imgFile;
+        this.subscribers = subscribers;
         this.onAir = onAir;
         this.apiKey = apiKey;
         this.secretKey = secretKey;

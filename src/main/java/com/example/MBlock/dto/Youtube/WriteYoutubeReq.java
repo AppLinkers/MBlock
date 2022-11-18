@@ -10,6 +10,12 @@ public class WriteYoutubeReq {
 
     private String title;
 
+    private String info;
+
+    private String hotClip;
+
+    private Integer subscribers;
+
     private String url;
 
     private boolean onAir;

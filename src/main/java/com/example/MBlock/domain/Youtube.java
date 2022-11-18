@@ -24,7 +24,13 @@ public class Youtube extends BaseEntity implements Auditable {
 
     private String title;
 
+    private String info;
+
     private String url;
+
+    private String hotClip;
+
+    private Integer subscribers;
 
     private String imgUrl;
 
@@ -37,9 +43,12 @@ public class Youtube extends BaseEntity implements Auditable {
     private Optional<String> secretKey;
 
     @Builder
-    public Youtube(String title, String url, String imgUrl, boolean onAir) {
+    public Youtube(String title, String info, String url, String hotClip, Integer subscribers, String imgUrl, boolean onAir) {
         this.title = title;
+        this.info = info;
         this.url = url;
+        this.hotClip = hotClip;
+        this.subscribers = subscribers;
         this.imgUrl = imgUrl;
         this.onAir = onAir;
     }

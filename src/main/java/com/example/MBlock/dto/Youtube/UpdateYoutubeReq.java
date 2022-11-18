@@ -12,9 +12,15 @@ public class UpdateYoutubeReq {
 
     private String title;
 
+    private String info;
+
     private String API_KEY;
 
     private String SECRET_KEY;
+
+    private String hotClip;
+
+    private Integer subscribers;
 
     private String url;
 

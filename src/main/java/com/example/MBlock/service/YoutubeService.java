@@ -28,15 +28,18 @@ public class YoutubeService {
         Page<Youtube> findYoutubeList = youtubeRepository.findAll(pageable);
 
         return findYoutubeList.map(youtube ->
-                new GetYoutubeRes(
-                        youtube.getId(),
-                        youtube.getTitle(),
-                        youtube.getUrl(),
-                        youtube.getImgUrl(),
-                        youtube.isOnAir(),
-                        youtube.getApiKey(),
-                        youtube.getSecretKey() != null ? youtube.getSecretKey().get() : null
-                )
+                GetYoutubeRes.builder()
+                        .id(youtube.getId())
+                        .title(youtube.getTitle())
+                        .info(youtube.getInfo())
+                        .hotClip(youtube.getHotClip())
+                        .url(youtube.getUrl())
+                        .imgFile(youtube.getImgUrl())
+                        .subscribers(youtube.getSubscribers())
+                        .onAir(youtube.isOnAir())
+                        .apiKey(youtube.getApiKey())
+                        .secretKey(youtube.getSecretKey().orElse(null))
+                        .build()
         );
     }
 
@@ -57,6 +60,10 @@ public class YoutubeService {
      */
     public void updateYoutube(UpdateYoutubeReq request){
         Youtube youtuber = youtubeRepository.getById(request.getId());
+        youtuber.setTitle(request.getTitle());
+        youtuber.setInfo(request.getInfo());
+        youtuber.setHotClip(request.getHotClip());
+        youtuber.setSubscribers(request.getSubscribers());
         youtuber.setApiKey(request.getAPI_KEY());
         youtuber.setSecretKey(java.util.Optional.ofNullable(request.getSECRET_KEY()));
         youtuber.setOnAir(request.isOnAir());
@@ -73,7 +80,10 @@ public class YoutubeService {
 
         Youtube youtube = Youtube.builder()
                 .title(writeYoutubeReq.getTitle())
+                .info(writeYoutubeReq.getInfo())
                 .url(writeYoutubeReq.getUrl())
+                .hotClip(writeYoutubeReq.getHotClip())
+                .subscribers(writeYoutubeReq.getSubscribers())
                 .imgUrl(imgUrl)
                 .onAir(false)
                 .build();

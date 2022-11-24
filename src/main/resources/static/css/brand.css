@@ -18,7 +18,7 @@ section#header {
 }
 
 .header__text h1 {
-    color: var(--color-red);
+    color: var(--color-pink);
     font-weight: 900;
 }
 

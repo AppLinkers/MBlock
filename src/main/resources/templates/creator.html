@@ -36,42 +36,14 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide" th:each="youtuber : ${youtubeList}">
                     <div class="swiper-text">
                         <h2 class="kor">MCN 간판</h2>
                         <h2 class="kor">크리에이터</h2>
-                        <h1 class="kor">막노동 고등어</h1>
-                        <p class="kor">크리에이터</p>
-                        <p class="kor">간단한</p>
-                        <p class="kor">설명</p>
-                        <button class="btn btn-varient kor">프로필 보기</button>
-                    </div>
-                    <div class="swiper-img">
-                        <!-- <img src="../image/trader2.jpg"> -->
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-text">
-                        <h2 class="kor">간판</h2>
-                        <h2 class="kor">크리에이터</h2>
-                        <h1 class="kor">막노동 고등어</h1>
-                        <p class="kor">크리에이터</p>
-                        <p class="kor">간단한</p>
-                        <p class="kor">설명</p>
-                        <button class="btn btn-varient kor">프로필 보기</button>
-                        <div class="swiper-img">
-                            <!-- <img src="../image/trader2.jpg"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-text">
-                        <h2 class="kor">간판</h2>
-                        <h2 class="kor">크리에이터</h2>
-                        <h1 class="kor">막노동 고등어</h1>
-                        <p class="kor">크리에이터</p>
-                        <p class="kor">간단한</p>
-                        <p class="kor">설명</p>
+                        <h1 class="kor" th:text="${youtuber.title}">막노동 고등어</h1>
+                        <p class="kor" th:text="${youtuber.info}">크리에이터</p>
+<!--                        <p class="kor">간단한</p>-->
+<!--                        <p class="kor">설명</p>-->
                         <button class="btn btn-varient kor">프로필 보기</button>
                     </div>
                     <div class="swiper-img">
@@ -96,77 +68,27 @@
                 </div>
             </div>
 
-            <article>
+            <article th:each="youtuber : ${youtubeList}">
                 <div class="creator__name">
                     <div class="name__line"></div>
-                    <h3 class="kor">막노동 고등어</h3>
+                    <h3 class="kor" th:text="${youtuber.title}">막노동 고등어</h3>
                 </div>
                 <div class="creator__info">
                     <div class="creator__image">
-                        <img src="../images/trader2.jpg" alt="">
+                        <img th:src="${youtuber.imgFile}" alt="">
                     </div>
                     <div class="creator__text">
-                        <h5 class="kor">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ea blanditiis soluta culpa quis cum dolorum quaerat, magni libero nostrum porro voluptates. Labore, explicabo! Voluptatibus!</h5>
+                        <h5 class="kor" th:text="${youtuber.info}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ea blanditiis soluta culpa quis cum dolorum quaerat, magni libero nostrum porro voluptates. Labore, explicabo! Voluptatibus!</h5>
                         <div class="youtube__link">
-                            <a href="#" class="youtube__ic"><i class="uil uil-youtube"></i></a>
-                            <p class="kor">1.76천 명</p>
+                            <a th:href="${youtuber.url}" class="youtube__ic"><i class="uil uil-youtube"></i></a>
+                            <p class="kor" th:text="${youtuber.subscribers}">1.76천 명</p>
                         </div>
                     </div>
                 </div>
                 <div class="creator__hotclip">
                     <div class="video">
                         <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/SmEKGyS5Xw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <div class="creator__name reverse">
-                    <div class="name__line"></div>
-                    <h3 class="kor">막노동 고등어</h3>
-                </div>
-                <div class="creator__info reverse">
-                    <div class="creator__text reverse">
-                        <h5 class="kor">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ea blanditiis soluta culpa quis cum dolorum quaerat, magni libero nostrum porro voluptates. Labore, explicabo! Voluptatibus!</h5>
-                        <div class="youtube__link">
-                            <a href="#" class="youtube__ic"><i class="uil uil-youtube"></i></a>
-                            <p class="kor">1.76천 명</p>
-                        </div>
-                    </div>
-                    <div class="creator__image">
-                        <img src="../images/trader1.png" alt="">
-                    </div>
-                </div>
-                <div class="creator__hotclip">
-                    <div class="video">
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/hYO6Nj8zldE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article>
-                <div class="creator__name">
-                    <div class="name__line"></div>
-                    <h3 class="kor">막노동 고등어</h3>
-                </div>
-                <div class="creator__info">
-                    <div class="creator__image">
-                        <img src="../images/trader3.jpg" alt="">
-                    </div>
-                    <div class="creator__text">
-                        <h5 class="kor">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ea blanditiis soluta culpa quis cum dolorum quaerat, magni libero nostrum porro voluptates. Labore, explicabo! Voluptatibus!</h5>
-                        <div class="youtube__link">
-                            <a href="#" class="youtube__ic"><i class="uil uil-youtube"></i></a>
-                            <p class="kor">1.76천 명</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="creator__hotclip">
-                    <div class="video">
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/OfDt8Hfl6tk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="560" height="315" th:src="${youtuber.hotClip}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>

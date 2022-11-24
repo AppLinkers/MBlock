@@ -43,7 +43,7 @@
                         <h1>WITH YOU</h1>
                         <h2 class="kor">당신과 함께하는</h2>
                         <h2 class="kor">즐거운 트레이딩</h2>
-                        <button class="btn btn-varient kor" onclick="location.href='creator.html';">크리에이터 보기</button>
+                        <button class="btn btn-varient kor" th:onclick="location.href='/creator';">크리에이터 보기</button>
                     </div>
                     <div class="swiper-img">
                         <!-- <img src="../image/trader2.jpg"> -->
@@ -55,7 +55,7 @@
                         <h1>INVEST & CREATE</h1>
                         <h2 class="kor">크리에이터와 함께</h2>
                         <h2 class="kor">소통하고 즐기고</h2>
-                        <button class="btn btn-varient kor" onclick="location.href='creator.html';">회사소개 보기</button>
+                        <button class="btn btn-varient kor" th:onclick="location.href='/brand';">회사소개 보기</button>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -65,7 +65,7 @@
                         <h1>WITH YOU</h1>
                         <h2 class="kor">당신과 함께하는</h2>
                         <h2 class="kor">즐거운 트레이딩</h2>
-                        <button class="btn btn-varient kor" onclick="location.href='creator.html';">뉴스 보기</button>
+                        <button class="btn btn-varient kor" th:onclick="location.href='/news';">뉴스 보기</button>
                     </div>
                 </div>
             </div>
@@ -302,7 +302,7 @@
     $(function () {
         var $content = $('#jsonContent');
         var data = {
-            rss_url: 'https://medium.com/feed/despread-global'
+            rss_url: 'https://medium.com/feed/@mcnbluefish'
         };
         $.get('https://api.rss2json.com/v1/api.json', data, function (response) {
             if (response.status == 'ok') {
@@ -336,14 +336,14 @@
                         content = trimmedString
                     }
 
-                    output += '<article>';
+                    output += '<article><a href="'+item.link+'">';
                     output += '<div class="news__header"> <div class="news__image">';
                     output += '<img src="'+src+'" alt=""> </div> <div class="news__sort"><p>SORT</p></div></div>';
                     output += '<div class="news__body"><div class="news__title"><h4>'+item.title+'</h4></div>';
                     output += '<div class="news__content"><h5>'+content+'</h5></div></div>'
-                    output += '<div class="news__date"><p>2022. 09. 20</p></div></article>'
+                    output += '<div class="news__date"><p>2022. 09. 20</p></div></a></article>'
 
-                    return k < 2;
+                    return k < 3;
 
                 });
                 $content.html(output);

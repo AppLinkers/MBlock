@@ -42,4 +42,5 @@ public class GetYoutubeRes {
         this.apiKey = apiKey;
         this.secretKey = secretKey;
     }
+
 }

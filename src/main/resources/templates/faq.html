@@ -42,43 +42,41 @@
     <div class="faq__info">
       <div class="info__box">
         <h5>작성자</h5>
-        <h5>AHN</h5>
+        <h5 th:text="${consult.name}">AHN</h5>
       </div>
       <div class="info__line"></div>
       <div class="info__box">
         <h5>작성 일시</h5>
-        <h5>2022-11-08</h5>
+        <h5 th:text="${consult.datetime}">2022-11-08</h5>
       </div>
       <div class="info__line"></div>
       <div class="info__box">
         <h5>크리에이터</h5>
-        <h5>Moo</h5>
+        <h5 th:text="${consult.trader}">Moo</h5>
       </div>
       <div class="info__line"></div>
       <div class="info__box">
         <h5>답변 여부</h5>
-        <h5 style="color: var(--color-green);">답변 완료</h5>
+        <h5 th:if="${consult.replied}==true" style="color: var(--color-green);">답변 완료</h5>
+        <h5 th:unless="${consult.replied}==true" style="color: var(--color-orange);">답변 대기중</h5>
       </div>
     </div>
     <div class="faq__title">
       <h3 class="kor">상담 내용</h3>
     </div>
     <div class="faq__content">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias perferendis, qui corrupti magnam
+      <p th:text="${consult.context}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias perferendis, qui corrupti magnam
         repellat dignissimos explicabo mollitia temporibus soluta, iure nostrum vero praesentium? Sed hic
         asperiores voluptate ipsum quae expedita?</p>
     </div>
     <div class="faq__title">
       <h3 class="kor">답변</h3>
     </div>
-    <div class="faq__content">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil nulla eaque consequatur magnam
-        perspiciatis hic dolor dicta voluptatum minima dolores, pariatur repellendus voluptates doloremque
-        sequi illum tempore cum eum soluta qui, nisi enim, provident corrupti. Officia facere porro possimus
-        error.</p>
+    <div class="faq__content" th:if="${consult.replied}==true" >
+      <p th:text="${consultingReply.content}"></p>
     </div>
     <div class="faq__btn">
-      <button class="btn-black kor">돌아가기</button>
+      <a th:href="@{/consulting/form}"> <button class="btn-black kor">돌아가기</button></a>
     </div>
   </div>
 </section>

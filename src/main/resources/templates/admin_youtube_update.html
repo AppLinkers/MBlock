@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/admin_youtube_add.css">
+</head>
+<body>
+<!-- header -->
+<header>
+  <div class="container">
+    <h1>
+      <a th:href="@{/admin}"> <button>M <span>Block</span></button></a>
+    </h1>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="top">
+      <span>관리자 페이지</span>
+    </div>
+    <div class="content">
+      <div class="left">
+        <ul>
+          <li><a th:href="@{/admin/announce}"><div class="list">공지사항</div></a></li>
+          <li><a th:href="@{/admin/news}"><div class="list">투자게시판 관리</div></a></li>
+          <li><a th:href="@{/admin/invest}"><div class="list">투자종목 관리</div></a></li>
+          <li><a th:href="@{/admin/youtube}"><div class="list">유튜브 트레이더</div></a></li>
+          <li><a th:href="@{/admin/partner}"><div class="list">협력업체 관리</div></a></li>
+          <li><a th:href="@{/admin/consulting}"><div class="list" >개인 문의</div></a></li>
+          <li><a th:href="@{/admin/member}"><div class="list" >멤버 관리</div></a></li>
+          <li><a th:href="@{/admin/chat}"><div class="list">단체 채팅</div></a></li>
+        </ul>
+      </div>
+      <div class="right">
+        <div class="title"><h2>유튜브 트레이더 추가</h2></div>
+        <form th:method="post" th:action="@{|/youtube/update/${youtuber.id}|}" th:object="${updateYoutubeReq}" enctype="multipart/form-data">
+          <div id="img-form" class="form-group">
+            <label>채널 이미지</label>
+            <input id="selectImg" type="file" th:name="imgFile" th:value="${youtuber.imgFile}">
+            <div class="main-img" onclick="defaultBtnActive()">
+              <img src="" alt="" >
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              select your image
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="title">채널 이름</label>
+            <input type="text" id="title" th:name="title" th:value="${youtuber.title}"  autocomplete="off" required>
+          </div>
+          <div class="form-group">
+            <label for="title">채널 설명</label>
+            <input type="text" autocomplete="off" th:name="info" th:value="${youtuber.info}" required>
+          </div>
+          <div class="form-group">
+            <label for="url">채널 url</label>
+            <input type="text" id="url" autocomplete="off" th:name="url" th:value="${youtuber.url}" required placeholder="https://www.youtube.com/~">
+          </div>
+          <div class="form-group">
+            <label for="url">hotclip URL</label>
+            <input type="text" id="hotclip" th:name="hotClip" th:value="${youtuber.hotClip}" autocomplete="off" required placeholder="https://www.youtube.com/~">
+          </div>
+
+<!--          binance update-->
+
+          <div class="form-group">
+            <label for="url">binance api</label>
+            <input type="text" id="apiKey" th:name="API_KEY" th:value="${youtuber.apiKey}"  autocomplete="off" placeholder="API_KEY" >
+            <br>
+            <input type="text" id="secretKey" th:field="*{SECRET_KEY}" autocomplete="off" placeholder="SECRET_KEY">
+
+          </div>
+
+
+          <button type="submit" onclick="">수정하기</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="/js/add_image.js"></script>
+</body>
+</html>

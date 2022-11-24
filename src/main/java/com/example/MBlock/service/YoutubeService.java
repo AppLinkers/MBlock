@@ -38,7 +38,7 @@ public class YoutubeService {
                         .subscribers(youtube.getSubscribers())
                         .onAir(youtube.isOnAir())
                         .apiKey(youtube.getApiKey())
-                        .secretKey(youtube.getSecretKey().orElse(null))
+                        .secretKey(youtube.getSecretKey() != null ? youtube.getSecretKey().get() : "")
                         .build()
         );
     }
@@ -49,8 +49,13 @@ public class YoutubeService {
 
         return GetYoutubeRes.builder()
                 .id(findYoutube.getId())
+                .hotClip(findYoutube.getHotClip())
+                .info(findYoutube.getInfo())
+                .url(findYoutube.getUrl())
                 .onAir(findYoutube.isOnAir())
+                .imgFile(findYoutube.getImgUrl())
                 .title(findYoutube.getTitle())
+                .apiKey(findYoutube.getApiKey())
                 .build();
     }
 

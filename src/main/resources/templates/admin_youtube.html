@@ -136,25 +136,25 @@
                     <p>Long</p>
                   </div>
                   <div class="edit_con" onclick="openEdit()">
-                    <a class="editBtn">관리</a>
-                    <script th:inline="javascript">
-                      function openEdit(){
-                        var onAir = [[${youtube.onAir}]];
-                        //var title = [[${youtube.title}]];
-                        var id = [[${youtube.id}]];
-                        if(onAir == true){
-                          isOnAir.innerHTML="OnAir";
-                          isOnAir.value = true;
-                        }else{
-                          isOnAir.innerHTML="OffAir";
-                          isOnAir.value = false;
-                        }
+                    <a class="editBtn" th:href="@{|/youtube/update/${youtube.id}/form|}">관리</a>
+<!--                    <script th:inline="javascript">-->
+<!--                      function openEdit(){-->
+<!--                        var onAir = [[${youtube.onAir}]];-->
+<!--                        //var title = [[${youtube.title}]];-->
+<!--                        var id = [[${youtube.id}]];-->
+<!--                        if(onAir == true){-->
+<!--                          isOnAir.innerHTML="OnAir";-->
+<!--                          isOnAir.value = true;-->
+<!--                        }else{-->
+<!--                          isOnAir.innerHTML="OffAir";-->
+<!--                          isOnAir.value = false;-->
+<!--                        }-->
 
-                        onAirInput.value = onAir;
-                        youtube_edit.classList.toggle("active");
+<!--                        onAirInput.value = onAir;-->
+<!--                        youtube_edit.classList.toggle("active");-->
 
-                      }
-                    </script>
+<!--                      }-->
+<!--                    </script>-->
                   </div>
                 </div>
                 <div th:id="'output'+${youtube.id}">
@@ -167,7 +167,7 @@
 
                   }else{
                     test_function(apiStr,secStr,'output'+[[${youtube.id}]]);
-                    console.log([[${youtube.id}]])
+                    console.log([[${youtube.apiKey}]])
                   }
 
                 </script>

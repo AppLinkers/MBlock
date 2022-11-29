@@ -1,3 +1,9 @@
+/* =================NAV================ */
+nav ul a:nth-child(2) li {
+    color: var(--color-realBlack);
+    background: var(--color-white);
+}
+
 /* =================HEADER================ */
 section#header {
     height: 80vh;
@@ -24,7 +30,7 @@ section#header {
 
 .header__text h2 {
     color: var(--color-white);
-    margin-left: 7rem;
+    /* margin-left: 7rem; */
     font-weight: 900;
     margin-top: 0.7rem;
 }

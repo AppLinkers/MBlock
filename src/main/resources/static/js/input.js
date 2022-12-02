@@ -23,12 +23,15 @@ options.forEach(option => {
 const show = document.getElementById("show");
 const non_show = document.getElementById("non-show");
 const show_password = document.querySelector(".show-password");
-const allow = document.querySelector(".form-allow");
 
+
+const allow = document.querySelector(".form-allow");
 const modal = document.querySelector(".modal");
 const close_modal = document.getElementById("close-modal");
 const btn_modal = document.querySelector(".modal__btn");
+const hidden_input = document.getElementById("allow_checkbox_hidden")
 
+//공개 여부
 show.addEventListener("click", () => {
     show.classList.add("active");
     non_show.classList.remove("active");
@@ -41,13 +44,17 @@ non_show.addEventListener("click", () => {
     show_password.classList.add("active");
 })
 
+
+//개인정보 수집동의 클릭
 allow.addEventListener("click", () => {
     if (allow.classList.contains("active")) {
         allow.classList.remove("active");
+        hidden_input.checked = false
     } else {
         modal.classList.add("active");
     }
 })
+
 
 close_modal.addEventListener("click", () => {
     modal.classList.remove("active");
@@ -56,4 +63,5 @@ close_modal.addEventListener("click", () => {
 btn_modal.addEventListener("click", () => {
     modal.classList.remove("active");
     allow.classList.toggle("active");
+    hidden_input.checked = true
 })

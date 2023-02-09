@@ -32,7 +32,7 @@ public class PageController {
     /**
      * Main Page
      */
-    @GetMapping("/index")
+    @GetMapping("")
     public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         //List<GetNewsRes> topNews = newsService.getTop3News();

@@ -70,7 +70,6 @@ public class YoutubeController {
     @PostMapping("/admin/youtube")
     public String writeYoutube(WriteYoutubeReq writeYoutubeReq) {
         try {
-            System.out.println(writeYoutubeReq.getImgFile());
             youtubeService.save(writeYoutubeReq);
         } catch (IOException e) {
             e.printStackTrace();

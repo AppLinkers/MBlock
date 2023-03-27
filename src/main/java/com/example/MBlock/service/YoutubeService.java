@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -41,6 +43,18 @@ public class YoutubeService {
                         .secretKey(youtube.getSecretKey() != null ? youtube.getSecretKey().get() : "")
                         .build()
         );
+    }
+
+    public List<String> getAllYoutuberName() {
+        List<String> response = new ArrayList<>();
+
+        youtubeRepository.findAll().forEach(
+                youtube -> {
+                    response.add(youtube.getTitle());
+                }
+        );
+
+        return response;
     }
 
 

@@ -36,8 +36,10 @@ public class PageController {
     public String index(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         //List<GetNewsRes> topNews = newsService.getTop3News();
+        Page<GetYoutubeRes> getAllYoutubers = youtubeService.getAllYoutuber(pageable);
+
         model.addAttribute("partnerList", adminService.getPartnerAll());
-        model.addAttribute("youtubeList", youtubeService.getAllYoutuber(pageable));
+        model.addAttribute("youtubers", getAllYoutubers);
       //  model.addAttribute("topNews", topNews);
         model.addAttribute("name", name);
         return "index";

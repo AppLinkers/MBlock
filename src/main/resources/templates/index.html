@@ -46,7 +46,7 @@
                         <button class="btn btn-varient kor" th:onclick="location.href='/creator';">크리에이터 보기</button>
                     </div>
                     <div class="swiper-img">
-                        <!-- <img src="../image/trader2.jpg"> -->
+                         <img src="">
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -87,7 +87,7 @@
             <h5 class="kor">막노동 그룹의 핫한 크리에이터를 만나보세요</h5>
         </div>
         <div class="creator__item" >
-            <article th:each="youtuber : ${youtubeList}">
+<!--            <article th:each="youtuber : ${youtubeList}">
                 <div class="creator__info">
                     <div class="creator__name">
                         <h5 th:text="${youtuber.title}">막노동 고등어</h5>
@@ -100,23 +100,34 @@
                     <div class="creator__detail">
                         <div class="creator-row">
                             <p>규모</p>
-                            <h5 style="color: var(--color-green);">97.77</h5>
+                            <h5 style="color: var(&#45;&#45;color-green);">97.77</h5>
                             <p>진입가</p>
                             <h5>19,801.00</h5>
                             <p>청산가</p>
-                            <h5 style="color: var(--color-orange);">17,489.00</h5>
+                            <h5 style="color: var(&#45;&#45;color-orange);">17,489.00</h5>
                         </div>
                         <div class="creator-row">
                             <p>미실현 손익</p>
-                            <h5 style="color: var(--color-green);">216,921.00</h5>
+                            <h5 style="color: var(&#45;&#45;color-green);">216,921.00</h5>
                             <p>진입 평균가</p>
                             <h5>21,382.00</h5>
                         </div>
                     </div>
                 </div>
                 <img th:src="${youtuber.imgFile}">
+            </article>-->
+            <article th:each="youtube: ${youtubers}">
+                <img th:src="${youtube.imgFile}">
+            </article>
+
+            <article>
+                <img src="/images/trader3.jpg">
+            </article>
+            <article>
+                <img src="/images/trader2.jpg">
             </article>
         </div>
+        <a th:href="@{/creator}"><button class="btn btn-varient kor" >유튜버 상세보기</button></a>
     </div>
 </section>
 
@@ -125,7 +136,7 @@
     <div class="container news__container">
         <div class="title">
             <div class="title__text">
-                <h2>MakLodong-Group NEWS</h2>
+                <h2>MakLodong-Group BLOG</h2>
             </div>
             <div class="title__line">
                 <div></div>
@@ -200,7 +211,7 @@
                 </div>
             </article>
         </div>
-       <a th:href="@{/news}"><button class="btn btn-varient kor" >최신 뉴스 보러가기</button></a>
+        <a th:href="@{/news}"><button class="btn btn-varient kor" >블로그 최신글 보러가기</button></a>
     </div>
 </section>
 

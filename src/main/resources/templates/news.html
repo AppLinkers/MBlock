@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>MCN</title>
 
 	<!-- GOOGLE FONTS -->
@@ -24,6 +25,8 @@
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
+
+
 </head>
 <body>
 <!-- =========== NAVBAR ========== -->
@@ -35,7 +38,7 @@
 	<div class="container header__container">
 		<!-- Swiper -->
 		<div class="swiper mySwiper">
-			<div class="swiper-wrapper">
+			<div class="swiper-wrapper" id="mainContent" name="mainContent">
 				<div class="swiper-slide">
 					<div class="main-news">
 						<div class="main__image">
@@ -50,34 +53,34 @@
 						</div>
 					</div>
 				</div>
-				<div class="swiper-slide">
-					<div class="main-news">
-						<div class="main__image">
-							<img src="../images/on-air-7064981_1920.jpg">
-						</div>
-						<div class="main__info">
-							<h3 class="kor">메인 뉴스 제목</h3>
-							<div class="main__sub">
-								<p>2022. 09. 21</p>
-								<h5>SORT</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="main-news">
-						<div class="main__image">
-							<img src="../images/green-5124174.jpg">
-						</div>
-						<div class="main__info">
-							<h3 class="kor">메인 뉴스 제목</h3>
-							<div class="main__sub">
-								<p>2022. 09. 21</p>
-								<h5>SORT</h5>
-							</div>
-						</div>
-					</div>
-				</div>
+<!--				<div class="swiper-slide">-->
+<!--					<div class="main-news">-->
+<!--						<div class="main__image">-->
+<!--							<img src="../images/on-air-7064981_1920.jpg">-->
+<!--						</div>-->
+<!--						<div class="main__info">-->
+<!--							<h3 class="kor">메인 뉴스 제목</h3>-->
+<!--							<div class="main__sub">-->
+<!--								<p>2022. 09. 21</p>-->
+<!--								<h5>SORT</h5>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="swiper-slide">-->
+<!--					<div class="main-news">-->
+<!--						<div class="main__image">-->
+<!--							<img src="../images/green-5124174.jpg">-->
+<!--						</div>-->
+<!--						<div class="main__info">-->
+<!--							<h3 class="kor">메인 뉴스 제목</h3>-->
+<!--							<div class="main__sub">-->
+<!--								<p>2022. 09. 21</p>-->
+<!--								<h5>SORT</h5>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
 			</div>
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
@@ -90,7 +93,7 @@
 	<div class="container news__container">
 		<div class="title">
 			<div class="title__text">
-				<h2 class="kor">MakLodong-group 최신 뉴스</h2>
+				<h2>MakLodong-Group BLOG</h2>
 			</div>
 			<div class="title__line">
 				<div></div>
@@ -100,11 +103,12 @@
 		<div class="sub__title">
 			<h5 class="kor">막노동 그룹의 새로운 소식을 전해요</h5>
 		</div>
-		<div class="news__list" id="jsonContent" name="jsonContent">
+
+		<div class="news__list" id="blogContent" name="blogContent">
 			<article>
 				<div class="news__header">
 					<div class="news__image">
-						<img src="../images/piggy.jpg" alt="">
+						<img src="../images/piggy.jpg">
 					</div>
 					<div class="news__sort">
 						<p>SORT</p>
@@ -112,178 +116,10 @@
 				</div>
 				<div class="news__body">
 					<div class="news__title">
-						<h4>NEWS TITLE</h4>
+						<h4></h4>
 					</div>
 					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/microphone-17709_1280.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/green-5124174.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/mock5.png" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/nft3.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/blackandwhite-7402145_1920.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/on-air-7064981_1920.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/sunset-5560658.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
-					</div>
-				</div>
-				<div class="news__date">
-					<p>2022. 09. 20</p>
-				</div>
-			</article>
-			<article>
-				<div class="news__header">
-					<div class="news__image">
-						<img src="../images/redhead-4789668.jpg" alt="">
-					</div>
-					<div class="news__sort">
-						<p>SORT</p>
-					</div>
-				</div>
-				<div class="news__body">
-					<div class="news__title">
-						<h4>NEWS TITLE</h4>
-					</div>
-					<div class="news__content">
-						<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore pariatur. Enim ex eos praesentium. this is four line for show overhidden show me more</h5>
+						<h5></h5>
 					</div>
 				</div>
 				<div class="news__date">
@@ -291,6 +127,7 @@
 				</div>
 			</article>
 		</div>
+
 		<div class="news__button">
 			<button class="btn btn-black kor" >더 보기</button>
 		</div>
@@ -321,8 +158,26 @@
 	importPage('header');
 </script>
 
-
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="../js/base.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+<script>
+	var swiper = new Swiper(".mySwiper", {
+		slidesPerView: 1,
+		spaceBetween: 30,
+		loop: true,
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
+		}
+	});
+</script>
 
 
 <!--Medium API-->
@@ -333,8 +188,10 @@
 		return strArray[0] + '.' + strArray[1] + '.'+strArray[2] ;
 	}
 
+
 	$(function () {
-		var $content = $('#jsonContent');
+		var $content = $('#blogContent');
+		var $content2 = $('#mainContent');
 		var data = {
 			rss_url: 'https://medium.com/feed/@mcnbluefish'
 		};
@@ -342,14 +199,11 @@
 			if (response.status == 'ok') {
 //var output = '';
 				var output = '';
-				$.each(response.items, function (k, item) {
-					var visibleSm;
-					if(k < 3){
-						visibleSm = '';
-					} else {
-						visibleSm = ' visible-sm';
-					}
+				var mainOutput = '';
 
+				$.each(response.items, function (k, item) {
+
+					console.log(item)
 					var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
 					var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
 					var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
@@ -370,16 +224,30 @@
 						content = trimmedString
 					}
 
-					output += '<article> <a href="'+item.link+'">';
-					output += '<div class="news__header"> <div class="news__image">';
-					output += '<img src="'+src+'" alt=""> </div> <div class="news__sort"><p>SORT</p></div></div>';
-					output += '<div class="news__body"><div class="news__title"><h4>'+item.title+'</h4></div>';
-					output += '<div class="news__content"><h5>'+content+'</h5></div></div>'
-					output += '<div class="news__date"><p>2022. 09. 20</p></div></a></article>'
+					var visibleSm;
+					if(k < 3){
+						mainOutput += '<div className="swiper-slide">';
+						mainOutput += '<div className="main-news">';
+						mainOutput += '<div className="main__image"><img src="'+src+'" alt=""></div>';
+						mainOutput += '<div className="main__info"><h3 className="kor">'+item.title+'</h3>';
+						mainOutput += '<div class="main__sub"><p>'+item.pubDate+'</p></div>';
+						mainOutput += '</div></div></div>'
+					} else {
+						visibleSm = 'visible-sm'
+						output += '<article> <a href="'+item.link+'">';
+						output += '<div class="news__header"> <div class="news__image">';
+						output += '<img src="'+src+'" alt=""> </div> <div class="news__sort"><p>SORT</p></div></div>';
+						output += '<div class="news__body"><div class="news__title"><h4>'+item.title+'</h4></div>';
+						output += '<div class="news__content"><h5>'+content+'</h5></div></div>'
+						output += '<div class="news__date"><p>'+item.pubDate+'</p></div></a></article>'
+					}
 
-					return k < 6;
+
+					return k < 30;
 
 				});
+
+				$content2.html(mainOutput);
 				$content.html(output);
 //$("#header").load("content.html");
 			}
@@ -388,24 +256,6 @@
 </script>
 
 
-<script src="../js/base.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-
-<script>
-	var swiper = new Swiper(".mySwiper", {
-		slidesPerView: 1,
-		spaceBetween: 30,
-		loop: true,
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true
-		},
-		navigation: {
-			nextEl: ".swiper-button-next",
-			prevEl: ".swiper-button-prev"
-		}
-	});
-</script>
 </body>
 </html>

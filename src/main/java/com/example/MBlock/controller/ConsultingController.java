@@ -35,10 +35,10 @@ public class ConsultingController {
      */
     @GetMapping("/consulting/form")
     public String writeConsultingPage(Model model,WriteConsultingReq writeConsultingReq ,@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
-        Page<GetYoutubeRes> youtubeList = youtubeService.getAllYoutuber(pageable);
+        List<String> youtubeList = youtubeService.getAllYoutuberName();
         List<GetConsultingRes> consultList = consultingService.getAllConsulting(pageable);
         model.addAttribute("consult", consultList);
-        model.addAttribute("youtube", youtubeList);
+        model.addAttribute("youtubers", youtubeList);
         return "consulting";}
 
     /**

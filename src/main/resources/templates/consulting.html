@@ -50,8 +50,10 @@
                             <input id="role" class="sBtn-text" th:field="*{trader}"  placeholder="크리에이터를 선택해주세요" readonly>
                             <i class="uil uil-angle-down"></i>
                         </div>
-                        <ul class="options" th:each="youtube: ${youtube}">
-                            <li class="option" ><span class="option-text kor" th:text="${youtube.title}">크리에이터2</span></li>
+                        <ul class="options" >
+                            <li class="option" th:each="youtube: ${youtubers}">
+                                <span class="option-text kor" th:text="${youtube}">크리에이터2</span>
+                            </li>
                         </ul>
                     </div>
                 </div>

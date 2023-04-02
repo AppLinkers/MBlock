@@ -1,18 +1,27 @@
+/* =================NAV================ */
+nav ul a:nth-child(4) li {
+    color: var(--color-realBlack);
+    background: var(--color-white);
+}
+
 #nav {
     background: var(--color-green);
 }
+
 /* =================HEADER================ */
 section#header {
     background: var(--color-green);
     height: 30rem;
     padding: 0;
 }
+
 .header__container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
+
 .swiper {
     width: 100%;
     height: 38rem;
@@ -20,6 +29,7 @@ section#header {
     border-radius: 0.3rem;
     box-shadow: 3px 3px 6px var(--color-dark);
 }
+
 .swiper-slide {
     background: #fff;
 
@@ -37,27 +47,36 @@ section#header {
     -webkit-align-items: center;
     align-items: center;
 }
-.main-news{
+
+.main-news {
     width: 100%;
     height: 100%;
 
 }
-.main__image{
+
+.main__image {
     width: 100%;
-    height: 70%;
+    height: 75%;
 }
+
 .main__image img {
     height: 100%;
 }
+
 .main__info {
-    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 25%;
     background: var(--color-realBlack);
     padding: 2rem 4rem;
     color: var(--color-white);
 }
+
 .main__info h3 {
     font-weight: 900;
 }
+
 .main__sub {
     display: flex;
     align-items: center;
@@ -65,75 +84,93 @@ section#header {
     margin-top: 1.5rem;
 }
 
+.main__sub h5 {
+    font-size: 1.3rem;
+}
+
 /* =================NEWS================ */
 section#news {
     background: var(--color-light);
     padding-top: 16rem;
 }
-.title{
+
+.title {
     display: grid;
     grid-template-columns: 2fr 3fr;
     align-items: center;
 }
+
 .title__text h2 {
     color: var(--color-realBlack);
     font-weight: 900;
     font-size: 3.4rem;
 }
+
 .title__line {
     height: 1rem;
 }
+
 .real__line {
     height: 100%;
     width: 80%;
     float: right;
     background: var(--color-realBlack);
 }
+
 .sub__title {
     margin-top: 1rem;
     color: var(--color-realBlack);
 }
+
 .sub__title h5 {
     font-weight: 700;
 }
+
 .news__list {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3.2rem;
     margin-top: 6rem;
 }
+
 .news__list article {
     height: 32rem;
     background: var(--color-white);
-    padding: 3rem 2rem;
+    padding: 2rem 2rem 1rem 2rem;
     cursor: pointer;
 }
+
 .news__header {
-    height: 35%;
+    height: 40%;
     display: grid;
     grid-template-columns: 4fr 5fr;
 }
+
 .news__image {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
 }
+
 .news__image img {
     height: 100%;
     border-radius: 50%;
 }
+
 .news__sort {
     display: flex;
     justify-content: right;
     font-size: 1rem;
     font-weight: 600;
 }
+
 .news__body {
-    height: 55%;
+    height: 50%;
 }
-.news__title h4{
+
+.news__title h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -142,9 +179,11 @@ section#news {
     color: var(--color-realBlack);
     font-weight: 600;
 }
+
 .news__content {
     margin-top: 2rem;
 }
+
 .news__content h5 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -153,12 +192,15 @@ section#news {
     -webkit-box-orient: vertical;
     font-size: 1.1rem;
 }
+
 .news__date {
     height: 10%;
 }
+
 .news__date p {
     color: var(--color-gray);
 }
+
 .news__button {
     display: flex;
     justify-content: center;
@@ -166,29 +208,30 @@ section#news {
     padding: 6rem 0;
 }
 
+.news__button button {
+    padding: 1.2rem 2.4rem;
+}
+
 
 
 @media screen and (max-width: 1400px) {
 
     .news__list {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
+
 /* =================MEDIA QEURIES
 (TABLETS)================ */
 
-@media screen and (max-width: 1024px) {
-
-}
+@media screen and (max-width: 1024px) {}
 
 @media screen and (max-width: 700px) {
     .news__list {
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
 /* =================MEDIA QEURIES
 (PHONES)================ */
-@media screen and (max-width: 600px) {
-
-}
+@media screen and (max-width: 600px) {}

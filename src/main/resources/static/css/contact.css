@@ -1,3 +1,9 @@
+/* =================NAV================ */
+nav ul a:nth-child(5) li {
+    color: var(--color-realBlack);
+    background: var(--color-white);
+}
+
 #nav {
     background: var(--color-palletblue);
 }
@@ -26,7 +32,7 @@ section#header {
 
 .trader__info h2 {
     font-weight: 900;
-    color: var(--color-red);
+    color: var(--color-pink);
     margin-bottom: 0.5rem;
 }
 
@@ -417,7 +423,7 @@ section#qna {
     }
 
     .show-box p {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     section#qna {
@@ -443,7 +449,7 @@ section#qna {
     }
 
     .show-box p {
-        font-size: 0.3rem;
+        font-size: 0.5rem;
     }
 
     .label p {

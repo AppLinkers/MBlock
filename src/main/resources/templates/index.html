@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,11 +38,11 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="swiper-text">
-                        <h1>TRADE</h1>
-                        <h1>CREATE</h1>
-                        <h1>WITH YOU</h1>
-                        <h2 class="kor">당신과 함께하는</h2>
-                        <h2 class="kor">즐거운 트레이딩</h2>
+                        <h1>Cryptocurrency</h1>
+                        <h1>enjoy</h1>
+                        <h1>with creators</h1>
+                        <h2 class="kor">크리에이터와 함께</h2>
+                        <h2 class="kor">암호화폐를 더 즐겁게</h2>
                         <button class="btn btn-varient kor" th:onclick="location.href='/creator';">크리에이터 보기</button>
                     </div>
                     <div class="swiper-img">
@@ -51,20 +51,18 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="swiper-text">
-                        <h1>WELCOME</h1>
-                        <h1>INVEST & CREATE</h1>
-                        <h2 class="kor">크리에이터와 함께</h2>
-                        <h2 class="kor">소통하고 즐기고</h2>
+                        <h1>Study For Blockchain</h1>
+                        <h2 class="kor">막노동 그룹과 함께</h2>
+                        <h2 class="kor">공부하는 블록체인</h2>
                         <button class="btn btn-varient kor" th:onclick="location.href='/brand';">회사소개 보기</button>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="swiper-text">
-                        <h1>TRADE</h1>
-                        <h1>CREATE</h1>
-                        <h1>WITH YOU</h1>
-                        <h2 class="kor">당신과 함께하는</h2>
-                        <h2 class="kor">즐거운 트레이딩</h2>
+                        <h1>Communicate</h1>
+                        <h1>With Creators</h1>
+                        <h2 class="kor">크리에이터와 함께</h2>
+                        <h2 class="kor">암호화폐 소통</h2>
                         <button class="btn btn-varient kor" th:onclick="location.href='/news';">뉴스 보기</button>
                     </div>
                 </div>
@@ -86,7 +84,7 @@
             </div>
         </div>
         <div class="sub__title">
-            <h5 class="kor">MCN의 핫한 크리에터를 만나보세요</h5>
+            <h5 class="kor">막노동 그룹의 핫한 크리에이터를 만나보세요</h5>
         </div>
         <div class="creator__item" >
             <article th:each="youtuber : ${youtubeList}">
@@ -127,7 +125,7 @@
     <div class="container news__container">
         <div class="title">
             <div class="title__text">
-                <h2>MCN NEWS</h2>
+                <h2>MakLodong-Group NEWS</h2>
             </div>
             <div class="title__line">
                 <div></div>
@@ -135,7 +133,7 @@
             </div>
         </div>
         <div class="sub__title">
-            <h5 class="kor">MCN의 소식을 전해요</h5>
+            <h5 class="kor">막노동 그룹의 새로운 소식을 전해요</h5>
         </div>
         <div class="news__list" id="jsonContent" name="jsonContent">
             <article>

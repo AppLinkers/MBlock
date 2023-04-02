@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,9 +41,9 @@
                         <h2 class="kor">MCN 간판</h2>
                         <h2 class="kor">크리에이터</h2>
                         <h1 class="kor" th:text="${youtuber.title}">막노동 고등어</h1>
-                        <p class="kor" th:text="${youtuber.info}">크리에이터</p>
-<!--                        <p class="kor">간단한</p>-->
-<!--                        <p class="kor">설명</p>-->
+<!--                        <p class="kor" th:text="${youtuber.info}">크리에이터</p>-->
+                        <p class="kor">암호화폐 전문 크리에이터</p>
+                        <p class="kor">블록체인 산업 분석 및 정보 공유, 시장 트렌드 분석 방송</p>
                         <button class="btn btn-varient kor">프로필 보기</button>
                     </div>
                     <div class="swiper-img">
@@ -78,7 +78,9 @@
                         <img th:src="${youtuber.imgFile}" alt="">
                     </div>
                     <div class="creator__text">
-                        <h5 class="kor" th:text="${youtuber.info}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ea blanditiis soluta culpa quis cum dolorum quaerat, magni libero nostrum porro voluptates. Labore, explicabo! Voluptatibus!</h5>
+                        <h5 class="kor" th:text="${youtuber.info}">
+                            막노동 고등어의 실전 트레이딩 꿀팁 방송과
+                            단순 트레이딩 뿐만아니라 암호화폐 시장 트랜드 분석과 블록체인 산업 정보 및 공유를 해주는 방송입니다.</h5>
                         <div class="youtube__link">
                             <a th:href="${youtuber.url}" class="youtube__ic"><i class="uil uil-youtube"></i></a>
                             <p class="kor" th:text="${youtuber.subscribers}">1.76천 명</p>
